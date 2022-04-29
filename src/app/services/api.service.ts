@@ -24,7 +24,8 @@ export class ApiService {
         const token = this.store.selectForLocal('token');
         const httpOptions = {
             headers: new HttpHeaders({
-                'x-api-key': '1553015152749A58DBD1BABE09729XO102',
+                'domain': 'ys',
+                'api-key': '6bf9284a-ebf9-4afa-a185-4d2b9bb29e85',
                 'Authorization': 'Bearer ' + token,
             })
         };
