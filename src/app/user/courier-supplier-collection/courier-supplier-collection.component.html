@@ -1,0 +1,49 @@
+
+<p>Define which suppliers you collect from for each vehicle type and enter the cost.</p>
+
+<div class="table-responsive">
+    <table class="table table-condensed">
+        <thead class="thead-white">
+        <tr>
+            <th style="width: 30%">Supplier Name</th>
+            <th *ngFor="let v of vehicleTypes">{{v.name}}</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="underlined" *ngFor="let s of suppliers; let i = index">
+            <td>{{ s.name }}</td>
+            <td class="align-middle" *ngFor="let v of vehicleTypes">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <a (click)="toggleVehicleType(s, v)">
+                                <i class="fa fa-check text-success" *ngIf="s.vehicles[v.slug].allowed"></i>
+                                <i class="fa fa-ban text-danger" *ngIf="!s.vehicles[v.slug].allowed"></i>
+                            </a>
+                        </span>
+                    </div>
+                    <input style="width: 90px; height: calc(2.4em)!important;" [disabled]="!s.vehicles[v.slug].allowed" type="number" class="form-control form-control-sm" [(ngModel)]="s.vehicles[v.slug].cost" />
+                </div>
+
+            </td>
+            <td class="align-middle" style="min-width: 80px">
+                <button class="btn btn-outline-danger btn-sm" type="button" *ngIf="hasChanged(s, i)" (click)="save(s, i)">
+                    Save
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <app-pagination
+        *ngIf="params.pageArray.length"
+        [params]="params"
+        (update)="get()"
+    ></app-pagination>
+
+</div>
+
+<div class="no-results" *ngIf="!suppliers.length">
+    <p>No suppliers found</p>
+</div>

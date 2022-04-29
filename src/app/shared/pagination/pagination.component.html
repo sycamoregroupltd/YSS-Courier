@@ -1,0 +1,28 @@
+<div class="pagination">
+    <p class="pagination__count">
+        {{(params.page * params.limit) + 1}} –
+        <span *ngIf="((params.page * params.limit) + params.limit) <= params.totalRecords">{{(params.page * params.limit) + params.limit}}</span>
+        <span *ngIf="((params.page * params.limit) + params.limit) > params.totalRecords">{{params.totalRecords}}</span>
+        of
+        {{params.totalRecords}} {{term}}
+    </p>
+
+    <nav class="pagination__nav" *ngIf="params.pageArray.length > 1">
+        <button type="button" [disabled]="(params.page + 1) < 2"
+                class="pagination__nav-item"
+                (click)="first()">First</button>
+
+        <ng-container *ngFor="let p of params.pageArray">
+            <button type="button"
+                    class="pagination__nav-item"
+                    *ngIf="showPageNumber(p)"
+                    [ngClass]="{'pagination__nav-item--active' : p === params.page}"
+                    (click)="setPage(p)"
+            >{{p + 1}}</button>
+
+        </ng-container>
+        <button type="button" [disabled]="(params.page + 1) >= params.pageArray.length"
+                class="pagination__nav-item"
+                (click)="next()">Next</button>
+    </nav>
+</div>

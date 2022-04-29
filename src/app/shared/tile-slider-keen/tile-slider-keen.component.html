@@ -1,0 +1,69 @@
+<!--<div-->
+<!--    [ngStyle]="{'background-image': 'url(' + tiles[currentSlide].imageUrl + ')'}"-->
+<!--    class="main-image">-->
+<!--    <div class="full-screen-trigger" *ngIf="showExpandArrows" (click)="goFullScreen()">-->
+<!--        <i class="fa fa-fw fa-expand-arrows-alt"></i>-->
+<!--    </div>-->
+<!--</div>-->
+<div class="navigation-wrapper">
+    <div class="keen-slider" #sliderRef>
+        <div
+            class="keen-slider__slide group-preview-tile"
+            [ngClass]="{'active' : gi === currentSlide}"
+            *ngFor="let pg of tiles; let gi = index"
+            (click)="currentSlide = gi">
+
+                <div *ngIf="pg.imageUrl" class="bg-image hover" style="height: 315px"
+                     [ngStyle]="{'background-image': 'url(' + pg.imageUrl + ')'}"></div>
+                <div *ngIf="!pg.imageUrl" class="bg-image hover" style="height: 315px"
+                     [ngStyle]="{'background-image': 'url(' + 'assets/images/no-image.png' + ')'}"></div>
+                <p class="group-name">{{pg.name}}</p>
+                <p class="group-description mb-0 text-slate-40" [innerHTML]="pg.description"></p>
+                <p class="group-price">
+                    <span *ngIf="pg.hasProducts">Prices from <span class="price">{{pg.pricesFrom | currency: 'GBP'}}</span></span>
+                    <span *ngIf="!pg.hasProducts">(No products)</span>
+                </p>
+                <a class="btn btn-round btn-primary"  [routerLink]="['/product-group', pg.slug]">
+                    View the range
+                </a>
+
+
+        </div>
+    </div>
+    <ng-container *ngIf="showNav">
+        <svg
+            [ngClass]="'arrow arrow--left ' + ( currentSlide === 0 ? 'arrow--disabled' : '')"
+            (click)="slider.prev()"
+            aria-hidden="true"
+            focusable="false"
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 448 512"
+            class="svg-inline">
+            <path fill="#202020" d="M136.97 380.485l7.071-7.07c4.686-4.686 4.686-12.284 0-16.971L60.113 273H436c6.627 0 12-5.373 12-12v-10c0-6.627-5.373-12-12-12H60.113l83.928-83.444c4.686-4.686 4.686-12.284 0-16.971l-7.071-7.07c-4.686-4.686-12.284-4.686-16.97 0l-116.485 116c-4.686 4.686-4.686 12.284 0 16.971l116.485 116c4.686 4.686 12.284 4.686 16.97-.001z"></path>
+        </svg>
+
+        <svg
+            *ngIf="slider"
+            [ngClass]="
+            'arrow arrow--right ' + ((currentSlide + slidesPerView) === tiles.length ? 'arrow--disabled' : '')"
+            (click)="slider.next()"
+            aria-hidden="true"
+            focusable="false"
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 448 512"
+            class="svg-inline">
+            <path fill="#202020" d="M311.03 131.515l-7.071 7.07c-4.686 4.686-4.686 12.284 0 16.971L387.887 239H12c-6.627 0-12 5.373-12 12v10c0 6.627 5.373 12 12 12h375.887l-83.928 83.444c-4.686 4.686-4.686 12.284 0 16.971l7.071 7.07c4.686 4.686 12.284 4.686 16.97 0l116.485-116c4.686-4.686 4.686-12.284 0-16.971L328 131.515c-4.686-4.687-12.284-4.687-16.97 0z"></path>
+        </svg>
+
+    </ng-container>
+</div>
+<div class="dots" *ngIf="showDots">
+    <button
+        (click)="slider.moveToSlideRelative(i)"
+        *ngFor="let slide of dotHelper; let i = index"
+        [class]="'dot ' + (i === currentSlide ? 'active' : '')"
+    ></button>
+</div>
+

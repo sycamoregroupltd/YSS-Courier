@@ -1,0 +1,84 @@
+<div id="mailbox" class="mail-box">
+
+    <table class="table table-hover table-mail">
+        <tbody>
+        <tr
+            *ngFor="let group of groups"
+            [ngClass]="{'unread' : +group.unread > 0, 'read' : +group.unread === 0}"
+            class="unread">
+            <td class="check-mail" style="width: 55px">
+                <div class="icheckbox_square-green" style="position: relative;">
+                    <input type="checkbox" class="i-checks" style="position: absolute; opacity: 0;">
+                    <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
+                </div>
+            </td>
+            <td class="mail-ontact">
+                <a (click)="toggleImportant(group)">
+                    <i
+                        class="fa fa-exclamation mr-2 hover"
+                        [ngClass]="{'text-danger' : group.important, 'text-light' : !group.important}"></i>
+                </a>
+
+                <a (click)="toggleArchived(group)">
+                    <i
+                        class="fa fa-archive mr-2 hover"
+                        [ngClass]="{'text-light' : !group.archived}"></i>
+                </a>
+                <i *ngIf="group.isSender" class="fa fa-arrow-right text-success mr-2"></i>
+                <i *ngIf="!group.isSender" class="fa fa-arrow-left text-warning mr-2"></i>
+
+                <span class="hover" (click)="viewGroup(group)">
+                    <!--- if the sender was this user --->
+                    <ng-container *ngIf="group.isSender">
+                        <span *ngFor="let user of group.users; let first = first; let i = index"><ng-container *ngIf="i < 3"><span *ngIf="!first">, </span>{{user.contactName}}</ng-container>
+                        </span>
+                        <ng-container *ngIf="group.users.length > 3"> <i> + {{group.users.length - 3}} more</i></ng-container>
+                    </ng-container>
+                    <!--- if the sender was NOT user --->
+                    <ng-container *ngIf="!group.isSender">{{group.sender.contactName}}
+<!--                        <span *ngFor="let user of group.users; let first = first; let i = index">-->
+<!--                            <ng-container *ngIf="i < 3"><span *ngIf="!first">, </span>{{user.contactName}}</ng-container>-->
+<!--                        </span>-->
+<!--                        <ng-container *ngIf="group.users.length > 3"> <i> + {{group.users.length - 3}} more</i></ng-container>-->
+                    </ng-container>
+
+                    <span
+                        *ngIf="group.unread > 0"
+                        class="label label-warning ml-2">
+                            {{group.unread}}
+                    </span>
+
+                </span>
+
+
+                <a
+                    *ngIf="group.category"
+                    [style.background-color]="group.category.colour"
+                    class="label float-right br-right"
+                    (click)="removeCategory(group)">x</a>
+                <a  (click)="showCategories(group)"
+                    *ngIf="group.category"
+                    [style.background-color]="group.category.colour"
+                    class="label label-warning float-right br-left p-left">
+                    {{group.category.name}}
+                </a>
+                <a (click)="showCategories(group)" class="float-right" *ngIf="!group.category">
+                   <i class="fa fa-tag text-light"></i>
+                </a>
+            </td>
+            <td class="mail-subject hover" (click)="viewGroup(group)">
+                <span *ngIf="group.name">{{group.name}}</span>
+                <span *ngIf="!group.name">From chat popup</span>
+            </td>
+            <td class="">
+                <!--                            <i class="fa fa-paperclip"></i>-->
+            </td>
+            <td class="text-right mail-date hover" (click)="viewGroup(group)">
+                {{group.lastAction | date: 'HH:mm, dd MMM'}}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<app-mail-categories [group]="groupSelected" *ngIf="(overlays$ | async).mailCategories"></app-mail-categories>

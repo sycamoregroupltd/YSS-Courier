@@ -1,0 +1,40 @@
+<div class="modal p-0 modal-login">
+    <div class="modal-dialog p-0 m-0" role="document" style="margin: 0!important;">
+        <div class="modal-content p-0">
+            <div class="modal-body p-0 text-left">
+                <button type="button" (click)="close()" class="close" style="position: absolute; top:15px; right: 15px; font-size: 40px; z-index: 1">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="p-0">
+                    <div class="row no-gutters">
+                        <div class="col-12 col-lg-6 bg-white">
+
+                            <div class="container-fb-vertical">
+                                <div class="container-fb-vertical-item text-center">
+                                    <h1 class="mb-3 mt-5">Already have an account?</h1>
+                                    <h2 class="mb-0">Click below to sign in</h2>
+                                </div>
+                                <div class="container-fb-vertical-item" style="height: 200px; width: 450px">
+
+                                </div>
+                                <div class="container-fb-vertical-item">
+                                    <a class="btn btn-round btn-primary" (click)="signIn()">
+                                        Sign-in
+                                    </a>
+                                </div>
+                            </div>
+                            <div style="height: 100px"></div>
+
+                        </div>
+                        <div class="col-12 col-lg-6 bg-slate-10">
+                            <app-registration-form *ngIf="!registrationComplete" [referralCode]="''" (registrationComplete)="registered($event)"></app-registration-form>
+                            <app-registration-additional-details *ngIf="registrationComplete" [user]="newUser" [company]="newCompany" (updatedDetails)="updatedDetails($event)"></app-registration-additional-details>
+                            <div style="height: 100px"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

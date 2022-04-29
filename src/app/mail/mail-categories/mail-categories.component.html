@@ -1,0 +1,15 @@
+<div class="info-modal">
+    <a href="javascript:void(0)" class="close hover" (click)="close()">&times;</a>
+    <div class="inner text-left">
+
+        <p class="text-center"><strong>Select Category</strong></p>
+        <ul class="category-list" style="padding: 0">
+            <li *ngFor="let c of categories">
+                <a class="hover" (click)="setCategory(c)">
+                    <i class="fa fa-circle " [style.color]="c.colour"></i> {{c.name}}
+                </a>
+            </li>
+        </ul>
+
+    </div>
+</div>

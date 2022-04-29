@@ -1,0 +1,55 @@
+<div class="bg-slate-5">
+    <div class="container-fluid dashboard-heading" style="padding: 50px; background-color: #3D4C59">
+
+
+
+        <div class="row">
+            <div class="col-6">
+                <a
+                    class="dashboard-menu-item align-bottom"
+                    [ngClass]="{'active' : step === 'dashboard'}"
+                    (click)="setStep('dashboard')">
+                    Dashboard
+                </a>
+                <a
+                    class="dashboard-menu-item align-bottom"
+                    [ngClass]="{'active' : step === 'orders'}"
+                    (click)="setStep('orders')">
+                    Orders
+                </a>
+                <a
+                    *ngIf="user.accountType === 'supplier'"
+                    class="dashboard-menu-item align-bottom"
+                    [ngClass]="{'active' : step === 'products'}"
+                    (click)="setStep('products')">
+                    Products
+                </a>
+                <a
+                    *ngIf="user.accountType === 'supplier'"
+                    class="dashboard-menu-item align-bottom"
+                    [ngClass]="{'active' : step === 'users'}"
+                    (click)="setStep('users')">
+                    Users
+                </a>
+            </div>
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-6" *ngIf="user.accountType === 'supplier'">
+                        <p class="title">Supplier</p>
+                        <h1>{{user.company.name}}</h1>
+                    </div>
+                    <div class="col-6" *ngIf="user.accountType === 'customer'">
+                        <p class="title">Your profile</p>
+                        <h1>{{user.contact.firstname}} {{user.contact.surname}}</h1>
+                    </div>
+                    <div class="col-6">
+                        <p class="title">Rewards</p>
+                        <img src="/assets/images/rating.png" />
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

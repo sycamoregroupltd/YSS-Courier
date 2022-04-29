@@ -1,0 +1,94 @@
+<div class="defaultAside aside-open slide-box-show" id="processHolder">
+    <a href="javascript:void(0)" class="closebtn" (click)="close()">&times;</a>
+
+    <div class="page-header-banner">
+        <h1 *ngIf="newUser">Add New User</h1>
+        <h1 *ngIf="!newUser">Edit User</h1>
+    </div>
+
+    <div class="p-4">
+        <form [formGroup]="form" autocomplete="off" novalidate [autocomplete]="'off'" (ngSubmit)="onSubmit()">
+
+            <!--        <h3 class="mt-4 mb-50">Account Details</h3>-->
+
+            <!--        <div class="form-group row">-->
+            <!--            <label class="col-sm-3 col-form-label">Account type</label>-->
+            <!--            <div class="col-12 col-sm-5">-->
+            <!--                <select formControlName="accountType" class="form-control">-->
+            <!--                    <option *ngFor="let at of accountTypes" [value]="at.id">{{at.name}}</option>-->
+            <!--                </select>-->
+            <!--            </div>-->
+            <!--        </div>-->
+
+            <div formGroupName="contact">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">First Name</label>
+                    <div class="col-12 col-sm-9">
+                        <input type="text" class="form-control" formControlName="firstname" placeholder="First name">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Last Name</label>
+                    <div class="col-12 col-sm-9">
+                        <input type="text" class="form-control" formControlName="surname" placeholder="Last name">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Job Title</label>
+                    <div class="col-12 col-sm-9">
+                        <input type="text" class="form-control" formControlName="jobTitle" placeholder="Job Title">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Email Address</label>
+                    <div class="col-12 col-sm-9">
+                        <input type="email" autocomplete="new-password" class="form-control" formControlName="email" placeholder="Email">
+                        <div style="padding-top: 10px">
+                            <i class="">This email will also be used when logging in</i>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Mobile</label>
+                    <div class="col-12 col-sm-9">
+                        <input type="text" class="form-control" formControlName="mobile" placeholder="Mobile">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Landline</label>
+                    <div class="col-12 col-sm-9">
+                        <input type="text" class="form-control" formControlName="landline" placeholder="Landline">
+                    </div>
+                </div>
+
+            </div>
+
+            <div style="padding-top: 10px; padding-bottom: 30px">
+                <a (click)="toggleValue('marketing')">
+                    <i class="far fa-check-square" *ngIf="user.marketing"></i>
+                    <i class="far fa-square" *ngIf="!user.marketing"></i>
+                    Subscribe to receive marketing emails
+                </a>
+            </div>
+
+            <div class="text-left" style="padding-top: 30px">
+                <!--                    <button [disabled]="!form.valid" type="submit" class="btn btn-round btn-primary">-->
+                <!--                        Send Invite-->
+                <!--                    </button>-->
+                <button type="submit" class="btn btn-round btn-primary">
+                    <span *ngIf="newUser">Create User</span>
+                    <span *ngIf="!newUser">Upate User</span>
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>

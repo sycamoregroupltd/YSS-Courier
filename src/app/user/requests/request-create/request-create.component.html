@@ -1,0 +1,89 @@
+<div class="defaultAside aside-open slide-box-show">
+    <a href="javascript:void(0)" class="closebtn" (click)="close()">&times;</a>
+
+    <div class="page-header-banner">
+        <h1>Request</h1>
+    </div>
+
+    <div class="p-4">
+        <form
+            [formGroup]="form"
+            autocomplete="off"
+            novalidate
+            [autocomplete]="'off'"
+            (ngSubmit)="onSubmit()">
+
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Request Type</label>
+                <div class="col-12 col-sm-9">
+                    <select
+                        [ngClass]="{
+                            'is-invalid':
+                                form['controls'].type.invalid &&
+                                form['controls'].type.touched
+                        }"
+                        class="form-control"
+                        formControlName="type">
+                        <option [ngValue]="0">Select Request Type</option>
+                        <option [ngValue]="v.id" *ngFor="let v of requestTypes">
+                            {{v.name}}
+                        </option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Request type is required
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Message</label>
+                <div class="col-12 col-sm-9">
+                    <textarea
+                        [ngClass]="{
+                            'is-invalid':
+                                form['controls'].message.invalid &&
+                                form['controls'].message.touched
+                        }"
+                        rows="8"
+                        class="form-control"
+                        formControlName="message"
+                        placeholder="Enter your message"></textarea>
+                    <div class="invalid-feedback">
+                        Message is required
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="text-left" style="padding-top: 30px;">
+                <div class="row">
+                    <div class="col-6">
+                        <button
+                            type="button"
+                            class="btn btn-round btn-primary-reverse"
+                            (click)="confirmCancel()">
+                            Cancel
+                        </button>
+                    </div>
+                    <div class="col-6 text-right">
+                        <button
+                            [disabled]="!form.valid"
+                            type="submit"
+                            class="btn btn-round btn-primary">
+                            <span *ngIf="newItem">Create</span>
+                            <span *ngIf="!newItem">Update</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!--        <pre>{{findInvalidControls() | json}}</pre>-->
+        </form>
+    </div>
+</div>
+<app-confirmation
+    *ngIf="this.confirmationData.open"
+    [data]="confirmationData"
+    (complete)="confirmationComplete($event)"></app-confirmation>

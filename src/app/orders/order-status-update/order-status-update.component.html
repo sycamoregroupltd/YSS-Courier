@@ -1,0 +1,58 @@
+<div class="defaultAside aside-open slide-box-show" id="processHolder">
+    <a href="javascript:void(0)" class="closebtn" (click)="close()">&times;</a>
+
+    <div class="page-header-banner">
+        <h1>Order Status</h1>
+    </div>
+
+    <div class="p-4">
+        <div class="bg-white b p-3 mb-2" *ngFor="let ol of order.orderLines">
+            <p>{{ol.product.name}}
+                <span *ngIf="ol.isSample">(SAMPLE)</span>
+                <span *ngIf="!ol.isSample">({{ol.skuId}})</span>
+            </p>
+            <p>{{ol.quantity}} <span *ngIf="ol.options.sellUnit">{{ol.options.sellUnit.optionName}}</span></p>
+
+            <div class="row">
+                <div class="col-6">
+                    <select class="form-control" [(ngModel)]="ol.status.id">
+                        <option [ngValue]="s.id" *ngFor="let s of statuses">{{s.name}}</option>
+                    </select>
+
+                </div>
+            </div>
+
+            <div class="mt-2">
+                <label>Add a comment if required</label>
+                <textarea class="form-control" [(ngModel)]="ol.comment" placeholder="Add comment"></textarea>
+            </div>
+
+        </div>
+
+        <div class="bg-white b p-3 mb-2">
+            <p>There are {{order.shipments.length}} shipment(s) attached to this order. Please confirm the collection date</p>
+
+            <div class="p-3" *ngFor="let shipment of order.shipments">
+                <div class="row">
+                    <div class="col-6">
+                        <mat-form-field appearance="outline">
+                            <input matInput
+                                   placeholder="Available for collection"
+                                   [satDatepicker]="picker1"
+                                   [(ngModel)]="shipment.collectionDate">
+                            <sat-datepicker #picker1 [rangeMode]="false" [closeAfterSelection]="true"></sat-datepicker>
+                            <sat-datepicker-toggle matSuffix [for]="picker1"></sat-datepicker-toggle>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-3 text-right">
+            <button type="button" class="btn btn-primary btn-round" (click)="save()">
+                Submit
+            </button>
+        </div>
+
+    </div>
+</div>

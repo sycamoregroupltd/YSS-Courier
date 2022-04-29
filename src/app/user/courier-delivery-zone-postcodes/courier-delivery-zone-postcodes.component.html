@@ -1,0 +1,98 @@
+<div class="modal-full-screen">
+    <a href="javascript:void(0)" class="closebtn" (click)="close()">&times;</a>
+
+    <div class="page-header-banner">
+        <h1>Manage Postcodes</h1>
+    </div>
+
+    <div class="p-4">
+        <div class="row">
+            <div class="col-6">
+                <button (click)="addPostcodeToZoneByArray()" *ngIf="params.postcode !== '' || params.region !== '' || params.area !== ''" class="btn btn-primary btn-round btn-slim mb-2">
+                    Add all from search results
+                </button>
+                <div class="table-responsive">
+                    <table class="table table-condensed">
+                        <thead class="thead-white">
+                        <tr>
+                            <th scope="col" style="max-width: 80px">Postcode</th>
+                            <th scope="col">Region</th>
+                            <th scope="col">Areas</th>
+                        </tr>
+                        <tr>
+                            <th>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    [(ngModel)]="params.postcode"
+                                    (ngModelChange)="filterSearch()" />
+                            </th>
+                            <th>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    [(ngModel)]="params.region"
+                                    (ngModelChange)="filterSearch()" />
+                            </th>
+                            <th>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    [(ngModel)]="params.area"
+                                    (ngModelChange)="filterSearch()" />
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="underline" *ngFor="let item of postcodes">
+                            <td style="width: 120px">
+                                {{ item.postcode }}
+                                <a (click)="addPostcodeToZone(item)">
+                                    <i class="fa fa-plus"></i>
+                                </a>
+                            </td>
+                            <td style="width: 200px">
+                                {{ item.region }}
+                                <a (click)="addPostcodeToZoneByRegion(item)">
+                                    <i class="fa fa-plus"></i>
+                                </a>
+
+                            </td>
+                            <td>{{ item.area }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-9">
+                        <app-pagination
+                            *ngIf="params.pageArray.length > 1"
+                            [params]="params"
+                            (update)="searchPostcodes()"
+                        ></app-pagination>
+                    </div>
+                </div>
+                <div class="no-results" *ngIf="!postcodes.length">
+                    <p>Not a valid postcode or all postcodes are allocated to this zone</p>
+                </div>
+
+            </div>
+            <div class="col-6">
+
+                <div class="no-results" *ngIf="!zonePostcodes.length">
+                    <p>No postcodes allocated to this zone</p>
+                </div>
+                <button
+                    (click)="removePostcodeFromZone(p)"
+                    *ngFor="let p of zonePostcodes"
+                    type="button"
+                    class="btn btn-round btn-chip mr-2 mb-2 btn-selected">{{p.postcode}}</button>
+
+            </div>
+        </div>
+
+
+    </div>
+</div>

@@ -1,0 +1,229 @@
+<div class="defaultAside aside-open slide-box-show">
+    <a href="javascript:void(0)" class="closebtn" (click)="close()">&times;</a>
+
+    <div class="page-header-banner">
+        <h1 *ngIf="newItem">Add New Vehicle</h1>
+        <h1 *ngIf="!newItem">Edit Vehicle</h1>
+    </div>
+
+    <div class="p-4">
+        <form
+            [formGroup]="form"
+            autocomplete="off"
+            novalidate
+            [autocomplete]="'off'"
+            (ngSubmit)="onSubmit()">
+
+<!--            <div class="form-group row">-->
+<!--                <label class="col-sm-3 col-form-label">Name</label>-->
+<!--                <div class="col-12 col-sm-9">-->
+<!--                    <input-->
+<!--                        [ngClass]="{-->
+<!--                            'is-invalid':-->
+<!--                                form['controls'].name.invalid &&-->
+<!--                                form['controls'].name.touched-->
+<!--                        }"-->
+<!--                        type="text"-->
+<!--                        class="form-control"-->
+<!--                        formControlName="name"-->
+<!--                        placeholder="Zone name"-->
+<!--                    />-->
+<!--                    <div class="invalid-feedback">-->
+<!--                        Name is required-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Vehicle Type</label>
+                <div class="col-12 col-sm-9">
+                    <select
+                        [ngClass]="{
+                            'is-invalid':
+                                form['controls'].type.invalid &&
+                                form['controls'].type.touched
+                        }"
+                        class="form-control"
+                        formControlName="type">
+                        <option [ngValue]="0">Select Vehicle Type</option>
+                        <option [ngValue]="vt.id" *ngFor="let vt of vehicleTypes">
+                            {{vt.name}}
+                        </option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Vehicle type is required
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Pricing Type</label>
+                <div class="col-12 col-sm-9">
+                    <select
+                        [ngClass]="{
+                            'is-invalid':
+                                form['controls'].pricing.invalid &&
+                                form['controls'].pricing.touched
+                        }"
+                        class="form-control"
+                        formControlName="pricing">
+                        <option [ngValue]="0">Select Pricing Type</option>
+                        <option [ngValue]="pt.id" *ngFor="let pt of pricingTypes">
+                            {{pt.name}}
+                        </option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Pricing type is required
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Registration</label>
+                <div class="col-12 col-sm-9">
+                    <input
+                        [ngClass]="{
+                            'is-invalid':
+                                form['controls'].registration.invalid &&
+                                form['controls'].registration.touched
+                        }"
+                        type="text"
+                        class="form-control"
+                        formControlName="registration"
+                        placeholder="Enter vehicle registration"
+                    />
+                    <div class="invalid-feedback">
+                        Registration is required
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Max Weight</label>
+                <div class="col-12 col-sm-9">
+                    <input
+                        [ngClass]="{
+                            'is-invalid':
+                                form['controls'].maxWeight.invalid &&
+                                form['controls'].maxWeight.touched
+                        }"
+                        type="text"
+                        class="form-control"
+                        formControlName="maxWeight"
+                        placeholder="Max weight"
+                    />
+                    <div class="invalid-feedback">
+                        Max weight is required
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Max Pallets</label>
+                <div class="col-12 col-sm-9">
+                    <input
+                        [ngClass]="{
+                            'is-invalid':
+                                form['controls'].maxPallets.invalid &&
+                                form['controls'].maxPallets.touched
+                        }"
+                        type="text"
+                        class="form-control"
+                        formControlName="maxPallets"
+                        placeholder="Max pallets"
+                    />
+                    <div class="invalid-feedback">
+                        Max pallets is required
+                    </div>
+                </div>
+            </div>
+
+            <h4>Vehicle Dimensions</h4>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Length</label>
+                <div class="col-12 col-sm-9">
+                    <input
+                        [ngClass]="{
+                            'is-invalid':
+                                form['controls'].vLength.invalid &&
+                                form['controls'].vLength.touched
+                        }"
+                        type="text"
+                        class="form-control"
+                        formControlName="vLength"
+                        placeholder="Vehicle Length (ft)"
+                    />
+                    <div class="invalid-feedback">
+                        Vehicle length is required
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Width (ft)</label>
+                <div class="col-12 col-sm-9">
+                    <input
+                        [ngClass]="{
+                            'is-invalid':
+                                form['controls'].vWidth.invalid &&
+                                form['controls'].vWidth.touched
+                        }"
+                        type="text"
+                        class="form-control"
+                        formControlName="vWidth"
+                        placeholder="Vehicle width (ft)"
+                    />
+                    <div class="invalid-feedback">
+                        Vehicle width is required
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Height (ft)</label>
+                <div class="col-12 col-sm-9">
+                    <input
+                        [ngClass]="{
+                            'is-invalid':
+                                form['controls'].vHeight.invalid &&
+                                form['controls'].vHeight.touched
+                        }"
+                        type="text"
+                        class="form-control"
+                        formControlName="vHeight"
+                        placeholder="Vehicle Height (ft)"
+                    />
+                    <div class="invalid-feedback">
+                        Vehicle height is required
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="text-left" style="padding-top: 30px;">
+                <div class="row">
+                    <div class="col-6">
+                        <button
+                            type="button"
+                            class="btn btn-round btn-primary-reverse"
+                            (click)="confirmCancel()">
+                            Cancel
+                        </button>
+                    </div>
+                    <div class="col-6 text-right">
+                        <button
+                            [disabled]="!form.valid"
+                            type="submit"
+                            class="btn btn-round btn-primary">
+                            <span *ngIf="newItem">Create</span>
+                            <span *ngIf="!newItem">Update</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!--        <pre>{{findInvalidControls() | json}}</pre>-->
+        </form>
+    </div>
+</div>
+<app-confirmation
+    *ngIf="this.confirmationData.open"
+    [data]="confirmationData"
+    (complete)="confirmationComplete($event)"></app-confirmation>

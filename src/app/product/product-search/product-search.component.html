@@ -1,0 +1,58 @@
+<div class="preview-box">
+    <div class="preview-box-title">
+        Products
+    </div>
+    <div class="preview-box-content">
+
+
+            <div class="table-responsive">
+            <table class="table table-condensed">
+                <thead class="thead-white">
+
+                <tr>
+                    <th>Code</th>
+                    <th>Product</th>
+                    <th>Type</th>
+                    <th>Range</th>
+                    <th *ngIf="showSupplier">Supplier</th>
+                    <th>Margin</th>
+                    <th>Actions</th>
+                </tr>
+<!--                <tr>-->
+<!--                    <th><input type="text" class="form-control" [(ngModel)]="params.productCode" (ngModelChange)="filterSearch()" /></th>-->
+<!--                    <th><input type="text" class="form-control" [(ngModel)]="params.name" (ngModelChange)="filterSearch()" /></th>-->
+<!--                    <th><input type="text" class="form-control" [(ngModel)]="params.group" (ngModelChange)="filterSearch()" /></th>-->
+<!--                    <th><input type="text" class="form-control" [(ngModel)]="params.range" (ngModelChange)="filterSearch()" /></th>-->
+<!--                    <th *ngIf="showSupplier"><input type="text" class="form-control" [(ngModel)]="params.supplier" (ngModelChange)="filterSearch()" /></th>-->
+<!--                    <th><input type="text" class="form-control" [(ngModel)]="params.margin" (ngModelChange)="filterSearch()" /></th>-->
+<!--                    <th></th>-->
+<!--                </tr>-->
+                </thead>
+                <tbody>
+                <tr class="underline" *ngFor="let s of products">
+                    <td>{{s.productCode}}</td>
+                    <td>{{s.name}}</td>
+                    <td>
+                        <span *ngFor="let pg of s.productGroups; let first = first"><span *ngIf="!first">, </span>{{pg.name}}</span>
+                    </td>
+                    <td>
+                        <span *ngFor="let pg of s.productRanges; let first = first"><span *ngIf="!first">, </span>{{pg.name}}</span>
+                    </td>
+                    <td *ngIf="showSupplier">{{s.company.name}}</td>
+                    <td>{{s.margin}}%</td>
+                    <td><a [routerLink]="['/account', 'products', 'edit', s.slug]">
+                        <i class="fa fa-edit"></i>
+                    </a> </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="no-results" *ngIf="!products.length">
+            <p>No products found</p>
+        </div>
+
+        <app-pagination *ngIf="params.pageArray.length" [params]="params" (update)="search()"></app-pagination>
+
+    </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-sm-6 offset-sm-3 text-center">
+            <ng-container *ngIf="(accountType$ | async) === 'customer'">
+                <p class="main-heading mt-5 mb-60">Personal account</p>
+
+                <p class="sub-heading mb-50">Your account has been set-up successfully!</p>
+
+                <p *ngIf="email">We've sent an email to: {{email}}</p>
+                <p class="mb-80">Please check your email and follow the instructions provided to activate your account.</p>
+
+                <div class="row">
+                    <div class="col-6 text-center">
+                        <a [routerLink]="['/']" class="btn btn-round btn-secondary mb-60">
+                            Go to Homepage
+                        </a>
+                    </div>
+                    <div class="col-6 text-center">
+                        <a [routerLink]="['/account']" class="btn btn-round btn-primary mb-60">
+                            Go to dashboard
+                        </a>
+                    </div>
+                </div>
+
+            </ng-container>
+            <ng-container *ngIf="(accountType$ | async) !== 'customer'">
+                <div class="mt-50">
+                    <p *ngIf="(accountType$ | async) === 'trade'" class="main-heading mt-5 mb-60">Trade account set-up</p>
+                    <p *ngIf="(accountType$ | async) === 'supplier'" class="main-heading mt-5 mb-60">Supplier account set-up</p>
+                    <p *ngIf="(accountType$ | async) === 'courier'" class="main-heading mt-5 mb-60">Courier account set-up</p>
+
+                    <img src="/assets/images/icon-lorry.png" />
+                </div>
+
+
+                <p class="sub-heading mt-50 mb-50">Your request for a new
+                    <span *ngIf="(accountType$ | async) === 'trade'">Trade</span>
+                    <span *ngIf="(accountType$ | async) === 'supplier'">Supplier</span>
+                    <span *ngIf="(accountType$ | async) === 'courier'">Courier</span>
+                    account has been created successfully!</p>
+
+                <p *ngIf="email">A member of our team will review your request and send confirmation to the email address used to sign-up: {{email}}</p>
+                <p class="mb-80">Once you have received the email, follow the instructions provided to activate your account.</p>
+
+                <a [routerLink]="['/']" class="btn btn-round btn-secondary mb-60">
+                    Homepage
+                </a>
+            </ng-container>
+
+        </div>
+    </div>
+
+</div>

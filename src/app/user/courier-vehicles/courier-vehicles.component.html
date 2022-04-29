@@ -1,0 +1,54 @@
+<div class="table-responsive">
+    <table class="table table-condensed">
+        <thead class="thead-white">
+        <tr>
+            <th scope="col">Type</th>
+            <th scope="col">Registration</th>
+            <th scope="col">Max Weight</th>
+            <th scope="col">Max Pallets</th>
+            <th scope="col">Length</th>
+            <th scope="col">Width</th>
+            <th scope="col">Height</th>
+            <th scope="col">Pricing</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="underline" *ngFor="let item of items">
+            <td>{{ item.type.name }}</td>
+            <td>{{ item.registration }}</td>
+            <td>{{ item.maxWeight }}</td>
+            <td>{{ item.maxPallets }}</td>
+            <td>{{ item.vLength }}</td>
+            <td>{{ item.vWidth }}</td>
+            <td>{{ item.vHeight }}</td>
+            <td>{{ item.pricing.name }}</td>
+            <td style="width: 80px">
+                <a (click)="edit(item)">
+                    <i class="fa fa-edit mr-2"></i>
+                </a>
+                <a (click)="confirmDelete(item)">
+                    <i class="fa fa-trash"></i>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<button
+    (click)="create()"
+    type="button"
+    class="btn btn-primary btn-round">
+    Add Vehicle
+</button>
+
+<app-courier-vehicle
+    *ngIf="(overlays$ | async).vehicleEdit"
+    [overlayData]="overlayData"
+    (refreshData)="this.filterSearch()"></app-courier-vehicle>
+
+<app-confirmation
+    *ngIf="confirmationData.open"
+    [data]="confirmationData"
+    (complete)="confirmationComplete($event)"></app-confirmation>

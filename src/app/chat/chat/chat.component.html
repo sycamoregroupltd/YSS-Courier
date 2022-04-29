@@ -1,0 +1,118 @@
+<div class="defaultAside chat aside-open slide-box-show-chat" style="width: 450px" id="processHolder">
+    <div class="d-flex flex-column">
+
+        <div class="page-header-banner-chat">
+                <div
+                    *ngIf="(chatStore$ | async).group"
+                    class="mb-3"
+                    style="position: absolute; left: 10px; top: 10px">
+                    <a (click)="viewGroups()" class="btn" style="color: white; font-size: 26px; margin-top: -6px">
+                        <i class="fa fa-chevron-left"></i>
+                    </a>
+                </div>
+                <a href="javascript:void(0)" class="closebtn" (click)="close()">&times;</a>
+
+            <h1 *ngIf="!(chatStore$ | async).group">Your conversations</h1>
+            <h1 *ngIf="(chatStore$ | async).group">
+                <ng-container *ngIf="!(chatStore$ | async).group.companies.length">
+                        <span *ngFor="let user of (chatStore$ | async).group.users">
+                            {{user.contactName}}
+                        </span>
+                </ng-container>
+                <ng-container *ngIf="(chatStore$ | async).group.companies.length">
+                        <span *ngFor="let company of (chatStore$ | async).group.companies">
+                            {{company.name}}
+                        </span>
+                </ng-container>
+
+            </h1>
+        </div>
+
+    <div id="chat-content-holder" class="chat-content-holder">
+        <!--<h2>There are currently <strong>{{users}}</strong> users online. Start chatting!</h2>-->
+
+        <div *ngIf="!(chatStore$ | async).group">
+            <ng-container *ngIf="!(chatStore$ | async).groups.length">
+                <div
+                    class="alert alert-primary text-center mt-2" role="alert">
+                    You don't have any conversations yet. Starting a chat is simple.
+                    <br />
+                    Just click the <i class="fa fa-comments"></i> icon where shown against shipments etc.
+                </div>
+
+                <div class="mt-2 text-center">
+                    <a (click)="startChatGroup({id: 'd6e37e44-ae9b-4c45-89f5-a3508970b876'}, 'customer')">Click here to chat with customer services</a>
+                </div>
+            </ng-container>
+
+            <ul class="list-group">
+                <ng-container *ngFor="let group of (chatStore$ | async).groups">
+                    <li
+                        (click)="selectGroup(group)"
+                        class="list-group-item d-flex justify-content-between align-items-center mb-2">
+                        <div>
+                            <ng-container *ngIf="!group.companies.length">
+                        <span *ngFor="let user of group.users">
+                            {{user.contactName}}
+                        </span>
+                            </ng-container>
+                            <ng-container *ngIf="group.companies.length">
+                        <span *ngFor="let company of group.companies">
+                            {{company.name}}
+                        </span>
+                            </ng-container>
+                            <br />
+                            <small>Last active {{group.lastAction | date: 'dd MMM'}}</small>
+
+                        </div>
+                        <span
+                            *ngIf="group.unread > 0"
+                            class="badge badge-primary badge-pill">{{group.unread}}</span>
+                    </li>
+
+                </ng-container>
+            </ul>
+
+        </div>
+
+        <div id="chat-window" class="chat-window" *ngIf="(chatStore$ | async).group">
+            <div
+                class="message"
+                [ngClass]="{'incoming' : message.user.id === user.id}"
+                *ngFor="let message of (chatStore$ | async).messages">
+                <div>
+                    <p class="name" *ngIf="message.user.id !== user.id">{{message.user.name}}</p>
+                    <p class="date">{{message.createdAt | date: 'dd/MM/yyyy @ HH:mm' }}</p>
+
+                </div>
+                <p [innerHTML]="message.content"></p>
+            </div>
+
+        </div>
+
+    </div>
+
+        <div
+            *ngIf="(chatStore$ | async).group"
+            class="input-holder">
+            <div class="input-group">
+                <textarea
+                    spellcheck="true"
+                    autoComplete="true"
+                    autocorrect="true"
+                    rows="1"
+                    class="form-control"
+                    [(ngModel)]="message.content" placeholder="type message..."
+                    (keyup.enter)="addChat()"></textarea>
+
+                <div class="input-group-append">
+                    <button class="btn btn-primary" (click)="addChat()">Send</button>
+
+                    <!--            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>-->
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

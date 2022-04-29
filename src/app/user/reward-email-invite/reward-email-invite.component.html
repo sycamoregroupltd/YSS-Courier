@@ -1,0 +1,34 @@
+<div class="defaultAside aside-open slide-box-show" id="processHolder">
+    <a href="javascript:void(0)" class="closebtn" (click)="close()">&times;</a>
+
+    <div class="page-header-banner">
+        <h1>Invite Friends</h1>
+    </div>
+
+    <div class="p-4">
+        <p>Earn points by referring friends!</p>
+        <div class="row mt-2 mb-2" *ngFor="let email of emails; let i = index">
+            <div class="col-11">
+                <input class="form-control" [(ngModel)]="emails[i].email" placeholder="Enter friends email address" />
+            </div>
+            <div class="col-1 text-right">
+                <a *ngIf="i > 0" (click)="remove(i)">
+                    <i class="fa fa-trash"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-6">
+                <button class="btn btn-sm btn-round btn-yellow btn-slim" (click)="addAnother()">
+                    <i class="fa fa-plus"></i> add another
+                </button>
+            </div>
+            <div class="col-6 text-right">
+                <button class="btn btn-sm btn-round btn-primary btn-slim" (click)="send()">
+                    Send Invites
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

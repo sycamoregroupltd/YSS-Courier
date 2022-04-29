@@ -1,0 +1,52 @@
+
+<div class="table-responsive">
+    <table class="table table-condensed">
+        <thead class="thead-white">
+        <tr>
+            <th>User Name</th>
+            <th>Job Title</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Landline</th>
+            <th></th>
+        </tr>
+<!--        <tr>-->
+<!--            <th><input type="text" class="form-control" [(ngModel)]="params.name" (ngModelChange)="filterSearch()" /></th>-->
+<!--            <th><input type="text" class="form-control" [(ngModel)]="params.jobTitle" (ngModelChange)="filterSearch()" /></th>-->
+<!--            <th><input type="text" class="form-control" [(ngModel)]="params.email" (ngModelChange)="filterSearch()" /></th>-->
+<!--            <th><input type="text" class="form-control" [(ngModel)]="params.mobile" (ngModelChange)="filterSearch()" /></th>-->
+<!--            <th><input type="text" class="form-control" [(ngModel)]="params.landline" (ngModelChange)="filterSearch()" /></th>-->
+<!--            <th></th>-->
+<!--        </tr>-->
+        </thead>
+        <tbody>
+        <tr class="underline" *ngFor="let s of (companyUsers$ | async).data">
+            <td>{{s.contact.firstname}} {{s.contact.surname}}</td>
+            <td>{{s.contact.jobTitle}}</td>
+            <td>{{s.contact.email}}</td>
+            <td>{{s.contact.mobile}}</td>
+            <td>{{s.contact.landline}}</td>
+            <td>
+                <a (click)="editUser(s)">
+                    <i class="fa fa-edit"></i>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="no-results" *ngIf="!users.length">
+    <p>No users found</p>
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-3">
+        <button class="btn btn-primary btn-round" (click)="addUser()">
+            Add User
+        </button>
+    </div>
+    <div class="col-md-9">
+        <app-pagination *ngIf="(companyUsers$ | async).params.pageArray.length > 1" [params]="(companyUsers$ | async).params" (update)="search()"></app-pagination>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+
+<div class="defaultAside aside-left aside-open slide-box-show" id="processHolder">
+    <a href="javascript:void(0)" class="closebtn" (click)="close()">&times;</a>
+
+    <div class="p-4">
+
+
+            <ul
+                class="navbar-nav"
+                style="width: 100%;">
+                <ng-container *ngFor="let q of (menu$ | async).home; let m = index">
+                    <!--                        External link - no dropdown potential-->
+                    <li class="nav-item flex-fill" *ngIf="q.external === 1">
+                        <a class="nav-link" target="_blank" [href]="[q.externalURL]">{{q.name}}</a>
+                    </li>
+
+                    <li
+                        class="nav-item flex-fill"
+                        *ngIf="q.external === 0"
+                        [ngClass]="{'dropdown' : q.submenu.length, 'show' : q.open}">
+                        <a
+                            class="nav-link"
+                            [ngClass]="{'dropdown-toggle' : q.submenu.length}"
+                            [routerLink]="[q.route]">{{q.name}}</a>
+                        <div
+                            *ngIf="q.submenu.length"
+                            [ngClass]="{'show' : q.open}">
+                            <div class="">
+                                <div
+                                    class="dropdown-menu-option"
+                                    *ngFor="let subItem of q.submenu">
+                                    <a class="dropdown-item" [routerLink]="['/product-range', subItem.slug]">{{subItem.name}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ng-container>
+            </ul>
+
+    </div>
+</div>

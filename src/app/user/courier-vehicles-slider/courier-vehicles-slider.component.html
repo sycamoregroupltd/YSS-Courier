@@ -1,0 +1,71 @@
+<div class="row">
+    <div class="col-3" *ngFor="let item of items">
+        <div class="vehicle-tile">
+            <div class="vehicle-tile-image"></div>
+            <div class="vehicle-tile-content">
+                <h3>{{item.registration}} - {{item.type.name}}</h3>
+                <div class="row">
+                    <div class="col-6 text-center">
+                        <p class="sub-title">Dimensions (L,W,H)</p>
+                        <p class="sub-data">{{item.vLength}}ft x {{item.vWidth}}ft x {{item.vHeight}}ft</p>
+                    </div>
+                    <div class="col-6 text-center">
+                        <p class="sub-title">Pricing</p>
+                        <p class="sub-data">per {{item.pricing.name}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 text-center">
+                        <p class="sub-title">Weight Capacity</p>
+                        <p class="sub-data">{{item.maxWeight}} tonnes</p>
+
+                    </div>
+                    <div class="col-6 text-center">
+                        <p class="sub-title">Pallet Capacity</p>
+                        <p class="sub-data">{{item.maxPallets}} pallets</p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <button class="btn btn-secondary-reverse btn-slim btn-round" (click)="edit(item)">
+                        Edit
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-6 text-right">
+        <button
+            (click)="create()"
+            type="button"
+            class="btn btn-primary btn-round">
+            View all vehicles
+        </button>
+
+    </div>
+    <div class="col-6">
+        <button
+            (click)="create()"
+            type="button"
+            class="btn btn-primary btn-round">
+            Add new vehicle
+        </button>
+
+    </div>
+</div>
+
+<app-courier-vehicle
+    *ngIf="(overlays$ | async).vehicleEdit"
+    [overlayData]="overlayData"
+    (refreshData)="this.filterSearch()"></app-courier-vehicle>
+
+<app-confirmation
+    *ngIf="confirmationData.open"
+    [data]="confirmationData"
+    (complete)="confirmationComplete($event)"></app-confirmation>

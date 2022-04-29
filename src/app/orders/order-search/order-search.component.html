@@ -1,0 +1,59 @@
+<div class="table-responsive">
+<table class="table table-condensed">
+    <thead class="thead-white">
+
+    <tr>
+        <th></th>
+        <th *ngIf="showCustomer">Customer</th>
+        <th>Order No</th>
+        <th>Created</th>
+        <th>Invoice No</th>
+        <th>Status</th>
+        <th *ngIf="showSupplier">Supplier</th>
+        <th>Shipping</th>
+        <th>Due Date</th>
+        <th>Actions</th>
+    </tr>
+    <tr>
+        <th></th>
+        <th *ngIf="showCustomer"><input type="text" class="form-control" [(ngModel)]="params.customer" (ngModelChange)="filterSearch()" /></th>
+        <th><input type="text" class="form-control" [(ngModel)]="params.orderId" (ngModelChange)="filterSearch()" /></th>
+        <th><input type="text" class="form-control" [(ngModel)]="params.orderId" (ngModelChange)="filterSearch()" /></th>
+        <th><input type="text" class="form-control" [(ngModel)]="params.invoiceId" (ngModelChange)="filterSearch()" /></th>
+        <th><input type="text" class="form-control" [(ngModel)]="params.status" (ngModelChange)="filterSearch()" /></th>
+        <th *ngIf="showSupplier"><input type="text" class="form-control" [(ngModel)]="params.supplier" (ngModelChange)="filterSearch()" /></th>
+        <th><input type="text" class="form-control" [(ngModel)]="params.shippingStatus" (ngModelChange)="filterSearch()" /></th>
+        <th><input type="text" class="form-control" [(ngModel)]="params.dueDate" (ngModelChange)="filterSearch()" /></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="underline" *ngFor="let s of orders">
+        <td>
+            <i *ngIf="(user$ | async).accountType === 'supplier'" class="fa fa-exclamation-triangle text-danger" awesomeTooltip="Status update requested"></i>
+        </td>
+        <td *ngIf="showCustomer">{{s.contactFirstname}} {{s.contactSurname}}</td>
+        <td>{{s.publicId}}</td>
+        <td>{{s.createdAt | date: 'dd MMM yyyy'}}</td>
+        <td></td>
+        <td>Pending</td>
+        <td *ngIf="showSupplier">
+            <span *ngFor="let supplier of s.suppliers; let first = first">
+                <span *ngIf="!first">, </span>{{supplier.name}}
+            </span>
+        </td>
+        <td>Pending</td>
+        <td>{{s.created}}</td>
+        <td><a [routerLink]="['/account', 'orders', s.id]">
+            <i class="fa fa-edit"></i>
+        </a> </td>
+    </tr>
+    </tbody>
+</table>
+</div>
+
+<div class="no-results" *ngIf="!orders.length">
+<p>No orders found</p>
+</div>
+
+<app-pagination *ngIf="params.pageArray.length" [params]="params" (update)="search()"></app-pagination>

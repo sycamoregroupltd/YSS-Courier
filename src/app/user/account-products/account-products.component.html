@@ -1,0 +1,9 @@
+<div class="bg-slate-5" style="position: relative" *ngIf="user">
+
+    <app-company-menu *ngIf="user.accountType !== 'customer'" [user]="user"></app-company-menu>
+
+    <div class="container-fluid" style="min-height: 110vh; padding: 50px; margin-left: 252px; width: calc(100% - 252px)" *ngIf="user">
+        <app-product-search [params]="productParams" [showSupplier]="false"></app-product-search>
+
+    </div>
+</div>

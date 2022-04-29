@@ -1,0 +1,77 @@
+<ng-container *ngIf="aside">
+    <div class="defaultAside aside-open slide-box-show" id="processHolder">
+        <a href="javascript:void(0)" class="closebtn" (click)="close()">&times;</a>
+
+        <div class="page-header-banner">
+            <h1>Notifications</h1>
+        </div>
+
+        <div class="p-4">
+            <ng-container *ngFor="let notification of (notifications$ | async)?.data">
+
+                <div class="card mb-2" *ngIf="showRead || !notification.read">
+                    <div class="card-body" [ngClass]="{'read' : notification.read}">
+                        <div class=" d-flex justify-content-between">
+                            <h5 class="card-title">{{notification.subject}}</h5>
+                            <a class="card-link" (click)="delete(notification)">X</a>
+                        </div>
+                        <p class="card-text" [innerHTML]="notification.content"></p>
+                        <div class=" d-flex justify-content-between">
+                            <small>{{notification.createdAt.toDate() | date: 'dd MMM yyyy @ HH:mm'}}</small>
+                            <a
+                                class="card-link"
+                                (click)="markAsRead(notification)"
+                                *ngIf="!notification.read">
+                                <small>Mark as read</small>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </ng-container>
+        </div>
+    </div>
+
+</ng-container>
+<ng-container *ngIf="!aside">
+    <div class="table-responsive">
+        <table class="table table-condensed table-bordered">
+            <thead>
+                <tr>
+                    <th style="width: 180px">Received</th>
+                    <th>Details</th>
+                    <th style="width: 120px; text-align: right">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let notification of (notifications$ | async)?.data; let i = index">
+                    <tr
+                        *ngIf="i < 5"
+                        [ngClass]="{'read' : notification.read}">
+                        <td>{{notification.createdAt.toDate() | date: 'dd MMM yyyy @ HH:mm'}}</td>
+                        <td><span [innerHTML]="notification.content"></span> </td>
+                        <td style="text-align: right">
+
+                            <a
+                                class="card-link"
+                                (click)="markAsRead(notification)"
+                                *ngIf="!notification.read">
+                                <small>Mark as read</small>
+                            </a>
+                            <a *ngIf="notification.read" class="card-link ml-3" (click)="delete(notification)">X</a>
+                        </td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+
+        <div class="text-right" *ngIf="(notifications$ | async)?.data.length > 5">
+            <a (click)="viewNotifications()">
+                + {{((notifications$ | async)?.data.length - 5)}} more
+            </a>
+        </div>
+    </div>
+
+</ng-container>
+

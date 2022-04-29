@@ -1,0 +1,97 @@
+<div class="menu-holder menu-open" *ngIf="user">
+    <div class="menu-container">
+        <div class="list-group">
+
+            <button
+                type="button"
+                class="list-group-item list-group-item-action list-group-item-title">
+                Actions
+            </button>
+
+            <button
+                [routerLink]="['/account', 'mail']"
+                type="button"
+                [ngClass]="{'active': step === 'chat'}"
+                class="list-group-item list-group-item-action">
+                <!--                        <i class="fa fa-fw menu-icon text-pink" [ngClass]="item.icon" *ngIf="item.icon"></i>-->
+                Chat
+            </button>
+
+            <button
+                [routerLink]="['/account', 'quote', 'request']"
+                type="button"
+                [ngClass]="{'active': step === 'quote'}"
+                class="list-group-item list-group-item-action">
+                <!--                        <i class="fa fa-fw menu-icon text-pink" [ngClass]="item.icon" *ngIf="item.icon"></i>-->
+                Request a Quote
+            </button>
+
+            <button
+                [routerLink]="['/account', 'photos']"
+                type="button"
+                [ngClass]="{'active': step === 'chat'}"
+                class="list-group-item list-group-item-action">
+                <!--                        <i class="fa fa-fw menu-icon text-pink" [ngClass]="item.icon" *ngIf="item.icon"></i>-->
+                Submit Photos
+            </button>
+            <hr />
+
+            <button
+                type="button"
+                class="list-group-item list-group-item-action list-group-item-title">
+                Navigation
+            </button>
+
+
+            <button
+                [routerLink]="['/account']"
+                type="button"
+                class="list-group-item list-group-item-action">
+                Overview
+            </button>
+
+            <button
+                [routerLink]="['/account', 'orders']"
+                type="button"
+                class="list-group-item list-group-item-action">
+                My Orders
+            </button>
+
+            <button
+                [routerLink]="['/account', 'quote', 'requests']"
+                type="button"
+                class="list-group-item list-group-item-action">
+                My Quote Requests
+            </button>
+
+
+            <button
+                [routerLink]="['/account', 'payments']"
+                type="button"
+                class="list-group-item list-group-item-action">
+                Payment History
+            </button>
+
+            <button
+                [routerLink]="['/account', 'rewards']"
+                type="button"
+                [routerLinkActive]="['active']"
+                [ngClass]="{'active': step === 'rewards'}"
+                class="list-group-item list-group-item-action">
+                <!--                        <i class="fa fa-fw menu-icon text-pink" [ngClass]="item.icon" *ngIf="item.icon"></i>-->
+                Rewards
+            </button>
+
+
+            <button
+                [routerLink]="['/account', 'users', user.id]"
+                type="button"
+                [routerLinkActive]="['active']"
+                [ngClass]="{'active': step === 'user-edit'}"
+                class="list-group-item list-group-item-action">
+                My Profile
+            </button>
+
+        </div>
+    </div>
+</div>

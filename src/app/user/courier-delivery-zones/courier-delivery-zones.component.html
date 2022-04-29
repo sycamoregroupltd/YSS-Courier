@@ -1,0 +1,91 @@
+
+<div class="row mb-3">
+    <div class="col-12 col-lg-6">
+
+        <ul class="nav nav-pills">
+            <li class="nav-item" *ngFor="let vt of vehicleTypes; let idx = index">
+                <a
+                    [ngClass]="{'active' : vt.id === vehicleType.id}"
+                    (click)="selectVehicleType(idx)"
+                    class="nav-link active">
+                    {{vt.name}}
+                </a>
+            </li>
+        </ul>
+
+
+    </div>
+    <div class="col-12 col-lg-6">
+        <input
+            type="text"
+            class="form-control bordered"
+            placeholder="Search postcodes"
+            [(ngModel)]="params.postcode"
+            (ngModelChange)="filterSearch()" />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 col-md-12 col-xl-6" *ngFor="let item of items">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h4 class="text-center">Zone {{item.name}}</h4>
+                <h6 class="text-center mb-1">{{item.totalPostcodes}} postcodes</h6>
+                <hr />
+<!--                <p class="text-center mb-2">Collection Cost {{item.collectionCost | currency:'GBP'}}</p>-->
+
+                <div *ngIf="item.vehicleType === 1">
+                    <p class="mb-1 text-center"><strong>Premium (F/H/Q)</strong></p>
+                    <p class="text-center mb-2">{{ item.premiumFull | currency: 'GBP' }} / {{ item.premiumHalf | currency: 'GBP' }} / {{ item.premiumQuarter | currency: 'GBP' }}
+
+                    <p class="mb-1 text-center"><strong>Economy (F/H/Q)</strong></p>
+                    <p class="text-center mb-2">{{ item.economyFull | currency: 'GBP' }} / {{ item.economyHalf | currency: 'GBP' }} / {{ item.economyQuarter | currency: 'GBP' }}
+                </div>
+                <div *ngIf="item.vehicleType === 2">
+                    <p class="mb-1 text-center"><strong>Hiab</strong></p>
+                    <p class="text-center mb-2">{{ item.hiab | currency: 'GBP' }}</p>
+                </div>
+                <div *ngIf="item.vehicleType === 3">
+                    <p class="mb-1 text-center"><strong>Artic (H/F)</strong></p>
+                    <p class="text-center mb-2">{{ item.articFull | currency: 'GBP'}} / {{ item.articHalf | currency: 'GBP'}}</p>
+                </div>
+
+            </div>
+            <div class="card-footer d-flex justify-content-between align-items-center">
+                <a (click)="edit(item)" class="card-link">
+                    <i class="fa fa-edit"></i>
+                </a>
+                <a (click)="managePostcodes(item)" class="card-link">
+                    <i class="fa fa-map-marker"></i>
+                </a>
+                <a (click)="confirmDelete(item)" class="card-link">
+                    <i class="fa fa-trash"></i>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<button
+    (click)="create()"
+    type="button"
+    class="btn btn-primary btn-round">
+    Add Zone
+</button>
+
+<app-courier-delivery-zone-postcodes
+    *ngIf="(overlays$ | async).zonePostcodes"
+    [overlayData]="overlayData"
+    (refreshData)="this.filterSearch()"></app-courier-delivery-zone-postcodes>
+
+
+<app-courier-delivery-zone-edit
+    *ngIf="(overlays$ | async).postcodeZoneEdit"
+    [overlayData]="overlayData"
+    (refreshData)="this.filterSearch()"></app-courier-delivery-zone-edit>
+
+<app-confirmation
+    *ngIf="confirmationData.open"
+    [data]="confirmationData"
+    (complete)="confirmationComplete($event)"></app-confirmation>

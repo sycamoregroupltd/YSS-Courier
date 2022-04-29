@@ -1,0 +1,9 @@
+<div class="breadcrumb bg-slate-5" *ngIf="routes.length">
+    <ng-container *ngFor="let r of routes; let last = last; let first = first">
+        <a class="mr-2" [ngClass]="{'ml-2' : !first}" *ngIf="!last" [routerLink]="r.route">{{r.text}}</a>
+        <div class="wrap">
+            <span class="links" *ngIf="!last">  </span>
+        </div>
+        <p class="ml-2" *ngIf="last">{{r.text}}</p>
+    </ng-container>
+</div>

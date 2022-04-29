@@ -1,0 +1,62 @@
+<div class="modal modal-lg">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Manage Recipients</h5>
+                <button type="button" (click)="close()" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-left">
+
+                <div class="mail-search">
+                    <input
+                        [(ngModel)]="params.freeText"
+                        (ngModelChange)="filterSearch()"
+                        type="text"
+                        class="form-control bordered"
+                        placeholder="Search users">
+                </div>
+
+                <div class="table-responsive mt-2" *ngIf="users.length">
+                    <table class="table table-condensed">
+<!--                        <thead class="thead-white">-->
+<!--                        <tr>-->
+<!--                            <th>Contact Name</th>-->
+<!--                            <th>Company</th>-->
+<!--                            <th>Account Type</th>-->
+<!--                            <th></th>-->
+<!--                        </tr>-->
+<!--                        </thead>-->
+                        <tbody>
+                        <tr class="underline" *ngFor="let s of users">
+                            <td>{{ s.name }}</td>
+                            <td>{{ s.company }}</td>
+                            <td>{{ s.accountType }}</td>
+                            <td>
+                                <button *ngIf="!userSelected(s)" (click)="toggleUser(s)" class="btn btn-info btn-check" type="button">
+                                    <i class="fa fa-fw fa-check"></i>
+                                </button>
+                                <button *ngIf="userSelected(s)" (click)="toggleUser(s)" class="btn btn-warning btn-check" type="button">
+                                    <i class="fa fa-fw fa-times text-white"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div *ngIf="!users.length" class="bg-warning p-xs b-r-sm text-center mt-4"> No users found for that search term</div>
+
+                <div class=" text-right mt-2">
+                    <app-pagination
+                        *ngIf="params.pageArray.length"
+                        [params]="params"
+                        (update)="search()"></app-pagination>
+                </div>
+
+            </div>
+            </div>
+
+    </div>
+</div>

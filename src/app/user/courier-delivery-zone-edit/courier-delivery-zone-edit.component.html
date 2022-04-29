@@ -1,0 +1,325 @@
+<div class="defaultAside aside-open slide-box-show">
+    <a href="javascript:void(0)" class="closebtn" (click)="close()">&times;</a>
+
+    <div class="page-header-banner">
+        <h1 *ngIf="newItem">Add New Zone</h1>
+        <h1 *ngIf="!newItem">Edit Zone</h1>
+    </div>
+
+    <div class="p-4">
+        <form
+            [formGroup]="form"
+            autocomplete="off"
+            novalidate
+            [autocomplete]="'off'"
+            (ngSubmit)="onSubmit()">
+
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Zone Name</label>
+                <div class="col-12 col-sm-9">
+                    <input
+                        [ngClass]="{
+                            'is-invalid':
+                                form['controls'].name.invalid &&
+                                form['controls'].name.touched
+                        }"
+                        type="text"
+                        class="form-control"
+                        formControlName="name"
+                        placeholder="Zone name"
+                    />
+                    <div class="invalid-feedback">
+                        Name is required
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Vehicle Type</label>
+                <div class="col-12 col-sm-9">
+                    <select
+                        [ngClass]="{
+                                'is-invalid':
+                                    form['controls'].vehicleType.invalid &&
+                                    form['controls'].vehicleType.touched
+                            }"
+                        type="text"
+                        class="form-control"
+                        formControlName="vehicleType"
+                        placeholder="Select vehicle type">
+                        <option [ngValue]="0">Select vehicle type</option>
+                        <option [ngValue]="vt.id" *ngFor="let vt of vehicleTypes">
+                            {{vt.name}}
+                        </option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Vehicle type is required
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-10">
+                    <h4>Allow AM/PM timeslots?</h4>
+                </div>
+                <div class="col-2 text-right">
+                    <a (click)="toggleAllowTimeslot()" style="font-size: 30px">
+                        <i class="fa" [ngClass]="{'fa-toggle-on text-success' : item.allowTimeslot, 'fa-toggle-off' : !item.allowTimeslot}"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="form-group row" *ngIf="item.allowTimeslot">
+                <label class="col-sm-3 col-form-label">AM/PM surcharge</label>
+                <div class="col-12 col-sm-9">
+                    <input
+                        [ngClass]="{
+                            'is-invalid':
+                                form['controls'].timeslotCost.invalid &&
+                                form['controls'].timeslotCost.touched
+                        }"
+                        type="text"
+                        class="form-control"
+                        formControlName="timeslotCost"
+                        placeholder="Surcharge (&pound;)"
+                    />
+                    <div class="invalid-feedback">
+                        Surcharge is required
+                    </div>
+                </div>
+            </div>
+
+
+            <ng-container *ngIf="form.value.vehicleType === 2">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Delivery Cost</label>
+                    <div class="col-12 col-sm-9">
+                        <input
+                            [ngClass]="{
+                            'is-invalid':
+                                form['controls'].hiab.invalid &&
+                                form['controls'].hiab.touched
+                        }"
+                            type="text"
+                            class="form-control"
+                            formControlName="hiab"
+                            placeholder="Delivery cost (&pound;)"
+                        />
+                        <div class="invalid-feedback">
+                            Delivery cost is required
+                        </div>
+                    </div>
+                </div>
+
+            </ng-container>
+
+
+            <ng-container *ngIf="form.value.vehicleType === 3">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Full Load Cost</label>
+                    <div class="col-12 col-sm-9">
+                        <input
+                            [ngClass]="{
+                            'is-invalid':
+                                form['controls'].articFull.invalid &&
+                                form['controls'].articFull.touched
+                        }"
+                            type="text"
+                            class="form-control"
+                            formControlName="articFull"
+                            placeholder="Delivery cost (&pound;)"
+                        />
+                        <div class="invalid-feedback">
+                            Delivery cost is required
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Half Load Cost</label>
+                    <div class="col-12 col-sm-9">
+                        <input
+                            [ngClass]="{
+                            'is-invalid':
+                                form['controls'].articHalf.invalid &&
+                                form['controls'].articHalf.touched
+                        }"
+                            type="text"
+                            class="form-control"
+                            formControlName="articHalf"
+                            placeholder="Delivery cost (&pound;)"
+                        />
+                        <div class="invalid-feedback">
+                            Delivery cost is required
+                        </div>
+                    </div>
+                </div>
+
+            </ng-container>
+
+
+
+            <ng-container *ngIf="form.value.vehicleType === 1">
+                <div class="row">
+                    <div class="col-10">
+                        <h4>Premium Delivery Costs</h4>
+                    </div>
+                    <div class="col-2 text-right">
+                        <a (click)="toggleAllowPremium()" style="font-size: 30px">
+                            <i class="fa" [ngClass]="{'fa-toggle-on text-success' : item.allowPremium === 1, 'fa-toggle-off' : item.allowPremium === 0}"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Full Pallet Cost</label>
+                    <div class="col-12 col-sm-9">
+                        <input
+                            [readOnly]="!item.allowPremium"
+                            [ngClass]="{
+                                'is-invalid':
+                                    form['controls'].premiumFull.invalid &&
+                                    form['controls'].premiumFull.touched
+                            }"
+                            type="text"
+                            class="form-control"
+                            formControlName="premiumFull"
+                            placeholder="Full pallet cost (&pound;)"
+                        />
+                        <div class="invalid-feedback">
+                            Cost is required
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Half Pallet Cost</label>
+                    <div class="col-12 col-sm-9">
+                        <input
+                            [readOnly]="!item.allowPremium"
+                            [ngClass]="{
+                                'is-invalid':
+                                    form['controls'].premiumHalf.invalid &&
+                                    form['controls'].premiumHalf.touched
+                            }"
+                            type="text"
+                            class="form-control"
+                            formControlName="premiumHalf"
+                            placeholder="Half pallet cost (&pound;)"
+                        />
+                        <div class="invalid-feedback">
+                            Cost is required
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Quarter Pallet Cost</label>
+                    <div class="col-12 col-sm-9">
+                        <input
+                            [readOnly]="!item.allowPremium"
+                            [ngClass]="{
+                                'is-invalid':
+                                    form['controls'].premiumQuarter.invalid &&
+                                    form['controls'].premiumQuarter.touched
+                            }"
+                            type="text"
+                            class="form-control"
+                            formControlName="premiumQuarter"
+                            placeholder="Quarter pallet cost (&pound;)"
+                        />
+                        <div class="invalid-feedback">
+                            Cost is required
+                        </div>
+                    </div>
+                </div>
+
+                <h4>Economy Delivery Costs</h4>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Full Pallet Cost</label>
+                    <div class="col-12 col-sm-9">
+                        <input
+                            [ngClass]="{
+                                'is-invalid':
+                                    form['controls'].economyFull.invalid &&
+                                    form['controls'].economyFull.touched
+                            }"
+                            type="text"
+                            class="form-control"
+                            formControlName="economyFull"
+                            placeholder="Full pallet cost (&pound;)"
+                        />
+                        <div class="invalid-feedback">
+                            Cost is required
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Half Pallet Cost</label>
+                    <div class="col-12 col-sm-9">
+                        <input
+                            [ngClass]="{
+                                'is-invalid':
+                                    form['controls'].economyHalf.invalid &&
+                                    form['controls'].economyHalf.touched
+                            }"
+                            type="text"
+                            class="form-control"
+                            formControlName="economyHalf"
+                            placeholder="Half pallet cost (&pound;)"
+                        />
+                        <div class="invalid-feedback">
+                            Cost is required
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Quarter Pallet Cost</label>
+                    <div class="col-12 col-sm-9">
+                        <input
+                            [ngClass]="{
+                                'is-invalid':
+                                    form['controls'].economyQuarter.invalid &&
+                                    form['controls'].economyQuarter.touched
+                            }"
+                            type="text"
+                            class="form-control"
+                            formControlName="economyQuarter"
+                            placeholder="Quarter pallet cost (&pound;)"
+                        />
+                        <div class="invalid-feedback">
+                            Cost is required
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+
+            <div class="text-left" style="padding-top: 30px;">
+                <div class="row">
+                    <div class="col-6">
+                        <button
+                            type="button"
+                            class="btn btn-round btn-primary-reverse"
+                            (click)="confirmCancel()">
+                            Cancel
+                        </button>
+                    </div>
+                    <div class="col-6 text-right">
+                        <button
+                            [disabled]="!form.valid"
+                            type="submit"
+                            class="btn btn-round btn-primary">
+                            <span *ngIf="newItem">Create Zone</span>
+                            <span *ngIf="!newItem">Update Zone</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!--        <pre>{{findInvalidControls() | json}}</pre>-->
+        </form>
+    </div>
+</div>
+<app-confirmation
+    *ngIf="this.confirmationData.open"
+    [data]="confirmationData"
+    (complete)="confirmationComplete($event)"></app-confirmation>

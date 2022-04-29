@@ -1,0 +1,51 @@
+<section id="header">
+    <div class="container-fluid main-menu">
+        <div class="d-flex justify-content-between align-items-center" style="height: 77px">
+            <div class="" style="padding: 15px 0; width: 40%">
+            </div>
+
+            <div class="text-center" style="width: 20%">
+                <a class="navbar-brand mx-auto" [routerLink]="['/']">
+                    <img src="/assets/images/ys-logo-text.png" style="height: 45px" />
+                </a>
+            </div>
+
+            <div
+                style="width: 40%"
+                class="text-right d-flex justify-content-end align-items-center"
+                *ngIf="!(user$ | async)">
+                <button class="btn btn-trans btn-round btn-login" (click)="login()">
+                    Sign in
+                </button>
+                <button class="btn btn-trans btn-round btn-account" style="margin-right: 27px;" (click)="register()">
+                    Create account
+                </button>
+            </div>
+
+            <div style="width: 40%" class="text-right" *ngIf="(user$ | async)">
+                <a class="header-sub-item" [routerLink]="['account']">
+                    <i class="fa fa-user"></i> Your account
+                </a>
+                <a class="header-sub-item" (click)="logoutConfirmation()">
+                    Sign out
+                </a>
+                <a class="header-sub-item-icon" (click)="toggleNotifications()">
+                    <i class="far fa-bell fa-fw" style="font-size: 17px"></i>
+                    <div class="badge-count" *ngIf="(notifications$ | async).unread > 0">{{(notifications$ | async).unread}}</div>
+                </a>
+                <a class="header-sub-item-icon" [routerLink]="['/account', 'mail']" *ngIf="(user$ | async)">
+                    <i class="far fa-comments fa-fw"></i>
+                    <div class="badge-count" *ngIf="(chatStore$ | async).unread">{{(chatStore$ | async).unread}}</div>
+                </a>
+                <a class="header-sub-item-icon" (click)="toggleChat()"  *ngIf="!(user$ | async)">
+                    <i class="far fa-comments fa-fw"></i>
+                    <div class="badge-count" *ngIf="(chatStore$ | async).unread">{{(chatStore$ | async).unread}}</div>
+                </a>
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+<app-confirmation *ngIf="confirmationData.open" [data]="confirmationData" (complete)="confirmationComplete($event)"></app-confirmation>

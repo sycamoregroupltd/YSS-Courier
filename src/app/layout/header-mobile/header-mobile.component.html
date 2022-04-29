@@ -1,0 +1,35 @@
+<section id="header">
+    <div class="container-fluid" style="padding: 25px 15px">
+        <div class="d-flex justify-content-between align-items-center">
+            <div style="width: 50px">
+                <a style="font-size: 20px" (click)="toggleMenu()">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+            <div>
+                <a [routerLink]="['/']">
+                    <img src="/assets/images/ys-logo-mobile.png" />
+                </a>
+            </div>
+            <div style="width: 50px">
+                <a *ngIf="(basket$ | async).items.length" [routerLink]="['/basket']">
+                    <i class="fa fa-shopping-cart"></i> {{(basket$ | async).items.length}}
+                </a>
+            </div>
+        </div>
+
+    </div>
+    <div class="container-fluid">
+        <div class="row" style="background-color: #263947; padding: 13px;">
+            <div class="col-6 text-center" style="color: white">
+                <a>Sign in</a>
+            </div>
+            <div class="col-6 text-center" style="color: white">
+                <a>Create account</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<app-confirmation *ngIf="confirmationData.open" [data]="confirmationData" (complete)="confirmationComplete($event)"></app-confirmation>

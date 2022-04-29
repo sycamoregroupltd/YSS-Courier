@@ -1,0 +1,47 @@
+
+<div class="table-responsive">
+    <table class="table table-condensed">
+        <thead class="thead-white">
+
+        <tr>
+            <th>Supplier
+                <a class="sort-icon" [ngClass]="{'active' : this.params.sort === 'companies.name ASC'}" (click)="setSort('companies.name ASC')"><i class="fa fa-caret-up"></i></a>
+                <a class="sort-icon" [ngClass]="{'active' : this.params.sort === 'companies.name DESC'}" (click)="setSort('companies.name DESC')"><i class="fa fa-caret-down"></i></a>
+            </th>
+            <th>Range
+                <a class="sort-icon" [ngClass]="{'active' : this.params.sort === 'product_ranges.name ASC'}" (click)="setSort('product_ranges.name ASC')"><i class="fa fa-caret-up"></i></a>
+                <a class="sort-icon" [ngClass]="{'active' : this.params.sort === 'product_ranges.name DESC'}" (click)="setSort('product_ranges.name DESC')"><i class="fa fa-caret-down"></i></a>
+
+            </th>
+            <th>Postcode
+                <a class="sort-icon" [ngClass]="{'active' : this.params.sort === 'address.postcode ASC'}" (click)="setSort('address.postcode ASC')"><i class="fa fa-caret-up"></i></a>
+                <a class="sort-icon" [ngClass]="{'active' : this.params.sort === 'address.postcode DESC'}" (click)="setSort('address.postcode DESC')"><i class="fa fa-caret-down"></i></a>
+            </th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="underline" *ngFor="let s of users">
+            <td>{{s.name}}</td>
+            <td>{{s.rangeName}}</td>
+            <td>
+                <span *ngIf="s.address">{{s.address.postcode}}</span>
+            </td>
+            <td>
+                <a class="mr-2" (click)="chatService.startChatGroup(s, 'company')">
+                    <i class="fa fa-comments"></i>
+                </a>
+                <a class="mr-2" [routerLink]="['/accounts', 'overview', 'supplier', s.id]">
+                    <i class="fa fa-search"></i>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="no-results" *ngIf="!users.length">
+    <p>No suppliers found</p>
+</div>
+
+<app-pagination *ngIf="params.pageArray.length" [params]="params" (update)="search()"></app-pagination>

@@ -1,0 +1,21 @@
+<div class="bg-slate-5" style="position: relative" *ngIf="user">
+
+    <app-company-menu *ngIf="user.accountType !== 'customer'" [user]="user"></app-company-menu>
+
+    <div class="container-fluid" style="min-height: 110vh; padding: 50px; margin-left: 252px; width: calc(100% - 252px)" *ngIf="user">
+
+        <div class="preview-box">
+            <div class="preview-box-title">
+                Your Users
+            </div>
+            <div class="preview-box-content">
+
+                <app-user-search [showCompany]="false" [company]="user.company"></app-user-search>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<app-user-edit *ngIf="(overlays$ | async).userEdit"></app-user-edit>
+

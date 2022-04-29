@@ -1,0 +1,237 @@
+<section class="registration bg-grey">
+    <div class="form-container" *ngIf="user">
+        <h1 class="text-center">Set-up an account</h1>
+        <form [formGroup]="form" autocomplete="off" novalidate (ngSubmit)="onSubmit()">
+
+
+            <!-- <div class="form-group">
+                <select formControlName="accountType" class="form-control" style="max-width: 300px; margin: 20px auto">
+                    <option *ngFor="let at of accountTypes" [value]="at.id">{{at.name}}</option>
+                </select>
+            </div> -->
+            <div class="mb-2">
+                <a (click)="toggleTradeAccount()">
+                    <i class="far fa-check-square" *ngIf="tradeAccount"></i>
+                    <i class="far fa-square" *ngIf="!tradeAccount"></i>
+                    I am applying for a trade account?
+                </a>
+            </div>
+
+            <ng-container *ngIf="form.value.accountType === 'customer'">
+                <!-- <h4>Your details</h4> -->
+
+                <div formGroupName="company" *ngIf="tradeAccount">
+                    <div class="form-group">
+                        <input
+                            [ngClass]="{'is-invalid' : form.controls['company'].get('name').invalid && form.controls['company'].get('name').touched}"
+                            type="text" class="form-control" name="name" formControlName="name" placeholder="Business name">
+                        <div class="invalid-feedback">Enter business name</div>
+                    </div>
+                    <!-- <div class="form-group">
+                        <input type="text" class="form-control" formControlName="url" placeholder="Website address">
+                    </div> -->
+                </div>
+
+                <div formGroupName="contact">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input
+                                    [ngClass]="{'is-invalid' : form.controls['contact'].get('firstname').invalid && form.controls['contact'].get('firstname').touched}"
+                                    type="text" class="form-control" name="firstname" formControlName="firstname" placeholder="First name">
+                                <div class="invalid-feedback">Enter firstname</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input
+                                    [ngClass]="{'is-invalid' : form.controls['contact'].get('surname').invalid && form.controls['contact'].get('surname').touched}"
+                                    type="text" class="form-control" name="surname" formControlName="surname" placeholder="Last name">
+                                <div class="invalid-feedback">Enter surname</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <h4 class="mt-5">Contact information</h4> -->
+                    <div class="form-group">
+                        <input
+                            [ngClass]="{'is-invalid' : form.controls['contact'].get('email').invalid && form.controls['contact'].get('email').touched}"
+                            type="email"
+                            autocomplete="new-password"
+                            class="form-control"
+                            name="email"
+                            (blur)="checkReferralCode()"
+                            formControlName="email"
+                            placeholder="Email">
+                        <div class="invalid-feedback">Enter email address</div>
+                    </div>
+
+                    <ng-container *ngIf="referralCode !== ''">
+                        <div class="alert alert-danger" *ngIf="!validReferralCode">
+                            The email address entered is not valid for this referral code
+                        </div>
+                    </ng-container>
+
+                    <!-- <div class="form-group">
+                        <input
+                            [ngClass]="{'is-invalid' : form.controls['contact'].get('emailConfirm').invalid && form.controls['contact'].get('email').touched}"
+                            type="email" autocomplete="new-password" class="form-control" name="emailConfirm" formControlName="emailConfirm" placeholder="Confirm email">
+                        <div class="invalid-feedback">Email address does not match</div>
+                    </div> -->
+
+                    <div class="form-group">
+                        <input
+                            [ngClass]="{'is-invalid' : form.controls['contact'].get('mobile').invalid && form.controls['contact'].get('mobile').touched}"
+                            type="text" autocomplete="new-password" class="form-control" name="mobile" formControlName="mobile" placeholder="Mobile number">
+                        <div class="invalid-feedback">Please provide a valid mobile number</div>
+                    </div>
+
+                </div>
+
+            </ng-container>
+
+
+            <ng-container *ngIf="form.value.accountType !== 'customer'">
+
+                <!-- <h4>Your details</h4> -->
+                <div formGroupName="contact">
+                    <div class="form-group">
+                        <input
+                            [ngClass]="{'is-invalid' : form.controls['contact'].get('firstname').invalid && form.controls['contact'].get('firstname').touched}"
+                            type="text" class="form-control" name="firstname" formControlName="firstname" placeholder="First name">
+                        <div class="invalid-feedback">Enter firstname</div>
+                    </div>
+                    <div class="form-group mb-5">
+                        <input
+                            [ngClass]="{'is-invalid' : form.controls['contact'].get('surname').invalid && form.controls['contact'].get('surname').touched}"
+                            type="text" class="form-control" name="surname" formControlName="surname" placeholder="Last name">
+                        <div class="invalid-feedback">Enter surname</div>
+                    </div>
+
+                    <!-- <h4 class="mt-5">Contact information</h4> -->
+                    <div class="form-group">
+                        <input
+                            [ngClass]="{'is-invalid' : form.controls['contact'].get('email').invalid && form.controls['contact'].get('email').touched}"
+                            type="email" autocomplete="new-password" class="form-control" name="email" formControlName="email" placeholder="Email">
+                        <div class="invalid-feedback">Enter email address</div>
+                    </div>
+                    <!-- <div class="form-group">
+                        <input
+                            [ngClass]="{'is-invalid' : form.controls['contact'].get('emailConfirm').invalid && form.controls['contact'].get('emailConfirm').touched}"
+                            type="email" autocomplete="new-password" class="form-control" name="emailConfirm" formControlName="emailConfirm" placeholder="Confirm email">
+                        <div class="invalid-feedback">Confirm email address</div>
+                    </div> -->
+                    <div class="form-group">
+                        <input
+                            [ngClass]="{'is-invalid' : form.controls['contact'].get('mobile').invalid && form.controls['contact'].get('mobile').touched}"
+                            type="text" autocomplete="new-password" class="form-control" name="mobile" formControlName="mobile" placeholder="Mobile number">
+                        <div class="invalid-feedback">Enter a valid mobile number</div>
+                    </div>
+
+                    <div class="form-group mb-5">
+                        <input
+                            [ngClass]="{'is-invalid' : form.controls['contact'].get('mobile').invalid && form.controls['contact'].get('mobile').touched}"
+                            type="text" class="form-control" name="mobile" formControlName="mobile" placeholder="Telephone">
+                        <div class="invalid-feedback">Enter a valid phone number</div>
+                    </div>
+
+                </div>
+
+                <h4 class="mt-5">Your business</h4>
+                <div formGroupName="company">
+                    <div class="form-group">
+                        <input
+                            [ngClass]="{'is-invalid' : form.controls['company'].get('name').invalid && form.controls['company'].get('name').touched}"
+                            type="text" class="form-control" name="name" formControlName="name" placeholder="Business name">
+                        <div class="invalid-feedback">Enter business name</div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="url" placeholder="Website address">
+                    </div>
+                </div>
+            </ng-container>
+
+
+            <div [ngClass]="{'hidden' : form.value.accountType === 'customer'}">
+                <h4 class="mt-5">Address</h4>
+                <div formGroupName="address">
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="add1" placeholder="Address line 1">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="add2" placeholder="Address line 2">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="add3" placeholder="Address line 3">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="town" placeholder="Town / city">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="county" placeholder="County">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control col-12 col-sm-6" formControlName="postcode" placeholder="Postcode">
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- <h4 class="mt-5">Create password</h4> -->
+
+            <div class="form-group">
+                <input
+                    type="password"
+                    autocomplete="new-password"
+                    class="form-control"
+                    [ngClass]="{'is-invalid' : form.controls.password.invalid && form.controls.password.touched}"
+                    formControlName="password" placeholder="Password">
+                <div class="invalid-feedback">Password must be a minimum of 8 characters</div>
+            </div>
+            <!-- <div class="form-group">
+                <input
+                    type="password"
+                    autocomplete="new-password"
+                    class="form-control"
+                    [ngClass]="{'is-invalid' : form.controls.passwordConfirm.invalid && form.controls.password.touched}"
+                    formControlName="passwordConfirm" placeholder="Confirm password">
+                <div class="invalid-feedback">Passwords do not match</div>
+            </div> -->
+
+            <!-- <h4 class="mt-5 mb-3">Terms &amp; conditions</h4> -->
+            <div class="mb-3">
+                <a (click)="toggleValue('terms')">
+                    <i class="far fa-check-square" *ngIf="user.terms"></i>
+                    <i class="far fa-square" *ngIf="!user.terms"></i>
+                    I agree to the terms &amp; conditions
+                </a>
+            </div>
+            <div class="mb-3">
+                <a (click)="toggleValue('marketing')">
+                    <i class="far fa-check-square" *ngIf="user.marketing"></i>
+                    <i class="far fa-square" *ngIf="!user.marketing"></i>
+                    Please keep me up-to-date with news and special offers
+                </a>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-6">
+                    <button *ngIf="isBasketAuth" (click)="doSignIn()"
+                            class="btn btn-round btn-yellow"
+                            type="button">Already registered?
+                    </button>
+                </div>
+                <div class="col-6 text-right">
+                    <button [disabled]="!form.valid || !user.terms" type="submit" class="btn btn-round btn-primary">Create Account</button>
+
+                </div>
+            </div>
+
+
+            <!-- <pre>{{findInvalidControls() | json}}</pre> -->
+        </form>
+
+    </div>
+
+</section>

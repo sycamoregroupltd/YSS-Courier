@@ -1,0 +1,238 @@
+<div class="bg-slate-5" style="position: relative" *ngIf="user">
+
+    <app-company-menu [user]="user"></app-company-menu>
+
+    <div class="container-fluid" style="min-height: 110vh; padding: 50px; margin-left: 252px; width: calc(100% - 252px)" *ngIf="user">
+
+
+        <div style="width: 100%" *ngIf="order">
+            <div class="page-header-banner"><h1>Order {{order.publicId}}</h1></div>
+
+
+            <div class="container-fluid bg-light" style="padding: 60px">
+
+                <div class="alert alert-warning d-flex justify-content-between"
+                     *ngIf="order.updateRequested && user.accountType === 'supplier'">
+
+                    <h3 class="mb-0 mt-1">Customer services requested a status update on this order</h3>
+                    <button type="button" (click)="updateOrderStatus()" class="btn btn-slim btn-round btn-primary">
+                        <span aria-hidden="true">Update Status</span>
+                    </button>
+                </div>
+
+                <div class="card-deck">
+                    <div class="card dashboard no-border mt-5">
+                        <div class="card-header">
+                            Customer Details
+                        </div>
+                        <div class="card-body">
+                            <address *ngIf="order.deliveryAddress">
+                                {{order.customer.contact.firstname}} {{order.customer.contact.surname}}
+                                <br />
+                                <span *ngIf="order.customer.contact.email">
+                                        <br />
+                                        <i class="fa fa-envelope fa-fw"></i> {{order.customer.contact.email}}</span>
+                                <span *ngIf="order.customer.contact.mobile">
+                                        <br />
+                                        <i class="fa fa-mobile fa-fw"></i> {{order.customer.contact.mobile}}</span>
+                                <span *ngIf="order.customer.contact.landline">
+                                        <br />
+                                        <i class="fa fa-phone fa-fw"></i> {{order.customer.contact.landline}}</span>
+
+                            </address>
+                        </div>
+                    </div>
+
+
+                    <div class="card dashboard no-border mt-5">
+                        <div class="card-header">
+                            Invoice Address
+                        </div>
+                        <div class="card-body">
+                            <address *ngIf="order.invoiceAddress">
+                                {{order.invoiceAddress.add1}}
+                                <span *ngIf="order.invoiceAddress.add2"><br />{{order.invoiceAddress.add2}}</span>
+                                <span *ngIf="order.invoiceAddress.add3"><br />{{order.invoiceAddress.add3}}</span>
+                                <span *ngIf="order.invoiceAddress.town"><br />{{order.invoiceAddress.town}}</span>
+                                <span *ngIf="order.invoiceAddress.county"><br />{{order.invoiceAddress.county}}</span>
+                                <span *ngIf="order.invoiceAddress.postcode"><br />{{order.invoiceAddress.postcode}}</span>
+
+                            </address>
+                        </div>
+                    </div>
+
+                    <div class="card dashboard no-border mt-5">
+                        <div class="card-header">
+                            Delivery Address
+                        </div>
+                        <div class="card-body">
+                            <address *ngIf="order.deliveryAddress">
+                                {{order.deliveryAddress.add1}}
+                                <span *ngIf="order.deliveryAddress.add2"><br />{{order.deliveryAddress.add2}}</span>
+                                <span *ngIf="order.deliveryAddress.add3"><br />{{order.deliveryAddress.add3}}</span>
+                                <span *ngIf="order.deliveryAddress.town"><br />{{order.deliveryAddress.town}}</span>
+                                <span *ngIf="order.deliveryAddress.county"><br />{{order.deliveryAddress.county}}</span>
+                                <span *ngIf="order.deliveryAddress.postcode"><br />{{order.deliveryAddress.postcode}}</span>
+                            </address>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card dashboard no-border mt-5">
+                            <div class="card-header">
+                                Items Ordered
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th><h6>Product</h6></th>
+                                            <th><h6>Sku</h6></th>
+                                            <th style="width: 150px"><h6>Status</h6></th>
+                                            <th style="width: 100px; text-align: right"><h6>Quantity</h6></th>
+                                            <th style="width: 130px; text-align: right"><h6>Unit Price</h6></th>
+                                            <th style="text-align: right"><h6>Total Price</h6></th>
+<!--                                            <th *ngIf="user.accountType === 'supplier'"><h6>Actions</h6></th>-->
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr class="underline" *ngFor="let pd of order.orderLines; let i = index">
+                                            <td>
+                                                {{pd.product.productCode}}
+                                                <br />
+                                                {{pd.product.name}}
+                                            </td>
+                                            <td>{{pd.skuId}}</td>
+                                            <td>{{pd.status.name}}
+                                                <a *ngIf="user.accountType === 'supplier'" (click)="updateOrderStatus()">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                            </td>
+                                            <td align="right">
+                                                <span *ngIf="!pd.edit">{{pd.quantity}}</span>
+                                                <input
+                                                    *ngIf="pd.edit"
+                                                    [(ngModel)]="orderLineToEdit.quantity"
+                                                    type="number"
+                                                    class="form-control">
+                                            </td>
+                                            <td align="right">
+                                                <span *ngIf="!pd.edit">{{pd.unitPrice | currency: 'GBP'}}</span>
+                                                <input
+                                                    *ngIf="pd.edit"
+                                                    [(ngModel)]="orderLineToEdit.unitPrice"
+                                                    type="number"
+                                                    class="form-control">
+
+                                            </td>
+                                            <td align="right">{{pd.totalPrice | currency: 'GBP'}}</td>
+<!--                                            <td *ngIf="user.accountType === 'supplier'">-->
+<!--                                                <ng-container *ngIf="!pd.edit">-->
+<!--                                                    <a (click)="editOrderLine(i)">-->
+<!--                                                        <i class="fa fa-edit"></i>-->
+<!--                                                    </a>-->
+<!--                                                </ng-container>-->
+<!--                                                <ng-container *ngIf="pd.edit">-->
+<!--                                                    <a (click)="saveOrderLine(i)" class="mr-3">-->
+<!--                                                        <i class="fa fa-save"></i>-->
+<!--                                                    </a>-->
+<!--                                                    <a (click)="cancelEditOrderLine(i)">-->
+<!--                                                        <i class="fa fa-times"></i>-->
+<!--                                                    </a>-->
+<!--                                                </ng-container>-->
+<!--                                            </td>-->
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-5 offset-md-4">
+                        <div class="card dashboard no-border mt-5">
+                            <div class="card-header">
+                                Order Totals
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <ng-container *ngIf="user.accountType === 'supplier'">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr>
+                                                    <th><h6>Sub Total</h6></th>
+                                                    <td align="right"><h6>{{order.payment.net | currency: 'GBP'}}</h6></td>
+                                                </tr>
+                                                <tr>
+                                                    <th><h6>VAT</h6></th>
+                                                    <td align="right"><h6>{{(+order.payment.vat + +order.payment.deliveryVat) | currency: 'GBP'}}</h6></td>
+                                                </tr>
+                                                <tr>
+                                                    <th><h6>Total</h6></th>
+                                                    <td align="right"><h6>{{(+order.payment.net +  +order.payment.vat)| currency: 'GBP'}}</h6></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </ng-container>
+                                    <ng-container *ngIf="user.accountType === 'customer' || user.accountType === 'trade'">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr>
+                                                    <th><h6>Sub Total</h6></th>
+                                                    <td align="right"><h6>{{order.payment.net | currency: 'GBP'}}</h6></td>
+                                                </tr>
+                                                <tr *ngIf="order.payment.voucher">
+                                                    <th><h6>Voucher Discount ({{order.payment.voucher.code}})</h6></th>
+                                                    <td align="right"><h6>- {{order.payment.discount | currency: 'GBP'}}</h6></td>
+                                                </tr>
+                                                <tr>
+                                                    <th><h6>Delivery</h6></th>
+                                                    <td align="right"><h6>{{order.payment.delivery | currency: 'GBP'}}</h6></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <th><h6>VAT</h6></th>
+                                                    <td align="right"><h6>{{(+order.payment.vat + +order.payment.deliveryVat) | currency: 'GBP'}}</h6></td>
+                                                </tr>
+    <!--                                        <tr>-->
+    <!--                                            <th><h6>Gross Value</h6></th>-->
+    <!--                                            <td align="right"><h6>{{order.payment.gross | currency: 'GBP'}}</h6></td>-->
+    <!--                                        </tr>-->
+                                                <tr>
+                                                    <th><h6>Total</h6></th>
+                                                    <td align="right"><h6>{{order.payment.amountPaid | currency: 'GBP'}}</h6></td>
+                                                </tr>
+                                                <tr>
+                                                    <th><h6>Payment Method</h6></th>
+                                                    <td align="right"><h6>{{order.payment.method.name}}</h6></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </ng-container>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<app-order-status-update *ngIf="(overlays$ | async).orderStatusUpdate" [order]="order" [statuses]="statuses"></app-order-status-update>

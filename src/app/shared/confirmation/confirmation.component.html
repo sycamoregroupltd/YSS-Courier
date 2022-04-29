@@ -1,0 +1,13 @@
+<div class="info-modal">
+    <a (click)="cancel()" class="close hover">
+        x
+    </a>
+    <div class="inner">
+        <p><strong>{{data.title}}</strong></p>
+        <p>{{data.detail}}</p>
+        <button class="btn btn-round btn-secondary btn-width-50 mt-3 mb-3" (click)="confirm()">
+            OK
+        </button>
+    </div>
+</div>
+<div class="modal-backdrop fade show modal-slide-show"></div>

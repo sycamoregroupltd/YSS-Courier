@@ -1,0 +1,43 @@
+<div class="navigation-wrapper">
+    <div class="keen-slider" #sliderRef>
+        <div
+            class="keen-slider__slide group-preview-tile"
+            [ngClass]="{'active' : gi === currentSlide}"
+            *ngFor="let pg of orders; let gi = index"
+            (click)="currentSlide = gi">
+
+                <div class="row">
+                    <div class="col-5">
+                        <p class="group-name" style="opacity: 0.6;">Order {{pg.publicId}}</p>
+                    </div>
+                    <div class="col-7 text-right">
+                        <a class="dashboard-icon mr-3">
+                            <i class="fas fa-print"></i>
+                        </a>
+                        <a class="dashboard-icon mr-3">
+                            <i class="far fa-envelope"></i>
+                        </a>
+                        <a class="dashboard-icon mr-3">
+                            <i class="far fa-edit"></i>
+                        </a>
+                    </div>
+                </div>
+                <p class="group-name">{{pg.contactFirstname}} {{pg.contactSurname}}</p>
+
+                <p class="group-name">{{pg.status.name}}</p>
+
+                <a class="btn btn-round btn-sm btn-secondary-reverse" [routerLink]="['/product-group', pg.slug]">
+                    Mark as dispatched
+                </a>
+
+        </div>
+    </div>
+</div>
+<div class="dots" *ngIf="showDots">
+    <button
+        (click)="slider.moveToSlideRelative(i)"
+        *ngFor="let slide of dotHelper; let i = index"
+        [class]="'dot ' + (i === currentSlide ? 'active' : '')"
+    ></button>
+</div>
+

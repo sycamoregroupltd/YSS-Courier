@@ -1,0 +1,63 @@
+<div class="bg-slate-5" style="position: relative" *ngIf="user$ | async">
+
+    <app-company-menu *ngIf="(user$ | async).accountType !== 'customer'" [user]="user$ | async"></app-company-menu>
+
+    <div class="container-fluid" style="min-height: 110vh; padding: 50px; margin-left: 252px; width: calc(100% - 252px)">
+
+        <div class="preview-box">
+            <div class="preview-box-title">
+                Couriers
+            </div>
+            <div class="preview-box-content">
+                <p *ngIf="couriers.length">
+                    The following couriers have opted to service your account
+                </p>
+                <div class="table-responsive">
+                    <table class="table table-condensed">
+                        <thead class="thead-white">
+                        <tr>
+                            <th>Courier</th>
+                            <th>Town</th>
+                            <th>Email</th>
+                            <th>Landline</th>
+                            <th></th>
+                        </tr>
+                        <!--        <tr>-->
+                        <!--            <th><input type="text" class="form-control" [(ngModel)]="params.name" (ngModelChange)="filterSearch()" /></th>-->
+                        <!--            <th><input type="text" class="form-control" [(ngModel)]="params.jobTitle" (ngModelChange)="filterSearch()" /></th>-->
+                        <!--            <th><input type="text" class="form-control" [(ngModel)]="params.email" (ngModelChange)="filterSearch()" /></th>-->
+                        <!--            <th><input type="text" class="form-control" [(ngModel)]="params.mobile" (ngModelChange)="filterSearch()" /></th>-->
+                        <!--            <th><input type="text" class="form-control" [(ngModel)]="params.landline" (ngModelChange)="filterSearch()" /></th>-->
+                        <!--            <th></th>-->
+                        <!--        </tr>-->
+                        </thead>
+                        <tbody>
+                        <tr class="underline" *ngFor="let s of couriers">
+                            <td>{{s.name}}</td>
+                            <td>{{s.town}}</td>
+                            <td>{{s.email}}</td>
+                            <td>{{s.landline}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="no-results" *ngIf="!couriers.length">
+                    <p>No couriers are servicing your account</p>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-9">
+                        <app-pagination *ngIf="params.pageArray.length > 1" [params]="params" (update)="search()"></app-pagination>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+

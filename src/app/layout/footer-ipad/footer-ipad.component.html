@@ -1,0 +1,97 @@
+<section id="footer">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6">
+                <div class="footer-content">
+                    <h2>Site map</h2>
+                    <div class="row mt-3 mb-3">
+                        <div
+                            class="col-6 footer-menu"
+                            *ngFor="let q of (menu$ | async).footerQL">
+                            <a *ngIf="q.external === 0" [routerLink]="[q.route]">{{q.name}}</a>
+                            <a *ngIf="q.external === 1" target="_blank" [href]="[q.externalURL]">{{q.name}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="footer-content">
+
+                    <h2>For special offers and all our latest news, simply enter your email address below</h2>
+
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input">
+                        <label class="form-check-label" >I have read the GDPR policy and agree to the Terms &amp; Conditions</label>
+                    </div>
+                    <input class="form-control" [(ngModel)]="email" placeholder="Email address" />
+                    <button type="button" class="btn btn-round btn-secondary-reverse">Sign-up</button>
+
+                    <div class="container-fluid">
+                        <div class="row" style="margin-top: 50px">
+                            <div class="mb-4">
+                                <p class="mb-0" style="font-size: 16px; opacity: 0.6">Follow us</p>
+                            </div>
+                            <div class="">
+                                <div class="social-icon">
+                                    <a target="_blank" [href]="(settings$ | async).facebook">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                </div>
+                                <div class="social-icon">
+                                    <a target="_blank" [href]="(settings$ | async).twitter">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                </div>
+                                <div class="social-icon">
+                                    <a target="_blank" [href]="(settings$ | async).pinterest">
+                                        <i class="fab fa-pinterest-p"></i>
+                                    </a>
+                                </div>
+                                <div class="social-icon">
+                                    <a target="_blank" [href]="(settings$ | async).instagram">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row footer-sub-menu">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-6 text-left" *ngFor="let q of (menu$ | async).footer">
+                        <p>
+                            <a *ngIf="q.external === 0" [routerLink]="[q.route]">{{q.name}}</a>
+                            <a *ngIf="q.external === 1" target="_blank" [href]="[q.externalURL]">{{q.name}}</a>
+                        </p>
+                    </div>
+                </div>
+<!--                <ng-container *ngFor="let q of (menu$ | async).footer">-->
+<!--                    <a *ngIf="q.external === 0" [routerLink]="[q.route]">{{q.name}}</a>-->
+<!--                    <a *ngIf="q.external === 1" target="_blank" [href]="[q.externalURL]">{{q.name}}</a>-->
+<!--                </ng-container>-->
+            </div>
+<!--            <div class="col-12 mt-3 text-left">-->
+<!--                <span *ngIf="(settings$ | async).companyNo">Company registration number {{(settings$ | async).companyNo}}</span>-->
+<!--                <span *ngIf="(settings$ | async).companyNo && (settings$ | async).vatNo" class="ml-2 mr-2">|</span>-->
+<!--                <span *ngIf="(settings$ | async).vatNo">Vat number {{(settings$ | async).vatNo}}</span>-->
+<!--            </div>-->
+            <div class="col-12  mt-3 text-left">
+                &copy;{{(settings$ | async).copyText}}
+            </div>
+
+        </div>
+    </div>
+</section>
+

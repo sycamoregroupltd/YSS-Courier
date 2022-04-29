@@ -1,0 +1,90 @@
+<!--<div class="logo-container">-->
+<!--    <p><i class="fa fa-shopping-basket"></i> Storefront</p>-->
+<!--</div>-->
+
+<div class="menu-holder menu-open" *ngIf="user">
+    <div class="menu-container">
+        <div class="list-group">
+
+                <button
+                    (click)="setStep('chat')"
+                    type="button"
+                    [routerLinkActive]="['active']"
+                    [ngClass]="{'active': step === 'chat'}"
+                    class="list-group-item list-group-item-action">
+                    <!--                        <i class="fa fa-fw menu-icon text-pink" [ngClass]="item.icon" *ngIf="item.icon"></i>-->
+                    Start New Chat
+                </button>
+
+                <button
+                    (click)="setStep('chat')"
+                    type="button"
+                    [routerLinkActive]="['active']"
+                    [ngClass]="{'active': step === 'chat'}"
+                    class="list-group-item list-group-item-action">
+                    <!--                        <i class="fa fa-fw menu-icon text-pink" [ngClass]="item.icon" *ngIf="item.icon"></i>-->
+                    Request a Quote
+                </button>
+
+                <button
+                    (click)="setStep('chat')"
+                    type="button"
+                    [routerLinkActive]="['active']"
+                    [ngClass]="{'active': step === 'chat'}"
+                    class="list-group-item list-group-item-action">
+                    <!--                        <i class="fa fa-fw menu-icon text-pink" [ngClass]="item.icon" *ngIf="item.icon"></i>-->
+                    Submit Photos
+                </button>
+                <hr />
+
+                <button
+                    (click)="setStep('dashboard')"
+                    type="button"
+                    [routerLinkActive]="['active']"
+                    [ngClass]="{'active': step === 'dashboard'}"
+                    class="list-group-item list-group-item-action">
+                    Overview
+                </button>
+
+                <button
+                    (click)="setStep('customerOrders')"
+                    type="button"
+                    [routerLinkActive]="['active']"
+                    [ngClass]="{'active': step === 'customerOrders'}"
+                    class="list-group-item list-group-item-action">
+                    My Orders
+                </button>
+
+                <button
+                    (click)="setStep('customerQuotes')"
+                    type="button"
+                    [routerLinkActive]="['active']"
+                    [ngClass]="{'active': step === 'customerQuotes'}"
+                    class="list-group-item list-group-item-action">
+                    My Quotes
+                </button>
+
+                <button
+                    (click)="setStep('rewards')"
+                    type="button"
+                    [routerLinkActive]="['active']"
+                    [ngClass]="{'active': step === 'rewards'}"
+                    class="list-group-item list-group-item-action">
+                    <!--                        <i class="fa fa-fw menu-icon text-pink" [ngClass]="item.icon" *ngIf="item.icon"></i>-->
+                    Rewards
+                </button>
+
+
+                <button
+                    (click)="editUser()"
+                    type="button"
+                    [routerLinkActive]="['active']"
+                    [ngClass]="{'active': step === 'user-edit'}"
+                    class="list-group-item list-group-item-action">
+                    My Profile
+                </button>
+
+        </div>
+    </div>
+</div>
+

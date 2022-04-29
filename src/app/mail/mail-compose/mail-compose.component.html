@@ -1,0 +1,37 @@
+<div class="mail-box-header">
+    <a (click)="back()" class="btn btn-primary compose-mail mb-2"><i class="fa fa-chevron-left"></i> Back</a>
+    <span class="ml-3" style="font-size: 22px">New Message</span>
+
+</div>
+<div class="mail-box">
+
+    <div class="mail-body">
+        <div style="font-family: 'Spectral' !important; color: #263947!important;">
+            To:
+            <span *ngFor="let chatUser of message.recipient; let first = first"><span *ngIf="!first">, </span>{{chatUser.name}}</span>
+
+            <a *ngIf="user.accountType === 'supplier' || user.accountType === 'courier'" (click)="searchUsers()"
+               class="label label-warning ml-2">
+                + people
+            </a>
+<!--            <span *ngIf="user.accountType === 'customer' || user.accountType === 'trade'">Customer Services</span>-->
+        </div>
+
+        <div class="form-group row mt-3"><label class="col-sm-2 col-form-label">Subject:</label>
+            <div class="col-sm-10"><input type="text" class="form-control bordered" [(ngModel)]="message.name"></div>
+        </div>
+
+        <editor [(ngModel)]="message.content" apiKey="88ar931n5931tb0bgopl9jai12nrhu3gk3edqhxl0sp5to0e" [init]="tinyInit"></editor>
+
+        <div class="mt-2 text-right">
+            <button type="button" class="btn btn-primary btn-round" (click)="addChat()">Send</button>
+        </div>
+
+    </div>
+</div>
+
+<app-mail-user-search
+    [usersSelected]="message.recipient"
+    (addUser)="addUser($event)"
+    (removeUser)="removeUser($event)"
+    *ngIf="(overlays$ | async).mailUserSearch"></app-mail-user-search>
