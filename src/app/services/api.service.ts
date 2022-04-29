@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {throwError} from 'rxjs';
-import {HttpErrorResponse, HttpHeaders} from '@angular/common/http';
-import {AlertService} from './alert.service';
-import {Store} from '../store';
+import { Injectable } from '@angular/core';
+import { throwError } from 'rxjs';
+import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { AlertService } from './alert.service';
+import { Store } from '../store';
 
 @Injectable({
     providedIn: 'root'

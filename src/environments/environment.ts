@@ -4,9 +4,12 @@
 
 export const environment = {
   production: false,
-    imageUploadPath: 'https://api.ysdev.co.uk/',
-    apiPath: 'http://localhost:3000/',
-    socketPath: 'https://api.ysdev.co.uk/',
+  imageUploadPath: 'https://api.ysdev.co.uk/',
+  apiPath: 'https://api.ysdev.co.uk/',
+  socketPath: 'https://api.ysdev.co.uk/',
+  captureDebug: false,
+  domain: 'ys',
+  isDev: true
 };
 
 /*
