@@ -104,7 +104,6 @@ dist
 .tern-port
 
 # Ignoring generated css files
-*.css
 *.css.map
 
 .idea

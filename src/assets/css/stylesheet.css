@@ -1,0 +1,444 @@
+.main-content-container {
+    padding-top: 0;
+}
+.slider-text {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+.slider-text h1 {
+    color: white !important;
+    margin-bottom: 40px;
+    font-size: 32px;
+    line-height: 38px;
+    text-align: center;
+}
+
+.placeholder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #939ca3;
+    color: #3d4d59;
+    text-align: center;
+    background-image: url("https://api.ysdev.co.uk/cms/images/18bf54e10a1f58513a581038e1104fb97a3.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.placeholder h1 {
+    font-family: "Spectral" !important;
+    color: white !important;
+    font-size: 42px;
+    line-height: 50px;
+    margin-bottom: 40px;
+}
+.placeholder p {
+    font-family: "Spectral" !important;
+    color: white !important;
+    font-size: 16px;
+    line-height: 40px;
+    opacity: 1;
+}
+
+.op-50 {
+    opacity: 0.5;
+}
+
+#header .main-menu {
+    padding-left: 82px;
+    padding-right: 82px;
+    background-color: #fff;
+}
+#header .header {
+    font-family: "Spectral" !important;
+    margin-bottom: 5px;
+    color: #263847;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: left;
+    font-weight: 600;
+}
+#header .sub-header {
+    margin-bottom: 0;
+    color: #263847;
+    font-size: 11px;
+    line-height: 13.96px;
+    opacity: 0.6;
+    text-align: left;
+}
+
+
+#home-trust {
+    font-family: "Spectral" !important;
+    height: 235px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#home-trust .home-feature-icon {
+    text-align: center;
+    width: 290px;
+}
+#home-trust .home-feature-icon-image {
+    height: 55px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+}
+#home-trust .home-feature-icon-title {
+    margin: 0 auto;
+    width: 70%;
+}
+
+#home-trust .home-feature-icon p {
+    font-family: "Spectral" !important;
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #263847;
+    line-height: 30px;
+    font-weight: 700;
+}
+#home-trust img {
+    height: 110px;
+}
+#home-trust .icon-holder {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.worked-with-image {
+    text-align: center;
+    /* height: 86px;
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center center; */
+}
+.worked-with-image img {
+    height: 50px;
+}
+
+#product-group-preview .header-holder {
+    height: 115px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#product-group-preview .group-preview-container {
+    padding: 35px 45px 73px 45px;
+    background-color: #f0f1f2;
+}
+
+#product-group-preview h1 {
+    font-family: "Spectral" !important;
+    font-size: 20px;
+    margin-bottom: 0;
+    font-weight: 500;
+}
+#product-group-preview .group-preview-tile {
+    text-align: center;
+    margin-bottom: 20px;
+}
+#product-group-preview .group-preview-tile p.group-name {
+    font-family: "Spectral" !important;
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 19px;
+    margin-bottom: 18px;
+}
+
+#product-group-preview .group-preview-tile p.group-description {
+    font-size: 14px;
+    height: 34px;
+    overflow: hidden;
+    opacity: 0.6;
+    color: #263847 !important;
+    line-height: 16.28px;
+}
+#product-group-preview .group-price {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+#product-group-preview .price {
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+#quality-etched {
+}
+#quality-etched .row {
+    height: 780px;
+}
+#quality-etched .text-holder {
+    padding: 0 20px;
+}
+#quality-etched h4 {
+    font-family: "Spectral" !important;
+    font-size: 32px;
+    line-height: 48px;
+    margin-bottom: 10px;
+    font-weight: 400;
+    color: white !important;
+}
+#quality-etched p {
+    font-size: 16px;
+    line-height: 32px;
+    margin-bottom: 40px;
+    color: white;
+}
+
+#promo-case-study {
+    padding: 115px 70px;
+}
+#promo-case-study .row {
+}
+#promo-case-study .text-holder {
+    padding: 0 20px;
+}
+#promo-case-study h4 {
+    font-family: "Spectral" !important;
+    font-size: 32px;
+    line-height: 48px;
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+#promo-case-study p {
+    font-size: 16px;
+    line-height: 32px;
+    margin-bottom: 40px;
+}
+
+#promo-case-study small {
+    opacity: 0.6;
+}
+
+#home-discover {
+    height: 244px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#home-discover h3 {
+    font-family: "Spectral" !important;
+    font-size: 21px;
+    line-height: 25px;
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+#footer {
+    background-color: #263847;
+    color: #fff;
+    min-height: 200px;
+    padding-top: 0;
+}
+
+section#footer a {
+    color: white !important;
+    padding-top: 0;
+}
+#footer .footer-content {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 10px 30px;
+    height: calc(100% - 60px);
+}
+#footer .footer-content .border-left {
+    border-left: 1px solid #ccc;
+}
+#footer h2 {
+    color: #fff !important;
+}
+#footer .footer-sub-menu {
+    padding-top: 56px;
+    padding-bottom: 56px;
+    background-color: #324350;
+    color: white !important;
+    opacity: 0.5;
+    font-size: 12px;
+}
+
+#footer.footer-content {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 10px 20px;
+    height: calc(100% - 60px);
+}
+#footer.footer-content .border-left {
+    border-left: 1px solid #ccc;
+}
+#footer h2 {
+    color: #fff !important;
+    padding-top: 0;
+    padding-bottom: 10px;
+    font-size: 18px;
+}
+#footer .footer-sub-menu {
+    background-color: #324350;
+    color: white !important;
+    opacity: 0.5;
+    font-size: 12px;
+    padding: 57px 30px;
+}
+
+#footer .footer-menu {
+    margin-bottom: 10px;
+}
+#footer .footer-menu a {
+    opacity: 0.5;
+    font-size: 14px;
+    line-height: 25px;
+}
+#footer .rated {
+    opacity: 0.6;
+    font-size: 12px;
+}
+#footer .contact-tel {
+    font-family: "Spectral" !important;
+    font-size: 18px;
+    line-height: 30px;
+}
+#footer .contact-email {
+    font-family: "Spectral" !important;
+    font-size: 18px;
+    line-height: 30px;
+}
+#footer .payment-method {
+    max-width: 50px;
+}
+#footer .form-check {
+    padding-left: 20px;
+    color: #fff;
+    opacity: 0.6;
+}
+#footer .form-control {
+    background-color: #fff;
+    border-radius: 0;
+    border: none;
+    margin-top: 35px;
+    margin-bottom: 27px;
+    height: calc(2.2em + 0.5rem + 2px);
+    border-radius: 10px;
+}
+#footer address {
+    line-height: 23px;
+}
+#footer .border-left {
+    border-left: 1px solid #596771 !important;
+}
+/*product types*/
+
+#product-type-preview .header-holder {
+    height: 134px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#product-type-preview .type-preview-container {
+    padding: 0 80px 55px 80px;
+}
+
+#product-type-preview h1 {
+    font-family: "Spectral" !important;
+    font-size: 21px;
+    margin-bottom: 0;
+}
+#product-type-preview .type-preview-tile {
+    text-align: center;
+    margin-bottom: 100px;
+}
+#product-type-preview .type-preview-tile p.type-name {
+    font-family: "Spectral" !important;
+    font-size: 20px;
+}
+
+#product-type-preview .type-preview-tile p.type-description {
+    font-size: 14px;
+    height: 40px;
+    overflow: hidden;
+}
+#product-type-preview .type-price {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+#product-type-preview .price {
+    font-size: 23px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+/*Trustpilot slider*/
+
+.trustpilot-slider-tile {
+    text-align: center;
+}
+.trustpilot-header {
+    font-family: "Spectral" !important;
+    font-size: 20px;
+    line-height: 30px;
+}
+.trustpilot-review {
+    font-size: 16px;
+    line-height: 32px;
+    margin-bottom: 30px;
+}
+.trustpilot-slider-image {
+    position: absolute;
+    bottom: 50px;
+    right: calc(17% - 60px);
+}
+p.cta {
+    line-height: 25px;
+    font-size: 21px;
+}
+.user-account-container {
+    padding: 0;
+    margin-left: 0;
+    width: 100%;
+}
+.dashboard-icon {
+    font-size: 24px;
+}
+.tile-header {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+.tile-header a {
+    font-size: 20px;
+}
+.dashboard-reward-points-title {
+    font-size: 20px;
+}
+.dashboard-reward-points-value {
+    font-size: 24px;
+}
+.dashboard-rewards-slider-value {
+    font-size: 11px;
+}
+
+#meet-the-team {
+    padding: 50px;
+}
+#meet-the-team h1 {
+    font-size: 22px;
+}
+#meet-the-team .tile {
+    text-align: center;
+}
+
+#meet-the-team p.name {
+    text-align: center;
+    font-family: "Spectral" !important;
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+#meet-the-team p.job-title {
+    text-align: center;
+    font-family: "Spectral" !important;
+    font-size: 20px;
+    opacity: 0.6;
+}

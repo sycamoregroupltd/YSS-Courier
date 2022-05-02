@@ -1,0 +1,12 @@
+div {
+    background-color: #3d4d59;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+}
+
+:host {
+    display: block;
+    padding-top: 5rem;
+}
+

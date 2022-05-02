@@ -1,0 +1,222 @@
+.modal-full-screen {
+    width: 90%;
+    height: 90%;
+    position: fixed;
+    top: 5%;
+    left: 5%;
+    z-index: 9999; /* Stay on top */
+    padding-bottom: 20px;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    overflow-y: scroll;
+    transition: 0.1s;
+    -webkit-box-shadow: -3px 0px 6px -2px rgba(168,168,168,1);
+    -moz-box-shadow: -3px 0px 6px -2px rgba(168,168,168,1);
+    box-shadow: -3px 0px 6px -2px rgba(168,168,168,1);
+    background-color: #F0F1F2!important;
+}
+.modal-70 {
+    width: 70%;
+    height: 85%;
+    position: fixed;
+    top: 5%;
+    left: 15%;
+}
+.modal-white-out {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999; /* Stay on top */
+    padding-bottom: 0;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    overflow-y: auto;
+    transition: 0.1s;
+    -webkit-box-shadow: -3px 0px 6px -2px rgba(168,168,168,1);
+    -moz-box-shadow: -3px 0px 6px -2px rgba(168,168,168,1);
+    box-shadow: -3px 0px 6px -2px rgba(168,168,168,1);
+    background-color: #FFF!important;
+}
+
+.modal-full-screen .page-header-banner {
+    background-color: #475763;
+    text-align: center;
+    padding: 15px;
+}
+
+.modal-full-screen .page-header-banner h1, modal-full-screen .page-header-banner h3 {
+    color: white!important;
+    font-size: 20px;
+    font-weight: 400;
+    font-family: 'Spectral' !important;
+    letter-spacing: -0.5px;
+}
+
+
+
+.modal-full-screen a:hover, .offcanvas a:focus{
+    color: #666;
+}
+.modal-full-screen .closebtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 25px;
+    z-index: 999;
+    background-color: #263947;
+    height: 30px;
+    width: 30px;
+    color: white;
+    text-align: center;
+    line-height: 27px;
+    padding: 0;
+}
+
+.modal-white-out .closebtn {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 80px;
+    z-index: 999;
+    color: #263947;
+    text-align: center;
+}
+
+.defaultAside {
+    height: 100%; /* 100% Full-height */
+    width: 590px; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 9999; /* Stay on top */
+    top: 0;
+    right: -590px;
+    padding-bottom: 20px;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    overflow-y: scroll;
+    transition: 0.1s;
+    -webkit-box-shadow: -3px 0px 6px -2px rgba(168,168,168,1);
+    -moz-box-shadow: -3px 0px 6px -2px rgba(168,168,168,1);
+    box-shadow: -3px 0px 6px -2px rgba(168,168,168,1);
+    background-color: #F0F1F2!important;
+}
+.aside-left {
+    left: 0;
+    right: unset;
+}
+.defaultAside .closebtn {
+    padding: 10px;
+    text-decoration: none;
+    font-size: 22px;
+    color: #666;
+    display: block;
+    transition: 0.1s
+}
+.defaultAside a:hover, .offcanvas a:focus{
+    color: #666;
+}
+.defaultAside .closebtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 25px;
+    z-index: 999;
+    background-color: #263847;
+    height: 30px;
+    width: 30px;
+    color: white;
+    text-align: center;
+    line-height: 27px;
+    padding: 0;
+}
+
+.defaultAside .page-header-banner {
+    background-color: #475763;
+    text-align: center;
+    padding: 15px;
+}
+.defaultAside .page-header-banner h1, .page-header-banner h3 {
+    color: white!important;
+    font-size: 40px;
+    font-weight: 400;
+    font-family: 'Spectral' !important;
+    letter-spacing: -0.5px;
+}
+
+.aside-open, .aside-open-lg {
+    width: 95%;
+}
+.aside-open-full {
+    width: 100%;
+}
+
+.col4 {
+    width: 33%;
+    float: left;
+}
+
+.slide-box-show {
+    /* right: 0; */
+    animation: slide-in 0.5s forwards;
+}
+
+@keyframes slide-in {
+    100% {
+        right: 0;
+    }
+}
+
+
+@media (min-width: 300px) {
+    .aside-open, .aside-open-lg {
+        width: 98%;
+    }
+    h2.aside {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+}
+@media (min-width: 576px) {
+    .aside-open, .aside-open-lg {
+        width: 90%;
+    }
+    h2.aside {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+}
+
+@media (min-width: 768px) {
+    .aside-open {
+        width: 500px;
+    }
+    .aside-open-lg {
+        width: 700px;
+    }
+    h2.aside {
+        font-size: 26px;
+        margin-bottom: 20px;
+    }
+}
+@media (min-width: 992px) {
+    .aside-open {
+        width: 500px;
+    }
+    .aside-open-lg {
+        width: 800px;
+    }
+    h2.aside {
+        font-size: 26px;
+        margin-bottom: 20px;
+    }
+}
+@media (min-width: 1200px) {
+    .aside-open {
+        width: 590px;
+    }
+    .aside-open-lg {
+        width: 800px;
+    }
+    h2.aside {
+        font-size: 26px;
+        margin-bottom: 20px;
+    }
+}

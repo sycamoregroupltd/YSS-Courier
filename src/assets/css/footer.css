@@ -1,0 +1,5 @@
+#footer .form-control::placeholder {
+    color: #6c757d;
+    opacity: 0.6;
+    font-size: 12px;
+}

@@ -1,0 +1,24 @@
+.rating-holder {
+
+}
+.rating-holder h3 {
+    font-weight: 400;
+    font-family: 'Spectral' !important;
+    letter-spacing: -0.5px;
+    font-size: 20px;
+}
+.rating-box {
+    height: 25px;
+    width: 25px;
+    /*background-color: #929CA3;*/
+    color: #eee;
+    display: inline-block;
+    text-align: center;
+    font-size: 20px;
+    margin-right: 3px;
+    line-height: 25px;
+}
+.rating-box.active {
+    /*background-color: #212529;*/
+    color: #eee;
+}

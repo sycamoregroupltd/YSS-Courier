@@ -1,0 +1,200 @@
+.basket-container {
+    padding: 0 5px;
+}
+.basket-nav {
+    display: flex;
+    justify-content: space-between !important;
+    padding: 30px;
+}
+.basket-nav h1 {
+    line-height: 2.2;
+    margin-bottom: 0;
+}
+.basket-col-container {
+    display: flex;
+}
+.basket-col-left {
+    width: 65%;
+}
+.basket-col-right {
+    width: 35%;
+}
+.basket-item-row {
+    display: flex;
+    justify-content: space-between !important;
+    border-top: 1px solid #ccc;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin-right: 35px;
+}
+.basket-item-row .detail {
+    position: relative;
+    font-size: 16px;
+}
+.basket-item-row .basket-delete {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 32px;
+    font-weight: 300;
+    color: #999;
+    opacity: 0.6;
+}
+
+.basket-item-row .img {
+    background-size: contain;
+    background-color: white;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 361px;
+    height: 361px;
+    margin-right: 40px;
+}
+.basket-item-row .price {
+    color: #263847;
+    font-family: Spectral;
+    font-size: 24px;
+    line-height: 36px;
+    text-align: left;
+}
+.basket-item-row .title {
+    color: #263847;
+    font-family: Spectral;
+    font-size: 24px;
+    line-height: 36px;
+    text-align: left;
+}
+.basket-col-container .basket-totals {
+    padding: 40px;
+    height: 100%;
+}
+
+.basket-no-items {
+    text-align: center;
+    padding: 60px;
+    margin: 50px auto;
+    max-width: 500px;
+}
+
+.basket-row {
+    border-top: 1px solid #ccc;
+    padding-top: 37px;
+    padding-bottom: 25px;
+}
+.basket-row-item-detail {
+    padding-top: 15px;
+}
+.total-bar {
+    border-top: 1px solid #212529;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.billing-image-preview {
+    text-align: center;
+}
+.billing-image-preview img {
+    width: 150px;
+}
+.basket-sub-data {
+    width: 100%;
+    padding: 0;
+    color: #263847;
+    font-size: 16px;
+    line-height: 32px;
+    text-align: left;
+}
+.basket-sub-title {
+    display: inline-block;
+    width: 101px;
+    margin-right: 70px;
+    font-size: 14px;
+}
+.basket-sub-value {
+    display: inline-block;
+    width: calc(100% - 172px);
+    font-size: 14px;
+}
+
+.basket-totals-breakdown {
+    background-color: #263847 !important;
+    padding: 50px 37px;
+}
+.basket-detail-title {
+    font-family: "Spectral" !important;
+    color: #ffffff;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: left;
+    padding-bottom: 30px;
+}
+.basket-detail-total {
+    font-family: "Spectral" !important;
+    color: #ffffff;
+    font-family: Spectral;
+    font-size: 32px;
+    line-height: 48.7px;
+    text-align: right;
+}
+.basket-product-name {
+    font-family: "Spectral" !important;
+    color: #263847 !important;
+    text-decoration: none !important;
+    font-size: 18px !important;
+}
+.sign-in-reminder {
+    color: #263947;
+    background-color: #faff5d;
+    border-color: #faff5d;
+    padding: 20px;
+    margin: 15px 0;
+}
+.sign-in-reminder p {
+    font-size: 16px;
+    line-height: 32px;
+    margin-bottom: 0;
+}
+.billing-container {
+    border-top: 1px solid #ccc;
+    padding: 0;
+}
+
+.billing-info-content {
+    padding: 15px;
+}
+.billing-info-title {
+    padding: 45px 0;
+    border-bottom: 1px solid #ccc;
+}
+.billing-info-title h1 {
+    font-size: 32px;
+    font-weight: bold;
+}
+.billing-info-subtitle {
+    font-family: "Spectral" !important;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+.order-info-holder {
+    padding: 0 40px 25px 40px;
+    background-color: #ffffff;
+}
+.order-info-title {
+    padding: 45px 0;
+}
+.order-info-title h1 {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.billing-info-content .col-form-label {
+    padding-top: calc(0.375rem + 1px);
+    padding-bottom: calc(0.375rem + 1px);
+    margin-bottom: 0;
+    font-size: inherit;
+    line-height: 2;
+    font-size: 16px;
+}
+.payment-cards {
+    max-width: 100%;
+}

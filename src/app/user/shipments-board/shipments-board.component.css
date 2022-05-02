@@ -1,0 +1,53 @@
+.board-col-group {
+    margin: 2px;
+    flex-basis: auto;
+    flex-grow: 1;
+    border: 1px solid #CCC;
+}
+.board-col-group .title {
+    font-size: 16px;
+    text-align: center;
+    background-color: #ccc;
+    color: #3d4d59!important;
+    width: 100%;
+    padding: 15px;
+}
+
+.board-col {
+    margin: 2px;
+    flex-basis: 100%;
+    flex-grow: 0;
+}
+.board-col .title {
+    font-size: 15px;
+    text-align: center;
+    background-color: #3d4d59;
+    color: white!important;
+    width: 100%;
+    padding: 15px 10px;
+}
+.board-col .card-holder {
+    /*border: 1px solid #CCC;*/
+}
+.card {
+    margin: 10px 3px!important;
+    padding: 5px;
+    border: none;
+    border-radius: 0;
+    background-color: #fff;
+    position: relative;
+}
+.colDanger {
+    color: rgba(240, 52, 52, 0.5)
+}
+p.sm {
+    font-size: 12px;
+}
+p.md {
+    font-size: 14px;
+}
+p.lg {
+    font-size: 16px;
+    font-weight: bold;
+}
+

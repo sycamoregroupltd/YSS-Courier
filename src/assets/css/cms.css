@@ -1,0 +1,133 @@
+.page-intro {
+    font-family: 'Spectral' !important;
+    height: 385px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    line-height: 30px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+.page-intro h1 {
+    color: white!important;
+    font-size: 56px;
+    font-weight: 300;
+}
+.page-intro .text-box {
+    width: 50%;
+    margin: 30px auto;
+
+}
+.page-intro .text-box p {
+    font-size: 20px;
+    font-weight: normal;
+}
+.container-half {
+    width: 50%;
+    margin: 0 auto;
+}
+.cms-content h4 {
+    text-align: center;
+    font-size: 22px;
+    font-family: 'Spectral' !important;
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #495057;
+    background-color: #fff;
+    border-color: #fff;
+}
+.nav-tabs .nav-link {
+    border: 1px solid transparent;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    background-color: #68747E;
+}
+
+.cms-image-float-left {
+    padding: 3px;
+    border: 1px solid #eee;
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+.cms-image-float-right {
+    padding: 3px;
+    border: 1px solid #eee;
+    float: right;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+.px-6 {
+    padding: 3.5rem!important;
+}
+.py-6 {
+    padding-top: 3.5rem!important;
+    padding-bottom: 3.5rem!important;
+}
+.px-7 {
+    padding: 5.5rem!important;
+}
+.py-7 {
+    padding-top: 5.5rem!important;
+    padding-bottom: 5.5rem!important;
+}
+.px-8 {
+    padding: 7.5rem!important;
+}
+.py-8 {
+    padding-top: 7.5rem!important;
+    padding-bottom: 7.5rem!important;
+}
+
+.contentColumn {
+    width: 50%;
+    margin: 0 auto;
+}
+.grid-tile {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 410px;
+}
+.grid-tile h1 {
+    font-size: 30px;
+}
+.grid-tile h2 {
+    font-size: 25px;
+}
+
+.px-120 {
+    padding: 120px!important;
+}
+.py-120 {
+    padding-top: 120px!important;
+    padding-bottom: 120px!important;
+}
+.px-100 {
+    padding: 100px!important;
+}
+.py-100 {
+    padding-top: 100px!important;
+    padding-bottom: 100px!important;
+}
+.contact-cta {
+    background-image: url('https://api.ysdev.co.uk/cms/images/18bf54e10a1f58513a581038e1104fb97a3.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 405px;
+    color: white!important;
+    font-size: 34px;
+    text-align: center;
+    font-weight: 400;
+}
+.contact-cta h2 {
+    font-size: 32px!important;
+    line-height: 48px;
+    color: white!important;
+    font-weight: 400;
+}
+

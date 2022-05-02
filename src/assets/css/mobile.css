@@ -1,0 +1,340 @@
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+    body {
+        padding: 0 50px;
+    }
+}
+
+/* tablet :horizontal*/
+@media (min-width: 992px) {
+    body {
+        padding: 0;
+    }
+    .data-container {
+        background-color: #fff;
+        /*margin: 50px;*/
+        padding: 30px;
+    }
+
+    .btn {
+        padding: 12px 45px;
+        max-height: 50px;
+    }
+
+    #header .main-menu {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    .container-menu {
+        padding-right: 0;
+        padding-left: 0;
+    }
+    .navbar-expand-lg .navbar-nav .nav-link {
+        padding-right: 0;
+        padding-left: 0;
+    }
+    .promoBarOption {
+        min-width: 33%;
+        font-size: 13px;
+    }
+    .product-detail-container {
+        padding: 10px;
+    }
+    .main-content-container {
+        padding-top: 175px;
+    }
+    .user-account-container {
+        padding: 50px;
+        margin-left: 252px;
+        width: calc(100% - 252px);
+    }
+    .dashboard-reward-points-title {
+        font-size: 22px;
+    }
+    .dashboard-reward-points-value {
+        font-size: 45px;
+    }
+    .dashboard-rewards-slider-value {
+        font-size: 14px;
+    }
+}
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 1028px) {
+    #header .main-menu {
+        padding-left: 70px;
+        padding-right: 70px;
+        background-color: #fff;
+    }
+    .product-detail-container {
+        padding: 50px;
+    }
+    .container-menu {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+    .promoBarOption {
+        min-width: 25%;
+        font-size: 14px;
+    }
+
+    .btn-round {
+        /* border-radius: 45px;
+        padding: 15px 45px;
+        max-height: unset; */
+    }
+    .placeholder {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: #939ca3;
+        color: #3d4d59;
+    }
+    .placeholder h1 {
+        font-family: "Spectral" !important;
+        color: white !important;
+        font-size: 55px;
+        margin-bottom: 40px;
+    }
+    .placeholder p {
+        font-family: "Spectral" !important;
+        color: white !important;
+        font-size: 20px;
+        line-height: 30px;
+        opacity: 0.6;
+    }
+    .navbar-expand-lg .navbar-nav .nav-link {
+        padding-right: 0.5rem;
+        padding-left: 0.5rem;
+    }
+    .main-content-container {
+        padding-top: 77px;
+    }
+    .slider-text {
+        width: 715px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .slider-text h1 {
+        color: white !important;
+        margin-bottom: 32px;
+        font-size: 53px;
+        line-height: 60px;
+        text-align: center;
+        letter-spacing: -0.8px;
+        font-weight: 300;
+    }
+    .worked-with-image {
+        text-align: center;
+        /* height: 146px;
+        background-repeat: no-repeat;
+        background-size: auto;
+        background-position: center center; */
+    }
+    .worked-with-image img {
+        height: 50px;
+    }
+    .bg-image {
+        height: 280px;
+        width: 100%;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+    }
+
+    #product-group-preview .group-preview-container {
+        padding: 0 80px 73px 80px;
+        background-color: #fff;
+    }
+    #product-group-preview .price {
+        font-size: 20px;
+        font-weight: bold;
+        margin-left: 10px;
+    }
+    .contact-cta {
+        min-height: 437px;
+        color: white !important;
+        font-size: 34px;
+        text-align: center;
+        font-weight: 400;
+    }
+    p.cta {
+        line-height: 25px;
+        font-size: 21px;
+    }
+    #home-discover h3 {
+        font-family: "Spectral" !important;
+        font-size: 20px;
+        margin-bottom: 20px;
+        font-weight: 400;
+    }
+    #footer {
+        background-color: #263847;
+        color: #fff;
+        min-height: 200px;
+        padding-top: 13px;
+    }
+    #footer.footer-content {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        padding: 10px 30px;
+        height: calc(100% - 60px);
+    }
+    #footer .form-check {
+        padding-left: 20px;
+        color: #c3ebff;
+        opacity: 1;
+    }
+    #footer.footer-sub-menu {
+        padding: unset;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        background-color: #324350;
+        color: white !important;
+    }
+    .product-group-detail {
+        text-align: center;
+        margin-top: 80px;
+        background-color: #fff;
+    }
+    .product-group-detail h1 {
+        font-size: 30px;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    .product-group-detail p.group-description {
+        font-size: 14px;
+        margin-bottom: 50px;
+    }
+    #product-group-preview .group-price {
+        margin-top: 17px;
+        margin-bottom: 30px;
+        font-size: 14px;
+    }
+    .product-group-detail p.group-description {
+        font-size: 14px;
+        margin-bottom: 50px;
+    }
+
+    .product-detail-container {
+        padding: 50px;
+    }
+    .product-detail-container h2 {
+        font-size: 1.5rem;
+    }
+    .product-detail-container h1 {
+        font-size: 32px;
+    }
+    .product-detail-container h3 {
+        font-size: 12px;
+        opacity: 0.5;
+    }
+    .product-description-holder {
+        padding: 30px;
+        background-color: #dfe1e3;
+    }
+    .product-options-container {
+        padding: 1.5rem !important;
+        background-color: #fff;
+    }
+    .product-guides {
+        margin-bottom: 0;
+        font-size: 12px;
+        margin-left: 40px;
+        text-align: center;
+    }
+    .product-guides img {
+        height: 62px;
+        width: 62px;
+        margin-bottom: 5px;
+    }
+
+    .main-image {
+        position: relative;
+        height: 650px;
+        width: 100%;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+    }
+
+    .basket-container {
+        padding: 0 40px;
+    }
+    .basket-product-name {
+        font-family: "Spectral" !important;
+        color: #263847 !important;
+        text-decoration: none !important;
+        font-size: 20px !important;
+        font-weight: 500;
+    }
+    .basket-product-price {
+        font-family: "Spectral" !important;
+        color: #263847 !important;
+        font-size: 20px !important;
+        margin-bottom: 0;
+    }
+    .basket-sub-total {
+        font-family: "Spectral" !important;
+        color: #263847 !important;
+        text-decoration: none !important;
+        font-size: 20px !important;
+        font-weight: 500;
+    }
+    .basket-sub-total-price {
+        font-family: "Spectral" !important;
+        color: #263847 !important;
+        text-decoration: none !important;
+        font-size: 32px !important;
+        font-weight: 500;
+    }
+    /* .basket-sub-data {
+        width: 100%;
+        font-size: 22px;
+        padding: 15px;
+    }
+    .basket-detail-title {
+        font-family: "Spectral" !important;
+        color: white;
+        font-size: 22px;
+        padding: 30px 0;
+    }
+    .basket-detail-total {
+        font-family: "Spectral" !important;
+        color: white;
+        font-size: 30px;
+        padding: 20px 0;
+        text-align: right;
+    }
+    .basket-delete {
+        font-size: 30px;
+        font-weight: 300;
+        color: #999;
+    } */
+}
+
+/*Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+    .site-container {
+        max-width: 100%;
+        margin: 0 auto;
+        background-color: #fff;
+        height: 100%;
+    }
+
+    .billing-container {
+        border-top: 1px solid #ccc;
+        padding: 0 70px 0 70px;
+    }
+    .billing-info-content {
+        padding-left: 0;
+        padding-right: 115px;
+        padding-top: 32px;
+    }
+    .payment-cards {
+        max-width: 80%;
+    }
+}
