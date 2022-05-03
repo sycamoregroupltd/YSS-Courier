@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { OverlayService } from '../../services/overlay.service';
 import { Store } from '../../store';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
     selector: 'app-notifications-list',

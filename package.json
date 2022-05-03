@@ -18,7 +18,7 @@
     "@angular/common": "~13.3.5",
     "@angular/compiler": "~13.3.5",
     "@angular/core": "~13.3.5",
-    "@angular/fire": "^6.0.0",
+    "@angular/fire": "^7.3.0",
     "@angular/forms": "~13.3.5",
     "@angular/google-maps": "^9.2.1",
     "@angular/material": "^13.3.5",
@@ -40,7 +40,7 @@
     "ngx-dropzone-wrapper": "^7.2.1",
     "ngx-socket-io": "^3.0.1",
     "ngx-toastr": "^12.0.1",
-    "rxjs": "~6.5.4",
+    "rxjs": "~7.5.5",
     "saturn-datepicker": "^8.0.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.5"
