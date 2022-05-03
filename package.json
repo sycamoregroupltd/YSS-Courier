@@ -43,11 +43,11 @@
     "rxjs": "~7.5.5",
     "saturn-datepicker": "^8.0.5",
     "tslib": "^2.0.0",
-    "zone.js": "~0.11.5"
+    "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.1102.19",
-    "@angular/cli": "~11.2.19",
+    "@angular-devkit/build-angular": "~12.2.17",
+    "@angular/cli": "~12.2.17",
     "@angular/compiler-cli": "~13.3.5",
     "@angular/language-service": "~13.3.5",
     "@types/google-maps": "^3.2.2",
