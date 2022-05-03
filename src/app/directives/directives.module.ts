@@ -15,10 +15,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
     ],
     exports: [
         AwesomeTooltipDirective,
-    ],
-    entryComponents: [
-        AwesomeTooltipComponent,
-    ],
+    ]
 })
 export class DirectivesModule {
 }
