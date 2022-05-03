@@ -7,7 +7,9 @@ import { AuthGuard } from './guards/auth-guard';
 import { AccountConfirmationComponent } from './user/account-confirmation/account-confirmation.component';
 import { SignoutComponent } from './auth/signout/signout.component';
 import { PasswordResetComponent } from './auth/password-reset/password-reset.component';
-import { PasswordResetConfirmationComponent } from './auth/password-reset-confirmation/password-reset-confirmation.component';
+import {
+    PasswordResetConfirmationComponent
+} from './auth/password-reset-confirmation/password-reset-confirmation.component';
 import { PasswordSetComponent } from './auth/password-set/password-set.component';
 import { PasswordSetConfirmationComponent } from './auth/password-set-confirmation/password-set-confirmation.component';
 import { UserGuard } from './guards/user-guard';
@@ -39,25 +41,118 @@ const routes: Routes = [
     { path: 'register/:referralCode', component: RegisterComponent, pathMatch: 'full' },
     { path: 'account/confirmation', component: AccountConfirmationComponent, pathMatch: 'full' },
     { path: 'signout', canActivate: [AuthGuard, UserGuard], component: SignoutComponent, pathMatch: 'full' },
-    { path: 'account', canActivate: [AuthGuard, UserGuard], component: AccountComponent, pathMatch: 'full', data: { protected: true } },
-    { path: 'account/users', canActivate: [AuthGuard, UserGuard], component: AccountUsersComponent, pathMatch: 'full', data: { protected: true } },
-    { path: 'account/users/:id', canActivate: [AuthGuard, UserGuard], component: UserEditComponent, pathMatch: 'full', data: { protected: true } },
-    { path: 'account/orders', canActivate: [AuthGuard, UserGuard], component: AccountOrdersComponent, pathMatch: 'full', data: { protected: true } },
-    { path: 'account/orders/:id', canActivate: [AuthGuard, UserGuard], component: AccountOrderOverviewComponent, pathMatch: 'full', data: { protected: true } },
-    { path: 'account/shipments/:id', canActivate: [AuthGuard, UserGuard], component: AccountShipmentOverviewComponent, pathMatch: 'full', data: { protected: true } },
-    { path: 'account/shipments-board', canActivate: [AuthGuard, UserGuard], component: ShipmentsBoardComponent, pathMatch: 'full', data: { protected: true } },
-    { path: 'account/orderdetails', canActivate: [AuthGuard, UserGuard], component: OrderDetailsComponent, pathMatch: 'full', data: { protected: true } },
-    { path: 'account/orderdetails/:id', canActivate: [AuthGuard, UserGuard], component: AccountOrderOverviewComponent, pathMatch: 'full', data: { protected: true } },
-    { path: 'account/ordersamples', canActivate: [AuthGuard, UserGuard], component: OrderSamplesComponent, pathMatch: 'full', data: { protected: true } },
-    { path: 'account/products', canActivate: [AuthGuard, UserGuard], component: AccountProductsComponent, pathMatch: 'full', data: { protected: true } },
-    { path: 'account/payments', canActivate: [AuthGuard, UserGuard], component: AccountPaymentsComponent, pathMatch: 'full', data: { protected: true } },
+    {
+        path: 'account',
+        canActivate: [AuthGuard, UserGuard],
+        component: AccountComponent,
+        pathMatch: 'full',
+        data: { protected: true }
+    },
+    {
+        path: 'account/users',
+        canActivate: [AuthGuard, UserGuard],
+        component: AccountUsersComponent,
+        pathMatch: 'full',
+        data: { protected: true }
+    },
+    {
+        path: 'account/users/:id',
+        canActivate: [AuthGuard, UserGuard],
+        component: UserEditComponent,
+        pathMatch: 'full',
+        data: { protected: true }
+    },
+    {
+        path: 'account/orders',
+        canActivate: [AuthGuard, UserGuard],
+        component: AccountOrdersComponent,
+        pathMatch: 'full',
+        data: { protected: true }
+    },
+    {
+        path: 'account/orders/:id',
+        canActivate: [AuthGuard, UserGuard],
+        component: AccountOrderOverviewComponent,
+        pathMatch: 'full',
+        data: { protected: true }
+    },
+    {
+        path: 'account/shipments/:id',
+        canActivate: [AuthGuard, UserGuard],
+        component: AccountShipmentOverviewComponent,
+        pathMatch: 'full',
+        data: { protected: true }
+    },
+    {
+        path: 'account/shipments-board',
+        canActivate: [AuthGuard, UserGuard],
+        component: ShipmentsBoardComponent,
+        pathMatch: 'full',
+        data: { protected: true }
+    },
+    {
+        path: 'account/orderdetails',
+        canActivate: [AuthGuard, UserGuard],
+        component: OrderDetailsComponent,
+        pathMatch: 'full',
+        data: { protected: true }
+    },
+    {
+        path: 'account/orderdetails/:id',
+        canActivate: [AuthGuard, UserGuard],
+        component: AccountOrderOverviewComponent,
+        pathMatch: 'full',
+        data: { protected: true }
+    },
+    {
+        path: 'account/ordersamples',
+        canActivate: [AuthGuard, UserGuard],
+        component: OrderSamplesComponent,
+        pathMatch: 'full',
+        data: { protected: true }
+    },
+    {
+        path: 'account/products',
+        canActivate: [AuthGuard, UserGuard],
+        component: AccountProductsComponent,
+        pathMatch: 'full',
+        data: { protected: true }
+    },
+    {
+        path: 'account/payments',
+        canActivate: [AuthGuard, UserGuard],
+        component: AccountPaymentsComponent,
+        pathMatch: 'full',
+        data: { protected: true }
+    },
     { path: 'account/areas', canActivate: [AuthGuard, UserGuard], component: AreasCoveredComponent, pathMatch: 'full' },
     { path: 'account/mail', canActivate: [AuthGuard, UserGuard], component: MailGroupsComponent, pathMatch: 'full' },
     { path: 'account/requests', canActivate: [AuthGuard, UserGuard], component: RequestsComponent, pathMatch: 'full' },
-    { path: 'account/rewards', canActivate: [AuthGuard, UserGuard], component: RewardsListComponent, pathMatch: 'full' },
-    { path: 'account/couriers', canActivate: [AuthGuard, UserGuard], component: SupplierCouriersComponent, pathMatch: 'full', data: { protected: true } },
-    { path: 'account/casestudies', canActivate: [AuthGuard, UserGuard], component: CaseStudiesComponent, pathMatch: 'full' },
-    { path: 'account/casestudies/:id', canActivate: [AuthGuard, UserGuard], component: CaseStudyComponent, pathMatch: 'full' },
+    {
+        path: 'account/rewards',
+        canActivate: [AuthGuard, UserGuard],
+        component: RewardsListComponent,
+        pathMatch: 'full'
+    },
+    {
+        path: 'account/couriers',
+        canActivate: [AuthGuard, UserGuard],
+        component: SupplierCouriersComponent,
+        pathMatch: 'full',
+        data: { protected: true }
+    },
+    {
+        path: 'account/casestudies',
+        canActivate: [AuthGuard, UserGuard],
+        component: CaseStudiesComponent,
+        pathMatch: 'full'
+    },
+    {
+        path: 'account/casestudies/:id',
+        canActivate: [AuthGuard, UserGuard],
+        component: CaseStudyComponent,
+        pathMatch: 'full'
+    },
     { path: '**', redirectTo: '' },
 ];
 

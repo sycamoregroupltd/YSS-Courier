@@ -1,18 +1,18 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {OrdersService} from '../../services/orders.service';
-import {OverlayService} from '../../services/overlay.service';
-import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, SatDatepickerModule} from 'saturn-datepicker';
-import {MAT_MOMENT_DATE_FORMATS, MatMomentDateModule, MomentDateAdapter} from '@angular/material-moment-adapter';
-import {ToastrService} from 'ngx-toastr';
+import { Component, Input, OnInit } from '@angular/core';
+import { OrdersService } from '../../services/orders.service';
+import { OverlayService } from '../../services/overlay.service';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from 'saturn-datepicker';
+import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: 'app-order-status-update',
     templateUrl: './order-status-update.component.html',
-    styleUrls: ['./order-status-update.component.css'],
+    styleUrls: ['./order-status-update.component.scss'],
     providers: [
-        {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
-        {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
-        {provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS},
+        { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
+        { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
+        { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
     ]
 
 })

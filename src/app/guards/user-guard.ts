@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import {AuthService} from '../services/auth.service';
-import {Store} from '../store';
-import {CookieService} from '../services/cookie.service';
+import { Store } from '../store';
+import { CookieService } from '../services/cookie.service';
 
 @Injectable({
     providedIn: 'root'
@@ -15,8 +13,8 @@ export class UserGuard implements CanActivate {
         private router: Router,
         private cookieService: CookieService,
     ) {
-
     }
+
     async canActivate(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): Promise<boolean> {

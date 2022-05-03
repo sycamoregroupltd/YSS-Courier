@@ -81,10 +81,6 @@
                     class="list-group-item list-group-item-action">
                     Couriers
                 </button>
-
-
-
-
             </ng-container>
 
             <ng-container *ngIf="user.accountType === 'trade'">
@@ -94,14 +90,6 @@
                     class="list-group-item list-group-item-action list-group-item-title">
                     Actions
                 </button>
-<!--                <button-->
-<!--                    (click)="requestCreate()"-->
-<!--                    type="button"-->
-<!--                    [ngClass]="{'active': step === 'chat'}"-->
-<!--                    class="list-group-item list-group-item-action">-->
-<!--                    &lt;!&ndash;                        <i class="fa fa-fw menu-icon text-pink" [ngClass]="item.icon" *ngIf="item.icon"></i>&ndash;&gt;-->
-<!--                    Submit a Request-->
-<!--                </button>-->
 
                 <button
                     [routerLink]="['/account', 'mail']"
@@ -201,7 +189,6 @@
 
             </ng-container>
 
-
             <hr />
             <div class="account-info">
                 <h3>Account Name</h3>
@@ -218,10 +205,6 @@
                 <p>{{user.company.vatNumber}}</p>
             </div>
 
-
         </div>
     </div>
 </div>
-
-
-

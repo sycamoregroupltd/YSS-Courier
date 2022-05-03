@@ -1,22 +1,22 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {OrdersService} from '../../services/orders.service';
-import {debounce} from 'lodash';
-import {ShipmentService} from '../../services/shipment.service';
-import {Store} from '../../store';
-import {OverlayService} from '../../services/overlay.service';
-import {AlertService} from '../../services/alert.service';
-import {NotificationService} from '../../services/notification.service';
-import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, SatDatepickerModule} from 'saturn-datepicker';
-import {MAT_MOMENT_DATE_FORMATS, MatMomentDateModule, MomentDateAdapter} from '@angular/material-moment-adapter';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { OrdersService } from '../../services/orders.service';
+import { debounce } from 'lodash';
+import { ShipmentService } from '../../services/shipment.service';
+import { Store } from '../../store';
+import { OverlayService } from '../../services/overlay.service';
+import { AlertService } from '../../services/alert.service';
+import { NotificationService } from '../../services/notification.service';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from 'saturn-datepicker';
+import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';
 
 @Component({
     selector: 'app-shipments-list',
     templateUrl: './shipments-list.component.html',
-    styleUrls: ['./shipments-list.component.css'],
+    styleUrls: ['./shipments-list.component.scss'],
     providers: [
-        {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
-        {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
-        {provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS},
+        { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
+        { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
+        { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
     ]
 
 })
@@ -48,13 +48,11 @@ export class ShipmentsListComponent implements OnInit, OnChanges {
     }
 
     ngOnInit(): void {
-        console.log('products');
         this.filterSearch();
         this.user = this.store.selectForLocal('user');
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        console.log(changes);
         if (changes.params) {
             this.filterSearch();
         }
@@ -73,8 +71,6 @@ export class ShipmentsListComponent implements OnInit, OnChanges {
     }
 
     updateStatus(s) {
-        console.log(s);
-        console.log(this.statuses.find((status) => status.id === s.status.id));
         const statusFound = this.statuses.find((status) => status.id === s.status.id);
         if (statusFound) {
             s.status = statusFound;
@@ -95,7 +91,6 @@ export class ShipmentsListComponent implements OnInit, OnChanges {
 
 
     updateShippingDate(s) {
-        console.log(s);
         this.shipmentService.setShippingDate(s).subscribe(data => {
 
             const notificationData = {
@@ -135,7 +130,6 @@ export class ShipmentsListComponent implements OnInit, OnChanges {
 
     search() {
         this.shipmentService.search(this.params).subscribe(data => {
-            console.log(data.data);
             this.items = data.data.data;
 
             this.params.pages = Math.ceil(data.data.totalRecords / this.params.limit);
@@ -148,8 +142,6 @@ export class ShipmentsListComponent implements OnInit, OnChanges {
     }
 
     assignVehicle(item) {
-
-        console.log(this.user);
         this.overlayData = {
             item,
             companyId: this.user.company.id,

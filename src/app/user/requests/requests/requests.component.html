@@ -23,14 +23,6 @@
                             <th>Message</th>
                             <th>Status</th>
                         </tr>
-                        <!--        <tr>-->
-                        <!--            <th><input type="text" class="form-control" [(ngModel)]="params.created" (ngModelChange)="filterSearch()" /></th>-->
-                        <!--            <th></th>-->
-                        <!--            <th><input type="text" class="form-control" [(ngModel)]="params.orderId" (ngModelChange)="filterSearch()" /></th>-->
-                        <!--            <th></th>-->
-                        <!--            <th></th>-->
-                        <!--            <th></th>-->
-                        <!--        </tr>-->
                         </thead>
                         <tbody>
                         <tr class="underline" *ngFor="let s of (companyRequests$ | async)">
@@ -50,9 +42,7 @@
                 <div class="no-results" *ngIf="!(companyRequests$ | async).length">
                     <p>No requests made</p>
                 </div>
-
                 <app-pagination *ngIf="params.pageArray.length" [params]="params" (update)="filterSearch()"></app-pagination>
-
 
             </div>
         </div>

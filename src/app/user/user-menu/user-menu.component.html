@@ -1,7 +1,3 @@
-<!--<div class="logo-container">-->
-<!--    <p><i class="fa fa-shopping-basket"></i> Storefront</p>-->
-<!--</div>-->
-
 <div class="menu-holder menu-open" *ngIf="user">
     <div class="menu-container">
         <div class="list-group">
@@ -70,7 +66,6 @@
                     [routerLinkActive]="['active']"
                     [ngClass]="{'active': step === 'rewards'}"
                     class="list-group-item list-group-item-action">
-                    <!--                        <i class="fa fa-fw menu-icon text-pink" [ngClass]="item.icon" *ngIf="item.icon"></i>-->
                     Rewards
                 </button>
 
@@ -83,7 +78,6 @@
                     class="list-group-item list-group-item-action">
                     My Profile
                 </button>
-
         </div>
     </div>
 </div>

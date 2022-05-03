@@ -1,21 +1,22 @@
 import { Injectable } from '@angular/core';
-import {catchError, map} from 'rxjs/operators';
-import {ApiService} from './api.service';
-import {HttpClient} from '@angular/common/http';
-import {environment} from '../../environments/environment';
-import {Store} from '../store';
+import { catchError, map } from 'rxjs/operators';
+import { ApiService } from './api.service';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
+import { Store } from '../store';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class OrdersService {
     env = environment;
 
-  constructor(
-      private apiService: ApiService,
-      private http: HttpClient,
-      private store: Store,
-  ) { }
+    constructor(
+        private apiService: ApiService,
+        private http: HttpClient,
+        private store: Store,
+    ) {
+    }
 
     getOrder(id) {
         return this.http.get(this.env.apiPath + 'orders/' + id, this.apiService.getHttpOptions())
@@ -30,7 +31,7 @@ export class OrdersService {
     getOrderLineStatuses() {
         return this.http.get(this.env.apiPath + 'orders/line/statuses', this.apiService.getHttpOptions())
             .pipe(
-                map( (data: any) => {
+                map((data: any) => {
                         return data;
                     },
                     catchError(this.apiService.handleError)
@@ -44,7 +45,7 @@ export class OrdersService {
         };
         return this.http.put(this.env.apiPath + 'orders/update', dataToSend, this.apiService.getHttpOptions())
             .pipe(
-                map( (data: any) => {
+                map((data: any) => {
                         return data;
                     },
                     catchError(this.apiService.handleError)
@@ -60,7 +61,7 @@ export class OrdersService {
         };
         return this.http.put(this.env.apiPath + 'orders/update/status', dataToSend, this.apiService.getHttpOptions())
             .pipe(
-                map( (data: any) => {
+                map((data: any) => {
                         return data;
                     },
                     catchError(this.apiService.handleError)
@@ -74,7 +75,7 @@ export class OrdersService {
         };
         return this.http.post(this.env.apiPath + 'orders/search', dataToSend, this.apiService.getHttpOptions())
             .pipe(
-                map( (data: any) => {
+                map((data: any) => {
                         return data;
                     },
                     catchError(this.apiService.handleError)
@@ -88,7 +89,7 @@ export class OrdersService {
         };
         return this.http.post(this.env.apiPath + 'orders/search/orderdetails', dataToSend, this.apiService.getHttpOptions())
             .pipe(
-                map( (data: any) => {
+                map((data: any) => {
                         return data;
                     },
                     catchError(this.apiService.handleError)

@@ -219,7 +219,6 @@ export class BasketService {
     }
 
 
-
     clearUserFromBasket() {
         const basket = this.store.selectForLocal('basket');
         basket.deliveryInstructions = '';
@@ -260,8 +259,8 @@ export class BasketService {
         return this.http.get(this.env.apiPath + 'voucher/code/' + voucherCode, this.apiService.getHttpOptions())
             .pipe(
                 map((data: any) => {
-                    return data;
-                },
+                        return data;
+                    },
                     catchError(this.apiService.handleError)
                 ));
 
@@ -277,8 +276,8 @@ export class BasketService {
         return this.http.post(this.env.apiPath + 'orders/create/', dataToSend, this.apiService.getHttpOptions())
             .pipe(
                 map((data: any) => {
-                    return data;
-                },
+                        return data;
+                    },
                     catchError(this.apiService.handleError)
                 ));
 

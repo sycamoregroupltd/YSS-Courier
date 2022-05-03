@@ -1,14 +1,13 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {Store} from '../../store';
-import {OverlayService} from '../../services/overlay.service';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import {ChatService} from '../../services/chat.service';
-import {ToastrService} from 'ngx-toastr';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Store } from '../../store';
+import { OverlayService } from '../../services/overlay.service';
+import { ChatService } from '../../services/chat.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: 'app-group-view',
     templateUrl: './group-view.component.html',
-    styleUrls: ['./group-view.component.css']
+    styleUrls: ['./group-view.component.scss']
 })
 export class GroupViewComponent implements OnInit, OnDestroy {
     @Input() group;
@@ -70,17 +69,6 @@ export class GroupViewComponent implements OnInit, OnDestroy {
     }
 
     send() {
-        // const replyingTo = {
-        //     isNew: false,
-        //     groupId: this.group.id,
-        //     name: this.group.name,
-        // };
-        // const chatStore = this.store.selectForLocal('chatStore');
-        // chatStore.replyingTo = replyingTo;
-        // this.store.set('chatStore', chatStore);
-        //
-        // this.overlayService.toggle('mailCompose');
-
         const chatStore = this.store.selectForLocal('chatStore');
         this.message.mail = true;
         this.message.createdAt = new Date();
@@ -100,7 +88,6 @@ export class GroupViewComponent implements OnInit, OnDestroy {
         this.chatService.sendChat(this.message);
         this.message.content = '';
         this.refreshChat();
-
     }
 
     refreshChat() {
@@ -132,15 +119,14 @@ export class GroupViewComponent implements OnInit, OnDestroy {
     }
 
     removeUser(e) {
-        for (let i  = 0; i < this.group.users.length; i++) {
+        for (let i = 0; i < this.group.users.length; i++) {
             if (this.group.users[i].userId === e.id) {
                 this.group.users.splice(i, 1);
                 this.chatService.removeUser(this.group.id, e.id).subscribe(data => {
                     this.toastr.success('', `${e.name} removed from this chat`);
-                })
+                });
             }
         }
         console.log('removing', e);
     }
-
 }

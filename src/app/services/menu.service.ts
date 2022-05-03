@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import {ApiService} from './api.service';
-import {HttpClient} from '@angular/common/http';
-import {Store} from '../store';
-import {map} from 'rxjs/operators';
-import {environment} from '../../environments/environment';
+import { ApiService } from './api.service';
+import { HttpClient } from '@angular/common/http';
+import { Store } from '../store';
+import { map } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class MenuService {
     env = environment;
@@ -35,8 +35,8 @@ export class MenuService {
     menuGroups() {
         return this.http.get(this.env.apiPath + 'cms/public/menugroups', this.apiService.getHttpOptions())
             .subscribe((data: any) => {
-            this.store.set('menu', data.data);
-        });
+                this.store.set('menu', data.data);
+            });
     }
 
     menuGroupMenus(menuGroupId) {

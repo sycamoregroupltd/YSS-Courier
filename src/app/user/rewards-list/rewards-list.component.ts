@@ -1,12 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {Store} from '../../store';
-import {RewardService} from '../../services/reward.service';
-import {debounce} from 'lodash';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '../../store';
+import { RewardService } from '../../services/reward.service';
+import { debounce } from 'lodash';
 
 @Component({
     selector: 'app-rewards-list',
     templateUrl: './rewards-list.component.html',
-    styleUrls: ['./rewards-list.component.css']
+    styleUrls: ['./rewards-list.component.scss']
 })
 export class RewardsListComponent implements OnInit {
     user;

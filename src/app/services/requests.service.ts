@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import {environment} from '../../environments/environment';
-import {ApiService} from './api.service';
-import {HttpClient} from '@angular/common/http';
-import {Store} from '../store';
-import {catchError, map} from 'rxjs/operators';
+import { environment } from '../../environments/environment';
+import { ApiService } from './api.service';
+import { HttpClient } from '@angular/common/http';
+import { Store } from '../store';
+import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class RequestsService {
     env = environment;
@@ -45,7 +45,7 @@ export class RequestsService {
                     },
                     catchError(this.apiService.handleError)
                 ));
-        }
+    }
 
     update(requestData) {
         const dataToSend = {
@@ -87,7 +87,7 @@ export class RequestsService {
         };
         return this.http.post(this.env.apiPath + 'company-request/search', dataToSend, this.apiService.getHttpOptions())
             .pipe(
-                map( (data: any) => {
+                map((data: any) => {
                         this.store.set('companyRequests', data.data.data);
                         return data;
                     },

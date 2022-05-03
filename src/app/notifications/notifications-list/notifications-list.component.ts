@@ -1,12 +1,12 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {OverlayService} from '../../services/overlay.service';
-import {Store} from '../../store';
+import { Component, Input, OnInit } from '@angular/core';
+import { OverlayService } from '../../services/overlay.service';
+import { Store } from '../../store';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
-  selector: 'app-notifications-list',
-  templateUrl: './notifications-list.component.html',
-  styleUrls: ['./notifications-list.component.css']
+    selector: 'app-notifications-list',
+    templateUrl: './notifications-list.component.html',
+    styleUrls: ['./notifications-list.component.scss']
 })
 export class NotificationsListComponent implements OnInit {
     @Input() showRead = false;
@@ -25,31 +25,34 @@ export class NotificationsListComponent implements OnInit {
         sorts: [],
     };
 
-  constructor(
-      private overlayService: OverlayService,
-      private store: Store,
-      private db: AngularFirestore,
-  ) { }
+    constructor(
+        private overlayService: OverlayService,
+        private store: Store,
+        private db: AngularFirestore,
+    ) {
+    }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+    }
 
-  delete(notification) {
-      this.db.collection('notifications')
-          .doc(notification.id)
-          .update({deleted: true, read: true});
-  }
+    delete(notification) {
+        this.db.collection('notifications')
+            .doc(notification.id)
+            .update({ deleted: true, read: true });
+    }
+
     markAsRead(notification) {
         this.db.collection('notifications')
             .doc(notification.id)
-            .update({read: true});
+            .update({ read: true });
 
     }
+
     close() {
         this.overlayService.closeAll();
     }
 
     viewNotifications() {
-      this.overlayService.toggle('notifications');
+        this.overlayService.toggle('notifications');
     }
 }

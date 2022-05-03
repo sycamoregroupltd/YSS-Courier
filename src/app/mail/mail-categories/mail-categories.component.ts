@@ -1,12 +1,12 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {OverlayService} from '../../services/overlay.service';
-import {Store} from '../../store';
-import {ChatService} from '../../services/chat.service';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { OverlayService } from '../../services/overlay.service';
+import { Store } from '../../store';
+import { ChatService } from '../../services/chat.service';
 
 @Component({
     selector: 'app-mail-categories',
     templateUrl: './mail-categories.component.html',
-    styleUrls: ['./mail-categories.component.css']
+    styleUrls: ['./mail-categories.component.scss']
 })
 export class MailCategoriesComponent implements OnInit {
     @Input() group;
@@ -35,13 +35,12 @@ export class MailCategoriesComponent implements OnInit {
         const user = this.store.selectForLocal('user');
         this.chatService.setCategory(this.group.id, user.id, category.id).subscribe(data => {
             this.group.category = category;
-           this.close();
-           // this.updateCategory.emit()
+            this.close();
+            // this.updateCategory.emit()
         });
     }
 
     close() {
         this.overlayService.closeAll();
     }
-
 }

@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {UserService} from '../../services/user.service';
-import {ToastrService} from 'ngx-toastr';
+import { UserService } from '../../services/user.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-courier-supplier-collection',
-  templateUrl: './courier-supplier-collection.component.html',
-  styleUrls: ['./courier-supplier-collection.component.css']
+    selector: 'app-courier-supplier-collection',
+    templateUrl: './courier-supplier-collection.component.html',
+    styleUrls: ['./courier-supplier-collection.component.scss']
 })
 export class CourierSupplierCollectionComponent implements OnInit {
     @Input() company;
@@ -44,7 +44,7 @@ export class CourierSupplierCollectionComponent implements OnInit {
             this.suppliers = data.data.data;
             this.suppliersCopy = JSON.parse(JSON.stringify(data.data.data));
             const objKeys = Object.keys(data.data.data[0].vehicles);
-            for ( let i = 0; i < objKeys.length; i++) {
+            for (let i = 0; i < objKeys.length; i++) {
                 this.vehicleTypes.push(data.data.data[0].vehicles[objKeys[i]]);
             }
 
@@ -56,7 +56,6 @@ export class CourierSupplierCollectionComponent implements OnInit {
             for (let i = 0; i < this.params.pages; i++) {
                 this.params.pageArray.push(i);
             }
-
 
 
             console.log(this.vehicleTypes);
@@ -80,18 +79,9 @@ export class CourierSupplierCollectionComponent implements OnInit {
     }
 
     save(supplier, idx) {
-        const objKeys = Object.keys(supplier.vehicles);
-        // for ( let i = 0; i < objKeys.length; i++) {
-        //     if (supplier.vehicles[objKeys[i]].allowed && supplier.vehicles[objKeys[i]].cost < 1) {
-        //         this.toastrService.error('Collection cost must be more than zero');
-        //     }
-        // }
-
         this.userService.updateSupplierCollectionCosts(supplier, this.company.id).subscribe(data => {
             this.toastrService.success('Collection costs updated');
             this.suppliersCopy[idx] = JSON.parse(JSON.stringify(supplier));
         });
     }
-
-
 }

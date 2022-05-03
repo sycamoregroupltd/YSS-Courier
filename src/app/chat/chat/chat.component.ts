@@ -1,14 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {ChatService} from '../../services/chat.service';
-import {ActivatedRoute} from '@angular/router';
-import {Store} from '../../store';
-import {OverlayService} from '../../services/overlay.service';
-import * as moment from 'moment';
+import { Component, OnInit } from '@angular/core';
+import { ChatService } from '../../services/chat.service';
+import { ActivatedRoute } from '@angular/router';
+import { Store } from '../../store';
+import { OverlayService } from '../../services/overlay.service';
 
 @Component({
     selector: 'app-chat',
     templateUrl: './chat.component.html',
-    styleUrls: ['./chat.component.css']
+    styleUrls: ['./chat.component.scss']
 })
 export class ChatComponent implements OnInit {
     user = this.store.selectForLocal('user');
@@ -16,9 +15,6 @@ export class ChatComponent implements OnInit {
 
     public users = 0;
     public message: any = {};
-    // public messages: any[] = [];
-    // public groups: any[] = [];
-    // public group: any;
 
     chatStore$ = this.store.select<any>('chatStore');
 
@@ -63,6 +59,7 @@ export class ChatComponent implements OnInit {
             // }
         });
     }
+
     selectGroupById(groupId) {
         const chatStore = this.store.selectForLocal('chatStore');
         chatStore.groups.forEach((g, idx) => {
@@ -74,6 +71,7 @@ export class ChatComponent implements OnInit {
         });
 
     }
+
     selectGroup(group) {
         const chatStore = this.store.selectForLocal('chatStore');
         chatStore.group = group;
@@ -114,7 +112,7 @@ export class ChatComponent implements OnInit {
             name: user.contact.firstname + ' ' + user.contact.surname,
             companyId: '',
         };
-        if (user.company)  {
+        if (user.company) {
             this.message.user.company = user.company.id;
         }
         chatStore.messages.push(this.message);
@@ -122,17 +120,12 @@ export class ChatComponent implements OnInit {
 
         // this.messages.push(this.message);
         this.cs.sendChat(this.message);
-        this.message = {content: ''};
+        this.message = { content: '' };
         this.scrollBottom();
     }
 
-
     scrollBottom() {
         this.cs.scrollBottom();
-        // const typeBox = document.getElementById('chat-window');
-        // if (typeBox) {
-        //     setTimeout(() => typeBox.scrollTo(0, typeBox.scrollHeight), 200);
-        // }
     }
 
     viewGroups() {
@@ -145,5 +138,4 @@ export class ChatComponent implements OnInit {
         this.viewGroups();
         this.overlayService.closeAll();
     }
-
 }

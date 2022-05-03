@@ -1,12 +1,12 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import {CourierService} from '../../services/courier.service';
-import {OverlayService} from '../../services/overlay.service';
-import {debounce} from 'lodash';
+import { CourierService } from '../../services/courier.service';
+import { OverlayService } from '../../services/overlay.service';
+import { debounce } from 'lodash';
 
 @Component({
-  selector: 'app-courier-delivery-zone-postcodes',
-  templateUrl: './courier-delivery-zone-postcodes.component.html',
-  styleUrls: ['./courier-delivery-zone-postcodes.component.css']
+    selector: 'app-courier-delivery-zone-postcodes',
+    templateUrl: './courier-delivery-zone-postcodes.component.html',
+    styleUrls: ['./courier-delivery-zone-postcodes.component.scss']
 })
 export class CourierDeliveryZonePostcodesComponent implements OnInit {
     @Input() overlayData;
@@ -71,7 +71,6 @@ export class CourierDeliveryZonePostcodesComponent implements OnInit {
             for (let i = 0; i < this.params.pages; i++) {
                 this.params.pageArray.push(i);
             }
-            console.log(this.params);
         });
     }
 
@@ -140,14 +139,10 @@ export class CourierDeliveryZonePostcodesComponent implements OnInit {
             this.getZonePostcodes();
             this.searchPostcodes();
         });
-
     }
-
 
     close() {
         this.refreshData.emit();
         this.overlayService.closeAll();
     }
-
-
 }

@@ -3,7 +3,7 @@ import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
     selector: 'awesome-tooltip',
-    styleUrls: ['./tooltip.component.css'],
+    styleUrls: ['./tooltip.component.scss'],
     templateUrl: './tooltip.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [

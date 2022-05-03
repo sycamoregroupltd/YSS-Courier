@@ -17,7 +17,9 @@ import { UserModule } from "./user/user.module";
 import { SignoutComponent } from "./auth/signout/signout.component";
 import { PasswordResetComponent } from "./auth/password-reset/password-reset.component";
 import { PasswordSetComponent } from "./auth/password-set/password-set.component";
-import { PasswordResetConfirmationComponent } from "./auth/password-reset-confirmation/password-reset-confirmation.component";
+import {
+    PasswordResetConfirmationComponent
+} from "./auth/password-reset-confirmation/password-reset-confirmation.component";
 import { PasswordSetConfirmationComponent } from "./auth/password-set-confirmation/password-set-confirmation.component";
 import { LoginFormComponent } from "./auth/login-form/login-form.component";
 import { OrdersModule } from "./orders/orders.module";
@@ -39,6 +41,7 @@ import { RequestCreateComponent } from "./user/requests/request-create/request-c
 import { HeaderMobileComponent } from "./layout/header-mobile/header-mobile.component";
 import { FooterMobileComponent } from "./layout/footer-mobile/footer-mobile.component";
 import { FooterIpadComponent } from "./layout/footer-ipad/footer-ipad.component";
+import { ConsolePipe } from './pipes/console.pipe';
 
 const firebaseConfig = {
     apiKey: "AIzaSyAXkVOoH1Z5Nqz0UeG2lMHzY97Kn4JH2xI",
@@ -50,6 +53,7 @@ const firebaseConfig = {
     appId: "1:41860333172:web:c335d9ea493faaea36db21",
     measurementId: "G-JSDQVZJ3XE",
 };
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -66,6 +70,7 @@ const firebaseConfig = {
         LoginFormComponent,
         GooglePlacesDirective,
         SafeHTMLPipe,
+        ConsolePipe,
         RequestCreateComponent,
         HeaderMobileComponent,
         FooterMobileComponent,
@@ -102,4 +107,5 @@ const firebaseConfig = {
     exports: [],
     bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {
+}

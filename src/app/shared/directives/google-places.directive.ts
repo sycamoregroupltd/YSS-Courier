@@ -22,7 +22,6 @@ export class GooglePlacesDirective implements OnInit {
     }
 
     ngOnInit() {
-        console.log("GP init");
         const autocomplete = new google.maps.places.Autocomplete(this.element);
 
         google.maps.event.addListener(autocomplete, "place_changed", () => {

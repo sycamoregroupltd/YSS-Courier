@@ -1,11 +1,11 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Store} from '../../store';
-import {OverlayService} from '../../services/overlay.service';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Store } from '../../store';
+import { OverlayService } from '../../services/overlay.service';
 
 @Component({
-  selector: 'app-company-menu',
-  templateUrl: './company-menu.component.html',
-  styleUrls: ['./company-menu.component.css']
+    selector: 'app-company-menu',
+    templateUrl: './company-menu.component.html',
+    styleUrls: ['./company-menu.component.scss']
 })
 export class CompanyMenuComponent implements OnInit {
 
@@ -19,7 +19,8 @@ export class CompanyMenuComponent implements OnInit {
     constructor(
         private store: Store,
         private overlayService: OverlayService,
-    ) { }
+    ) {
+    }
 
     ngOnInit(): void {
     }
@@ -50,6 +51,5 @@ export class CompanyMenuComponent implements OnInit {
 
         this.store.set('overlayData', this.overlayData);
         this.overlayService.toggle('requestCreate');
-
     }
 }

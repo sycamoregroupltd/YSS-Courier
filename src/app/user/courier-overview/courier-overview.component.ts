@@ -1,17 +1,16 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Store} from '../../store';
-import {OverlayService} from '../../services/overlay.service';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Store } from '../../store';
+import { OverlayService } from '../../services/overlay.service';
 
 @Component({
-  selector: 'app-courier-overview',
-  templateUrl: './courier-overview.component.html',
-  styleUrls: ['./courier-overview.component.css']
+    selector: 'app-courier-overview',
+    templateUrl: './courier-overview.component.html',
+    styleUrls: ['./courier-overview.component.scss']
 })
 export class CourierOverviewComponent implements OnInit {
     @Input() step;
     @Input() user;
     @Output() navigationChange = new EventEmitter();
-
 
     overlays$ = this.store.select<any>('overlays');
     overlayData;
@@ -96,8 +95,8 @@ export class CourierOverviewComponent implements OnInit {
         this.store.set('overlayData', overlayData);
 
         this.overlayService.toggle('userEdit');
-        // this.setStep('user-edit');
     }
+
     editUser(user) {
         this.store.set('userToEdit', user);
         this.overlayData = {
@@ -106,13 +105,9 @@ export class CourierOverviewComponent implements OnInit {
         };
         this.store.set('overlayData', this.overlayData);
         this.overlayService.toggle('userEdit');
-        // this.setStep('user-edit');
     }
 
     setStep(v) {
         this.navigationChange.emit(v);
     }
-
-
-
 }

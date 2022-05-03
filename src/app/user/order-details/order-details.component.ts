@@ -1,10 +1,10 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {Store} from '../../store';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Store } from '../../store';
 
 @Component({
-  selector: 'app-order-details',
-  templateUrl: './order-details.component.html',
-  styleUrls: ['./order-details.component.css']
+    selector: 'app-order-details',
+    templateUrl: './order-details.component.html',
+    styleUrls: ['./order-details.component.scss']
 })
 export class OrderDetailsComponent implements OnInit {
 
@@ -38,10 +38,10 @@ export class OrderDetailsComponent implements OnInit {
         sorts: [],
     };
 
-
     constructor(
         private store: Store,
-    ) { }
+    ) {
+    }
 
     ngOnInit(): void {
         this.user = this.store.selectForLocal('user');
@@ -55,8 +55,5 @@ export class OrderDetailsComponent implements OnInit {
             this.orderParams.supplierId = this.user.company.id;
 
         }
-
     }
-
-
 }

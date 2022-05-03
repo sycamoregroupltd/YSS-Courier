@@ -24,12 +24,10 @@
                             {{company.name}}
                         </span>
                 </ng-container>
-
             </h1>
         </div>
 
     <div id="chat-content-holder" class="chat-content-holder">
-        <!--<h2>There are currently <strong>{{users}}</strong> users online. Start chatting!</h2>-->
 
         <div *ngIf="!(chatStore$ | async).group">
             <ng-container *ngIf="!(chatStore$ | async).groups.length">
@@ -69,10 +67,8 @@
                             *ngIf="group.unread > 0"
                             class="badge badge-primary badge-pill">{{group.unread}}</span>
                     </li>
-
                 </ng-container>
             </ul>
-
         </div>
 
         <div id="chat-window" class="chat-window" *ngIf="(chatStore$ | async).group">
@@ -87,11 +83,8 @@
                 </div>
                 <p [innerHTML]="message.content"></p>
             </div>
-
         </div>
-
     </div>
-
         <div
             *ngIf="(chatStore$ | async).group"
             class="input-holder">
@@ -104,15 +97,10 @@
                     class="form-control"
                     [(ngModel)]="message.content" placeholder="type message..."
                     (keyup.enter)="addChat()"></textarea>
-
                 <div class="input-group-append">
                     <button class="btn btn-primary" (click)="addChat()">Send</button>
-
-                    <!--            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>-->
                 </div>
             </div>
         </div>
-
-
     </div>
 </div>

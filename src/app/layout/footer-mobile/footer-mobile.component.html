@@ -76,16 +76,7 @@
                         </p>
                     </div>
                 </div>
-<!--                <ng-container *ngFor="let q of (menu$ | async).footer">-->
-<!--                    <a *ngIf="q.external === 0" [routerLink]="[q.route]">{{q.name}}</a>-->
-<!--                    <a *ngIf="q.external === 1" target="_blank" [href]="[q.externalURL]">{{q.name}}</a>-->
-<!--                </ng-container>-->
             </div>
-<!--            <div class="col-12 mt-3 text-left">-->
-<!--                <span *ngIf="(settings$ | async).companyNo">Company registration number {{(settings$ | async).companyNo}}</span>-->
-<!--                <span *ngIf="(settings$ | async).companyNo && (settings$ | async).vatNo" class="ml-2 mr-2">|</span>-->
-<!--                <span *ngIf="(settings$ | async).vatNo">Vat number {{(settings$ | async).vatNo}}</span>-->
-<!--            </div>-->
             <div class="col-12  mt-3 text-left">
                 &copy;{{(settings$ | async).copyText}}
             </div>

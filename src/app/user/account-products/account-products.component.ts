@@ -1,10 +1,10 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Store} from '../../store';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '../../store';
 
 @Component({
-  selector: 'app-account-products',
-  templateUrl: './account-products.component.html',
-  styleUrls: ['./account-products.component.css']
+    selector: 'app-account-products',
+    templateUrl: './account-products.component.html',
+    styleUrls: ['./account-products.component.scss']
 })
 export class AccountProductsComponent implements OnInit {
     user;
@@ -32,12 +32,11 @@ export class AccountProductsComponent implements OnInit {
 
     constructor(
         private store: Store,
-    ) { }
+    ) {
+    }
 
     ngOnInit(): void {
         this.user = this.store.selectForLocal('user');
         this.productParams.supplierId = this.user.company.id;
     }
-
-
 }

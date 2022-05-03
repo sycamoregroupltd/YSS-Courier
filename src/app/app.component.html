@@ -4,9 +4,9 @@
 </div>
 <div class="site-container bg-white">
 
-    <div
-        class="main-content-container"
-        [ngStyle]="currentURL === '/' && {'padding-top' : '119px'}">
+    <div class="main-content-container"
+        [ngStyle]="currentURL === '/' && {'padding-top' : '119px'}"
+    >
         <router-outlet (activate)="onActivate($event)"></router-outlet>
     </div>
 
@@ -22,16 +22,13 @@
     </ng-container>
 
     <app-alert
-        [data]="(alerts$ | async)"
-        *ngIf="(alerts$ | async).simple !== '' || (alerts$ | async).errors.length || (alerts$ | async).notifications.length"></app-alert>
+            [data]="(alerts$ | async)"
+            *ngIf="(alerts$ | async).simple !== '' || (alerts$ | async).errors.length || (alerts$ | async).notifications.length"></app-alert>
 
     <div
-        class="modal-backdrop fade show modal-slide-show"
-        (click)="closeAll()"
-        *ngIf="(asideOpen$ | async)">
+            class="modal-backdrop fade show modal-slide-show"
+            (click)="closeAll()"
+            *ngIf="(asideOpen$ | async)">
         <app-processing *ngIf="(overlays$ | async).processing"></app-processing>
-
     </div>
-
-
 </div>

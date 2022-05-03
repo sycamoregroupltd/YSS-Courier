@@ -1,10 +1,10 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {Store} from '../../store';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Store } from '../../store';
 
 @Component({
     selector: 'app-account-payments',
     templateUrl: './account-payments.component.html',
-    styleUrls: ['./account-payments.component.css']
+    styleUrls: ['./account-payments.component.scss']
 })
 export class AccountPaymentsComponent implements OnInit {
     @Output() navigationChange = new EventEmitter();
@@ -38,5 +38,4 @@ export class AccountPaymentsComponent implements OnInit {
         this.user = this.store.selectForLocal('user');
         this.paymentParams.userId = this.user.id;
     }
-
 }

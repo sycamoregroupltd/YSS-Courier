@@ -1,10 +1,10 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Store} from '../../store';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Store } from '../../store';
 
 @Component({
-  selector: 'app-customer-menu',
-  templateUrl: './customer-menu.component.html',
-  styleUrls: ['./customer-menu.component.css']
+    selector: 'app-customer-menu',
+    templateUrl: './customer-menu.component.html',
+    styleUrls: ['./customer-menu.component.scss']
 })
 export class CustomerMenuComponent implements OnInit {
     @Input() user;
@@ -14,7 +14,8 @@ export class CustomerMenuComponent implements OnInit {
 
     constructor(
         private store: Store,
-    ) { }
+    ) {
+    }
 
     ngOnInit(): void {
     }
@@ -33,6 +34,4 @@ export class CustomerMenuComponent implements OnInit {
         this.store.set('userToEdit', this.store.selectForLocal('user'));
         this.setStep('user-edit');
     }
-
-
 }

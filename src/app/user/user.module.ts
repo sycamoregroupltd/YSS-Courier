@@ -1,4 +1,4 @@
-import { ProductModule } from './../product/product.module';
+import { ProductModule } from '../product/product.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AccountComponent } from './account/account.component';
@@ -9,9 +9,6 @@ import { MaterialModule } from '../material.module';
 import { DropzoneModule } from 'ngx-dropzone-wrapper';
 import { AccountConfirmationComponent } from './account-confirmation/account-confirmation.component';
 import { DashboardCourierComponent } from '../dashboards/dashboard-courier/dashboard-courier.component';
-import { DashboardSupplierComponent } from '../dashboards/dashboard-supplier/dashboard-supplier.component';
-import { DashboardTradeComponent } from '../dashboards/dashboard-trade/dashboard-trade.component';
-import { DashboardCustomerComponent } from '../dashboards/dashboard-customer/dashboard-customer.component';
 import { AccountUsersComponent } from './account-users/account-users.component';
 import { AccountUserEditComponent } from './account-user-edit/account-user-edit.component';
 import { AccountProductsComponent } from './account-products/account-products.component';
@@ -31,7 +28,9 @@ import { AccountOrderOverviewComponent } from './account-order-overview/account-
 import { RegistrationFormComponent } from './registration-form/registration-form.component';
 import { CourierDeliveryZonesComponent } from './courier-delivery-zones/courier-delivery-zones.component';
 import { CourierDeliveryZoneEditComponent } from './courier-delivery-zone-edit/courier-delivery-zone-edit.component';
-import { CourierDeliveryZonePostcodesComponent } from './courier-delivery-zone-postcodes/courier-delivery-zone-postcodes.component';
+import {
+    CourierDeliveryZonePostcodesComponent
+} from './courier-delivery-zone-postcodes/courier-delivery-zone-postcodes.component';
 import { CourierVehiclesComponent } from './courier-vehicles/courier-vehicles.component';
 import { CourierVehicleComponent } from './courier-vehicle/courier-vehicle.component';
 import { CourierVehiclesSliderComponent } from './courier-vehicles-slider/courier-vehicles-slider.component';
@@ -47,7 +46,9 @@ import { CompanyAreaManageComponent } from './company-area-manage/company-area-m
 import { RewardsSummaryComponent } from './rewards-summary/rewards-summary.component';
 import { RewardGiftTypeSelectionComponent } from './reward-gift-type-selection/reward-gift-type-selection.component';
 import { RewardEmailInviteComponent } from './reward-email-invite/reward-email-invite.component';
-import { CourierSupplierCollectionComponent } from './courier-supplier-collection/courier-supplier-collection.component';
+import {
+    CourierSupplierCollectionComponent
+} from './courier-supplier-collection/courier-supplier-collection.component';
 import { SupplierCouriersComponent } from './supplier-couriers/supplier-couriers.component';
 import { CaseStudiesComponent } from './case-studies/case-studies.component';
 import { CaseStudyComponent } from './case-study/case-study.component';
@@ -58,7 +59,9 @@ import { AccountShipmentOverviewComponent } from './account-shipment-overview/ac
 import { ShipmentsBoardComponent } from './shipments-board/shipments-board.component';
 import { RegisterModalComponent } from './register-modal/register-modal.component';
 import { AccountOrdersMobileComponent } from './account-orders-mobile/account-orders-mobile.component';
-import { RegistrationAdditionalDetailsComponent } from './registration-additional-details/registration-additional-details.component';
+import {
+    RegistrationAdditionalDetailsComponent
+} from './registration-additional-details/registration-additional-details.component';
 
 @NgModule({
     declarations: [
@@ -66,9 +69,6 @@ import { RegistrationAdditionalDetailsComponent } from './registration-additiona
         RegisterComponent,
         AccountConfirmationComponent,
         DashboardCourierComponent,
-        DashboardSupplierComponent,
-        DashboardTradeComponent,
-        DashboardCustomerComponent,
         AccountUsersComponent,
         AccountUserEditComponent,
         AccountProductsComponent,
@@ -130,19 +130,13 @@ import { RegistrationAdditionalDetailsComponent } from './registration-additiona
         AccountComponent,
         RegisterComponent,
         DashboardCourierComponent,
-        DashboardSupplierComponent,
-        DashboardTradeComponent,
-        DashboardCustomerComponent,
         UserMenuComponent,
         UserEditComponent,
         RegistrationFormComponent,
         CompanyMenuComponent,
         CustomerMenuComponent,
         RegisterModalComponent,
-    ],
-    // providers: [
-    //   Store,
-    // ],
+    ]
 })
 export class UserModule {
 }

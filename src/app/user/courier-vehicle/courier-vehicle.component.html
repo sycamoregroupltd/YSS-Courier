@@ -7,33 +7,11 @@
     </div>
 
     <div class="p-4">
-        <form
+        <form autocomplete="off" novalidate
             [formGroup]="form"
-            autocomplete="off"
-            novalidate
             [autocomplete]="'off'"
-            (ngSubmit)="onSubmit()">
-
-<!--            <div class="form-group row">-->
-<!--                <label class="col-sm-3 col-form-label">Name</label>-->
-<!--                <div class="col-12 col-sm-9">-->
-<!--                    <input-->
-<!--                        [ngClass]="{-->
-<!--                            'is-invalid':-->
-<!--                                form['controls'].name.invalid &&-->
-<!--                                form['controls'].name.touched-->
-<!--                        }"-->
-<!--                        type="text"-->
-<!--                        class="form-control"-->
-<!--                        formControlName="name"-->
-<!--                        placeholder="Zone name"-->
-<!--                    />-->
-<!--                    <div class="invalid-feedback">-->
-<!--                        Name is required-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-
+            (ngSubmit)="onSubmit()"
+        >
             <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Vehicle Type</label>
                 <div class="col-12 col-sm-9">
@@ -218,8 +196,6 @@
                     </div>
                 </div>
             </div>
-
-            <!--        <pre>{{findInvalidControls() | json}}</pre>-->
         </form>
     </div>
 </div>

@@ -1,16 +1,16 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {RequestsService} from '../../../services/requests.service';
-import {OverlayService} from '../../../services/overlay.service';
-import {AlertService} from '../../../services/alert.service';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Store} from '../../../store';
-import {ToolsService} from '../../../services/tools.service';
-import {NotificationService} from '../../../services/notification.service';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { RequestsService } from '../../../services/requests.service';
+import { OverlayService } from '../../../services/overlay.service';
+import { AlertService } from '../../../services/alert.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Store } from '../../../store';
+import { ToolsService } from '../../../services/tools.service';
+import { NotificationService } from '../../../services/notification.service';
 
 @Component({
     selector: 'app-request-create',
     templateUrl: './request-create.component.html',
-    styleUrls: ['./request-create.component.css']
+    styleUrls: ['./request-create.component.scss']
 })
 export class RequestCreateComponent implements OnInit {
     @Output() refreshData = new EventEmitter();
@@ -100,6 +100,7 @@ export class RequestCreateComponent implements OnInit {
             this.close();
         });
     }
+
     update() {
         this.requestsService.update(this.item).subscribe(data => {
             console.log(data);

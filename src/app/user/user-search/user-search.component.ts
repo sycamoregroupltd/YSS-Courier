@@ -1,14 +1,14 @@
-import {Component, OnInit, OnChanges, Input, SimpleChanges} from '@angular/core';
-import {Store} from '../../store';
-import {ActivatedRoute} from '@angular/router';
-import {UserService} from '../../services/user.service';
-import {OverlayService} from '../../services/overlay.service';
+import { Component, OnInit, OnChanges, Input, SimpleChanges } from '@angular/core';
+import { Store } from '../../store';
+import { ActivatedRoute } from '@angular/router';
+import { UserService } from '../../services/user.service';
+import { OverlayService } from '../../services/overlay.service';
 import { debounce } from 'lodash';
 
 @Component({
-  selector: 'app-user-search',
-  templateUrl: './user-search.component.html',
-  styleUrls: ['./user-search.component.css']
+    selector: 'app-user-search',
+    templateUrl: './user-search.component.html',
+    styleUrls: ['./user-search.component.scss']
 })
 export class UserSearchComponent implements OnInit, OnChanges {
     @Input() company;
@@ -54,7 +54,6 @@ export class UserSearchComponent implements OnInit, OnChanges {
             this.users = data.data.data;
         });
     }
-
 
     addUser() {
         const overlayData = {

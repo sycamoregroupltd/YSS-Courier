@@ -1,16 +1,16 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { AuthService } from "../../services/auth.service";
-import { Router } from "@angular/router";
-import { AlertService } from "../../services/alert.service";
-import { UserService } from "../../services/user.service";
-import { NotificationService } from "../../services/notification.service";
-import { ChatService } from "../../services/chat.service";
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
+import { AlertService } from '../../services/alert.service';
+import { UserService } from '../../services/user.service';
+import { NotificationService } from '../../services/notification.service';
+import { ChatService } from '../../services/chat.service';
 
 @Component({
-    selector: "app-login-form",
-    templateUrl: "./login-form.component.html",
-    styleUrls: ["./login-form.component.css"],
+    selector: 'app-login-form',
+    templateUrl: './login-form.component.html',
+    styleUrls: ['./login-form.component.scss'],
 })
 export class LoginFormComponent implements OnInit {
     @Input() isBasketAuth = false;
@@ -21,8 +21,8 @@ export class LoginFormComponent implements OnInit {
     form: FormGroup;
 
     user = {
-        username: "",
-        password: "",
+        username: '',
+        password: '',
         extendedExpiration: true,
     };
 
@@ -38,14 +38,14 @@ export class LoginFormComponent implements OnInit {
         private chatService: ChatService
     ) {
         this.form = this.fb.group({
-            username: ["", [Validators.required, Validators.email]],
-            password: ["", [Validators.required, Validators.minLength(8)]],
+            username: ['', [Validators.required, Validators.email]],
+            password: ['', [Validators.required, Validators.minLength(8)]],
         });
     }
 
     ngOnInit(): void {
-        this.form.get("username").valueChanges.subscribe((value) => {
-            this.form.get("password").updateValueAndValidity();
+        this.form.get('username').valueChanges.subscribe((value) => {
+            this.form.get('password').updateValueAndValidity();
         });
     }
 
@@ -112,6 +112,6 @@ export class LoginFormComponent implements OnInit {
 
     triggerForgottenPassword() {
         this.forgottenPassword.emit();
-        this.router.navigate(["/password", "reset"]);
+        this.router.navigate(['/password', 'reset']);
     }
 }

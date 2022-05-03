@@ -1,10 +1,10 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Store} from '../../store';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Store } from '../../store';
 
 @Component({
-  selector: 'app-account-orders',
-  templateUrl: './account-orders.component.html',
-  styleUrls: ['./account-orders.component.css']
+    selector: 'app-account-orders',
+    templateUrl: './account-orders.component.html',
+    styleUrls: ['./account-orders.component.scss']
 })
 export class AccountOrdersComponent implements OnInit {
     @Output() navigationChange = new EventEmitter();
@@ -64,22 +64,23 @@ export class AccountOrdersComponent implements OnInit {
 
     constructor(
         private store: Store,
-  ) { }
+    ) {
+    }
 
-  ngOnInit(): void {
-      this.user = this.store.selectForLocal('user');
-      if (this.user.accountType === 'customer' || this.user.accountType === 'trade') {
-          this.showSupplier = false;
-          this.showCustomer = false;
-          this.orderParams.customerId = this.user.id;
-          this.orderDetailParams.customerId = this.user.id;
-      } else {
-          this.showSupplier = false;
-          this.showCustomer = true;
-          this.orderParams.supplierId = this.user.company.id;
-          this.orderDetailParams.supplierId = this.user.company.id;
-      }
+    ngOnInit(): void {
+        this.user = this.store.selectForLocal('user');
+        if (this.user.accountType === 'customer' || this.user.accountType === 'trade') {
+            this.showSupplier = false;
+            this.showCustomer = false;
+            this.orderParams.customerId = this.user.id;
+            this.orderDetailParams.customerId = this.user.id;
+        } else {
+            this.showSupplier = false;
+            this.showCustomer = true;
+            this.orderParams.supplierId = this.user.company.id;
+            this.orderDetailParams.supplierId = this.user.company.id;
+        }
 
-  }
+    }
 
 }

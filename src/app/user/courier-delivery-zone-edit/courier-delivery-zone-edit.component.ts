@@ -1,15 +1,15 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import {OverlayService} from '../../services/overlay.service';
-import {Store} from '../../store';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {CourierService} from '../../services/courier.service';
-import {AlertService} from '../../services/alert.service';
-import {ToolsService} from '../../services/tools.service';
+import { OverlayService } from '../../services/overlay.service';
+import { Store } from '../../store';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CourierService } from '../../services/courier.service';
+import { AlertService } from '../../services/alert.service';
+import { ToolsService } from '../../services/tools.service';
 
 @Component({
-  selector: 'app-courier-delivery-zone-edit',
-  templateUrl: './courier-delivery-zone-edit.component.html',
-  styleUrls: ['./courier-delivery-zone-edit.component.css']
+    selector: 'app-courier-delivery-zone-edit',
+    templateUrl: './courier-delivery-zone-edit.component.html',
+    styleUrls: ['./courier-delivery-zone-edit.component.scss']
 })
 export class CourierDeliveryZoneEditComponent implements OnInit {
     @Input() overlayData;
@@ -73,8 +73,6 @@ export class CourierDeliveryZoneEditComponent implements OnInit {
 
     ngOnInit(): void {
         this.getVehicleTypes();
-        // const overlayData = this.store.selectForLocal('overlayData');
-        // console.log(overlayData);
         if (this.overlayData.item) {
             this.newItem = false;
 
@@ -104,10 +102,9 @@ export class CourierDeliveryZoneEditComponent implements OnInit {
         } else {
             this.newItem = true;
             this.item.courier = this.overlayData.company.id;
-            this.form.patchValue({vehicleType: this.overlayData.vehicleType});
+            this.form.patchValue({ vehicleType: this.overlayData.vehicleType });
         }
     }
-
 
     getVehicleTypes() {
         this.courierService.getVehicleTypes().subscribe(data => {
@@ -193,10 +190,10 @@ export class CourierDeliveryZoneEditComponent implements OnInit {
         }
     }
 
-    toggleAllowPremium()  {
+    toggleAllowPremium() {
         if (!this.item.allowPremium) {
             this.item.allowPremium = 1;
-        } else  {
+        } else {
             this.item.allowPremium = 0;
             this.form.patchValue({
                 premiumFull: 0,
@@ -206,16 +203,14 @@ export class CourierDeliveryZoneEditComponent implements OnInit {
         }
     }
 
-    toggleAllowTimeslot()  {
+    toggleAllowTimeslot() {
         if (!this.item.allowTimeslot) {
             this.item.allowTimeslot = 1;
-        } else  {
+        } else {
             this.item.allowTimeslot = 0;
             this.form.patchValue({
                 timeslotCost: 0
             });
         }
     }
-
-
 }

@@ -1,12 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {Store} from '../../store';
-import {CasestudyService} from '../../services/casestudy.service';
-import {Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '../../store';
+import { CasestudyService } from '../../services/casestudy.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-case-studies',
     templateUrl: './case-studies.component.html',
-    styleUrls: ['./case-studies.component.css']
+    styleUrls: ['./case-studies.component.scss']
 })
 export class CaseStudiesComponent implements OnInit {
 
@@ -59,5 +59,4 @@ export class CaseStudiesComponent implements OnInit {
     edit(id) {
         this.router.navigate(['/account', 'casestudies', id]);
     }
-
 }

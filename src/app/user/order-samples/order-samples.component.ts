@@ -1,13 +1,12 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {Store} from '../../store';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Store } from '../../store';
 
 @Component({
-  selector: 'app-order-samples',
-  templateUrl: './order-samples.component.html',
-  styleUrls: ['./order-samples.component.css']
+    selector: 'app-order-samples',
+    templateUrl: './order-samples.component.html',
+    styleUrls: ['./order-samples.component.scss']
 })
 export class OrderSamplesComponent implements OnInit {
-
 
     @Output() navigationChange = new EventEmitter();
     user;
@@ -42,7 +41,8 @@ export class OrderSamplesComponent implements OnInit {
 
     constructor(
         private store: Store,
-    ) { }
+    ) {
+    }
 
     ngOnInit(): void {
         this.user = this.store.selectForLocal('user');
@@ -58,8 +58,4 @@ export class OrderSamplesComponent implements OnInit {
         }
 
     }
-
-
-
-
 }

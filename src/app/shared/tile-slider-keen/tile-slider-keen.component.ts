@@ -1,10 +1,10 @@
-import {AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import KeenSlider from 'keen-slider';
 
 @Component({
-  selector: 'app-tile-slider-keen',
-  templateUrl: './tile-slider-keen.component.html',
-  styleUrls: ['./tile-slider-keen.component.css']
+    selector: 'app-tile-slider-keen',
+    templateUrl: './tile-slider-keen.component.html',
+    styleUrls: ['./tile-slider-keen.component.scss']
 })
 export class TileSliderKeenComponent implements OnInit, AfterViewInit, OnDestroy {
     @Input() tiles;
@@ -21,7 +21,8 @@ export class TileSliderKeenComponent implements OnInit, AfterViewInit, OnDestroy
     slider: any = null;
     fullScreen = false;
 
-    constructor() { }
+    constructor() {
+    }
 
     ngOnInit(): void {
     }
@@ -37,7 +38,6 @@ export class TileSliderKeenComponent implements OnInit, AfterViewInit, OnDestroy
             });
             this.dotHelper = [...Array(this.slider.details().size).keys()];
         }, 1000);
-
     }
 
     ngOnDestroy(): void {
@@ -49,9 +49,8 @@ export class TileSliderKeenComponent implements OnInit, AfterViewInit, OnDestroy
     goFullScreen() {
         this.fullScreen = true;
     }
+
     closeFullScreen() {
         this.fullScreen = false;
     }
-
-
 }

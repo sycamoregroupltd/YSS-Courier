@@ -1,12 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {Store} from '../../store';
-import {UserService} from '../../services/user.service';
-import {environment} from '../../../environments/environment';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '../../store';
+import { UserService } from '../../services/user.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
     selector: 'app-account',
     templateUrl: './account.component.html',
-    styleUrls: ['./account.component.css']
+    styleUrls: ['./account.component.scss']
 })
 export class AccountComponent implements OnInit {
     env = environment;

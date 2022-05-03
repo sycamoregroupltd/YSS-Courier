@@ -1,10 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {RewardService} from '../../services/reward.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { RewardService } from '../../services/reward.service';
 
 @Component({
     selector: 'app-reward-gift-type-selection',
     templateUrl: './reward-gift-type-selection.component.html',
-    styleUrls: ['./reward-gift-type-selection.component.css']
+    styleUrls: ['./reward-gift-type-selection.component.scss']
 })
 export class RewardGiftTypeSelectionComponent implements OnInit {
     @Input() user;
@@ -47,5 +47,4 @@ export class RewardGiftTypeSelectionComponent implements OnInit {
             this.getUserGiftTypes();
         });
     }
-
 }

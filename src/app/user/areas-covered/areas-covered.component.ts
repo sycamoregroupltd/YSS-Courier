@@ -1,14 +1,14 @@
-import {Component, OnInit} from '@angular/core';
-import {Store} from '../../store';
-import {PostcodeService} from '../../services/postcode.service';
-import {debounce} from 'lodash';
-import {UserService} from '../../services/user.service';
-import {OverlayService} from '../../services/overlay.service';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '../../store';
+import { PostcodeService } from '../../services/postcode.service';
+import { debounce } from 'lodash';
+import { UserService } from '../../services/user.service';
+import { OverlayService } from '../../services/overlay.service';
 
 @Component({
     selector: 'app-areas-covered',
     templateUrl: './areas-covered.component.html',
-    styleUrls: ['./areas-covered.component.css']
+    styleUrls: ['./areas-covered.component.scss']
 })
 export class AreasCoveredComponent implements OnInit {
     user$ = this.store.select<any>('user');
@@ -77,7 +77,5 @@ export class AreasCoveredComponent implements OnInit {
         this.postcodeService.removePostcode(dataToSend).subscribe(data => {
             this.search();
         });
-
     }
-
 }

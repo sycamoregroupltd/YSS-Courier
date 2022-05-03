@@ -1,10 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {Store} from '../../store';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '../../store';
 
 @Component({
     selector: 'app-account-confirmation',
     templateUrl: './account-confirmation.component.html',
-    styleUrls: ['./account-confirmation.component.css']
+    styleUrls: ['./account-confirmation.component.scss']
 })
 export class AccountConfirmationComponent implements OnInit {
 
@@ -20,5 +20,4 @@ export class AccountConfirmationComponent implements OnInit {
     ngOnInit(): void {
         this.email = this.store.selectForLocal('confirmationEmail');
     }
-
 }

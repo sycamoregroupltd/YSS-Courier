@@ -1,13 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {UserService} from '../../services/user.service';
-import {debounce} from 'lodash';
-import {Store} from '../../store';
-import {CourierService} from '../../services/courier.service';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../services/user.service';
+import { debounce } from 'lodash';
+import { Store } from '../../store';
+import { CourierService } from '../../services/courier.service';
 
 @Component({
     selector: 'app-supplier-couriers',
     templateUrl: './supplier-couriers.component.html',
-    styleUrls: ['./supplier-couriers.component.css']
+    styleUrls: ['./supplier-couriers.component.scss']
 })
 export class SupplierCouriersComponent implements OnInit {
 

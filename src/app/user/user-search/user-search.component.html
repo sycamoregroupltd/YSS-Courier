@@ -1,4 +1,3 @@
-
 <div class="table-responsive">
     <table class="table table-condensed">
         <thead class="thead-white">
@@ -10,14 +9,6 @@
             <th>Landline</th>
             <th></th>
         </tr>
-<!--        <tr>-->
-<!--            <th><input type="text" class="form-control" [(ngModel)]="params.name" (ngModelChange)="filterSearch()" /></th>-->
-<!--            <th><input type="text" class="form-control" [(ngModel)]="params.jobTitle" (ngModelChange)="filterSearch()" /></th>-->
-<!--            <th><input type="text" class="form-control" [(ngModel)]="params.email" (ngModelChange)="filterSearch()" /></th>-->
-<!--            <th><input type="text" class="form-control" [(ngModel)]="params.mobile" (ngModelChange)="filterSearch()" /></th>-->
-<!--            <th><input type="text" class="form-control" [(ngModel)]="params.landline" (ngModelChange)="filterSearch()" /></th>-->
-<!--            <th></th>-->
-<!--        </tr>-->
         </thead>
         <tbody>
         <tr class="underline" *ngFor="let s of (companyUsers$ | async).data">

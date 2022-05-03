@@ -1,15 +1,15 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {CourierService} from '../../services/courier.service';
-import {OverlayService} from '../../services/overlay.service';
-import {AlertService} from '../../services/alert.service';
-import {Store} from '../../store';
-import {Router} from '@angular/router';
-import {debounce} from 'lodash';
+import { Component, Input, OnInit } from '@angular/core';
+import { CourierService } from '../../services/courier.service';
+import { OverlayService } from '../../services/overlay.service';
+import { AlertService } from '../../services/alert.service';
+import { Store } from '../../store';
+import { Router } from '@angular/router';
+import { debounce } from 'lodash';
 
 @Component({
-  selector: 'app-courier-vehicles-slider',
-  templateUrl: './courier-vehicles-slider.component.html',
-  styleUrls: ['./courier-vehicles-slider.component.css']
+    selector: 'app-courier-vehicles-slider',
+    templateUrl: './courier-vehicles-slider.component.html',
+    styleUrls: ['./courier-vehicles-slider.component.scss']
 })
 export class CourierVehiclesSliderComponent implements OnInit {
     @Input() company;
@@ -20,7 +20,6 @@ export class CourierVehiclesSliderComponent implements OnInit {
     itemSelected;
 
     overlayData;
-    overlayDataPermissions;
 
     confirmationData = {
         open: false,
@@ -110,8 +109,4 @@ export class CourierVehiclesSliderComponent implements OnInit {
             });
         }
     }
-
-
-
-
 }

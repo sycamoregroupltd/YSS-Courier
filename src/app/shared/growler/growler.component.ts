@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-growler',
-  templateUrl: './growler.component.html',
-  styleUrls: ['./growler.component.css']
+    selector: 'app-growler',
+    templateUrl: './growler.component.html',
+    styleUrls: ['./growler.component.scss']
 })
 export class GrowlerComponent implements OnInit {
 
-  constructor() { }
+    constructor() {
+    }
 
-  ngOnInit(): void {
-  }
-
+    ngOnInit(): void {
+    }
 }

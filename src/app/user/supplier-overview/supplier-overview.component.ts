@@ -1,11 +1,11 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Store} from '../../store';
-import {OverlayService} from '../../services/overlay.service';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Store } from '../../store';
+import { OverlayService } from '../../services/overlay.service';
 
 @Component({
-  selector: 'app-supplier-overview',
-  templateUrl: './supplier-overview.component.html',
-  styleUrls: ['./supplier-overview.component.css']
+    selector: 'app-supplier-overview',
+    templateUrl: './supplier-overview.component.html',
+    styleUrls: ['./supplier-overview.component.scss']
 })
 export class SupplierOverviewComponent implements OnInit {
     @Input() step;
@@ -62,7 +62,6 @@ export class SupplierOverviewComponent implements OnInit {
         sort: 'orders.createdAt DESC',
         sorts: [],
     };
-
 
     productParams = {
         productCode: '',
@@ -135,6 +134,7 @@ export class SupplierOverviewComponent implements OnInit {
         this.store.set('userToEdit', undefined);
         this.setStep('user-edit');
     }
+
     editUser(user) {
         this.store.set('userToEdit', user);
         this.setStep('user-edit');

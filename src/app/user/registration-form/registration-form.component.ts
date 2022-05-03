@@ -11,7 +11,7 @@ import { BasketService } from '../../services/basket.service';
 @Component({
     selector: 'app-registration-form',
     templateUrl: './registration-form.component.html',
-    styleUrls: ['./registration-form.component.css'],
+    styleUrls: ['./registration-form.component.scss'],
 })
 export class RegistrationFormComponent implements OnInit {
     @Input() referralCode;
@@ -197,6 +197,7 @@ export class RegistrationFormComponent implements OnInit {
             this.user[v] = false;
         }
     }
+
     toggleTradeAccount() {
         !this.tradeAccount ? this.tradeAccount = true : this.tradeAccount = false;
         if (this.tradeAccount) {

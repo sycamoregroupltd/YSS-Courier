@@ -1,14 +1,14 @@
-import {Component, HostListener, OnInit} from '@angular/core';
-import {Store} from '../../store';
-import {ShipmentService} from '../../services/shipment.service';
-import {UserService} from '../../services/user.service';
-import {OrdersService} from '../../services/orders.service';
-import {debounce} from 'lodash';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { Store } from '../../store';
+import { ShipmentService } from '../../services/shipment.service';
+import { UserService } from '../../services/user.service';
+import { OrdersService } from '../../services/orders.service';
+import { debounce } from 'lodash';
 
 @Component({
     selector: 'app-shipments-board',
     templateUrl: './shipments-board.component.html',
-    styleUrls: ['./shipments-board.component.css']
+    styleUrls: ['./shipments-board.component.scss']
 })
 export class ShipmentsBoardComponent implements OnInit {
 
@@ -49,7 +49,7 @@ export class ShipmentsBoardComponent implements OnInit {
         event: KeyboardEvent
     ) {
         this.closeAllPopups('');
-        this.requestUpdateCompleted({refresh: false});
+        this.requestUpdateCompleted({ refresh: false });
     }
 
     constructor(

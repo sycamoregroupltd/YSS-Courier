@@ -1,14 +1,14 @@
-import {Component, OnInit} from '@angular/core';
-import {debounce} from 'lodash';
-import {Store} from '../../../store';
-import {RequestsService} from '../../../services/requests.service';
-import {AlertService} from '../../../services/alert.service';
-import {OverlayService} from '../../../services/overlay.service';
+import { Component, OnInit } from '@angular/core';
+import { debounce } from 'lodash';
+import { Store } from '../../../store';
+import { RequestsService } from '../../../services/requests.service';
+import { AlertService } from '../../../services/alert.service';
+import { OverlayService } from '../../../services/overlay.service';
 
 @Component({
     selector: 'app-requests',
     templateUrl: './requests.component.html',
-    styleUrls: ['./requests.component.css']
+    styleUrls: ['./requests.component.scss']
 })
 export class RequestsComponent implements OnInit {
     overlays$ = this.store.select<any>('overlays');
@@ -61,5 +61,4 @@ export class RequestsComponent implements OnInit {
         this.overlayService.toggle('requestCreate');
 
     }
-
 }

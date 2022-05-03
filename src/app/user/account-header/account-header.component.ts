@@ -1,9 +1,9 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-account-header',
-  templateUrl: './account-header.component.html',
-  styleUrls: ['./account-header.component.css']
+    selector: 'app-account-header',
+    templateUrl: './account-header.component.html',
+    styleUrls: ['./account-header.component.scss']
 })
 export class AccountHeaderComponent implements OnInit {
     @Input() user;
@@ -11,7 +11,8 @@ export class AccountHeaderComponent implements OnInit {
 
     step = 'dashboard';
 
-    constructor() { }
+    constructor() {
+    }
 
     ngOnInit(): void {
     }
@@ -20,5 +21,4 @@ export class AccountHeaderComponent implements OnInit {
         this.step = v;
         this.navigationChange.emit(v);
     }
-
 }

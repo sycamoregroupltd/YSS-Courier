@@ -34,4 +34,5 @@
     [usersSelected]="message.recipient"
     (addUser)="addUser($event)"
     (removeUser)="removeUser($event)"
-    *ngIf="(overlays$ | async).mailUserSearch"></app-mail-user-search>
+    *ngIf="(overlays$ | async).mailUserSearch"
+></app-mail-user-search>

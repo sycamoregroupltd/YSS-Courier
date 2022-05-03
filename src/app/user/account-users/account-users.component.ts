@@ -1,14 +1,13 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {UserService} from '../../services/user.service';
-import { debounce } from 'lodash';
-import {Store} from '../../store';
-import {environment} from '../../../environments/environment';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { UserService } from '../../services/user.service';
+import { Store } from '../../store';
+import { environment } from '../../../environments/environment';
 
 @Component({
-  selector: 'app-account-users',
-  templateUrl: './account-users.component.html',
-  styleUrls: ['./account-users.component.css']
+    selector: 'app-account-users',
+    templateUrl: './account-users.component.html',
+    styleUrls: ['./account-users.component.scss']
 })
 export class AccountUsersComponent implements OnInit {
     @Output() navigationChange = new EventEmitter();
@@ -54,8 +53,5 @@ export class AccountUsersComponent implements OnInit {
     ngOnInit(): void {
         this.user = this.store.selectForLocal('user');
         this.store.set('userToEdit', undefined);
-
     }
-
-
 }

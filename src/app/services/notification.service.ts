@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
-import {AngularFirestore} from '@angular/fire/firestore';
-import {Store} from '../store';
-import {ToolsService} from './tools.service';
+import { Injectable } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Store } from '../store';
+import { ToolsService } from './tools.service';
 
 @Injectable({
     providedIn: 'root'
@@ -57,7 +57,7 @@ export class NotificationService {
     stopListening() {
         this.query.subscribe().unsubscribe();
 
-        this.store.set('notifications', {unread: 0, data: []});
+        this.store.set('notifications', { unread: 0, data: [] });
     }
 
     send(notificationData) {

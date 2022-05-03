@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {Store} from '../../store';
-import {AuthService} from '../../services/auth.service';
-import {AlertService} from '../../services/alert.service';
-import {Router} from '@angular/router';
-import {OverlayService} from '../../services/overlay.service';
+import { Store } from '../../store';
+import { AuthService } from '../../services/auth.service';
+import { AlertService } from '../../services/alert.service';
+import { Router } from '@angular/router';
+import { OverlayService } from '../../services/overlay.service';
 
 @Component({
-  selector: 'app-header-mobile',
-  templateUrl: './header-mobile.component.html',
-  styleUrls: ['./header-mobile.component.css']
+    selector: 'app-header-mobile',
+    templateUrl: './header-mobile.component.html',
+    styleUrls: ['./header-mobile.component.scss']
 })
 export class HeaderMobileComponent implements OnInit {
 
@@ -38,9 +38,11 @@ export class HeaderMobileComponent implements OnInit {
 
     ngOnInit(): void {
     }
+
     toggleMenu() {
         this.store.set('mobileMenu', true);
     }
+
     toggleNotifications() {
         this.overlayService.toggle('notifications');
     }
@@ -54,6 +56,7 @@ export class HeaderMobileComponent implements OnInit {
         // this.router.navigate(['/register']);
         this.overlayService.toggle('registerModal');
     }
+
     login() {
         this.overlayService.toggle('loginModal');
     }
@@ -78,9 +81,8 @@ export class HeaderMobileComponent implements OnInit {
         } else {
         }
     }
+
     closeSubMenu(menuItem) {
         menuItem.open = false;
-        // this.activeMenuImage = '';
     }
-
 }

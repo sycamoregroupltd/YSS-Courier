@@ -1,22 +1,23 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { debounce } from 'lodash';
-import {ProductService} from '../../services/product.service';
+import { ProductService } from '../../services/product.service';
 
 @Component({
-  selector: 'app-product-search',
-  templateUrl: './product-search.component.html',
-  styleUrls: ['./product-search.component.css']
+    selector: 'app-product-search',
+    templateUrl: './product-search.component.html',
+    styleUrls: ['./product-search.component.scss']
 })
 export class ProductSearchComponent implements OnInit, OnChanges {
     @Input() params;
     @Input() showSupplier = false;
 
     products = [];
-  constructor(
-      private productsService: ProductService,
-  ) {
-      this.filterSearch = debounce(this.filterSearch, 350);
-  }
+
+    constructor(
+        private productsService: ProductService,
+    ) {
+        this.filterSearch = debounce(this.filterSearch, 350);
+    }
 
     ngOnInit(): void {
         console.log('products');
@@ -48,6 +49,4 @@ export class ProductSearchComponent implements OnInit, OnChanges {
             }
         });
     }
-
-
 }

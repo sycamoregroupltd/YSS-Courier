@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {Store} from '../../store';
-import {OrdersService} from '../../services/orders.service';
-import {AlertService} from '../../services/alert.service';
-import {OverlayService} from '../../services/overlay.service';
+import { ActivatedRoute } from '@angular/router';
+import { Store } from '../../store';
+import { OrdersService } from '../../services/orders.service';
+import { AlertService } from '../../services/alert.service';
+import { OverlayService } from '../../services/overlay.service';
 
 @Component({
-  selector: 'app-account-order-overview',
-  templateUrl: './account-order-overview.component.html',
-  styleUrls: ['./account-order-overview.component.css']
+    selector: 'app-account-order-overview',
+    templateUrl: './account-order-overview.component.html',
+    styleUrls: ['./account-order-overview.component.scss']
 })
 export class AccountOrderOverviewComponent implements OnInit {
 
@@ -26,7 +26,8 @@ export class AccountOrderOverviewComponent implements OnInit {
         private overlayService: OverlayService,
         private ordersService: OrdersService,
         private alertService: AlertService,
-    ) { }
+    ) {
+    }
 
     ngOnInit(): void {
         this.user = this.store.selectForLocal('user');
@@ -43,8 +44,8 @@ export class AccountOrderOverviewComponent implements OnInit {
 
     editOrderLine(idx) {
         this.order.orderLines[idx].edit = true;
-        this.orderLineToEdit = Object.assign({}, this.order.orderLines[idx] );
-        this.orderLineCopy = Object.assign({}, this.order.orderLines[idx] );
+        this.orderLineToEdit = Object.assign({}, this.order.orderLines[idx]);
+        this.orderLineCopy = Object.assign({}, this.order.orderLines[idx]);
     }
 
     cancelEditOrderLine(idx) {
@@ -95,12 +96,10 @@ export class AccountOrderOverviewComponent implements OnInit {
     updateOrderStatus() {
         this.overlayService.toggle('orderStatusUpdate');
     }
+
     update() {
         this.ordersService.update(this.order).subscribe(data => {
             this.alertService.notification(['Order details updated'], 3000);
         });
     }
-
-
-
 }

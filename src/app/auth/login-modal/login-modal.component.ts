@@ -1,14 +1,14 @@
-import { Router } from "@angular/router";
-import { Component, OnInit } from "@angular/core";
-import { Store } from "../../store";
-import { OverlayService } from "../../services/overlay.service";
-import { UserService } from "../../services/user.service";
-import { BasketService } from "../../services/basket.service";
+import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '../../store';
+import { OverlayService } from '../../services/overlay.service';
+import { UserService } from '../../services/user.service';
+import { BasketService } from '../../services/basket.service';
 
 @Component({
-    selector: "app-login-modal",
-    templateUrl: "./login-modal.component.html",
-    styleUrls: ["./login-modal.component.css"],
+    selector: 'app-login-modal',
+    templateUrl: './login-modal.component.html',
+    styleUrls: ['./login-modal.component.scss'],
 })
 export class LoginModalComponent implements OnInit {
     params: any;
@@ -19,20 +19,22 @@ export class LoginModalComponent implements OnInit {
         private userService: UserService,
         private basketService: BasketService,
         private router: Router
-    ) {}
+    ) {
+    }
 
-    ngOnInit() {}
+    ngOnInit() {
+    }
 
     register() {
-        this.overlayService.toggle("registerModal");
+        this.overlayService.toggle('registerModal');
     }
 
     authenticated(e) {
         console.log(e);
 
         if (e) {
-            const basket = this.store.selectForLocal("basket");
-            const user = this.store.selectForLocal("user");
+            const basket = this.store.selectForLocal('basket');
+            const user = this.store.selectForLocal('user');
             let deliveryAddresses = [];
 
             basket.customer = user;
@@ -51,12 +53,12 @@ export class LoginModalComponent implements OnInit {
                         basket.deliveryAddress = deliveryAddresses[0];
                         basket.deliveryPostcode = deliveryAddresses[0].postcode;
                         console.log(
-                            "this.basket.deliveryPostcode set to 2",
+                            'this.basket.deliveryPostcode set to 2',
                             deliveryAddresses[0].postcode
                         );
                     }
-                    this.store.set("deliveryAddresses", deliveryAddresses);
-                    this.basketService.saveBasketChanges(basket, "modalAuth");
+                    this.store.set('deliveryAddresses', deliveryAddresses);
+                    this.basketService.saveBasketChanges(basket, 'modalAuth');
                     this.close();
                 });
         }

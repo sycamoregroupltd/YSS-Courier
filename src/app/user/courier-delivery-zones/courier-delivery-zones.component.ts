@@ -1,15 +1,15 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {CourierService} from '../../services/courier.service';
-import {OverlayService} from '../../services/overlay.service';
-import {AlertService} from '../../services/alert.service';
-import {Store} from '../../store';
-import {Router} from '@angular/router';
-import {debounce} from 'lodash';
+import { CourierService } from '../../services/courier.service';
+import { OverlayService } from '../../services/overlay.service';
+import { AlertService } from '../../services/alert.service';
+import { Store } from '../../store';
+import { Router } from '@angular/router';
+import { debounce } from 'lodash';
 
 @Component({
-  selector: 'app-courier-delivery-zones',
-  templateUrl: './courier-delivery-zones.component.html',
-  styleUrls: ['./courier-delivery-zones.component.css']
+    selector: 'app-courier-delivery-zones',
+    templateUrl: './courier-delivery-zones.component.html',
+    styleUrls: ['./courier-delivery-zones.component.scss']
 })
 export class CourierDeliveryZonesComponent implements OnInit {
     @Input() company;
@@ -22,7 +22,6 @@ export class CourierDeliveryZonesComponent implements OnInit {
     itemSelected;
 
     overlayData;
-    overlayDataPermissions;
 
     confirmationData = {
         open: false,
@@ -59,7 +58,6 @@ export class CourierDeliveryZonesComponent implements OnInit {
     ngOnInit(): void {
         this.params.companyId = this.company.id;
         this.getVehicleTypes();
-        // this.filterSearch();
     }
 
     getVehicleTypes() {
@@ -74,6 +72,7 @@ export class CourierDeliveryZonesComponent implements OnInit {
         this.params.vehicleType = this.vehicleType.id;
         this.search();
     }
+
     filterSearch() {
         this.params.page = 0;
         this.search();
@@ -91,7 +90,6 @@ export class CourierDeliveryZonesComponent implements OnInit {
             for (let i = 0; i < this.params.pages; i++) {
                 this.params.pageArray.push(i);
             }
-            console.log(this.params);
         });
     }
 
@@ -105,7 +103,6 @@ export class CourierDeliveryZonesComponent implements OnInit {
     }
 
     edit(item) {
-        console.log(item);
         this.overlayData = {
             item,
         };
@@ -131,16 +128,11 @@ export class CourierDeliveryZonesComponent implements OnInit {
     }
 
     managePostcodes(item) {
-        console.log(item);
         this.overlayData = {
             item,
             vehicleType: this.vehicleType.id,
             companyId: this.params.companyId
         };
         this.overlayService.toggle('zonePostcodes');
-
-        // this.router.navigate(['courier', this.params.companyId, 'zones', item.id, 'postcodes']);
     }
-
-
 }

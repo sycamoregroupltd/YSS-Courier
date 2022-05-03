@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {Store} from '../../store';
-import {OverlayService} from '../../services/overlay.service';
-import {ShipmentService} from '../../services/shipment.service';
-import {AlertService} from '../../services/alert.service';
-import {OrdersService} from '../../services/orders.service';
+import { ActivatedRoute } from '@angular/router';
+import { Store } from '../../store';
+import { OverlayService } from '../../services/overlay.service';
+import { ShipmentService } from '../../services/shipment.service';
+import { AlertService } from '../../services/alert.service';
+import { OrdersService } from '../../services/orders.service';
 
 @Component({
-  selector: 'app-account-shipment-overview',
-  templateUrl: './account-shipment-overview.component.html',
-  styleUrls: ['./account-shipment-overview.component.css']
+    selector: 'app-account-shipment-overview',
+    templateUrl: './account-shipment-overview.component.html',
+    styleUrls: ['./account-shipment-overview.component.scss']
 })
 export class AccountShipmentOverviewComponent implements OnInit {
 

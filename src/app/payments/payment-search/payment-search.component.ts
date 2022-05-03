@@ -1,11 +1,11 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {debounce} from 'lodash';
-import {PaymentsService} from '../../services/payments.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { debounce } from 'lodash';
+import { PaymentsService } from '../../services/payments.service';
 
 @Component({
     selector: 'app-payment-search',
     templateUrl: './payment-search.component.html',
-    styleUrls: ['./payment-search.component.css']
+    styleUrls: ['./payment-search.component.scss']
 })
 export class PaymentSearchComponent implements OnInit {
     @Input() params;

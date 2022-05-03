@@ -1,11 +1,11 @@
-import {Component, OnInit} from '@angular/core';
-import {Store} from '../../store';
-import {Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '../../store';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-password-reset-confirmation',
     templateUrl: './password-reset-confirmation.component.html',
-    styleUrls: ['./password-reset-confirmation.component.css']
+    styleUrls: ['./password-reset-confirmation.component.scss']
 })
 export class PasswordResetConfirmationComponent implements OnInit {
 

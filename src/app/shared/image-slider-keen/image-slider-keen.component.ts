@@ -1,10 +1,10 @@
-import {AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import KeenSlider from 'keen-slider';
 
 @Component({
-  selector: 'app-image-slider-keen',
-  templateUrl: './image-slider-keen.component.html',
-  styleUrls: ['./image-slider-keen.component.css']
+    selector: 'app-image-slider-keen',
+    templateUrl: './image-slider-keen.component.html',
+    styleUrls: ['./image-slider-keen.component.scss']
 })
 export class ImageSliderKeenComponent implements OnInit, AfterViewInit, OnDestroy {
     @Input() images;
@@ -27,36 +27,37 @@ export class ImageSliderKeenComponent implements OnInit, AfterViewInit, OnDestro
     slider: any = null;
     fullScreen = false;
 
-  constructor() { }
+    constructor() {
+    }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+    }
 
-  ngAfterViewInit(): void {
-      setTimeout(() => {
-          this.slider = new KeenSlider(this.sliderRef.nativeElement, {
-              slidesPerView: this.slidesPerView,
-              spacing: this.spacing,
-              loop: this.loop,
-              slideChanged: s => {
-                  this.currentSlide = s.details().relativeSlide;
-              }
-          });
-          this.dotHelper = [...Array(this.slider.details().size).keys()];
-      }, 1000);
-
-  }
+    ngAfterViewInit(): void {
+        setTimeout(() => {
+            this.slider = new KeenSlider(this.sliderRef.nativeElement, {
+                slidesPerView: this.slidesPerView,
+                spacing: this.spacing,
+                loop: this.loop,
+                slideChanged: s => {
+                    this.currentSlide = s.details().relativeSlide;
+                }
+            });
+            this.dotHelper = [...Array(this.slider.details().size).keys()];
+        }, 1000);
+    }
 
     ngOnDestroy(): void {
         if (this.slider) {
             this.slider.destroy();
         }
-  }
+    }
 
-  goFullScreen() {
-      this.fullScreen = true;
-  }
-  closeFullScreen() {
-      this.fullScreen = false;
-  }
+    goFullScreen() {
+        this.fullScreen = true;
+    }
+
+    closeFullScreen() {
+        this.fullScreen = false;
+    }
 }

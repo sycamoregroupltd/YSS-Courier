@@ -1,29 +1,23 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {UserService} from '../../services/user.service';
-import {AlertService} from '../../services/alert.service';
-import {ApiService} from '../../services/api.service';
-import {ToolsService} from '../../services/tools.service';
-import {environment} from '../../../environments/environment';
-import {Store} from '../../store';
-import {OverlayService} from '../../services/overlay.service';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserService } from '../../services/user.service';
+import { AlertService } from '../../services/alert.service';
+import { ToolsService } from '../../services/tools.service';
+import { Store } from '../../store';
+import { OverlayService } from '../../services/overlay.service';
 
 @Component({
     selector: 'app-account-user-edit',
     templateUrl: './account-user-edit.component.html',
-    styleUrls: ['./account-user-edit.component.css']
+    styleUrls: ['./account-user-edit.component.scss']
 })
 export class AccountUserEditComponent implements OnInit {
     @Output() completed = new EventEmitter();
 
     form: FormGroup;
-
     newUser = false;
-
     newUserId = '';
     newContactId = '';
-    newAddressId = '';
-    newCompanyId = '';
 
     user = {
         id: '',
@@ -74,7 +68,6 @@ export class AccountUserEditComponent implements OnInit {
                 jobTitle: ['', [Validators.minLength(2)]],
             }),
         });
-
     }
 
     ngOnInit(): void {
@@ -107,7 +100,6 @@ export class AccountUserEditComponent implements OnInit {
                 this.user.contact.companyId = overlayData.company.id;
             }
         }
-
     }
 
     close() {
@@ -123,9 +115,7 @@ export class AccountUserEditComponent implements OnInit {
     }
 
     onSubmit() {
-
         this.user.username = this.form.value.contact.email;
-
         this.user.contact.firstname = this.form.value.contact.firstname;
         this.user.contact.surname = this.form.value.contact.surname;
         this.user.contact.email = this.form.value.contact.email;
@@ -133,7 +123,6 @@ export class AccountUserEditComponent implements OnInit {
         this.user.contact.landline = this.form.value.contact.landline;
         this.user.contact.jobTitle = this.form.value.contact.jobTitle;
 
-        console.log(this.user);
         this.alertService.clearMessage();
         if (this.newUser) {
             this.create();
@@ -144,7 +133,6 @@ export class AccountUserEditComponent implements OnInit {
 
     create() {
         this.userService.createUser(this.user).subscribe(data => {
-                console.log(data);
                 this.alertService.notification(['New account added'], 3000);
 
                 this.userService.search().subscribe();
@@ -158,7 +146,6 @@ export class AccountUserEditComponent implements OnInit {
 
     update() {
         this.userService.update(this.user).subscribe(data => {
-                console.log(data);
                 this.alertService.notification(['Account updated'], 3000);
 
                 this.userService.search().subscribe();
@@ -177,7 +164,5 @@ export class AccountUserEditComponent implements OnInit {
         this.user.id = this.newUserId;
         this.user.contact.id = this.newContactId;
         this.user.contact.userId = this.newUserId;
-
     }
-
 }

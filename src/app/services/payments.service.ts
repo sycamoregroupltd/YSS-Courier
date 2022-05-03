@@ -1,10 +1,10 @@
-import {Injectable} from '@angular/core';
-import {environment} from '../../environments/environment';
-import {ApiService} from './api.service';
-import {HttpClient} from '@angular/common/http';
-import {Store} from '../store';
-import {CookieService} from './cookie.service';
-import {catchError, map} from 'rxjs/operators';
+import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
+import { ApiService } from './api.service';
+import { HttpClient } from '@angular/common/http';
+import { Store } from '../store';
+import { CookieService } from './cookie.service';
+import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -108,7 +108,7 @@ export class PaymentsService {
         };
         return this.http.post(this.env.apiPath + 'payments', dataToSend, this.apiService.getHttpOptions())
             .pipe(
-                map( (data: any) => {
+                map((data: any) => {
                         return data;
                     },
                     catchError(this.apiService.handleError)

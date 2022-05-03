@@ -1,15 +1,15 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {CourierService} from '../../services/courier.service';
-import {OverlayService} from '../../services/overlay.service';
-import {AlertService} from '../../services/alert.service';
-import {Store} from '../../store';
-import {Router} from '@angular/router';
-import {debounce} from 'lodash';
+import { Component, Input, OnInit } from '@angular/core';
+import { CourierService } from '../../services/courier.service';
+import { OverlayService } from '../../services/overlay.service';
+import { AlertService } from '../../services/alert.service';
+import { Store } from '../../store';
+import { Router } from '@angular/router';
+import { debounce } from 'lodash';
 
 @Component({
-  selector: 'app-courier-vehicles',
-  templateUrl: './courier-vehicles.component.html',
-  styleUrls: ['./courier-vehicles.component.css']
+    selector: 'app-courier-vehicles',
+    templateUrl: './courier-vehicles.component.html',
+    styleUrls: ['./courier-vehicles.component.scss']
 })
 export class CourierVehiclesComponent implements OnInit {
     @Input() company;
@@ -110,7 +110,4 @@ export class CourierVehiclesComponent implements OnInit {
             });
         }
     }
-
-
-
 }

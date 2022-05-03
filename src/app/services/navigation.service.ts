@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
-import {Store} from '../store';
+import { Store } from '../store';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class NavigationService {
 
-  constructor(
-      private store: Store,
-  ) { }
+    constructor(
+        private store: Store,
+    ) {
+    }
 
-  setStep(f, v) {
-      const nav = this.store.selectForLocal('navigation');
-      nav[f] = v;
-      this.store.set('navigation', nav);
-  }
+    setStep(f, v) {
+        const nav = this.store.selectForLocal('navigation');
+        nav[f] = v;
+        this.store.set('navigation', nav);
+    }
 
 }

@@ -1,14 +1,14 @@
-import { Injectable } from "@angular/core";
-import { ApiService } from "./api.service";
-import { HttpClient } from "@angular/common/http";
-import { Store } from "../store";
-import { CookieService } from "./cookie.service";
-import { catchError, map } from "rxjs/operators";
-import { environment } from "../../environments/environment";
-import { ToolsService } from "./tools.service";
+import { Injectable } from '@angular/core';
+import { ApiService } from './api.service';
+import { HttpClient } from '@angular/common/http';
+import { Store } from '../store';
+import { CookieService } from './cookie.service';
+import { catchError, map } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
+import { ToolsService } from './tools.service';
 
 @Injectable({
-    providedIn: "root",
+    providedIn: 'root',
 })
 export class UserService {
     env = environment;
@@ -19,14 +19,15 @@ export class UserService {
         private store: Store,
         private cookieService: CookieService,
         private toolsService: ToolsService
-    ) { }
+    ) {
+    }
 
     async postcodeLookup(postcode) {
         const result: any = await this.http
             .get(
-                "https://api.getAddress.io/find/" +
+                'https://api.getAddress.io/find/' +
                 postcode +
-                "?api-key=CzqJCvY6GEeVcLJLm0kJWQ28605&expand=true&sort=true"
+                '?api-key=CzqJCvY6GEeVcLJLm0kJWQ28605&expand=true&sort=true'
             )
             .toPromise();
         console.log(result.addresses);
@@ -36,11 +37,11 @@ export class UserService {
     async createUserNew(user) {
         const dataToSend = {
             user,
-            createdBy: this.store.selectForLocal("user"),
+            createdBy: this.store.selectForLocal('user'),
         };
         const result: any = await this.http
             .post(
-                this.env.apiPath + "users/new",
+                this.env.apiPath + 'users/new',
                 dataToSend,
                 this.apiService.getHttpOptions()
             )
@@ -53,11 +54,11 @@ export class UserService {
         const dataToSend = {
             address,
             user,
-            createdBy: this.store.selectForLocal("user"),
+            createdBy: this.store.selectForLocal('user'),
         };
         const result: any = await this.http
             .post(
-                this.env.apiPath + "users/address/new",
+                this.env.apiPath + 'users/address/new',
                 dataToSend,
                 this.apiService.getHttpOptions()
             )
@@ -65,15 +66,16 @@ export class UserService {
 
         return result.data;
     }
+
     async createCompanyNew(company, user) {
         const dataToSend = {
             company,
             user,
-            createdBy: this.store.selectForLocal("user"),
+            createdBy: this.store.selectForLocal('user'),
         };
         const result: any = await this.http
             .post(
-                this.env.apiPath + "users/company/new",
+                this.env.apiPath + 'users/company/new',
                 dataToSend,
                 this.apiService.getHttpOptions()
             )
@@ -86,8 +88,8 @@ export class UserService {
             address,
             company,
             user,
-        }
-        return this.http.post(this.env.apiPath + "users/company/additional", dataToSend, this.apiService.getHttpOptions())
+        };
+        return this.http.post(this.env.apiPath + 'users/company/additional', dataToSend, this.apiService.getHttpOptions())
             .pipe(
                 map((data: any) => {
                     return data;
@@ -95,10 +97,11 @@ export class UserService {
             );
 
     }
+
     createUser(user) {
         return this.http
             .post(
-                this.env.apiPath + "users/signup",
+                this.env.apiPath + 'users/signup',
                 user,
                 this.apiService.getHttpOptions()
             )
@@ -112,7 +115,7 @@ export class UserService {
     async createUserAsync(user) {
         const result: any = await this.http
             .post(
-                this.env.apiPath + "users/signup",
+                this.env.apiPath + 'users/signup',
                 user,
                 this.apiService.getHttpOptions()
             )
@@ -123,7 +126,7 @@ export class UserService {
     async checkUserExists(email) {
         const result: any = await this.http
             .get(
-                this.env.apiPath + "users/exists/" + email,
+                this.env.apiPath + 'users/exists/' + email,
                 this.apiService.getHttpOptions()
             )
             .toPromise();
@@ -137,7 +140,7 @@ export class UserService {
         };
         return this.http
             .post(
-                this.env.apiPath + "users/referralcode/check",
+                this.env.apiPath + 'users/referralcode/check',
                 dataToSend,
                 this.apiService.getHttpOptions()
             )
@@ -151,7 +154,7 @@ export class UserService {
     async createGuest(user) {
         const result: any = await this.http
             .post(
-                this.env.apiPath + "users/signup",
+                this.env.apiPath + 'users/signup',
                 user,
                 this.apiService.getHttpOptions()
             )
@@ -166,7 +169,7 @@ export class UserService {
         };
         const result: any = await this.http
             .post(
-                this.env.apiPath + "users/address",
+                this.env.apiPath + 'users/address',
                 dataToSend,
                 this.apiService.getHttpOptions()
             )
@@ -182,9 +185,9 @@ export class UserService {
         return this.http
             .put(
                 this.env.apiPath +
-                "users/company/" +
+                'users/company/' +
                 companyId +
-                "/primaryuser",
+                '/primaryuser',
                 dataToSend,
                 this.apiService.getHttpOptions()
             )
@@ -202,7 +205,7 @@ export class UserService {
         };
         return this.http
             .post(
-                this.env.apiPath + "users/company",
+                this.env.apiPath + 'users/company',
                 dataToSend,
                 this.apiService.getHttpOptions()
             )
@@ -217,15 +220,15 @@ export class UserService {
         console.log(this.env);
         return this.http
             .get(
-                this.env.apiPath + "users/profile",
+                this.env.apiPath + 'users/profile',
                 this.apiService.getHttpOptions()
             )
             .pipe(
                 map((data: any) => {
-                    this.store.set("user", data.data);
+                    this.store.set('user', data.data);
                     this.cookieService.setUser(data.data);
                     this.toolsService.setSessionId(data.data.id);
-                    localStorage.setItem("user", data.data.id);
+                    localStorage.setItem('user', data.data.id);
                     // this.cookieService.set('user', data);
                     return data;
                 }, catchError(this.apiService.handleError))
@@ -235,15 +238,15 @@ export class UserService {
     update(user) {
         return this.http
             .put(
-                this.env.apiPath + "users/" + user.id,
+                this.env.apiPath + 'users/' + user.id,
                 user,
                 this.apiService.getHttpOptions()
             )
             .pipe(
                 map(async (data: any) => {
-                    this.store.set("user", user);
+                    this.store.set('user', user);
                     await this.cookieService.setUser(user);
-                    localStorage.setItem("user", user.id);
+                    localStorage.setItem('user', user.id);
                     // await this.cookieService.set('user', user);
                     return data;
                 }, catchError(this.apiService.handleError))
@@ -253,7 +256,7 @@ export class UserService {
     updateContact(user) {
         return this.http
             .put(
-                this.env.apiPath + "users/contact/" + user.id,
+                this.env.apiPath + 'users/contact/' + user.id,
                 user,
                 this.apiService.getHttpOptions()
             )
@@ -270,7 +273,7 @@ export class UserService {
         };
         return this.http
             .post(
-                this.env.apiPath + "users/search/users",
+                this.env.apiPath + 'users/search/users',
                 dataToSend,
                 this.apiService.getHttpOptions()
             )
@@ -284,7 +287,7 @@ export class UserService {
     findOne(id) {
         return this.http
             .get(
-                this.env.apiPath + "users/" + id,
+                this.env.apiPath + 'users/' + id,
                 this.apiService.getHttpOptions()
             )
             .pipe(
@@ -297,7 +300,7 @@ export class UserService {
     delete(id) {
         return this.http
             .delete(
-                this.env.apiPath + "users/" + id,
+                this.env.apiPath + 'users/' + id,
                 this.apiService.getHttpOptions()
             )
             .pipe(
@@ -308,8 +311,8 @@ export class UserService {
     }
 
     search() {
-        const companyUsers = this.store.selectForLocal("companyUsers");
-        const user = this.store.selectForLocal("user");
+        const companyUsers = this.store.selectForLocal('companyUsers');
+        const user = this.store.selectForLocal('user');
         companyUsers.params.accountType = user.accountType;
         companyUsers.params.companyId = user.company.id;
         const dataToSend = {
@@ -317,7 +320,7 @@ export class UserService {
         };
         return this.http
             .post(
-                this.env.apiPath + "users/search",
+                this.env.apiPath + 'users/search',
                 dataToSend,
                 this.apiService.getHttpOptions()
             )
@@ -333,7 +336,7 @@ export class UserService {
                     for (let i = 0; i < companyUsers.params.pages; i++) {
                         companyUsers.params.pageArray.push(i);
                     }
-                    this.store.set("companyUsers", companyUsers);
+                    this.store.set('companyUsers', companyUsers);
 
                     return data;
                 }, catchError(this.apiService.handleError))
@@ -346,7 +349,7 @@ export class UserService {
         };
         return this.http
             .post(
-                this.env.apiPath + "users/search/customers",
+                this.env.apiPath + 'users/search/customers',
                 dataToSend,
                 this.apiService.getHttpOptions()
             )
@@ -360,7 +363,7 @@ export class UserService {
     findAddressesByCustomer(userId) {
         return this.http
             .get(
-                this.env.apiPath + "users/addresses/" + userId,
+                this.env.apiPath + 'users/addresses/' + userId,
                 this.apiService.getHttpOptions()
             )
             .pipe(
@@ -376,7 +379,7 @@ export class UserService {
         };
         return this.http
             .post(
-                this.env.apiPath + "users/search/companies",
+                this.env.apiPath + 'users/search/companies',
                 dataToSend,
                 this.apiService.getHttpOptions()
             )
@@ -393,7 +396,7 @@ export class UserService {
         };
         return this.http
             .post(
-                this.env.apiPath + "users/search/companies/areascovered",
+                this.env.apiPath + 'users/search/companies/areascovered',
                 dataToSend,
                 this.apiService.getHttpOptions()
             )
@@ -408,7 +411,7 @@ export class UserService {
         return this.http
             .get(
                 this.env.apiPath +
-                "users/search/companies/areascovered/" +
+                'users/search/companies/areascovered/' +
                 companyId,
                 this.apiService.getHttpOptions()
             )
@@ -425,7 +428,7 @@ export class UserService {
         };
         return this.http
             .post(
-                this.env.apiPath + "courier/supplier/collection/",
+                this.env.apiPath + 'courier/supplier/collection/',
                 dataToSend,
                 this.apiService.getHttpOptions()
             )
@@ -444,7 +447,7 @@ export class UserService {
 
         return this.http
             .put(
-                this.env.apiPath + "courier/supplier/collection",
+                this.env.apiPath + 'courier/supplier/collection',
                 dataToSend,
                 this.apiService.getHttpOptions()
             )

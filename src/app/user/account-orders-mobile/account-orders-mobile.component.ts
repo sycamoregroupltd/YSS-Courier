@@ -1,42 +1,39 @@
-import { Store } from "./../../store";
-import { OrdersService } from "./../../services/orders.service";
-import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
-import KeenSlider from "keen-slider";
-import { debounce } from "lodash";
+import { Store } from '../../store';
+import { OrdersService } from '../../services/orders.service';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import KeenSlider from 'keen-slider';
+import { debounce } from 'lodash';
 
 @Component({
-    selector: "app-account-orders-mobile",
-    templateUrl: "./account-orders-mobile.component.html",
-    styleUrls: ["./account-orders-mobile.component.css"],
+    selector: 'app-account-orders-mobile',
+    templateUrl: './account-orders-mobile.component.html',
+    styleUrls: ['./account-orders-mobile.component.scss'],
 })
 export class AccountOrdersMobileComponent implements OnInit {
     tiles = 1;
     spacing = 15;
     slidesPerView = 1;
     showDots = true;
-    showNav = false;
-    showExpandArrows = false;
 
-    @ViewChild("sliderRef") sliderRef: ElementRef<HTMLElement>;
+    @ViewChild('sliderRef') sliderRef: ElementRef<HTMLElement>;
 
     currentSlide = 1;
     dotHelper: Array<number> = [];
     slider: any = null;
-    fullScreen = false;
 
     orders = [];
     params = {
-        customer: "",
-        orderId: "",
-        invoiceId: "",
-        customerId: "",
-        supplierId: "",
-        supplier: "",
-        status: "",
-        dueDate: "",
-        isSample: "",
-        shippingStatus: "",
-        freeText: "",
+        customer: '',
+        orderId: '',
+        invoiceId: '',
+        customerId: '',
+        supplierId: '',
+        supplier: '',
+        status: '',
+        dueDate: '',
+        isSample: '',
+        shippingStatus: '',
+        freeText: '',
         all: true,
         thisWeek: false,
         thisMonth: false,
@@ -46,7 +43,7 @@ export class AccountOrdersMobileComponent implements OnInit {
         pages: 0,
         pageArray: [],
         totalRecords: 0,
-        sort: "order_details.createdAt DESC",
+        sort: 'order_details.createdAt DESC',
         sorts: [],
     };
 
@@ -55,7 +52,7 @@ export class AccountOrdersMobileComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        const user = this.store.selectForLocal("user");
+        const user = this.store.selectForLocal('user');
         this.params.customerId = user.id;
         this.filterSearch();
     }

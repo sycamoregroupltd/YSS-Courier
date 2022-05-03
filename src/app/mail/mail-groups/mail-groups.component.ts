@@ -1,15 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {Store} from '../../store';
-import {ChatService} from '../../services/chat.service';
-import {OverlayService} from '../../services/overlay.service';
-import { debounce } from 'lodash';
-import {Router} from '@angular/router';
-import {map} from 'rxjs/operators';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '../../store';
+import { ChatService } from '../../services/chat.service';
+import { OverlayService } from '../../services/overlay.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-mail-groups',
     templateUrl: './mail-groups.component.html',
-    styleUrls: ['./mail-groups.component.css']
+    styleUrls: ['./mail-groups.component.scss']
 })
 export class MailGroupsComponent implements OnInit {
     user$ = this.store.select<any>('user');
@@ -56,12 +54,7 @@ export class MailGroupsComponent implements OnInit {
     }
 
     getGroups() {
-        console.log('getting groups');
-        this.chatService.getGroups().subscribe(data => {
-            console.log(data.data);
-            // this.viewFolder('inbox');
-            // this.groups = data.data;
-        });
+        this.chatService.getGroups().subscribe();
     }
 
     searchMail() {
@@ -79,17 +72,9 @@ export class MailGroupsComponent implements OnInit {
         chatStore.replyingTo = undefined;
         this.store.set('chatStore', chatStore);
         this.composing = true;
-        // this.overlayService.toggle('mailCompose');
     }
 
     finishedNewMessage(e) {
-        if (e) {
-            // setTimeout(() => {
-            //     this.getGroups();
-            //     // this.close();
-            // }, 1000);
-
-        }
         this.composing = false;
     }
 
@@ -101,7 +86,6 @@ export class MailGroupsComponent implements OnInit {
     }
 
     viewFolder(folder) {
-        // this.clearFilters();
         this.clearGroup();
         this.setFilter('inbox', true, 'inbox');
     }
@@ -116,7 +100,7 @@ export class MailGroupsComponent implements OnInit {
 
     setFilter(type, value, folder) {
         this.chatParams.searchTerm = '';
-        this.filtering = {type, value};
+        this.filtering = { type, value };
         this.activeFolder = folder;
         this.clearGroup();
         this.doFilter();
@@ -148,15 +132,10 @@ export class MailGroupsComponent implements OnInit {
 
     }
 
-
     searchMessagesFromUserGroups() {
         this.chatService.searchMessagesFromUserGroups(this.chatParams).subscribe(data => {
         });
     }
-
-
-
-
 
 
     getCategories() {

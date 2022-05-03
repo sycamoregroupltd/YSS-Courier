@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {Store} from '../../store';
+import { Store } from '../../store';
 
 @Component({
-  selector: 'app-footer-mobile',
-  templateUrl: './footer-mobile.component.html',
-  styleUrls: ['./footer-mobile.component.css']
+    selector: 'app-footer-mobile',
+    templateUrl: './footer-mobile.component.html',
+    styleUrls: ['./footer-mobile.component.scss']
 })
 export class FooterMobileComponent implements OnInit {
 

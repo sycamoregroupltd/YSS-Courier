@@ -1,13 +1,13 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
-import { OverlayService } from "../../services/overlay.service";
-import { Store } from "../../store";
-import { ChatService } from "../../services/chat.service";
-import { debounce } from "lodash";
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { OverlayService } from '../../services/overlay.service';
+import { Store } from '../../store';
+import { ChatService } from '../../services/chat.service';
+import { debounce } from 'lodash';
 
 @Component({
-    selector: "app-mail-user-search",
-    templateUrl: "./mail-user-search.component.html",
-    styleUrls: ["./mail-user-search.component.css"],
+    selector: 'app-mail-user-search',
+    templateUrl: './mail-user-search.component.html',
+    styleUrls: ['./mail-user-search.component.scss'],
 })
 export class MailUserSearchComponent implements OnInit {
     @Input() usersSelected;
@@ -17,18 +17,18 @@ export class MailUserSearchComponent implements OnInit {
     users = [];
 
     params = {
-        userCompanyId: "",
-        freeText: "",
-        company: "",
-        name: "",
-        accountType: "",
+        userCompanyId: '',
+        freeText: '',
+        company: '',
+        name: '',
+        accountType: '',
         limit: 10,
         limits: [10, 25, 50, 75, 100],
         page: 0,
         pages: 0,
         pageArray: [],
         totalRecords: 0,
-        sort: "contacts.firstname",
+        sort: 'contacts.firstname',
         sorts: [],
     };
 
@@ -41,9 +41,9 @@ export class MailUserSearchComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        const user = this.store.selectForLocal("user");
+        const user = this.store.selectForLocal('user');
         this.params.accountType = user.accountType;
-        if (user.accountType === "supplier" || user.accountType === "trade") {
+        if (user.accountType === 'supplier' || user.accountType === 'trade') {
             this.params.userCompanyId = user.company.id;
         }
 

@@ -1,10 +1,10 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Store} from '../../store';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Store } from '../../store';
 
 @Component({
-  selector: 'app-user-menu',
-  templateUrl: './user-menu.component.html',
-  styleUrls: ['./user-menu.component.css']
+    selector: 'app-user-menu',
+    templateUrl: './user-menu.component.html',
+    styleUrls: ['./user-menu.component.scss']
 })
 export class UserMenuComponent implements OnInit {
     @Input() user;
@@ -14,10 +14,11 @@ export class UserMenuComponent implements OnInit {
 
     constructor(
         private store: Store,
-    ) { }
+    ) {
+    }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+    }
 
     setStep(v) {
         this.step = v;

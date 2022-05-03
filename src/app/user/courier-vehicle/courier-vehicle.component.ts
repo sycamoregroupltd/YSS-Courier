@@ -1,15 +1,15 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {OverlayService} from '../../services/overlay.service';
-import {Store} from '../../store';
-import {CourierService} from '../../services/courier.service';
-import {AlertService} from '../../services/alert.service';
-import {ToolsService} from '../../services/tools.service';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { OverlayService } from '../../services/overlay.service';
+import { Store } from '../../store';
+import { CourierService } from '../../services/courier.service';
+import { AlertService } from '../../services/alert.service';
+import { ToolsService } from '../../services/tools.service';
 
 @Component({
-  selector: 'app-courier-vehicle',
-  templateUrl: './courier-vehicle.component.html',
-  styleUrls: ['./courier-vehicle.component.css']
+    selector: 'app-courier-vehicle',
+    templateUrl: './courier-vehicle.component.html',
+    styleUrls: ['./courier-vehicle.component.scss']
 })
 export class CourierVehicleComponent implements OnInit {
     @Input() overlayData;
@@ -66,8 +66,6 @@ export class CourierVehicleComponent implements OnInit {
     ngOnInit(): void {
         this.getVehicleTypes();
         this.getPricingTypes();
-        // const overlayData = this.store.selectForLocal('overlayData');
-        // console.log(overlayData);
         if (this.overlayData.item) {
             this.newItem = false;
 
@@ -75,8 +73,6 @@ export class CourierVehicleComponent implements OnInit {
                 .getVehicle(this.overlayData.item.id)
                 .subscribe((data) => {
                     this.item = data.data;
-                    console.log(this.item);
-
                     this.form.patchValue({
                         type: data.data.type.id,
                         registration: data.data.registration,
@@ -101,6 +97,7 @@ export class CourierVehicleComponent implements OnInit {
             this.vehicleTypes = data.data;
         });
     }
+
     getPricingTypes() {
         this.courierService.getPricingTypes().subscribe(data => {
             this.pricingTypes = data.data;
@@ -110,7 +107,6 @@ export class CourierVehicleComponent implements OnInit {
     close() {
         this.overlayService.closeAll();
     }
-
 
     onSubmit() {
         this.item.type = this.form.value.type;
@@ -173,5 +169,4 @@ export class CourierVehicleComponent implements OnInit {
         } else {
         }
     }
-
 }

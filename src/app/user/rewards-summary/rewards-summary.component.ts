@@ -1,12 +1,12 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {RewardService} from '../../services/reward.service';
-import {Store} from '../../store';
-import {OverlayService} from '../../services/overlay.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { RewardService } from '../../services/reward.service';
+import { Store } from '../../store';
+import { OverlayService } from '../../services/overlay.service';
 
 @Component({
     selector: 'app-rewards-summary',
     templateUrl: './rewards-summary.component.html',
-    styleUrls: ['./rewards-summary.component.css']
+    styleUrls: ['./rewards-summary.component.scss']
 })
 export class RewardsSummaryComponent implements OnInit {
     @Input() user;

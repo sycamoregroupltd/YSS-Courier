@@ -1,22 +1,23 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class ToolsService {
 
-  constructor() { }
+    constructor() {
+    }
 
     sessionId() {
-      const sessionId = localStorage.getItem('sessionId');
-      if (sessionId) {
-          return sessionId;
-      }
+        const sessionId = localStorage.getItem('sessionId');
+        if (sessionId) {
+            return sessionId;
+        }
 
-      const newSessionId = this.newUUID();
-      // set the tmpSessionId that will persist login and reference work done whilst signed out
-      localStorage.setItem('tmpSessionId', newSessionId);
-      return this.setSessionId(newSessionId);
+        const newSessionId = this.newUUID();
+        // set the tmpSessionId that will persist login and reference work done whilst signed out
+        localStorage.setItem('tmpSessionId', newSessionId);
+        return this.setSessionId(newSessionId);
     }
 
     setSessionId(sessionId) {
@@ -25,7 +26,7 @@ export class ToolsService {
     }
 
     logoutSessionId() {
-      localStorage.setItem('sessionId', localStorage.getItem('tmpSessionId'));
+        localStorage.setItem('sessionId', localStorage.getItem('tmpSessionId'));
     }
 
     newUUID() {
@@ -35,24 +36,24 @@ export class ToolsService {
         });
     }
 
-    getMonths()  {
-      return [
-            {id: 1, name: 'January'},
-            {id: 2, name: 'February'},
-            {id: 3, name: 'March'},
-            {id: 4, name: 'April'},
-            {id: 5, name: 'May'},
-            {id: 6, name: 'June'},
-            {id: 7, name: 'July'},
-            {id: 8, name: 'August'},
-            {id: 9, name: 'September'},
-            {id: 10, name: 'October'},
-            {id: 11, name: 'November'},
-            {id: 12, name: 'December'},
+    getMonths() {
+        return [
+            { id: 1, name: 'January' },
+            { id: 2, name: 'February' },
+            { id: 3, name: 'March' },
+            { id: 4, name: 'April' },
+            { id: 5, name: 'May' },
+            { id: 6, name: 'June' },
+            { id: 7, name: 'July' },
+            { id: 8, name: 'August' },
+            { id: 9, name: 'September' },
+            { id: 10, name: 'October' },
+            { id: 11, name: 'November' },
+            { id: 12, name: 'December' },
         ];
     }
 
-    getYears(noOfYears)  {
+    getYears(noOfYears) {
         const dateToday = new Date();
         const currentYear = dateToday.getFullYear();
         const years = [];
@@ -65,6 +66,4 @@ export class ToolsService {
     getMonthNames() {
         return ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     }
-
-
 }

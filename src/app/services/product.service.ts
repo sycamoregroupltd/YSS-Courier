@@ -22,8 +22,8 @@ export class ProductService {
         return this.http.get(this.env.apiPath + 'products/linked/' + productId, this.apiService.getHttpOptions())
             .pipe(
                 map((data: any) => {
-                    return data;
-                },
+                        return data;
+                    },
                     catchError(this.apiService.handleError)
                 ));
     }
@@ -32,8 +32,8 @@ export class ProductService {
         return this.http.get(this.env.apiPath + 'products/case-studies/' + productId, this.apiService.getHttpOptions())
             .pipe(
                 map((data: any) => {
-                    return data;
-                },
+                        return data;
+                    },
                     catchError(this.apiService.handleError)
                 ));
     }
@@ -42,8 +42,8 @@ export class ProductService {
         return this.http.get(this.env.apiPath + 'products/public/' + slug, this.apiService.getHttpOptions())
             .pipe(
                 map((data: any) => {
-                    return data;
-                },
+                        return data;
+                    },
                     catchError(this.apiService.handleError)
                 ));
     }
@@ -52,8 +52,8 @@ export class ProductService {
         return this.http.get(this.env.apiPath + 'product-groups', this.apiService.getHttpOptions())
             .pipe(
                 map((data: any) => {
-                    return data;
-                },
+                        return data;
+                    },
                     catchError(this.apiService.handleError)
                 ));
     }
@@ -62,8 +62,8 @@ export class ProductService {
         return this.http.get(this.env.apiPath + 'product-groups/' + slug, this.apiService.getHttpOptions())
             .pipe(
                 map((data: any) => {
-                    return data;
-                },
+                        return data;
+                    },
                     catchError(this.apiService.handleError)
                 ));
     }
@@ -72,8 +72,8 @@ export class ProductService {
         return this.http.get(this.env.apiPath + 'products/group/' + productGroup.id, this.apiService.getHttpOptions())
             .pipe(
                 map((data: any) => {
-                    return data;
-                },
+                        return data;
+                    },
                     catchError(this.apiService.handleError)
                 ));
     }
@@ -82,8 +82,8 @@ export class ProductService {
         return this.http.get(this.env.apiPath + 'product-range/' + slug, this.apiService.getHttpOptions())
             .pipe(
                 map((data: any) => {
-                    return data;
-                },
+                        return data;
+                    },
                     catchError(this.apiService.handleError)
                 ));
     }
@@ -92,8 +92,8 @@ export class ProductService {
         return this.http.get(this.env.apiPath + 'products/range/' + productRange.id, this.apiService.getHttpOptions())
             .pipe(
                 map((data: any) => {
-                    return data;
-                },
+                        return data;
+                    },
                     catchError(this.apiService.handleError)
                 ));
     }
@@ -102,8 +102,8 @@ export class ProductService {
         return this.http.get(this.env.apiPath + 'products/offers/', this.apiService.getHttpOptions())
             .pipe(
                 map((data: any) => {
-                    return data;
-                },
+                        return data;
+                    },
                     catchError(this.apiService.handleError)
                 ));
     }
@@ -115,8 +115,8 @@ export class ProductService {
         return this.http.post(this.env.apiPath + 'products/search', dataToSend, this.apiService.getHttpOptions())
             .pipe(
                 map((data: any) => {
-                    return data;
-                },
+                        return data;
+                    },
                     catchError(this.apiService.handleError)
                 )
             );
@@ -126,8 +126,8 @@ export class ProductService {
         return this.http.get(this.env.apiPath + 'product-range', this.apiService.getHttpOptions())
             .pipe(
                 map((data: any) => {
-                    return data;
-                },
+                        return data;
+                    },
                     catchError(this.apiService.handleError)
                 ));
     }
@@ -136,8 +136,8 @@ export class ProductService {
         return this.http.get(this.env.apiPath + 'product-finish', this.apiService.getHttpOptions())
             .pipe(
                 map((data: any) => {
-                    return data;
-                },
+                        return data;
+                    },
                     catchError(this.apiService.handleError)
                 ));
     }
@@ -147,8 +147,8 @@ export class ProductService {
         return this.http.get(this.env.apiPath + 'product-types/', this.apiService.getHttpOptions())
             .pipe(
                 map((data: any) => {
-                    return data;
-                },
+                        return data;
+                    },
                     catchError(this.apiService.handleError)
                 ));
     }
@@ -157,8 +157,8 @@ export class ProductService {
         return this.http.get(this.env.apiPath + 'product-types/bespoke', this.apiService.getHttpOptions())
             .pipe(
                 map((data: any) => {
-                    return data;
-                },
+                        return data;
+                    },
                     catchError(this.apiService.handleError)
                 ));
     }
@@ -167,8 +167,8 @@ export class ProductService {
         return this.http.get(this.env.apiPath + 'product-range/product-type/' + productType, this.apiService.getHttpOptions())
             .pipe(
                 map((data: any) => {
-                    return data;
-                },
+                        return data;
+                    },
                     catchError(this.apiService.handleError)
                 ));
     }
@@ -177,8 +177,8 @@ export class ProductService {
         return this.http.get(this.env.apiPath + 'product-range/product-type/' + productType + '/option/' + optionId, this.apiService.getHttpOptions())
             .pipe(
                 map((data: any) => {
-                    return data;
-                },
+                        return data;
+                    },
                     catchError(this.apiService.handleError)
                 ));
     }
@@ -190,8 +190,8 @@ export class ProductService {
         return this.http.get(this.env.apiPath + 'product-variable-options/variable-group/' + id, this.apiService.getHttpOptions())
             .pipe(
                 map((data: any) => {
-                    return data;
-                },
+                        return data;
+                    },
                     catchError(this.apiService.handleError)
                 ));
 
@@ -201,8 +201,8 @@ export class ProductService {
         return this.http.get(this.env.apiPath + 'product-variable-options/variable-group/' + id + '/' + supplierId, this.apiService.getHttpOptions())
             .pipe(
                 map((data: any) => {
-                    return data;
-                },
+                        return data;
+                    },
                     catchError(this.apiService.handleError)
                 ));
 
@@ -218,8 +218,8 @@ export class ProductService {
         return this.http.post(this.env.apiPath + 'product-range/product-type/configuration/public', dataToSend, this.apiService.getHttpOptions())
             .pipe(
                 map((data: any) => {
-                    return data;
-                },
+                        return data;
+                    },
                     catchError(this.apiService.handleError)
                 ));
     }
@@ -496,6 +496,7 @@ export class ProductService {
         return +endCost;
 
     }
+
     calcCornerCost(masonryUnitCost, width, noOfCorners) {
         //
         const cornerCost = +(+masonryUnitCost * ((+width * noOfCorners) / 1000)).toFixed(2);

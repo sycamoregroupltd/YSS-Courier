@@ -1,12 +1,12 @@
-import {Component, OnInit, OnChanges, Input, SimpleChanges} from '@angular/core';
+import { Component, OnInit, OnChanges, Input, SimpleChanges } from '@angular/core';
 import { debounce } from 'lodash';
-import {OrdersService} from '../../services/orders.service';
-import {Store} from '../../store';
+import { OrdersService } from '../../services/orders.service';
+import { Store } from '../../store';
 
 @Component({
-  selector: 'app-order-search',
-  templateUrl: './order-search.component.html',
-  styleUrls: ['./order-search.component.css']
+    selector: 'app-order-search',
+    templateUrl: './order-search.component.html',
+    styleUrls: ['./order-search.component.scss']
 })
 export class OrderSearchComponent implements OnInit, OnChanges {
     @Input() params;
@@ -54,5 +54,4 @@ export class OrderSearchComponent implements OnInit, OnChanges {
             }
         });
     }
-
 }

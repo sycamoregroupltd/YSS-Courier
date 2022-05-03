@@ -1,11 +1,11 @@
-import {Injectable} from '@angular/core';
-import {catchError, map} from 'rxjs/operators';
-import {Store} from '../store';
+import { Injectable } from '@angular/core';
+import { catchError, map } from 'rxjs/operators';
+import { Store } from '../store';
 import { Socket } from 'ngx-socket-io';
-import {ApiService} from './api.service';
-import {HttpClient} from '@angular/common/http';
-import {environment} from '../../environments/environment';
-import {OverlayService} from './overlay.service';
+import { ApiService } from './api.service';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
+import { OverlayService } from './overlay.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
@@ -38,7 +38,7 @@ export class ChatService {
 
             for (let i = 0; i < chatStore.groups.length; i++) {
                 if (message.groupId === chatStore.groups[i].id) {
-                    if (!chatStore.group || (chatStore.groups[i].id !== chatStore.group.id) ) {
+                    if (!chatStore.group || (chatStore.groups[i].id !== chatStore.group.id)) {
                         chatStore.groups[i].unread++;
                     }
                 }
@@ -147,8 +147,6 @@ export class ChatService {
     }
 
 
-
-
     searchUsers(params) {
         const dataToSend = {
             params,
@@ -244,6 +242,7 @@ export class ChatService {
                     catchError(this.apiService.handleError)
                 ));
     }
+
     removeCategory(groupId, userId) {
         const dataToSend = {
             groupIds: [groupId],

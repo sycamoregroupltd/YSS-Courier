@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
-import {AuthService} from '../../services/auth.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
-  selector: 'app-password-set',
-  templateUrl: './password-set.component.html',
-  styleUrls: ['./password-set.component.css']
+    selector: 'app-password-set',
+    templateUrl: './password-set.component.html',
+    styleUrls: ['./password-set.component.scss']
 })
 export class PasswordSetComponent implements OnInit {
     form: FormGroup;
@@ -29,9 +29,9 @@ export class PasswordSetComponent implements OnInit {
 
     }
 
-  ngOnInit(): void {
+    ngOnInit(): void {
         this.resetData.autoId = this.route.snapshot.params.Id;
-  }
+    }
 
     onSubmit() {
         this.resetData.password = this.form.value.password;

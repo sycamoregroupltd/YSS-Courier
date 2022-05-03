@@ -1,12 +1,11 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {UserService} from '../../services/user.service';
-import {Store} from '../../store';
-import {ChatService} from '../../services/chat.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { UserService } from '../../services/user.service';
+import { ChatService } from '../../services/chat.service';
 
 @Component({
     selector: 'app-companies-list',
     templateUrl: './companies-list.component.html',
-    styleUrls: ['./companies-list.component.css']
+    styleUrls: ['./companies-list.component.scss']
 })
 export class CompaniesListComponent implements OnInit {
     @Input() params;
@@ -28,6 +27,7 @@ export class CompaniesListComponent implements OnInit {
         this.params.page = 0;
         this.search();
     }
+
     search() {
         this.userService.searchCompanies(this.params).subscribe(data => {
             this.users = data.data.data;
@@ -41,6 +41,4 @@ export class CompaniesListComponent implements OnInit {
 
         });
     }
-
-
 }

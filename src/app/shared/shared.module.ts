@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PaginationComponent } from '../shared/pagination/pagination.component';
+import { PaginationComponent } from './pagination/pagination.component';
 import { GrowlerComponent } from './growler/growler.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { AlertComponent } from './alert/alert.component';

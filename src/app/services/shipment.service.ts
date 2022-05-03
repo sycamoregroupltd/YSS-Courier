@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import {environment} from '../../environments/environment';
-import {ApiService} from './api.service';
-import {HttpClient} from '@angular/common/http';
-import {catchError, map} from 'rxjs/operators';
-import {Store} from '../store';
+import { environment } from '../../environments/environment';
+import { ApiService } from './api.service';
+import { HttpClient } from '@angular/common/http';
+import { catchError, map } from 'rxjs/operators';
+import { Store } from '../store';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class ShipmentService {
     env = environment;
@@ -15,7 +15,8 @@ export class ShipmentService {
         private apiService: ApiService,
         private http: HttpClient,
         private store: Store,
-    ) { }
+    ) {
+    }
 
     get(id) {
         return this.http.get(this.env.apiPath + 'shipments/' + id, this.apiService.getHttpOptions())
@@ -53,7 +54,7 @@ export class ShipmentService {
         };
         return this.http.post(this.env.apiPath + 'shipments/search', dataToSend, this.apiService.getHttpOptions())
             .pipe(
-                map( (data: any) => {
+                map((data: any) => {
                         return data;
                     },
                     catchError(this.apiService.handleError)
@@ -67,7 +68,7 @@ export class ShipmentService {
         };
         return this.http.post(this.env.apiPath + 'shipments/board', dataToSend, this.apiService.getHttpOptions())
             .pipe(
-                map( (data: any) => {
+                map((data: any) => {
                         this.store.set('shipmentsBoard', data.data);
                         return data;
                     },
@@ -83,7 +84,7 @@ export class ShipmentService {
         };
         return this.http.post(this.env.apiPath + 'shipments/vehicle/assign', dataToSend, this.apiService.getHttpOptions())
             .pipe(
-                map( (data: any) => {
+                map((data: any) => {
                         return data;
                     },
                     catchError(this.apiService.handleError)
@@ -100,7 +101,7 @@ export class ShipmentService {
         };
         return this.http.put(this.env.apiPath + 'shipments/status', dataToSend, this.apiService.getHttpOptions())
             .pipe(
-                map( (data: any) => {
+                map((data: any) => {
                         return data;
                     },
                     catchError(this.apiService.handleError)
@@ -115,7 +116,7 @@ export class ShipmentService {
         };
         return this.http.put(this.env.apiPath + 'shipments/deliveryDate', dataToSend, this.apiService.getHttpOptions())
             .pipe(
-                map( (data: any) => {
+                map((data: any) => {
                         return data;
                     },
                     catchError(this.apiService.handleError)
@@ -129,7 +130,7 @@ export class ShipmentService {
         };
         return this.http.put(this.env.apiPath + 'shipments/collectionDate', dataToSend, this.apiService.getHttpOptions())
             .pipe(
-                map( (data: any) => {
+                map((data: any) => {
                         return data;
                     },
                     catchError(this.apiService.handleError)

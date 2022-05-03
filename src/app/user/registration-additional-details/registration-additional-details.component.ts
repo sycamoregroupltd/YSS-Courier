@@ -1,17 +1,17 @@
 import { Router } from '@angular/router';
-import { Store } from './../../store';
-import { BasketService } from './../../services/basket.service';
-import { ToolsService } from './../../services/tools.service';
-import { AuthService } from './../../services/auth.service';
-import { AlertService } from './../../services/alert.service';
+import { Store } from '../../store';
+import { BasketService } from '../../services/basket.service';
+import { ToolsService } from '../../services/tools.service';
+import { AuthService } from '../../services/auth.service';
+import { AlertService } from '../../services/alert.service';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { UserService } from './../../services/user.service';
+import { UserService } from '../../services/user.service';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'app-registration-additional-details',
     templateUrl: './registration-additional-details.component.html',
-    styleUrls: ['./registration-additional-details.component.css']
+    styleUrls: ['./registration-additional-details.component.scss']
 })
 export class RegistrationAdditionalDetailsComponent implements OnInit {
     @Input() user;
@@ -19,9 +19,6 @@ export class RegistrationAdditionalDetailsComponent implements OnInit {
     @Output() updatedDetails = new EventEmitter();
 
     form: FormGroup;
-
-    newCompanyId = '';
-    newAddressId = '';
 
     address: any = {
         id: '',
@@ -81,8 +78,6 @@ export class RegistrationAdditionalDetailsComponent implements OnInit {
     async save() {
         this.userService.RegistrationAdditionalDetails(this.address, this.company, this.user).subscribe(data => {
             this.updatedDetails.emit();
-        })
+        });
     }
-
-
 }

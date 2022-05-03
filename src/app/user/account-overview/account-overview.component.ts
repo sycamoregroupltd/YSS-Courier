@@ -1,10 +1,10 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Store} from '../../store';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Store } from '../../store';
 
 @Component({
     selector: 'app-account-overview',
     templateUrl: './account-overview.component.html',
-    styleUrls: ['./account-overview.component.css']
+    styleUrls: ['./account-overview.component.scss']
 })
 export class AccountOverviewComponent implements OnInit {
     @Input() user;
@@ -24,6 +24,7 @@ export class AccountOverviewComponent implements OnInit {
         this.store.set('userToEdit', undefined);
         this.setStep('user-edit');
     }
+
     editUser(user) {
         this.store.set('userToEdit', user);
         this.setStep('user-edit');
@@ -32,5 +33,4 @@ export class AccountOverviewComponent implements OnInit {
     setStep(v) {
         this.navigationChange.emit(v);
     }
-
 }

@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {OverlayService} from '../../services/overlay.service';
-import {Store} from '../../store';
-import {UserService} from '../../services/user.service';
-import {AlertService} from '../../services/alert.service';
-import {ToolsService} from '../../services/tools.service';
-import {ActivatedRoute} from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { OverlayService } from '../../services/overlay.service';
+import { Store } from '../../store';
+import { UserService } from '../../services/user.service';
+import { AlertService } from '../../services/alert.service';
+import { ToolsService } from '../../services/tools.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-user-edit',
-  templateUrl: './user-edit.component.html',
-  styleUrls: ['./user-edit.component.css']
+    selector: 'app-user-edit',
+    templateUrl: './user-edit.component.html',
+    styleUrls: ['./user-edit.component.scss']
 })
 export class UserEditComponent implements OnInit {
     form: FormGroup;
@@ -58,7 +58,6 @@ export class UserEditComponent implements OnInit {
         defaultDeliveryAddress: true,
         isBilling: true,
     };
-
 
 
     constructor(

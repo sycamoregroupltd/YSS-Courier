@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import {catchError, map} from 'rxjs/operators';
-import {ApiService} from './api.service';
-import {Store} from '../store';
-import {HttpClient} from '@angular/common/http';
-import {environment} from '../../environments/environment';
+import { catchError, map } from 'rxjs/operators';
+import { ApiService } from './api.service';
+import { Store } from '../store';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class FaqService {
     env = environment;

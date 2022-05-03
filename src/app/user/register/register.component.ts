@@ -1,19 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Store} from '../../store';
-import {UserService} from '../../services/user.service';
-import {AlertService} from '../../services/alert.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import {AuthService} from '../../services/auth.service';
-import {ToolsService} from '../../services/tools.service';
-import {BasketService} from '../../services/basket.service';
-import {ChatService} from '../../services/chat.service';
-import {NotificationService} from '../../services/notification.service';
+import { Store } from '../../store';
+import { UserService } from '../../services/user.service';
+import { AlertService } from '../../services/alert.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { ToolsService } from '../../services/tools.service';
+import { BasketService } from '../../services/basket.service';
+import { ChatService } from '../../services/chat.service';
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+    selector: 'app-register',
+    templateUrl: './register.component.html',
+    styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
 
@@ -37,11 +36,9 @@ export class RegisterComponent implements OnInit {
         if (this.route.snapshot.params.referralCode) {
             this.referralCode = this.route.snapshot.params.referralCode;
         }
-        console.log(this.referralCode);
     }
 
     registered(user) {
-
         this.alertService.clearMessage();
         this.authService.login(user).subscribe(
             data => {
@@ -65,10 +62,5 @@ export class RegisterComponent implements OnInit {
             error => {
                 this.router.navigate(['/account/confirmation']);
             });
-
-
-
     }
-
-
 }

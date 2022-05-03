@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import {environment} from '../../environments/environment';
-import {ApiService} from './api.service';
-import {HttpClient} from '@angular/common/http';
-import {Store} from '../store';
-import {catchError, map} from 'rxjs/operators';
+import { environment } from '../../environments/environment';
+import { ApiService } from './api.service';
+import { HttpClient } from '@angular/common/http';
+import { Store } from '../store';
+import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class PostcodeService {
     env = environment;
@@ -69,6 +69,7 @@ export class PostcodeService {
                 }, catchError(this.apiService.handleError))
             );
     }
+
     addPostcodeByArray(params) {
         const dataToSend = {
             params,
@@ -86,6 +87,7 @@ export class PostcodeService {
             );
 
     }
+
     removePostcode(params) {
         const dataToSend = {
             params,

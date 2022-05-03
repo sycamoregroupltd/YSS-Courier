@@ -1,14 +1,14 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {CourierService} from '../../services/courier.service';
-import {OverlayService} from '../../services/overlay.service';
-import {debounce} from 'lodash';
-import {PostcodeService} from '../../services/postcode.service';
-import {UserService} from '../../services/user.service';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { CourierService } from '../../services/courier.service';
+import { OverlayService } from '../../services/overlay.service';
+import { debounce } from 'lodash';
+import { PostcodeService } from '../../services/postcode.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
-  selector: 'app-company-area-manage',
-  templateUrl: './company-area-manage.component.html',
-  styleUrls: ['./company-area-manage.component.css']
+    selector: 'app-company-area-manage',
+    templateUrl: './company-area-manage.component.html',
+    styleUrls: ['./company-area-manage.component.scss']
 })
 export class CompanyAreaManageComponent implements OnInit {
     @Input() overlayData;
@@ -55,7 +55,7 @@ export class CompanyAreaManageComponent implements OnInit {
 
     getExistingPostcodes() {
         this.userService.getCompanyAreasCovered(this.companyId).subscribe(data => {
-           this.existingPostcodes = data.data;
+            this.existingPostcodes = data.data;
         });
     }
 
@@ -124,10 +124,8 @@ export class CompanyAreaManageComponent implements OnInit {
 
     }
 
-
     close() {
         this.refreshData.emit();
         this.overlayService.closeAll();
     }
-
 }

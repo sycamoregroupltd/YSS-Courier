@@ -14,18 +14,6 @@
             <th>Delivery Date</th>
             <th>Status</th>
         </tr>
-<!--        <tr>-->
-<!--            <th><input type="text" class="form-control" [(ngModel)]="params.createdAt" (ngModelChange)="filterSearch()" /></th>-->
-<!--            <th><input type="text" class="form-control" [(ngModel)]="params.publicId" (ngModelChange)="filterSearch()" /></th>-->
-<!--            <th><input type="text" class="form-control" [(ngModel)]="params.customer" (ngModelChange)="filterSearch()" /></th>-->
-<!--            <th><input type="text" class="form-control" [(ngModel)]="params.supplier" (ngModelChange)="filterSearch()" /></th>-->
-<!--            <th><input type="text" class="form-control" [(ngModel)]="params.weight" (ngModelChange)="filterSearch()" /></th>-->
-<!--            <th><input type="text" class="form-control" [(ngModel)]="params.pallets" (ngModelChange)="filterSearch()" /></th>-->
-<!--            <th><input type="text" class="form-control" [(ngModel)]="params.vehicle" (ngModelChange)="filterSearch()" /></th>-->
-<!--            <th><input type="text" class="form-control" [(ngModel)]="params.estDeliveryDate" (ngModelChange)="filterSearch()" /></th>-->
-<!--            <th><input type="text" class="form-control" [(ngModel)]="params.shippingStatus" (ngModelChange)="filterSearch()" /></th>-->
-<!--            <th></th>-->
-<!--        </tr>-->
         </thead>
         <tbody>
         <tr class="underline" *ngFor="let s of items">
@@ -46,32 +34,13 @@
                     <i class="fa fa-edit"></i>
                 </a>
             </td>
-            <!--            <td>{{s.estShippingDate | date: 'dd MMM yyyy'}}</td>-->
             <td>
                 <p *ngIf="s.collectionDate">{{s.collectionDate | date: 'dd MMM'}}</p>
-<!--                <mat-form-field>-->
-<!--                    <input matInput-->
-<!--                           placeholder="Choose a date"-->
-<!--                           [satDatepicker]="picker1"-->
-<!--                           [(ngModel)]="s.collectionDate"-->
-<!--                           (ngModelChange)="updateCollectionDate(s)">-->
-<!--                    <sat-datepicker #picker1 [rangeMode]="false" [closeAfterSelection]="true"></sat-datepicker>-->
-<!--                    <sat-datepicker-toggle matSuffix [for]="picker1"></sat-datepicker-toggle>-->
-<!--                </mat-form-field>-->
             </td>
 
             <td>
                 <p *ngIf="!s.confirmedShippingDate">Est. {{s.estShippingDate | date: 'dd MMM'}}</p>
                 <p *ngIf="s.confirmedShippingDate">{{s.confirmedShippingDate | date: 'dd MMM'}}</p>
-<!--                <mat-form-field>-->
-<!--                    <input matInput-->
-<!--                           placeholder="Choose a date"-->
-<!--                           [satDatepicker]="picker"-->
-<!--                           [(ngModel)]="s.confirmedShippingDate"-->
-<!--                            (ngModelChange)="updateShippingDate(s)">-->
-<!--                    <sat-datepicker #picker [rangeMode]="false" [closeAfterSelection]="true"></sat-datepicker>-->
-<!--                    <sat-datepicker-toggle matSuffix [for]="picker"></sat-datepicker-toggle>-->
-<!--                </mat-form-field>-->
             </td>
             <td>
                 <p *ngIf="s.status.id < 5">In production</p>

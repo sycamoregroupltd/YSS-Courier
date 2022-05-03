@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
-import {environment} from '../../environments/environment';
-import {ApiService} from './api.service';
-import {HttpClient} from '@angular/common/http';
-import {Store} from '../store';
-import {CookieService} from './cookie.service';
-import {catchError, map} from 'rxjs/operators';
+import { environment } from '../../environments/environment';
+import { ApiService } from './api.service';
+import { HttpClient } from '@angular/common/http';
+import { Store } from '../store';
+import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class CourierService {
     env = environment;
@@ -234,6 +233,7 @@ export class CourierService {
                 }, catchError(this.apiService.handleError))
             );
     }
+
     addPostcodeToZoneByArray(params) {
         const dataToSend = {
             params,
@@ -251,6 +251,7 @@ export class CourierService {
             );
 
     }
+
     removePostcodeFromZone(params) {
         const dataToSend = {
             params,
@@ -267,7 +268,6 @@ export class CourierService {
                 }, catchError(this.apiService.handleError))
             );
     }
-
 
 
     updateVehicle(vehicle) {
@@ -341,6 +341,7 @@ export class CourierService {
                 }, catchError(this.apiService.handleError))
             );
     }
+
     getPricingTypes() {
         return this.http
             .get(

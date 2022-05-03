@@ -1,16 +1,16 @@
-import {Component, OnInit} from '@angular/core';
-import {Store} from '../../store';
-import {CasestudyService} from '../../services/casestudy.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import {ProductService} from '../../services/product.service';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {environment} from '../../../environments/environment';
-import {ToastrService} from 'ngx-toastr';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '../../store';
+import { CasestudyService } from '../../services/casestudy.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ProductService } from '../../services/product.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { environment } from '../../../environments/environment';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: 'app-case-study',
     templateUrl: './case-study.component.html',
-    styleUrls: ['./case-study.component.css']
+    styleUrls: ['./case-study.component.scss']
 })
 export class CaseStudyComponent implements OnInit {
     env = environment;
@@ -22,7 +22,7 @@ export class CaseStudyComponent implements OnInit {
     resizeWidth: 500;
 
 
-    caseStudy: any = {images: []};
+    caseStudy: any = { images: [] };
     newItem = true;
     otherCaseStudies = [];
     productRanges = [];
@@ -120,12 +120,11 @@ export class CaseStudyComponent implements OnInit {
 
     toggleStatus() {
         if (!this.form.value.status) {
-            this.form.patchValue({status: true});
+            this.form.patchValue({ status: true });
         } else {
-            this.form.patchValue({status: false});
+            this.form.patchValue({ status: false });
         }
     }
-
 
     initUpload() {
         this.uploadConfig = {
@@ -141,7 +140,6 @@ export class CaseStudyComponent implements OnInit {
             },
         };
     }
-
 
     search() {
         this.casestudyService.search(this.params).subscribe(data => {
@@ -166,7 +164,6 @@ export class CaseStudyComponent implements OnInit {
         // this.casestudyService.imageSortOrder(this.caseimages).subscribe();
     }
 
-
     onUploadError(e) {
         this.initUpload();
     }
@@ -179,13 +176,12 @@ export class CaseStudyComponent implements OnInit {
     }
 
     uploadprogress(e) {
-        console.log(e);
+
     }
 
     deleteImage(idx) {
         this.caseStudy.images.splice(idx, 1);
     }
-
 
     save() {
         this.caseStudy.title = this.form.value.title;
@@ -221,5 +217,4 @@ export class CaseStudyComponent implements OnInit {
         }
         return invalid;
     }
-
 }

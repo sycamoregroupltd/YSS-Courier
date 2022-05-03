@@ -1,24 +1,26 @@
-import {Component, EventEmitter, Input, Output, OnInit} from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-confirmation',
-  templateUrl: './confirmation.component.html',
-  styleUrls: ['./confirmation.component.css']
+    selector: 'app-confirmation',
+    templateUrl: './confirmation.component.html',
+    styleUrls: ['./confirmation.component.scss']
 })
 export class ConfirmationComponent implements OnInit {
     @Input() data;
     @Output() complete = new EventEmitter();
 
-    constructor() { }
+    constructor() {
+    }
 
     ngOnInit() {
     }
 
     confirm() {
-        this.complete.emit({action: true});
+        this.complete.emit({ action: true });
     }
+
     cancel() {
-        this.complete.emit({action: false});
+        this.complete.emit({ action: false });
     }
 
 }
