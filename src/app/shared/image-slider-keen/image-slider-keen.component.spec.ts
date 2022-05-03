@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ImageSliderKeenComponent } from './image-slider-keen.component';
 
@@ -6,7 +6,7 @@ describe('ImageSliderKeenComponent', () => {
   let component: ImageSliderKeenComponent;
   let fixture: ComponentFixture<ImageSliderKeenComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ImageSliderKeenComponent ]
     })

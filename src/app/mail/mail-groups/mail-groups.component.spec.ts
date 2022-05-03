@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { MailGroupsComponent } from './mail-groups.component';
 
@@ -6,7 +6,7 @@ describe('MailGroupsComponent', () => {
   let component: MailGroupsComponent;
   let fixture: ComponentFixture<MailGroupsComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ MailGroupsComponent ]
     })

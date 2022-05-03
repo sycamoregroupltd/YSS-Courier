@@ -1,6 +1,7 @@
 import { pluck, distinctUntilChanged } from 'rxjs/operators';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { State } from './state';
+import { Injectable } from "@angular/core";
 
 const state: State = {
     settings: {},
@@ -146,6 +147,7 @@ const state: State = {
     loggedIn: false,
 };
 
+@Injectable()
 export class Store {
     private subject = new BehaviorSubject<State>(state);
     private store = this.subject.asObservable().pipe(distinctUntilChanged());

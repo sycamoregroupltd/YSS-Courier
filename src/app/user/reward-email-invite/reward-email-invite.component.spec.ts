@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { RewardEmailInviteComponent } from './reward-email-invite.component';
 
@@ -6,7 +6,7 @@ describe('RewardEmailInviteComponent', () => {
   let component: RewardEmailInviteComponent;
   let fixture: ComponentFixture<RewardEmailInviteComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ RewardEmailInviteComponent ]
     })
