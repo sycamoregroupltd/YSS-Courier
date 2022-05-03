@@ -73,7 +73,6 @@ export class CourierVehiclesComponent implements OnInit {
             for (let i = 0; i < this.params.pages; i++) {
                 this.params.pageArray.push(i);
             }
-            console.log(this.params);
         });
     }
 
@@ -86,7 +85,6 @@ export class CourierVehiclesComponent implements OnInit {
     }
 
     edit(item) {
-        console.log(item);
         this.overlayData = {
             item,
         };

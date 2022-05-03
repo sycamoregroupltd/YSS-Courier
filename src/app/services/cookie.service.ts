@@ -26,7 +26,6 @@ export class CookieService {
             token: '',
             user: undefined,
         };
-        console.log(data);
         const cookieData = Cookies.get(CookieService.LOGIN_COOKIE);
         if (cookieData) {
             decodedCookie = JSON.parse(cookieData);
@@ -35,7 +34,6 @@ export class CookieService {
         let expires = this.cookieExpiration;
         if (extendedExpiration) {
             expires = this.cookieExtendedExpiration;
-            console.log(expires);
         }
         Cookies.set(
             CookieService.LOGIN_COOKIE, JSON.stringify(decodedCookie),
@@ -48,7 +46,6 @@ export class CookieService {
             token: '',
             user: undefined,
         };
-        console.log(data);
         const cookieData = Cookies.get(CookieService.USER_COOKIE);
         if (cookieData) {
             decodedCookie = JSON.parse(cookieData);
@@ -82,7 +79,6 @@ export class CookieService {
         const expires = this.cookieExtendedExpiration;
         Cookies.set(CookieService.BASKETID_COOKIE, basketId, { expires });
         this.store.set('basketId', basketId);
-        console.log('after renew', Cookies.get(CookieService.BASKETID_COOKIE));
     }
 
     getBasketId() {
@@ -97,7 +93,6 @@ export class CookieService {
             Cookies.set(CookieService.BASKETID_COOKIE, basketId, { expires });
             this.store.set('basketId', basketId);
         }
-        console.log('returning basketID: ' + basketId);
         return basketId;
     }
 
@@ -106,7 +101,6 @@ export class CookieService {
             token: '',
             user: undefined,
         };
-        console.log(data);
         const cookieData = Cookies.get(CookieService.LOGIN_COOKIE);
         if (cookieData) {
             decodedCookie = JSON.parse(cookieData);
@@ -115,7 +109,6 @@ export class CookieService {
         let expires = this.cookieExpiration;
         if (extendedExpiration) {
             expires = this.cookieExtendedExpiration;
-            console.log(expires);
         }
         Cookies.set(
             CookieService.LOGIN_COOKIE, JSON.stringify(decodedCookie),
@@ -128,14 +121,12 @@ export class CookieService {
     }
 
     remove() {
-        console.log('fired cookie remove');
         Cookies.expire(CookieService.LOGIN_COOKIE);
         Cookies.expire(CookieService.USER_COOKIE);
         Cookies.expire(CookieService.BASKET_COOKIE);
         this.store.set('user', undefined);
         this.store.set('token', '');
     }
-
 
     check() {
         if (Cookies.get(CookieService.LOGIN_COOKIE)) {

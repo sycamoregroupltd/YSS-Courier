@@ -135,8 +135,6 @@ export class RegistrationFormComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        console.log(this.referralCode);
-
         this.createPrimaryIds();
         this.onChanges();
     }
@@ -203,7 +201,7 @@ export class RegistrationFormComponent implements OnInit {
         if (this.tradeAccount) {
             this.user.accountType = 'trade';
         } else {
-            this.user.accountType = 'customer'
+            this.user.accountType = 'customer';
         }
         // !this.tradeAccount ?  : this.user.accountType = 'customer';
     }
@@ -254,10 +252,8 @@ export class RegistrationFormComponent implements OnInit {
             this.user.contact.companyId = this.newCompanyId;
         }
 
-        console.log(this.user, this.company);
         this.userService.createUser(this.user).subscribe(
             async (userData) => {
-                console.log(userData);
                 this.user.id = userData.data.id;
                 if (this.user.accountType !== 'customer') {
 
@@ -265,7 +261,7 @@ export class RegistrationFormComponent implements OnInit {
                         .createCompany(this.company, this.user)
                         .subscribe(
                             (data) => {
-                                this.company.id = data.data.id
+                                this.company.id = data.data.id;
                                 this.registrationComplete.emit({
                                     user: this.user,
                                     company: this.company
@@ -287,7 +283,6 @@ export class RegistrationFormComponent implements OnInit {
             },
             (error) => {
                 this.alertService.error([error.error.message]);
-                console.log(error.error);
             }
         );
     }

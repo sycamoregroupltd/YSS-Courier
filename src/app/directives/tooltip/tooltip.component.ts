@@ -2,7 +2,7 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
-    selector: 'awesome-tooltip',
+    selector: 'app-awesome-tooltip',
     styleUrls: ['./tooltip.component.scss'],
     templateUrl: './tooltip.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,

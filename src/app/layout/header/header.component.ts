@@ -1,4 +1,4 @@
-import { NotificationService } from './../../services/notification.service';
+import { NotificationService } from '../../services/notification.service';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '../../store';
 import { AuthService } from '../../services/auth.service';

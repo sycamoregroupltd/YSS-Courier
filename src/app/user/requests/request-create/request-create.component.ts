@@ -81,7 +81,6 @@ export class RequestCreateComponent implements OnInit {
 
     create() {
         this.requestsService.create(this.item).subscribe(data => {
-            console.log(data);
 
             const user = this.store.selectForLocal('user');
             const notificationData = {
@@ -103,7 +102,6 @@ export class RequestCreateComponent implements OnInit {
 
     update() {
         this.requestsService.update(this.item).subscribe(data => {
-            console.log(data);
             this.alertService.notification(['Your request has been updated'], 3000);
             this.close();
         });

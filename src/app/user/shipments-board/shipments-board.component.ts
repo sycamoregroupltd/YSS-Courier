@@ -83,7 +83,6 @@ export class ShipmentsBoardComponent implements OnInit {
     }
 
     assignBgCol(orderLine) {
-        console.log(orderLine.dueDays);
         let bgCol = 'text-success';
         if (orderLine.dueDays < 3) {
             bgCol = 'text-danger';
@@ -119,7 +118,6 @@ export class ShipmentsBoardComponent implements OnInit {
     }
 
     requestUpdate(shipment) {
-        console.log(shipment)
         this.shipment = shipment;
         this.updateRequested = true;
     }

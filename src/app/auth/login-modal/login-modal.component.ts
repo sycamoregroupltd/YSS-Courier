@@ -30,8 +30,6 @@ export class LoginModalComponent implements OnInit {
     }
 
     authenticated(e) {
-        console.log(e);
-
         if (e) {
             const basket = this.store.selectForLocal('basket');
             const user = this.store.selectForLocal('user');
@@ -45,17 +43,11 @@ export class LoginModalComponent implements OnInit {
             this.userService
                 .findAddressesByCustomer(user.id)
                 .subscribe((data: any) => {
-                    console.log(data.data);
                     deliveryAddresses = data.data;
 
-                    console.log(deliveryAddresses);
                     if (deliveryAddresses.length) {
                         basket.deliveryAddress = deliveryAddresses[0];
                         basket.deliveryPostcode = deliveryAddresses[0].postcode;
-                        console.log(
-                            'this.basket.deliveryPostcode set to 2',
-                            deliveryAddresses[0].postcode
-                        );
                     }
                     this.store.set('deliveryAddresses', deliveryAddresses);
                     this.basketService.saveBasketChanges(basket, 'modalAuth');

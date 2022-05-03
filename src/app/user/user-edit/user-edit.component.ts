@@ -102,7 +102,6 @@ export class UserEditComponent implements OnInit {
 
         this.userService.findOne(this.userId).subscribe(data => {
             this.user = data.data;
-            console.log(this.user);
 
             this.form.patchValue({
                 contact: {
@@ -176,8 +175,6 @@ export class UserEditComponent implements OnInit {
                 };
             }
         }
-
-        console.log(this.user);
         this.alertService.clearMessage();
         if (this.newUser) {
             this.create();
@@ -188,7 +185,6 @@ export class UserEditComponent implements OnInit {
 
     create() {
         this.userService.createUser(this.user).subscribe(data => {
-                console.log(data);
                 this.alertService.notification(['New account added'], 3000);
                 this.close();
             },
@@ -199,7 +195,6 @@ export class UserEditComponent implements OnInit {
 
     update() {
         this.userService.update(this.user).subscribe(data => {
-                console.log(data);
                 this.alertService.notification(['Account updated'], 3000);
                 this.close();
             },

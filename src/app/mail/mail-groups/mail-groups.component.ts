@@ -46,11 +46,8 @@ export class MailGroupsComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        console.log(this.user);
-        console.log(this.store.selectForLocal('chatStore'));
         this.getCategories();
         this.getGroups();
-
     }
 
     getGroups() {

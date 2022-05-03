@@ -32,7 +32,6 @@ export class RewardsSummaryComponent implements OnInit {
             data.data.percOne = ((+data.data.points / +data.data.maxPoints) * 100).toFixed(2);
             data.data.percTwo = (((+data.data.nextLevel - +data.data.points) / +data.data.maxPoints) * 100).toFixed(2);
             this.rewardsSummary = data.data;
-            console.log(this.rewardsSummary);
         });
     }
 

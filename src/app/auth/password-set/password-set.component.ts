@@ -36,7 +36,6 @@ export class PasswordSetComponent implements OnInit {
     onSubmit() {
         this.resetData.password = this.form.value.password;
         this.authService.passwordSet(this.resetData).subscribe(data => {
-            console.log(data);
             this.router.navigate(['/password', 'confirmation']);
         });
     }

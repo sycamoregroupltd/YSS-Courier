@@ -130,7 +130,6 @@ export class CourierVehicleComponent implements OnInit {
     create() {
         this.courierService.createVehicle(this.item).subscribe(
             (data) => {
-                console.log(data);
                 this.alertService.notification(['New vehicle added'], 3000);
                 this.refreshData.emit();
                 this.close();
@@ -144,7 +143,6 @@ export class CourierVehicleComponent implements OnInit {
     update() {
         this.courierService.updateVehicle(this.item).subscribe(
             (data) => {
-                console.log(data);
                 this.alertService.notification(['Vehicle updated'], 3000);
                 this.refreshData.emit();
                 this.close();

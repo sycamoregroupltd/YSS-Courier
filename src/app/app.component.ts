@@ -154,7 +154,6 @@ export class AppComponent implements OnInit {
                 if (event instanceof NavigationEnd) {
                 }
             });
-        console.log(this.store);
 
         this.pollCookieExpiration();
     }

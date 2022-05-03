@@ -71,7 +71,6 @@ export class CompanyAreaManageComponent implements OnInit {
             for (let i = 0; i < this.params.pages; i++) {
                 this.params.pageArray.push(i);
             }
-            console.log(this.params);
         });
     }
 

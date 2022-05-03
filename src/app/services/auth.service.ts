@@ -4,7 +4,6 @@ import { HttpClient } from '@angular/common/http';
 import { Store } from '../store';
 import { CookieService } from './cookie.service';
 import { catchError, map } from 'rxjs/operators';
-import { GrowlerService } from './growler.service';
 import { UserService } from './user.service';
 import { environment } from '../../environments/environment';
 import { BasketService } from './basket.service';
@@ -41,7 +40,6 @@ export class AuthService {
     }
 
     login(user) {
-        console.log(user);
         return this.http
             .post(
                 this.env.apiPath + 'users/login/courier',

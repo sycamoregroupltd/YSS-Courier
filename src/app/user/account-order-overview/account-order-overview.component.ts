@@ -56,10 +56,9 @@ export class AccountOrderOverviewComponent implements OnInit {
     }
 
     saveOrderLine(idx) {
-        console.log(this.orderLineToEdit)
         Object.assign(this.order.orderLines[idx], this.orderLineToEdit);
         this.order.orderLines[idx].edit = false;
-        this.order.orderLines[idx].totalPrice = (+this.order.orderLines[idx].unitPrice * +this.order.orderLines[idx].quantity).toFixed(2)
+        this.order.orderLines[idx].totalPrice = (+this.order.orderLines[idx].unitPrice * +this.order.orderLines[idx].quantity).toFixed(2);
         this.orderLineToEdit = undefined;
         this.orderLineCopy = undefined;
         this.reCalculateOrderTotals();

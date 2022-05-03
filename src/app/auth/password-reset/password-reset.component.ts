@@ -31,7 +31,6 @@ export class PasswordResetComponent implements OnInit {
         this.errorMessage = '';
         this.email = this.form.value.email;
         this.authService.passwordReset(this.email).subscribe((data) => {
-            console.log(data);
             if (data.data.accountFound) {
                 this.router.navigate(['/password', 'reset', 'confirmation']);
             } else {

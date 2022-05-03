@@ -36,7 +36,6 @@ export class UserSearchComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        console.log(changes);
         if (changes.params) {
             this.filterSearch();
         }
@@ -66,7 +65,6 @@ export class UserSearchComponent implements OnInit, OnChanges {
     }
 
     editUser(user) {
-        console.log(user);
         const overlayData = {
             user,
             accountType: this.accountType,

@@ -3,13 +3,12 @@ import { ApiService } from './api.service';
 import { HttpClient } from '@angular/common/http';
 import { Store } from '../store';
 import { catchError, map } from 'rxjs/operators';
-import { environment } from '../../environments/environment';
+import { environment as env } from '../../environments/environment';
 
 @Injectable({
     providedIn: 'root'
 })
 export class ProductService {
-    env = environment;
 
     constructor(
         private apiService: ApiService,
@@ -19,7 +18,7 @@ export class ProductService {
     }
 
     getLinkedProducts(productId) {
-        return this.http.get(this.env.apiPath + 'products/linked/' + productId, this.apiService.getHttpOptions())
+        return this.http.get(env.apiPath + 'products/linked/' + productId, this.apiService.getHttpOptions())
             .pipe(
                 map((data: any) => {
                         return data;
@@ -29,7 +28,7 @@ export class ProductService {
     }
 
     getLinkedCaseStudies(productId) {
-        return this.http.get(this.env.apiPath + 'products/case-studies/' + productId, this.apiService.getHttpOptions())
+        return this.http.get(env.apiPath + 'products/case-studies/' + productId, this.apiService.getHttpOptions())
             .pipe(
                 map((data: any) => {
                         return data;
@@ -39,7 +38,7 @@ export class ProductService {
     }
 
     getProductDetails(slug) {
-        return this.http.get(this.env.apiPath + 'products/public/' + slug, this.apiService.getHttpOptions())
+        return this.http.get(env.apiPath + 'products/public/' + slug, this.apiService.getHttpOptions())
             .pipe(
                 map((data: any) => {
                         return data;
@@ -49,7 +48,7 @@ export class ProductService {
     }
 
     getProductGroups() {
-        return this.http.get(this.env.apiPath + 'product-groups', this.apiService.getHttpOptions())
+        return this.http.get(env.apiPath + 'product-groups', this.apiService.getHttpOptions())
             .pipe(
                 map((data: any) => {
                         return data;
@@ -59,7 +58,7 @@ export class ProductService {
     }
 
     getProductGroup(slug) {
-        return this.http.get(this.env.apiPath + 'product-groups/' + slug, this.apiService.getHttpOptions())
+        return this.http.get(env.apiPath + 'product-groups/' + slug, this.apiService.getHttpOptions())
             .pipe(
                 map((data: any) => {
                         return data;
@@ -69,7 +68,7 @@ export class ProductService {
     }
 
     productsByGroup(productGroup) {
-        return this.http.get(this.env.apiPath + 'products/group/' + productGroup.id, this.apiService.getHttpOptions())
+        return this.http.get(env.apiPath + 'products/group/' + productGroup.id, this.apiService.getHttpOptions())
             .pipe(
                 map((data: any) => {
                         return data;
@@ -79,7 +78,7 @@ export class ProductService {
     }
 
     getProductRange(slug) {
-        return this.http.get(this.env.apiPath + 'product-range/' + slug, this.apiService.getHttpOptions())
+        return this.http.get(env.apiPath + 'product-range/' + slug, this.apiService.getHttpOptions())
             .pipe(
                 map((data: any) => {
                         return data;
@@ -89,7 +88,7 @@ export class ProductService {
     }
 
     productsByRange(productRange) {
-        return this.http.get(this.env.apiPath + 'products/range/' + productRange.id, this.apiService.getHttpOptions())
+        return this.http.get(env.apiPath + 'products/range/' + productRange.id, this.apiService.getHttpOptions())
             .pipe(
                 map((data: any) => {
                         return data;
@@ -99,7 +98,7 @@ export class ProductService {
     }
 
     specialOffers() {
-        return this.http.get(this.env.apiPath + 'products/offers/', this.apiService.getHttpOptions())
+        return this.http.get(env.apiPath + 'products/offers/', this.apiService.getHttpOptions())
             .pipe(
                 map((data: any) => {
                         return data;
@@ -112,7 +111,7 @@ export class ProductService {
         const dataToSend = {
             params,
         };
-        return this.http.post(this.env.apiPath + 'products/search', dataToSend, this.apiService.getHttpOptions())
+        return this.http.post(env.apiPath + 'products/search', dataToSend, this.apiService.getHttpOptions())
             .pipe(
                 map((data: any) => {
                         return data;
@@ -123,7 +122,7 @@ export class ProductService {
     }
 
     getProductRanges() {
-        return this.http.get(this.env.apiPath + 'product-range', this.apiService.getHttpOptions())
+        return this.http.get(env.apiPath + 'product-range', this.apiService.getHttpOptions())
             .pipe(
                 map((data: any) => {
                         return data;
@@ -133,7 +132,7 @@ export class ProductService {
     }
 
     getProductFinishes() {
-        return this.http.get(this.env.apiPath + 'product-finish', this.apiService.getHttpOptions())
+        return this.http.get(env.apiPath + 'product-finish', this.apiService.getHttpOptions())
             .pipe(
                 map((data: any) => {
                         return data;
@@ -144,7 +143,7 @@ export class ProductService {
 
 
     getProductTypes() {
-        return this.http.get(this.env.apiPath + 'product-types/', this.apiService.getHttpOptions())
+        return this.http.get(env.apiPath + 'product-types/', this.apiService.getHttpOptions())
             .pipe(
                 map((data: any) => {
                         return data;
@@ -154,7 +153,7 @@ export class ProductService {
     }
 
     getBespokeProductTypes() {
-        return this.http.get(this.env.apiPath + 'product-types/bespoke', this.apiService.getHttpOptions())
+        return this.http.get(env.apiPath + 'product-types/bespoke', this.apiService.getHttpOptions())
             .pipe(
                 map((data: any) => {
                         return data;
@@ -164,7 +163,7 @@ export class ProductService {
     }
 
     getRangesByProductType(productType) {
-        return this.http.get(this.env.apiPath + 'product-range/product-type/' + productType, this.apiService.getHttpOptions())
+        return this.http.get(env.apiPath + 'product-range/product-type/' + productType, this.apiService.getHttpOptions())
             .pipe(
                 map((data: any) => {
                         return data;
@@ -174,7 +173,8 @@ export class ProductService {
     }
 
     getRangesByProductTypeOption(productType, optionId) {
-        return this.http.get(this.env.apiPath + 'product-range/product-type/' + productType + '/option/' + optionId, this.apiService.getHttpOptions())
+        return this.http
+            .get(env.apiPath + 'product-range/product-type/' + productType + '/option/' + optionId, this.apiService.getHttpOptions())
             .pipe(
                 map((data: any) => {
                         return data;
@@ -187,7 +187,7 @@ export class ProductService {
         const dataToSend = {
             id,
         };
-        return this.http.get(this.env.apiPath + 'product-variable-options/variable-group/' + id, this.apiService.getHttpOptions())
+        return this.http.get(env.apiPath + 'product-variable-options/variable-group/' + id, this.apiService.getHttpOptions())
             .pipe(
                 map((data: any) => {
                         return data;
@@ -198,7 +198,7 @@ export class ProductService {
     }
 
     getProductVariableOptionsByGroupSupplier(id, supplierId) {
-        return this.http.get(this.env.apiPath + 'product-variable-options/variable-group/' + id + '/' + supplierId, this.apiService.getHttpOptions())
+        return this.http.get(env.apiPath + 'product-variable-options/variable-group/' + id + '/' + supplierId, this.apiService.getHttpOptions())
             .pipe(
                 map((data: any) => {
                         return data;
@@ -215,7 +215,7 @@ export class ProductService {
             supplierId,
         };
 
-        return this.http.post(this.env.apiPath + 'product-range/product-type/configuration/public', dataToSend, this.apiService.getHttpOptions())
+        return this.http.post(env.apiPath + 'product-range/product-type/configuration/public', dataToSend, this.apiService.getHttpOptions())
             .pipe(
                 map((data: any) => {
                         return data;
@@ -232,7 +232,6 @@ export class ProductService {
             } else {
                 product.quantityMetres = product.quantity;
             }
-            console.log(product.sellUnit);
 
             if (product.sellUnit === 'PSM') {
                 product.weightPerSellUnit = +product.range.baseWeight * (+product.height / 1000);
@@ -359,7 +358,6 @@ export class ProductService {
 
                 // if there is an end piece
                 if (product.ends > 0) {
-                    console.log('running end cost')
                     product.pricePerSellUnit = (+product.pricePerSellUnit + this.calcEndCost(+cost, +product.width, +product.ends)).toFixed(2);
                     product.unitCostBreakdown.end = this.calcEndCost(+cost, +product.width, +product.ends);
                 }
@@ -396,7 +394,6 @@ export class ProductService {
 
                         // if there is an end piece and it's the first iteration of the loop
                         if (product.ends > 0 && i === 0) {
-                            console.log('running end cost')
                             product.pricePerSellUnit = (+product.pricePerSellUnit + this.calcEndCost(+cost, +product.width, +product.ends)).toFixed(2);
                         }
 
@@ -409,9 +406,6 @@ export class ProductService {
 
             // edge finish with no side options
             if (product.finishEdge && product.finishEdge.id) {
-                console.log('finish edge no side options')
-                console.log(product.finishEdge.costType)
-                console.log(product.finishEdge.costs)
                 const costs = product.finishEdge.costs;
                 let cost = 0;
 
@@ -435,7 +429,6 @@ export class ProductService {
 
                 // if there is an end piece
                 if (product.ends > 0) {
-                    console.log('running end cost')
                     product.pricePerSellUnit = (+product.pricePerSellUnit + this.calcEndCost(+cost, +product.width, +product.ends)).toFixed(2);
                 }
 
@@ -477,7 +470,6 @@ export class ProductService {
                 }
             }
 
-
             product.unitCost = product.pricePerSellUnit;
             product.totalCost = product.unitCost * product.quantityMetres;
 
@@ -487,14 +479,8 @@ export class ProductService {
     }
 
     calcEndCost(masonryUnitCost, width, noOfEnds) {
-        console.log('END BIT');
-        console.log(masonryUnitCost);
-        console.log(width);
-        console.log(noOfEnds);
         const endCost = +(+masonryUnitCost * ((+width / 1000) * noOfEnds)).toFixed(2);
-        console.log('end cost = ' + endCost)
         return +endCost;
-
     }
 
     calcCornerCost(masonryUnitCost, width, noOfCorners) {
@@ -504,8 +490,6 @@ export class ProductService {
     }
 
     calculateSQMPricing(sku, costsSQM) {
-        console.log(sku)
-        console.log(costsSQM)
         let pricingSet;
         let SQMPrice = 0;
 
@@ -526,10 +510,8 @@ export class ProductService {
         }
 
         if (SQMPrice === 0) {
-            console.log('I AM USING A PRESET!!!!!')
             SQMPrice = +(2200 * (+sku.height / 1000)).toFixed(2);
         }
-        console.log('SQMPrice ' + SQMPrice);
         return SQMPrice;
     }
 

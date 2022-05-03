@@ -20,7 +20,6 @@ export class NotificationService {
     listenToNotifications() {
         const user = this.store.selectForLocal('user');
         if (!user.company) {
-            console.log('subscribing as a user');
             this.query = this.db.collection('notifications', ref => ref
                 .where('deleted', '==', false)
                 .where('adminOnly', '==', false)
@@ -29,7 +28,6 @@ export class NotificationService {
             ).valueChanges();
 
         } else {
-            console.log('subscribing as a company');
             this.query = this.db.collection('notifications', ref => ref
                 .where('deleted', '==', false)
                 .where('adminOnly', '==', false)
@@ -40,7 +38,6 @@ export class NotificationService {
         }
 
         this.query.subscribe(data => {
-            console.log(data);
             const notifications = this.store.selectForLocal('notifications');
             notifications.unread = 0;
             notifications.data = data;

@@ -53,7 +53,6 @@ export class AreasCoveredComponent implements OnInit {
 
     search() {
         this.userService.areasCovered(this.params).subscribe(data => {
-            console.log(data.data);
             this.items = data.data.data;
 
             this.params.pages = Math.ceil(data.data.totalRecords / this.params.limit);

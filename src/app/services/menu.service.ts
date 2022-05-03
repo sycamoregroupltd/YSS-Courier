@@ -28,8 +28,8 @@ export class MenuService {
     menuByRoute(route) {
         const routeToFind = route.split('?')[0];
         return this.http.get(this.env.apiPath + 'cms/menugroup/' + routeToFind, this.apiService.getHttpOptions()).subscribe((data: any) => {
-            this.store.set('activeMenu', data.data)
-        })
+            this.store.set('activeMenu', data.data);
+        });
     }
 
     menuGroups() {

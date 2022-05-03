@@ -79,7 +79,6 @@ export class AccountUserEditComponent implements OnInit {
 
             this.userService.findOne(overlayData.user.id).subscribe(data => {
                 this.user = data.data;
-                console.log(this.user);
 
                 this.form.patchValue({
                     contact: {

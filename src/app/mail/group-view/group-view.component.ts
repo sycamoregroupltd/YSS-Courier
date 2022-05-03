@@ -54,7 +54,6 @@ export class GroupViewComponent implements OnInit, OnDestroy {
         chatStore.group = undefined;
         chatStore.groupToOpen = undefined;
         this.store.set('chatStore', chatStore);
-        console.log('destroyed');
     }
 
     reply() {
@@ -81,7 +80,6 @@ export class GroupViewComponent implements OnInit, OnDestroy {
         if (this.user.company) {
             this.message.user.company = this.user.company.id;
         }
-        console.log(this.message);
         chatStore.messages.push(JSON.parse(JSON.stringify(this.message)));
         this.store.set('chatStore', chatStore);
 
@@ -114,8 +112,7 @@ export class GroupViewComponent implements OnInit, OnDestroy {
         this.group.users.push(chatUser);
         this.chatService.addUser(this.group.id, e.id).subscribe(data => {
             this.toastr.success('', `${e.name} added this chat`);
-        })
-        console.log('adding', e);
+        });
     }
 
     removeUser(e) {
@@ -127,6 +124,5 @@ export class GroupViewComponent implements OnInit, OnDestroy {
                 });
             }
         }
-        console.log('removing', e);
     }
 }

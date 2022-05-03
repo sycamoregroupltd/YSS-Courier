@@ -113,7 +113,6 @@ export class SupplierOverviewComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        console.log(this.user);
         this.orderParams.supplierId = this.user.company.id;
         this.sampleParams.supplierId = this.user.company.id;
         this.productParams.supplierId = this.user.company.id;

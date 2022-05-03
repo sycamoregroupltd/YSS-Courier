@@ -30,7 +30,6 @@ export class OrderSearchComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        console.log(changes);
         if (changes.params) {
             this.filterSearch();
         }
@@ -43,7 +42,6 @@ export class OrderSearchComponent implements OnInit, OnChanges {
 
     search() {
         this.ordersService.search(this.params).subscribe(data => {
-            console.log(data.data);
             this.orders = data.data.data;
 
             this.params.pages = Math.ceil(data.data.totalRecords / this.params.limit);

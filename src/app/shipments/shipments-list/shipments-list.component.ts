@@ -109,7 +109,6 @@ export class ShipmentsListComponent implements OnInit, OnChanges {
     }
 
     updateCollectionDate(s) {
-        console.log(s);
         this.shipmentService.setCollectionDate(s).subscribe(data => {
 
             const notificationData = {

@@ -30,7 +30,6 @@ export class UserService {
                 '?api-key=CzqJCvY6GEeVcLJLm0kJWQ28605&expand=true&sort=true'
             )
             .toPromise();
-        console.log(result.addresses);
         return result.addresses;
     }
 
@@ -46,7 +45,6 @@ export class UserService {
                 this.apiService.getHttpOptions()
             )
             .toPromise();
-        console.log(result);
         return result.data;
     }
 
@@ -217,7 +215,6 @@ export class UserService {
     }
 
     getByToken() {
-        console.log(this.env);
         return this.http
             .get(
                 this.env.apiPath + 'users/profile',

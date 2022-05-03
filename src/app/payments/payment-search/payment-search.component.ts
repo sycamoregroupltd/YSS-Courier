@@ -29,7 +29,6 @@ export class PaymentSearchComponent implements OnInit {
 
     search() {
         this.paymentsService.search(this.params).subscribe(data => {
-            console.log(data.data);
             this.items = data.data.data;
 
             this.params.pages = Math.ceil(data.data.totalRecords / this.params.limit);

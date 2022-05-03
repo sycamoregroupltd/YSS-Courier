@@ -43,7 +43,6 @@ export class AwesomeTooltipDirective implements OnInit {
 
     @HostListener('scroll')
     hideOnScroll() {
-        console.log('scrolling')
         this.overlayRef.detach();
     }
 

@@ -20,12 +20,10 @@ export class ProductSearchComponent implements OnInit, OnChanges {
     }
 
     ngOnInit(): void {
-        console.log('products');
         this.filterSearch();
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        console.log(changes);
         if (changes.params) {
             this.filterSearch();
         }
@@ -38,7 +36,6 @@ export class ProductSearchComponent implements OnInit, OnChanges {
 
     search() {
         this.productsService.search(this.params).subscribe(data => {
-            console.log(data.data)
             this.products = data.data.data;
 
             this.params.pages = Math.ceil(data.data.totalRecords / this.params.limit);

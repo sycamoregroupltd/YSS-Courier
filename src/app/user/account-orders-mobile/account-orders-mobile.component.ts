@@ -1,6 +1,6 @@
 import { Store } from '../../store';
 import { OrdersService } from '../../services/orders.service';
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, OnDestroy, AfterViewInit } from '@angular/core';
 import KeenSlider from 'keen-slider';
 import { debounce } from 'lodash';
 
@@ -9,7 +9,7 @@ import { debounce } from 'lodash';
     templateUrl: './account-orders-mobile.component.html',
     styleUrls: ['./account-orders-mobile.component.scss'],
 })
-export class AccountOrdersMobileComponent implements OnInit {
+export class AccountOrdersMobileComponent implements OnInit, OnDestroy, AfterViewInit {
     tiles = 1;
     spacing = 15;
     slidesPerView = 1;
@@ -83,7 +83,6 @@ export class AccountOrdersMobileComponent implements OnInit {
 
     search() {
         this.ordersService.searchOrderDetails(this.params).subscribe((data) => {
-            console.log(data.data);
             this.orders = data.data.data;
 
             this.params.pages = Math.ceil(

@@ -70,7 +70,6 @@ export class CourierOverviewComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        console.log(this.user);
         this.shipmentParams.courierId = this.user.company.id;
         this.userParams.companyId = this.user.company.id;
     }

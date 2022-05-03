@@ -63,14 +63,12 @@ export class MailGroupsListComponent implements OnInit {
 
     toggleImportant(group) {
         group.important = group.important ? 0 : 1;
-        console.log(group.important);
         this.chatService.toggleImportant(group.id, this.user.id, group.important).subscribe();
         this.doFilter.emit();
     }
 
     toggleArchived(group) {
         group.archived = group.archived ? 0 : 1;
-        console.log(group.archived);
         this.chatService.toggleArchived(group.id, this.user.id, group.archived).subscribe();
         this.doFilter.emit();
     }

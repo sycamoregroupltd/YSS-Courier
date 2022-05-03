@@ -49,7 +49,6 @@ export class MailComposeComponent implements OnInit {
     ngOnInit(): void {
         this.message.user = this.user;
 
-        console.log(this.chatStore.replyingTo);
         if (this.chatStore.replyingTo) {
             this.message.groupId = this.chatStore.replyingTo.groupId;
             this.message.name = this.chatStore.replyingTo.name;
@@ -72,7 +71,6 @@ export class MailComposeComponent implements OnInit {
 
     addChat() {
         const user = this.store.selectForLocal('user');
-        console.log(user);
         const chatStore = this.store.selectForLocal('chatStore');
         this.message.mail = true;
         this.message.createdAt = new Date();

@@ -80,7 +80,6 @@ export class CourierDeliveryZoneEditComponent implements OnInit {
                 .getZone(this.overlayData.item.id)
                 .subscribe((data) => {
                     this.item = data.data;
-                    console.log(this.item);
 
                     this.form.patchValue({
                         name: data.data.name,
@@ -150,7 +149,6 @@ export class CourierDeliveryZoneEditComponent implements OnInit {
     create() {
         this.courierService.createZone(this.item).subscribe(
             (data) => {
-                console.log(data);
                 this.alertService.notification(['New zone added'], 3000);
                 this.refreshData.emit();
                 this.close();
@@ -164,7 +162,6 @@ export class CourierDeliveryZoneEditComponent implements OnInit {
     update() {
         this.courierService.updateZone(this.item).subscribe(
             (data) => {
-                console.log(data);
                 this.alertService.notification(['Zone updated'], 3000);
                 this.refreshData.emit();
                 this.close();

@@ -50,16 +50,13 @@ export class ShipmentVehicleComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        console.log(this.overlayData)
         this.params.courier = this.overlayData.companyId;
         this.getShipment();
         this.search();
     }
 
     getShipment() {
-        this.shipmentService.get(this.overlayData.item.id).subscribe(data => {
-            console.log(data);
-        });
+        this.shipmentService.get(this.overlayData.item.id).subscribe();
     }
 
     search() {

@@ -86,7 +86,6 @@ export class LoginFormComponent implements OnInit {
         } else {
             this.user.extendedExpiration = true;
         }
-        console.log(this.user);
     }
 
     onSubmit() {
