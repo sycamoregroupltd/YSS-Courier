@@ -35,7 +35,7 @@ export class GooglePlacesDirective implements OnInit {
     getFormattedAddress(place) {
         // @params: place - Google Autocomplete place object
         // @returns: location_obj - An address object in human readable format
-        const location_obj = {};
+        const location_obj: any = {};
         for (let i = 0; i < place.address_components.length; i++) {
             const item = place.address_components[i];
 
