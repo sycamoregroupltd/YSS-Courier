@@ -35,7 +35,7 @@ export class CourierDeliveryZonesComponent implements OnInit {
         region: '',
         area: '',
         vehicleType: '',
-        limit: 25,
+        limit: 10,
         limits: [10, 25, 50, 75, 100],
         page: 0,
         pages: 0,

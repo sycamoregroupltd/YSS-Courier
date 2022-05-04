@@ -1,0 +1,110 @@
+@import "../../../node_modules/bootstrap/scss/variables";
+// Colors
+$primary: #263847;
+$secondary: #3d4d59;
+$success: #1AB67A;
+$info: #c2ebff;
+$warning: #FAFF5D;
+$danger: #d83514;
+$light: #eff2f5;
+$gray: #C9CDD1;
+
+$theme-colors: (
+    "primary": $primary,
+    "secondary": $secondary,
+    "success": $success,
+    "info": $info,
+    "warning": $warning,
+    "danger": $danger,
+    "light": $light
+);
+
+// Body
+$enable-smooth-scroll: false;
+$body-bg: $white;
+$body-color: $primary;
+
+// Typography
+$font-family-base: "grotesk", "sans-serif";
+$font-family-bold-base: "grotesk-bold", "sans-serif";
+$font-size-base: 1rem;
+
+$headings-font-family: "Spectral";
+$headings-color: $primary;
+$h1-font-size:  $font-size-base * 2.5;
+$h2-font-size:  $font-size-base * 2;
+$h3-font-size:  $font-size-base * 1.75;
+$h4-font-size:  $font-size-base * 1.5;
+$h5-font-size:  $font-size-base * 1.25;
+$h6-font-size:  $font-size-base;
+$font-sizes: (
+    1: $h1-font-size,
+    2: $h2-font-size,
+    3: $h3-font-size,
+    4: $h4-font-size,
+    5: $h5-font-size,
+    6: $h6-font-size
+);
+
+// Links
+$link-color: $primary;
+$link-decoration: none;
+
+// Buttons
+$btn-font-size: 13px;
+$btn-font-size-md: 13px;
+$btn-font-size-xl: 13px;
+
+$btn-border-radius: 30px;
+$btn-border-radius-sm: 30px;
+
+$btn-padding-x: 25px;
+$btn-padding-y: 13px;
+$btn-padding-x-md: 45px;
+$btn-padding-y-md: 12px;
+$btn-padding-x-xl: 45px;
+$btn-padding-y-xl: 17px;
+
+// Forms
+$enable-validation-icons: false;
+$input-border-color: $gray;
+$input-focus-border-color: $info;
+$input-focus-box-shadow: 0 0 4px 4px rgba(208, 240, 255, .5);
+$input-border-radius: 0;
+$form-switch-width: 35px;
+$form-switch-height: 20px;
+$form-check-input-checked-bg-color: $primary;
+$form-check-input-checked-border-color: $primary;
+$form-check-input-focus-box-shadow: none;
+$form-switch-color-rgb: rgba($primary, .99);
+$form-switch-checked-color-rgb: rgba(#fff, .99);
+
+// Navs
+$nav-pills-link-active-bg: $primary;
+
+// Breakpoints
+$grid-breakpoints: (
+    xxs: 0,
+    xs: 350px,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1400px,
+    xxxl: 1900px
+);
+
+$border-color: #DCDFE2;// $gray-300;
+
+// Containers
+$container-max-widths: (
+    xxl: 1600px
+);
+
+// Modals
+$modal-dialog-margin: 0;
+$modal-content-border-width: 0;
+$modal-content-border-radius: 0;
+
+// Fontawesome
+$fa-font-path:  "/assets/fonts";

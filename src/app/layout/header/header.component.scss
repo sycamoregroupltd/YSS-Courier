@@ -1,0 +1,16 @@
+:host {
+  display: block;
+  padding: 15px 0;
+
+  > div {
+    height: 77px;
+
+    > div {
+      text-align: right;
+    }
+
+    > div:first-child {
+      min-width: calc(50% + 103px);
+    }
+  }
+}

@@ -1,112 +1,103 @@
 <div class="data-container bg-slate-5">
-    <div class="row">
-        <div class="col-lg-6">
-
-            <div class="preview-box bg-white">
-                <div class="preview-box-title bg-grey">
-                    Latest Notifications
-                </div>
-                <div class="preview-box-content">
-                    <app-notifications-list [aside]="false" [showRead]="true"></app-notifications-list>
-                </div>
-            </div>
-
+    <div class="preview-box bg-white">
+        <div class="preview-box-title bg-grey p-4 pb-0">
+            Latest Notifications
         </div>
-        <div class="col-lg-6">
-            <div class="preview-box bg-slate-5">
-                <div class="preview-box-title">
-                    Account Details
-                </div>
-                <div class="preview-box-content">
-                    <div class="row">
-                        <div class="col-4">
-                            <p class="sub-title">Company name</p>
-                            <p>{{user.contact.firstname}} {{user.contact.surname}}</p>
-                        </div>
-                        <div class="col-4">
-                            <p class="sub-title">Supplier Account Details</p>
-                            <p></p>
-
-                        </div>
-                        <div class="col-4">
-                            <p class="sub-title">VAT Number</p>
-                            <p>{{user.company.vatNumber}}</p>
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="row">
-                        <div class="col-8">
-                            <h3>{{user.contact.firstname}} {{user.contact.surname}}</h3>
-                            <p>{{user.contact.jobTitle}}</p>
-                        </div>
-                        <div class="col-4">
-                            <button (click)="editUser(user)" class="btn btn-round btn-sm btn-secondary-reverse">
-                                Edit Profile
-                            </button>
-                        </div>
-                    </div>
-                    <hr />
-                    <div class="text-center">
-                        <h3>Users linked to account: {{user.company.userCount}}</h3>
-                    </div>
-                    <hr />
-                    <button (click)="addUser()" class="btn btn-round btn-sm btn-secondary-reverse">
-                        Add new user
-                    </button>
-
-                </div>
-            </div>
-
-
+        <div class="preview-box-content p-4">
+            <app-notifications-list [aside]="false" [showRead]="true"></app-notifications-list>
         </div>
     </div>
-
 </div>
 
 <div class="data-container bg-slate-5">
     <div class="preview-box bg-white">
-        <div class="preview-box-title bg-grey">
+        <div class=" preview-box-title bg-grey p-4 pb-0">
             Job Board
         </div>
-        <div class="preview-box-content">
+        <div class="preview-box-content p-4">
             <app-shipments-list class="mt-4" [params]="shipmentParams"></app-shipments-list>
         </div>
     </div>
 </div>
 
-<app-courier-vehicles-slider class="mt-4" [company]="user.company"></app-courier-vehicles-slider>
+<div class="data-container bg-slate-5">
+    <app-courier-vehicles-slider class="mt-4" [company]="user.company"></app-courier-vehicles-slider>
+</div>
 
 <div class="data-container bg-slate-5">
-    <div class="row">
-        <div class="col-lg-6">
-            <div class="preview-box bg-white">
-                <div class="preview-box-title bg-grey">
-                    Suppliers
-                </div>
-                <div class="preview-box-content">
-                    <app-courier-supplier-collection [company]="user.company"></app-courier-supplier-collection>
-                </div>
-            </div>
+    <div class="preview-box bg-white">
+        <div class=" preview-box-title bg-grey p-4 pb-0">
+            Suppliers
         </div>
-        <div class="col-lg-6">
-            <div class="preview-box bg-white">
-                <div class="preview-box-title bg-grey">
-                    Delivery Zones
-                </div>
-                <div class="preview-box-content">
-                    <app-courier-delivery-zones [company]="user.company"></app-courier-delivery-zones>
-                </div>
-            </div>
+        <div class="preview-box-content p-4">
+            <app-courier-supplier-collection [company]="user.company"></app-courier-supplier-collection>
         </div>
     </div>
 </div>
 
 <div class="data-container bg-slate-5">
     <div class="preview-box bg-white">
-        <div class="preview-box-title bg-grey">
+        <div class=" preview-box-title bg-grey p-4 pb-0">
+            Delivery Zones
+        </div>
+        <div class="preview-box-content p-4">
+            <app-courier-delivery-zones [company]="user.company"></app-courier-delivery-zones>
+        </div>
+    </div>
+</div>
+
+<div class="data-container bg-slate-5">
+    <div class="preview-box bg-slate-5">
+        <div class="preview-box-title bg-grey p-4 pb-0">
+            Account Details
+        </div>
+        <div class="preview-box-content p-4">
+            <div class="row">
+                <div class="col-4">
+                    <p class="sub-title">Company name</p>
+                    <p>{{user.contact.firstname}} {{user.contact.surname}}</p>
+                </div>
+                <div class="col-4">
+                    <p class="sub-title">Supplier Account Details</p>
+                    <p></p>
+
+                </div>
+                <div class="col-4">
+                    <p class="sub-title">VAT Number</p>
+                    <p>{{user.company.vatNumber}}</p>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-8">
+                    <h3>{{user.contact.firstname}} {{user.contact.surname}}</h3>
+                    <p>{{user.contact.jobTitle}}</p>
+                </div>
+                <div class="col-4">
+                    <button (click)="editUser(user)" class="btn btn-round btn-sm btn-secondary-reverse">
+                        Edit Profile
+                    </button>
+                </div>
+            </div>
+            <hr />
+            <div class="text-center">
+                <h3>Users linked to account: {{user.company.userCount}}</h3>
+            </div>
+            <hr />
+            <button (click)="addUser()" class="btn btn-round btn-sm btn-secondary-reverse">
+                Add new user
+            </button>
+
+        </div>
+    </div>
+</div>
+
+<div class="data-container bg-slate-5">
+    <div class="preview-box bg-white">
+        <div class=" preview-box-title bg-grey p-4 pb-0">
             Your Users
         </div>
-        <div class="preview-box-content">
+        <div class="preview-box-content p-4">
             <app-user-search [showCompany]="false" [company]="user.company"></app-user-search>
         </div>
     </div>

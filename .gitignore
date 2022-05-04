@@ -108,3 +108,4 @@ dist
 *.css.map
 
 .idea
+.css

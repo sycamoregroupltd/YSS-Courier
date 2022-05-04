@@ -17,7 +17,7 @@ export class CourierSupplierCollectionComponent implements OnInit {
     params = {
         courierId: '',
         company: '',
-        limit: 5,
+        limit: 10,
         limits: [5, 10, 25, 50, 75, 100],
         page: 0,
         pages: 0,

@@ -74,7 +74,7 @@ const firebaseConfig = {
         RequestCreateComponent,
         HeaderMobileComponent,
         FooterMobileComponent,
-        FooterIpadComponent,
+        FooterIpadComponent
     ],
     imports: [
         BrowserModule,
@@ -104,7 +104,9 @@ const firebaseConfig = {
         }),
     ],
     providers: [Store],
-    exports: [],
+    exports: [
+        ConsolePipe
+    ],
     bootstrap: [AppComponent],
 })
 export class AppModule {

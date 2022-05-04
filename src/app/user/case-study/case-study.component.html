@@ -1,129 +1,111 @@
-<div class="bg-slate-5" style="position: relative" *ngIf="(user$ | async)">
-
-    <app-company-menu [user]="(user$ | async)"></app-company-menu>
-    <div class="container-fluid" style="min-height: 110vh; padding: 50px; margin-left: 252px; width: calc(100% - 252px)">
-
-        <div class="text-right mb-3">
-            <button type="button" class="btn btn-primary btn-round" (click)="back()">
-                Back
-            </button>
-        </div>
-
-        <div class="row">
-            <div class="col-12">
-                <div class="preview-box">
-                    <div class="preview-box-title">
-                        <span *ngIf="newItem">Create Case Study</span>
-                        <span *ngIf="!newItem">Edit Case Study</span>
-                    </div>
-                    <div class="preview-box-content">
-                        <div class="data-container">
-
-                            <form [formGroup]="form" autocomplete="off" novalidate [autocomplete]="'off'" (ngSubmit)="save()">
-                                <div class="row">
-                                    <div class="col-lg-6">
-
-                                        <div class="form-group">
-                                            <label>Case study title</label>
-                                            <input
+<div class="container-fluid" style="min-height: 110vh;">
+    <div class="text-right mb-3">
+        <button type="button" class="btn btn-primary btn-round" (click)="back()">
+            Back
+        </button>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="preview-box">
+                <div class="preview-box-title bg-grey p-4 pb-0">
+                    <span *ngIf="newItem">Create Case Study</span>
+                    <span *ngIf="!newItem">Edit Case Study</span>
+                </div>
+                <div class="preview-box-content p-4">
+                    <div class="data-container">
+                        <form [formGroup]="form" autocomplete="off" novalidate [autocomplete]="'off'" (ngSubmit)="save()">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Case study title</label>
+                                        <input
                                                 type="text"
                                                 autocomplete="new-password"
                                                 class="form-control"
                                                 [ngClass]="{'is-invalid' : form.controls.title.invalid && form.controls.title.dirty}"
                                                 formControlName="title"
                                                 placeholder="Enter a title for this project">
-                                            <div class="invalid-feedback">Enter a valid title</div>
-                                        </div>
+                                        <div class="invalid-feedback">Enter a valid title</div>
+                                    </div>
 
-                                        <div class="form-group">
-                                            <label>Case study location</label>
-                                            <input
+                                    <div class="form-group">
+                                        <label>Case study location</label>
+                                        <input
                                                 type="text"
                                                 autocomplete="new-password"
                                                 class="form-control"
                                                 [ngClass]="{'is-invalid' : form.controls.location.invalid && form.controls.location.dirty}"
                                                 formControlName="location"
                                                 placeholder="Where did you complete this project?">
-                                            <div class="invalid-feedback">Enter a valid location</div>
-                                        </div>
+                                        <div class="invalid-feedback">Enter a valid location</div>
+                                    </div>
 
-                                        <div class="form-group">
-                                            <label>Overview</label>
-                                            <editor [formControlName]="'content'" apiKey="88ar931n5931tb0bgopl9jai12nrhu3gk3edqhxl0sp5to0e" [init]="tinyInit"></editor>
-                                            <div class="invalid-feedback">Overview content must be entered</div>
-                                        </div>
+                                    <div class="form-group">
+                                        <label>Overview</label>
+                                        <editor [formControlName]="'content'" apiKey="88ar931n5931tb0bgopl9jai12nrhu3gk3edqhxl0sp5to0e" [init]="tinyInit"></editor>
+                                        <div class="invalid-feedback">Overview content must be entered</div>
+                                    </div>
 
-                                        <div class="form-group">
-                                            <label>Which product ranges were used?</label>
-                                            <ng-multiselect-dropdown
+                                    <div class="form-group">
+                                        <label>Which product ranges were used?</label>
+                                        <ng-multiselect-dropdown
                                                 [placeholder]="'Select product ranges'"
                                                 [data]="productRanges"
                                                 formControlName="productRanges"
                                                 [settings]="rangeDropdownSettings">
-                                            </ng-multiselect-dropdown>
-                                            <div class="invalid-feedback">Please select</div>
+                                        </ng-multiselect-dropdown>
+                                        <div class="invalid-feedback">Please select</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <p>Please upload a selection of images that best represent your project</p>
+                                    <div class="p-2 bg-white">
+                                        <div class="dropzone dropzone-container" *ngIf="uploadConfig"
+                                             [dropzone]="uploadConfig"
+                                             (error)="onUploadError($event)"
+                                             (success)="onUploadSuccess($event)">
+
+                                            <div class="dz-message dz-message-sm" data-dz-message>
+                                                <span>Drag files here or click here to upload</span></div>
+                                            <div class="dz-details">
+                                                <div class="dz-filename"><span data-dz-name></span></div>
+                                                <div class="dz-size" data-dz-size></div>
+                                                <img data-dz-thumbnail/>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
-                                        <p>Please upload a selection of images that best represent your project</p>
-                                        <div class="p-2 bg-white">
-                                            <div class="dropzone dropzone-container" *ngIf="uploadConfig"
-                                                 [dropzone]="uploadConfig"
-                                                 (error)="onUploadError($event)"
-                                                 (success)="onUploadSuccess($event)">
 
-                                                <div class="dz-message dz-message-sm" data-dz-message><span>Drag files here or click here to upload</span></div>
-                                                <div class="dz-details">
-                                                    <div class="dz-filename"><span data-dz-name></span></div>
-                                                    <div class="dz-size" data-dz-size></div>
-                                                    <img data-dz-thumbnail />
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row"  dragula="roomImages" [(dragulaModel)]="caseStudy.images" (dragulaModelChange)="drop($event)">
-                                            <div
+                                    <div class="row" dragula="roomImages" [(dragulaModel)]="caseStudy.images" (dragulaModelChange)="drop($event)">
+                                        <div
                                                 class="col-12 col-lg-3"
                                                 *ngFor="let image of caseStudy.images; let i = index">
-                                                    <div
-                                                        [ngStyle]="{'background-image': 'url(' + image.url + ')'}"
-                                                        style="height: 150px"
-                                                        class="gallery-image-tile">
-                                                        <a class="image-icon-left">
-                                                            <i class="fa fa-arrows-alt"></i>
-                                                        </a>
-                                                        <a class="image-delete" (click)="deleteImage(i)">
-                                                            <i class="fa fa-trash"></i>
-                                                        </a>
+                                            <div
+                                                    [ngStyle]="{'background-image': 'url(' + image.url + ')'}"
+                                                    style="height: 150px"
+                                                    class="gallery-image-tile">
+                                                <a class="image-icon-left">
+                                                    <i class="fa fa-arrows-alt"></i>
+                                                </a>
+                                                <a class="image-delete" (click)="deleteImage(i)">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
 
-                                                    </div>
                                             </div>
-
                                         </div>
 
-                                        <div class="mt-4 text-right">
-                                            <button
+                                    </div>
+
+                                    <div class="mt-4 text-right">
+                                        <button
                                                 [disabled]="form.invalid"
                                                 class="btn btn-round btn-primary mt-4"
                                                 type="submit">
-                                                Submit
-                                            </button>
-                                        </div>
-
+                                            Submit
+                                        </button>
                                     </div>
                                 </div>
-
-
-<!--                                <pre>{{findInvalidControls() | json}}</pre>-->
-
-
-                            </form>
-
-
-
-
-
-                        </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

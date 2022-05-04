@@ -19,7 +19,6 @@ import { UserMenuComponent } from './user-menu/user-menu.component';
 import { CustomerMenuComponent } from './customer-menu/customer-menu.component';
 import { CompanyMenuComponent } from './company-menu/company-menu.component';
 import { OrdersModule } from '../orders/orders.module';
-import { SupplierOverviewComponent } from './supplier-overview/supplier-overview.component';
 import { CourierOverviewComponent } from './courier-overview/courier-overview.component';
 import { SharedModule } from '../shared/shared.module';
 import { UserSearchComponent } from './user-search/user-search.component';
@@ -78,7 +77,6 @@ import {
         UserMenuComponent,
         CustomerMenuComponent,
         CompanyMenuComponent,
-        SupplierOverviewComponent,
         CourierOverviewComponent,
         UserSearchComponent,
         UserEditComponent,

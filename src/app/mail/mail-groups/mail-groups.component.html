@@ -1,109 +1,107 @@
-<div class="bg-slate-5" style="position: relative" *ngIf="user$ | async">
-
-    <app-company-menu [user]="user"></app-company-menu>
-
-
-
-
-    <div class="container-fluid mail-container" style="min-height: 110vh; padding: 50px; margin-left: 252px; width: calc(100% - 252px)" *ngIf="user">
-        <div class="row">
-            <div class="col-lg-3">
-                <div class="ibox ">
-                    <div class="ibox-content mailbox-content">
-                        <div class="file-manager">
-                            <a
+<div class="container-fluid mail-container" style="min-height: 110vh;" *ngIf="user">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="ibox ">
+                <div class="ibox-content mailbox-content">
+                    <div class="file-manager">
+                        <a
                                 (click)="compose()"
                                 class="btn btn-block btn-primary compose-mail">New Chat</a>
-                            <div class="space-25"></div>
-                            <h5>Folders</h5>
-                            <ul class="folder-list m-b-md" style="padding: 0">
-                                <li [ngClass]="{'active' : !activeFolder}">
-                                    <a (click)="clearFilters()">
-                                        <i class="fa fa-fw fa-comments"></i>
-                                        Your Chats
-                                        <span
+                        <div class="space-25"></div>
+                        <h5>Folders</h5>
+                        <ul class="folder-list m-b-md" style="padding: 0">
+                            <li [ngClass]="{'active' : !activeFolder}">
+                                <a (click)="clearFilters()">
+                                    <i class="fa fa-fw fa-comments"></i>
+                                    Your Chats
+                                    <span
                                             *ngIf="(chatStore$ | async).unread > 0"
                                             class="label label-warning float-right">
                                             {{(chatStore$ | async).unread}}
                                         </span>
-                                    </a>
-                                </li>
-    <!--                            <li [ngClass]="{'active' : activeFolder === 'sent'}"><a (click)="setFilter('sent', true, 'sent')"> <i class="fa fa-fw fa-envelope"></i> Sent</a></li>-->
-                                <li [ngClass]="{'active' : activeFolder === 'important'}"><a (click)="setFilter('important', 1, 'important')"> <i class="fa fa-fw fa-exclamation"></i> Important</a></li>
-                                <li [ngClass]="{'active' : activeFolder === 'archived'}"><a (click)="setFilter('archived', 1, 'archived')"> <i class="fa fa-fw fa-archive"></i> Archived</a></li>
-                            </ul>
-                            <h5>Categories</h5>
-                            <ul class="category-list" style="padding: 0">
-                                <li [ngClass]="{'active' : activeFolder == c.id}" *ngFor="let c of categories">
-                                    <a class="hover" (click)="setFilter('category', c.id, c.id)">
-                                        <i class="fa fa-circle " [style.color]="c.colour"></i> {{c.name}}
-                                    </a>
-                                </li>
-                            </ul>
-                            <div class="clearfix"></div>
-                        </div>
+                                </a>
+                            </li>
+                            <!--                            <li [ngClass]="{'active' : activeFolder === 'sent'}"><a (click)="setFilter('sent', true, 'sent')"> <i class="fa fa-fw fa-envelope"></i> Sent</a></li>-->
+                            <li [ngClass]="{'active' : activeFolder === 'important'}">
+                                <a (click)="setFilter('important', 1, 'important')">
+                                    <i class="fa fa-fw fa-exclamation"></i> Important</a></li>
+                            <li [ngClass]="{'active' : activeFolder === 'archived'}">
+                                <a (click)="setFilter('archived', 1, 'archived')">
+                                    <i class="fa fa-fw fa-archive"></i> Archived</a></li>
+                        </ul>
+                        <h5>Categories</h5>
+                        <ul class="category-list" style="padding: 0">
+                            <li [ngClass]="{'active' : activeFolder == c.id}" *ngFor="let c of categories">
+                                <a class="hover" (click)="setFilter('category', c.id, c.id)">
+                                    <i class="fa fa-circle " [style.color]="c.colour"></i> {{c.name}}
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="col-xl-9">
-                <app-mail-compose *ngIf="composing" (finishedNewMessage)="finishedNewMessage($event)"></app-mail-compose>
+        <div class="col-xl-9">
+            <app-mail-compose *ngIf="composing" (finishedNewMessage)="finishedNewMessage($event)"></app-mail-compose>
 
-                <ng-container *ngIf="!(chatStore$ | async).group && !composing">
-                    <div class="mail-box-header">
+            <ng-container *ngIf="!(chatStore$ | async).group && !composing">
+                <div class="mail-box-header">
 
-                        <div class="float-right mail-search">
-                            <div class="input-group">
-                                <input
+                    <div class="float-right mail-search">
+                        <div class="input-group">
+                            <input
                                     [(ngModel)]="chatParams.searchTerm"
                                     type="text"
                                     class="form-control form-control-mail form-control-sm bordered"
                                     placeholder="Search mail">
-                                <div class="input-group-btn">
-                                    <button [disabled]="!chatParams.searchTerm" type="button" (click)="searchMail()" class="btn btn-sm btn-primary">
-                                        Search
-                                    </button>
-                                </div>
+                            <div class="input-group-btn">
+                                <button [disabled]="!chatParams.searchTerm" type="button" (click)="searchMail()" class="btn btn-sm btn-primary">
+                                    Search
+                                </button>
                             </div>
                         </div>
-    <!--                    <h2 *ngIf="!filtering">-->
-    <!--                        Inbox <span *ngIf="(chatStore$ | async).unread > 0">({{(chatStore$ | async).unread}})</span>-->
-    <!--                    </h2>-->
-    <!--                    <h2 *ngIf="filtering">Filtered</h2>-->
-
-                        <div class="mail-tools tooltip-demo">
-    <!--                        <div class="btn-group float-right">-->
-    <!--                            <button type="button" class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i></button>-->
-    <!--                            <button type="button" class="btn btn-white btn-sm"><i class="fa fa-arrow-right"></i></button>-->
-    <!--                        </div>-->
-                            <button type="button" class="btn btn-mail-white btn-sm mr-1" awesomeTooltip="Mark as read"><i class="fa fa-fw fa-eye"></i> </button>
-                            <button type="button" class="btn btn-mail-white btn-sm mr-1" awesomeTooltip="Mark as important"><i class="fa fa-fw fa-exclamation"></i> </button>
-                            <button type="button" class="btn btn-mail-white btn-sm mr-1" awesomeTooltip="Archive"><i class="fa fa-fw fa-archive"></i> </button>
-
-                        </div>
                     </div>
+                    <!--                    <h2 *ngIf="!filtering">-->
+                    <!--                        Inbox <span *ngIf="(chatStore$ | async).unread > 0">({{(chatStore$ | async).unread}})</span>-->
+                    <!--                    </h2>-->
+                    <!--                    <h2 *ngIf="filtering">Filtered</h2>-->
 
-                    <app-mail-groups-list
+                    <div class="mail-tools tooltip-demo">
+                        <!--                        <div class="btn-group float-right">-->
+                        <!--                            <button type="button" class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i></button>-->
+                        <!--                            <button type="button" class="btn btn-white btn-sm"><i class="fa fa-arrow-right"></i></button>-->
+                        <!--                        </div>-->
+                        <button type="button" class="btn btn-mail-white btn-sm mr-1" awesomeTooltip="Mark as read">
+                            <i class="fa fa-fw fa-eye"></i></button>
+                        <button type="button" class="btn btn-mail-white btn-sm mr-1" awesomeTooltip="Mark as important">
+                            <i class="fa fa-fw fa-exclamation"></i></button>
+                        <button type="button" class="btn btn-mail-white btn-sm mr-1" awesomeTooltip="Archive">
+                            <i class="fa fa-fw fa-archive"></i></button>
+
+                    </div>
+                </div>
+
+                <app-mail-groups-list
                         *ngIf="!filtering"
                         [groups]="(chatStore$ | async).groups"
                         [searchTerm]="chatParams.searchTerm"
                         (doFilter)="doFilter()"></app-mail-groups-list>
-                    <app-mail-groups-list
+                <app-mail-groups-list
                         *ngIf="filtering"
                         [groups]="groups"
                         [searchTerm]="chatParams.searchTerm"
                         (doFilter)="doFilter()"></app-mail-groups-list>
 
-                </ng-container>
+            </ng-container>
 
-                <app-group-view
+            <app-group-view
                     *ngIf="(chatStore$ | async).group"
                     [group]="(chatStore$ | async).group"
                     [messages]="(chatStore$ | async).messages"></app-group-view>
-
-            </div>
         </div>
-
     </div>
 </div>
+
 <app-mail-compose *ngIf="(overlays$ | async).mailCompose"></app-mail-compose>

@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '../../store';
 import { OverlayService } from '../../services/overlay.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
     selector: 'app-company-menu',
@@ -8,9 +9,7 @@ import { OverlayService } from '../../services/overlay.service';
     styleUrls: ['./company-menu.component.scss']
 })
 export class CompanyMenuComponent implements OnInit {
-
-    @Input() user;
-    @Output() navigationChange = new EventEmitter();
+    user;
 
     step = 'dashboard';
     overlays$ = this.store.select<any>('overlays');
@@ -19,25 +18,12 @@ export class CompanyMenuComponent implements OnInit {
     constructor(
         private store: Store,
         private overlayService: OverlayService,
+        private userService: UserService
     ) {
     }
 
     ngOnInit(): void {
-    }
-
-    setStep(v) {
-        this.step = v;
-        this.navigationChange.emit(v);
-    }
-
-    editUser() {
-        this.store.set('userToEdit', this.store.selectForLocal('user'));
-        this.setStep('user-edit');
-    }
-
-    addUser() {
-        this.store.set('userToEdit', this.store.selectForLocal('user'));
-        this.setStep('user-edit');
+        this.userService.getByToken().subscribe(userData => this.user = userData.data);
     }
 
     requestCreate() {

@@ -6,19 +6,19 @@ import { Store } from '../../store';
 import { OverlayService } from '../../services/overlay.service';
 import { AlertService } from '../../services/alert.service';
 import { NotificationService } from '../../services/notification.service';
-import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from 'saturn-datepicker';
+// @todo: replace with another date picker
+// import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from 'saturn-datepicker-ext';
 import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';
 
 @Component({
     selector: 'app-shipments-list',
     templateUrl: './shipments-list.component.html',
     styleUrls: ['./shipments-list.component.scss'],
-    providers: [
+    /*providers: [
         { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
         { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
         { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
-    ]
-
+    ]*/
 })
 export class ShipmentsListComponent implements OnInit, OnChanges {
     @Input() params;

@@ -36,9 +36,7 @@ export class AccountShipmentOverviewComponent implements OnInit {
     }
 
     findOne() {
-        this.shipmentService.get(this.shipmentId).subscribe(data => {
-            this.shipment = data.data;
-        });
+        this.shipmentService.get(this.shipmentId).subscribe(data => this.shipment = data.data);
     }
 
     getOrderLineStatuses() {

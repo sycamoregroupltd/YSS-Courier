@@ -94,12 +94,7 @@ export class ShipmentsBoardComponent implements OnInit {
     }
 
     open(card) {
-
-        if (!card.open) {
-            card.open = true;
-        } else {
-            card.open = false;
-        }
+        card.open = !card.open;
         this.closeAllPopups(card.id);
     }
 
@@ -107,7 +102,7 @@ export class ShipmentsBoardComponent implements OnInit {
         const shipmentsBoard = this.store.selectForLocal('shipmentsBoard');
         shipmentsBoard.groups.forEach(g => {
             g.cols.forEach(c => {
-                c.orderLines.forEach(ol => {
+                c.cards.forEach(ol => {
                     if (ol.id !== toIgnore) {
                         ol.open = false;
                     }
@@ -128,6 +123,4 @@ export class ShipmentsBoardComponent implements OnInit {
             this.shipmentService.shipmentsBoard(this.params).subscribe();
         }
     }
-
-
 }

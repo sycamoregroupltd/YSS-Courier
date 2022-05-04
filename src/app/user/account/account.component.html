@@ -1,7 +1,5 @@
 <div class="bg-slate-5" style="position: relative" *ngIf="user">
-    <app-company-menu (navigationChange)="navigationChange($event)" [user]="user"></app-company-menu>
-    <div class="container-fluid user-account-container" *ngIf="user">
-        <app-supplier-overview [user]="user" *ngIf="user.accountType === 'supplier'"></app-supplier-overview>
-        <app-courier-overview [user]="user" *ngIf="user.accountType === 'courier'"></app-courier-overview>
+    <div class="container-fluid user-account-container">
+        <app-courier-overview [user]="user"></app-courier-overview>
     </div>
 </div>

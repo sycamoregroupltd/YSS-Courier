@@ -1,72 +1,63 @@
-<div class="bg-slate-5" style="position: relative" *ngIf="(user$ | async)">
+<div class="container-fluid" style="min-height: 110vh;">
 
-    <app-company-menu [user]="(user$ | async)"></app-company-menu>
-    <div class="container-fluid" style="min-height: 110vh; padding: 50px; margin-left: 252px; width: calc(100% - 252px)">
+    <div class="text-right mb-3" *ngIf="items.length">
+        <button type="button" class="btn btn-primary btn-round" (click)="create()">
+            Create a case study
+        </button>
+    </div>
 
-        <div class="text-right mb-3" *ngIf="items.length">
-            <button type="button" class="btn btn-primary btn-round" (click)="create()">
-                Create a case study
-            </button>
-        </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="preview-box">
+                <div class="preview-box-title bg-grey p-4 pb-0">
+                    Your Case Studies
+                </div>
+                <div class="preview-box-content p-4">
+                    <div class="data-container">
 
-        <div class="row">
-            <div class="col-12">
-                <div class="preview-box">
-                    <div class="preview-box-title">
-                        Your Case Studies
-                    </div>
-                    <div class="preview-box-content">
-                        <div class="data-container">
-
-                            <div class="no-results" *ngIf="!items.length">
-                                <p>You have no case studies</p>
-                                <p>Why not create one and earn reward points?</p>
-                                <button type="button" class="btn btn-primary btn-round mt-4"  (click)="create()">
-                                    Create a case study
-                                </button>
-                            </div>
+                        <div class="no-results" *ngIf="!items.length">
+                            <p>You have no case studies</p>
+                            <p>Why not create one and earn reward points?</p>
+                            <button type="button" class="btn btn-primary btn-round mt-4" (click)="create()">
+                                Create a case study
+                            </button>
+                        </div>
 
 
-
-
-                            <div *ngIf="items.length">
-                                <!--        <input type="text" class="form-control" [(ngModel)]="params.freetext" />-->
-                                <div class="row">
-                                    <div
+                        <div *ngIf="items.length">
+                            <!--        <input type="text" class="form-control" [(ngModel)]="params.freetext" />-->
+                            <div class="row">
+                                <div
                                         class="col-12 col-lg-3 mb-3"
                                         *ngFor="let s of items">
 
-                                        <div class="data-tile hover" (click)="edit(s.id)">
-                                            <div class="gallery-image-tile" [ngStyle]="{'background-image': 'url(' + s.imageUrl + ')'}"></div>
-                                            <div class="mt-2">
+                                    <div class="data-tile hover" (click)="edit(s.id)">
+                                        <div class="gallery-image-tile" [ngStyle]="{'background-image': 'url(' + s.imageUrl + ')'}"></div>
+                                        <div class="mt-2">
                                                 <span
-                                                    class="status-chip"
-                                                    [ngClass]="{'bg-success': s.status, 'bg-warning' : !s.status}">
+                                                        class="status-chip"
+                                                        [ngClass]="{'bg-success': s.status, 'bg-warning' : !s.status}">
                                                     <span *ngIf="s.status">Published</span>
                                                     <span *ngIf="!s.status">Pending verification</span>
                                                 </span>
-                                                <h2 class="mb-1">{{s.title}}</h2>
-                                                <p class="mb-2">{{s.location}}</p>
-                                                <button class="btn btn-round btn-primary btn-slim" (click)="edit(s.id)">
-                                                    View / edit
-                                                </button>
-                                            </div>
-
+                                            <h2 class="mb-1">{{s.title}}</h2>
+                                            <p class="mb-2">{{s.location}}</p>
+                                            <button class="btn btn-round btn-primary btn-slim" (click)="edit(s.id)">
+                                                View / edit
+                                            </button>
                                         </div>
 
                                     </div>
+
                                 </div>
                             </div>
-                            <app-pagination *ngIf="params.pageArray.length" [params]="params" (update)="search()"></app-pagination>
-
-
                         </div>
+                        <app-pagination *ngIf="params.pageArray.length" [params]="params" (update)="search()"></app-pagination>
                     </div>
                 </div>
-
             </div>
-        </div>
 
+        </div>
     </div>
 </div>
 

@@ -15,7 +15,7 @@ export class NotificationsListComponent implements OnInit {
     notifications$ = this.store.select<any[]>('notifications');
 
     params = {
-        limit: 10,
+        limit: 12,
         limits: [10, 25, 50, 75, 100],
         page: 0,
         pages: 0,

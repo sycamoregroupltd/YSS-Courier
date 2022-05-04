@@ -7,7 +7,8 @@ import { OrderSearchComponent } from './order-search/order-search.component';
 import { SharedModule } from '../shared/shared.module';
 import { OrderDetailSearchComponent } from './order-detail-search/order-detail-search.component';
 import { OrderStatusUpdateComponent } from './order-status-update/order-status-update.component';
-import { SatDatepickerModule } from 'saturn-datepicker';
+// @todo: replace with another date picker
+/*import { SatDatepickerModule } from 'saturn-datepicker-ext';*/
 import { DirectivesModule } from '../directives/directives.module';
 
 @NgModule({
@@ -24,7 +25,7 @@ import { DirectivesModule } from '../directives/directives.module';
         MaterialModule,
         SharedModule,
         MaterialModule,
-        SatDatepickerModule,
+        /*SatDatepickerModule,*/
         DirectivesModule,
     ],
     exports: [

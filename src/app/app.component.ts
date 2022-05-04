@@ -224,6 +224,8 @@ export class AppComponent implements OnInit {
     }
 
     menuByRoute(route) {
-        this.menuService.menuByRoute(route);
+        if (route) {
+            this.menuService.menuByRoute(route);
+        }
     }
 }

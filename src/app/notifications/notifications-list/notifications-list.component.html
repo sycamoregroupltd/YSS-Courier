@@ -18,10 +18,10 @@
                         <p class="card-text" [innerHTML]="notification.content"></p>
                         <div class=" d-flex justify-content-between">
                             <small>{{notification.createdAt.toDate() | date: 'dd MMM yyyy @ HH:mm'}}</small>
-                            <a
-                                class="card-link"
+                            <a class="card-link"
                                 (click)="markAsRead(notification)"
-                                *ngIf="!notification.read">
+                                *ngIf="!notification.read"
+                            >
                                 <small>Mark as read</small>
                             </a>
                         </div>
@@ -47,7 +47,7 @@
             <tbody>
                 <ng-container *ngFor="let notification of (notifications$ | async)?.data; let i = index">
                     <tr
-                        *ngIf="i < 5"
+                        *ngIf="i < params.limit"
                         [ngClass]="{'read' : notification.read}">
                         <td>{{notification.createdAt.toDate() | date: 'dd MMM yyyy @ HH:mm'}}</td>
                         <td><span [innerHTML]="notification.content"></span> </td>
@@ -66,9 +66,9 @@
             </tbody>
         </table>
 
-        <div class="text-right" *ngIf="(notifications$ | async)?.data.length > 5">
+        <div class="text-right" *ngIf="(notifications$ | async)?.data.length > params.limit">
             <a (click)="viewNotifications()">
-                + {{((notifications$ | async)?.data.length - 5)}} more
+                + {{((notifications$ | async)?.data.length - params.limit)}} more
             </a>
         </div>
     </div>

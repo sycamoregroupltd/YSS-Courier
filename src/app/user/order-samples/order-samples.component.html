@@ -1,28 +1,21 @@
-<div class="bg-slate-5" style="position: relative" *ngIf="user">
-    <app-company-menu [user]="user"></app-company-menu>
-
-    <div class="container-fluid" style="min-height: 110vh; padding: 50px; margin-left: 252px; width: calc(100% - 252px)" *ngIf="user">
-
-
-        <div class="row">
-            <div class="col-12">
-                <div class="preview-box">
-                    <div class="preview-box-title">
-                        Sample Requests
-                    </div>
-                    <div class="preview-box-content">
-                        <div class="data-container">
-                            <app-order-detail-search
+<div class="container-fluid" style="min-height: 110vh;" *ngIf="user">
+    <div class="row">
+        <div class="col-12">
+            <div class="preview-box">
+                <div class="preview-box-title bg-grey p-4 pb-0">
+                    Sample Requests
+                </div>
+                <div class="preview-box-content p-4">
+                    <div class="data-container">
+                        <app-order-detail-search
                                 class="mt-4"
                                 [params]="orderParams"
                                 [showSupplier]="showSupplier"
                                 [showCustomer]="showCustomer"></app-order-detail-search>
-                        </div>
                     </div>
                 </div>
-
             </div>
-        </div>
 
+        </div>
     </div>
 </div>

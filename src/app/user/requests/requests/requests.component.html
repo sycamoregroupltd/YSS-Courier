@@ -1,53 +1,43 @@
-<div class="bg-slate-5" style="position: relative" *ngIf="user$ | async">
-
-    <app-company-menu [user]="(user$ | async)"></app-company-menu>
-
-    <div class="container-fluid" style="min-height: 110vh; padding: 50px; margin-left: 252px; width: calc(100% - 252px)" *ngIf="user$ | async">
-
-        <div class="preview-box">
-            <div class="preview-box-title">
-                Yorkstone Requests
-                <button class="btn btn-round btn-primary float-right" (click)="requestCreate()">Create a Request</button>
-            </div>
-            <div class="preview-box-content">
-
-
-                    <div class="table-responsive">
-                    <table class="table table-condensed">
-                        <thead class="thead-white">
-
-                        <tr>
-                            <th>Sent</th>
-                            <th>Sent By</th>
-                            <th>Type</th>
-                            <th>Message</th>
-                            <th>Status</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr class="underline" *ngFor="let s of (companyRequests$ | async)">
-                            <td>{{s.createdAt | date: 'dd MMM yyyy @ HH:mm'}}</td>
-                            <td>{{s.company.username}}</td>
-                            <td>{{s.type.name}}</td>
-                            <td>{{s.message}}</td>
-                            <td>
-                                <span *ngIf="!s.status">Pending</span>
-                                <span *ngIf="s.status">Completed by {{s.completedBy}} {{s.completedAt | date: 'dd MMM yyyy @ HH:mm'}}</span>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="no-results" *ngIf="!(companyRequests$ | async).length">
-                    <p>No requests made</p>
-                </div>
-                <app-pagination *ngIf="params.pageArray.length" [params]="params" (update)="filterSearch()"></app-pagination>
-
-            </div>
+<div class="container-fluid" style="min-height: 110vh;" *ngIf="user$ | async">
+    <div class="preview-box">
+        <div class="preview-box-title bg-grey p-4 pb-0">
+            Yorkstone Requests
+            <button class="btn btn-round btn-primary float-right" (click)="requestCreate()">Create a Request</button>
         </div>
+        <div class="preview-box-content p-4">
+            <div class="table-responsive">
+                <table class="table table-condensed">
+                    <thead class="thead-white">
 
+                    <tr>
+                        <th>Sent</th>
+                        <th>Sent By</th>
+                        <th>Type</th>
+                        <th>Message</th>
+                        <th>Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="underline" *ngFor="let s of (companyRequests$ | async)">
+                        <td>{{s.createdAt | date: 'dd MMM yyyy @ HH:mm'}}</td>
+                        <td>{{s.company.username}}</td>
+                        <td>{{s.type.name}}</td>
+                        <td>{{s.message}}</td>
+                        <td>
+                            <span *ngIf="!s.status">Pending</span>
+                            <span *ngIf="s.status">Completed by {{s.completedBy}} {{s.completedAt | date: 'dd MMM yyyy @ HH:mm'}}</span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="no-results" *ngIf="!(companyRequests$ | async).length">
+                <p>No requests made</p>
+            </div>
+            <app-pagination *ngIf="params.pageArray.length" [params]="params" (update)="filterSearch()"></app-pagination>
+
+        </div>
     </div>
+
 </div>
-
-

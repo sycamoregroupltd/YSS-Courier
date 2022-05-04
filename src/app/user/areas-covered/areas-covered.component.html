@@ -1,62 +1,57 @@
-<div class="bg-slate-5" style="position: relative" *ngIf="(user$ | async)">
+<div class="container-fluid" style="min-height: 110vh;">
 
-    <app-company-menu [user]="(user$ | async)"></app-company-menu>
+    <div class="data-container">
+        <h2>Areas you would like to receive quotes for </h2>
+        <button (click)="managePostcodes()" type="button" class="btn btn-round btn-primary">
+            Add postcode areas
+        </button>
 
-    <div class="container-fluid" style="min-height: 110vh; padding: 50px; margin-left: 252px; width: calc(100% - 252px)">
+        <div class="table-responsive mt-30">
+            <table class="table table-condensed">
+                <thead class="thead-white">
 
-        <div class="data-container">
-            <h2>Areas you would like to receive quotes for </h2>
-            <button (click)="managePostcodes()" type="button" class="btn btn-round btn-primary">
-                Add postcode areas
-            </button>
-
-            <div class="table-responsive mt-30">
-                <table class="table table-condensed">
-                    <thead class="thead-white">
-
-                    <tr>
-                        <th>Postcode</th>
-                        <th>Area</th>
-                        <th>Region</th>
-                        <th>Actions</th>
-                    </tr>
-                    <tr>
-                        <th><input type="text" class="form-control" [(ngModel)]="params.postcode" (ngModelChange)="filterSearch()" /></th>
-                        <th><input type="text" class="form-control" [(ngModel)]="params.area" (ngModelChange)="filterSearch()" /></th>
-                        <th><input type="text" class="form-control" [(ngModel)]="params.region" (ngModelChange)="filterSearch()" /></th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr class="underline" *ngFor="let s of items">
-                        <td>{{s.postcode}}</td>
-                        <td>{{s.area}}</td>
-                        <td>{{s.region}}</td>
-                        <td>
-                            <a (click)="removePostcode(s.postcode)">
-                                <i class="fa fa-trash"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="no-results" *ngIf="!items.length">
-                <p>No areas defined</p>
-            </div>
-
-            <app-pagination *ngIf="params.pageArray.length" [params]="params" (update)="search()"></app-pagination>
-
-
-
-
+                <tr>
+                    <th>Postcode</th>
+                    <th>Area</th>
+                    <th>Region</th>
+                    <th>Actions</th>
+                </tr>
+                <tr>
+                    <th>
+                        <input type="text" class="form-control" [(ngModel)]="params.postcode" (ngModelChange)="filterSearch()"/>
+                    </th>
+                    <th>
+                        <input type="text" class="form-control" [(ngModel)]="params.area" (ngModelChange)="filterSearch()"/>
+                    </th>
+                    <th>
+                        <input type="text" class="form-control" [(ngModel)]="params.region" (ngModelChange)="filterSearch()"/>
+                    </th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="underline" *ngFor="let s of items">
+                    <td>{{s.postcode}}</td>
+                    <td>{{s.area}}</td>
+                    <td>{{s.region}}</td>
+                    <td>
+                        <a (click)="removePostcode(s.postcode)">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
 
+        <div class="no-results" *ngIf="!items.length">
+            <p>No areas defined</p>
+        </div>
+        <app-pagination *ngIf="params.pageArray.length" [params]="params" (update)="search()"></app-pagination>
     </div>
 </div>
 
 <app-company-area-manage
-    *ngIf="(overlays$ | async).companyPostcodes"
-    [companyId]="(user$ | async).company.id"
-    (refreshData)="this.filterSearch()"></app-company-area-manage>
+        *ngIf="(overlays$ | async).companyPostcodes"
+        [companyId]="(user$ | async).company.id"
+        (refreshData)="this.filterSearch()"></app-company-area-manage>

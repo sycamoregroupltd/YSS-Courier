@@ -1,138 +1,129 @@
-<div class="bg-slate-5" style="position: relative" *ngIf="user">
-    <app-company-menu [user]="user"></app-company-menu>
-
-    <div class="container-fluid" style="min-height: 110vh; padding: 50px; margin-left: 252px; width: calc(100% - 252px)" *ngIf="user">
+<div class="container-fluid" style="min-height: 110vh;" *ngIf="user">
 
 
-        <div style="width: 100%" *ngIf="shipment">
-            <div class="page-header-banner"><h1>Order {{shipment.publicId}}</h1></div>
+    <div style="width: 100%" *ngIf="shipment">
+        <div class="page-header-banner"><h1>Order {{shipment.publicId}}</h1></div>
 
 
-            <div class="container-fluid bg-light" style="padding: 60px">
+        <div class="container-fluid bg-light" style="padding: 60px">
 
-                <div class="alert alert-warning d-flex justify-content-between"
-                     *ngIf="shipment.updateRequested && user.accountType === 'supplier'">
+            <div class="alert alert-warning d-flex justify-content-between"
+                 *ngIf="shipment.updateRequested && user.accountType === 'supplier'">
 
-                    <h3 class="mb-0 mt-1">Customer services requested a status update on this order</h3>
-                    <button type="button" (click)="updateStatus()" class="btn btn-slim btn-round btn-primary">
-                        <span aria-hidden="true">Update Status</span>
-                    </button>
-                </div>
+                <h3 class="mb-0 mt-1">Customer services requested a status update on this order</h3>
+                <button type="button" (click)="updateStatus()" class="btn btn-slim btn-round btn-primary">
+                    <span aria-hidden="true">Update Status</span>
+                </button>
+            </div>
 
-                <div class="card-deck">
-                    <div class="card dashboard no-border mt-5">
-                        <div class="card-header">
-                            Customer Details
-                        </div>
-                        <div class="card-body">
-                            <address *ngIf="shipment.deliveryAddress">
-                                {{shipment.customer.contact.firstname}} {{shipment.customer.contact.surname}}
-                                <br />
-                                <span *ngIf="shipment.customer.contact.email">
-                                        <br />
+            <div class="card-deck">
+                <div class="card dashboard no-border mt-5">
+                    <div class="card-header">
+                        Customer Details
+                    </div>
+                    <div class="card-body">
+                        <address *ngIf="shipment.deliveryAddress && shipment.customer.contact">
+                            {{shipment.customer.contact.firstname}} {{shipment.customer.contact.surname}}
+                            <br/>
+                            <span *ngIf="shipment.customer.contact.email">
+                                        <br/>
                                         <i class="fa fa-envelope fa-fw"></i> {{shipment.customer.contact.email}}</span>
-                                <span *ngIf="shipment.customer.contact.mobile">
-                                        <br />
+                            <span *ngIf="shipment.customer.contact.mobile">
+                                        <br/>
                                         <i class="fa fa-mobile fa-fw"></i> {{shipment.customer.contact.mobile}}</span>
-                                <span *ngIf="shipment.customer.contact.landline">
-                                        <br />
+                            <span *ngIf="shipment.customer.contact.landline">
+                                        <br/>
                                         <i class="fa fa-phone fa-fw"></i> {{shipment.customer.contact.landline}}</span>
 
-                            </address>
-                        </div>
+                        </address>
                     </div>
+                </div>
 
 
+                <div class="card dashboard no-border mt-5">
+                    <div class="card-header">
+                        Delivery Address
+                    </div>
+                    <div class="card-body">
+                        <address *ngIf="shipment.deliveryAddress">
+                            {{shipment.deliveryAddress.add1}}
+                            <span *ngIf="shipment.deliveryAddress.add2"><br/>{{shipment.deliveryAddress.add2}}</span>
+                            <span *ngIf="shipment.deliveryAddress.add3"><br/>{{shipment.deliveryAddress.add3}}</span>
+                            <span *ngIf="shipment.deliveryAddress.town"><br/>{{shipment.deliveryAddress.town}}</span>
+                            <span *ngIf="shipment.deliveryAddress.county"><br/>{{shipment.deliveryAddress.county}}</span>
+                            <span *ngIf="shipment.deliveryAddress.postcode"><br/>{{shipment.deliveryAddress.postcode}}</span>
+                        </address>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
                     <div class="card dashboard no-border mt-5">
                         <div class="card-header">
-                            Delivery Address
+                            Items Ordered
                         </div>
                         <div class="card-body">
-                            <address *ngIf="shipment.deliveryAddress">
-                                {{shipment.deliveryAddress.add1}}
-                                <span *ngIf="shipment.deliveryAddress.add2"><br />{{shipment.deliveryAddress.add2}}</span>
-                                <span *ngIf="shipment.deliveryAddress.add3"><br />{{shipment.deliveryAddress.add3}}</span>
-                                <span *ngIf="shipment.deliveryAddress.town"><br />{{shipment.deliveryAddress.town}}</span>
-                                <span *ngIf="shipment.deliveryAddress.county"><br />{{shipment.deliveryAddress.county}}</span>
-                                <span *ngIf="shipment.deliveryAddress.postcode"><br />{{shipment.deliveryAddress.postcode}}</span>
-                            </address>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card dashboard no-border mt-5">
-                            <div class="card-header">
-                                Items Ordered
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th><h6>Product</h6></th>
+                                        <th><h6>Sku</h6></th>
+                                        <th style="width: 150px"><h6>Status</h6></th>
+                                        <th style="width: 100px; text-align: right"><h6>Quantity</h6></th>
+                                        <th style="width: 130px; text-align: right"><h6>Unit Price</h6></th>
+                                        <th style="text-align: right"><h6>Total Price</h6></th>
+                                        <!--                                            <th *ngIf="user.accountType === 'supplier'"><h6>Actions</h6></th>-->
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr class="underline" *ngFor="let pd of shipment.orderLines; let i = index">
+                                        <td>
+                                            {{pd.product.productCode}}
+                                            <br/>
+                                            {{pd.product.name}}
+                                        </td>
+                                        <td>{{pd.skuId}}</td>
+                                        <td>{{pd.status.name}}</td>
+                                        <td align="right">{{pd.quantity}}</td>
+                                        <td align="right">{{pd.unitPrice | currency: 'GBP'}}</td>
+                                        <td align="right">{{pd.totalPrice | currency: 'GBP'}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
                             </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                        <tr>
-                                            <th><h6>Product</h6></th>
-                                            <th><h6>Sku</h6></th>
-                                            <th style="width: 150px"><h6>Status</h6></th>
-                                            <th style="width: 100px; text-align: right"><h6>Quantity</h6></th>
-                                            <th style="width: 130px; text-align: right"><h6>Unit Price</h6></th>
-                                            <th style="text-align: right"><h6>Total Price</h6></th>
-                                            <!--                                            <th *ngIf="user.accountType === 'supplier'"><h6>Actions</h6></th>-->
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr class="underline" *ngFor="let pd of shipment.orderLines; let i = index">
-                                            <td>
-                                                {{pd.product.productCode}}
-                                                <br />
-                                                {{pd.product.name}}
-                                            </td>
-                                            <td>{{pd.skuId}}</td>
-                                            <td>{{pd.status.name}}</td>
-                                            <td align="right">{{pd.quantity}}</td>
-                                            <td align="right">{{pd.unitPrice | currency: 'GBP'}}</td>
-                                            <td align="right">{{pd.totalPrice | currency: 'GBP'}}</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
 
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-3">
-                    </div>
-                    <div class="col-md-5 offset-md-4">
-                        <div class="card dashboard no-border mt-5">
-                            <div class="card-header">
-                                Order Totals
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <tbody>
-                                        <tr>
-                                            <th><h6>Delivery</h6></th>
-                                            <td align="right"><h6>{{shipment.payment.delivery | currency: 'GBP'}}</h6></td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
                         </div>
                     </div>
 
-
                 </div>
+            </div>
 
+            <div class="row">
+                <div class="col-md-3">
+                </div>
+                <div class="col-md-5 offset-md-4">
+                    <div class="card dashboard no-border mt-5">
+                        <div class="card-header">
+                            Order Totals
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tbody>
+                                    <tr>
+                                        <th><h6>Delivery</h6></th>
+                                        <td align="right"><h6>{{shipment.payment?.delivery | currency: 'GBP'}}</h6></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
-
     </div>
 </div>
 

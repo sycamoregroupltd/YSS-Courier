@@ -60,8 +60,15 @@
                 </a>
             </div>
         </div>
-
     </div>
+</div>
+
+<div class="row">
+    <app-pagination
+            *ngIf="params.pageArray.length"
+            [params]="params"
+            (update)="search()"
+    ></app-pagination>
 </div>
 
 <button

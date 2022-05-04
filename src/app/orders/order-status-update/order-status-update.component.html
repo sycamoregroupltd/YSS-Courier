@@ -38,10 +38,11 @@
                         <mat-form-field appearance="outline">
                             <input matInput
                                    placeholder="Available for collection"
-                                   [satDatepicker]="picker1"
                                    [(ngModel)]="shipment.collectionDate">
-                            <sat-datepicker #picker1 [rangeMode]="false" [closeAfterSelection]="true"></sat-datepicker>
-                            <sat-datepicker-toggle matSuffix [for]="picker1"></sat-datepicker-toggle>
+                            <!-- cant find that this is used in any route at all, should replace with `smart-date-selection` -->
+                                   <!--[satDatepicker]="picker1"-->
+                            <!--<sat-datepicker #picker1 [rangeMode]="false" [closeAfterSelection]="true"></sat-datepicker>
+                            <sat-datepicker-toggle matSuffix [for]="picker1"></sat-datepicker-toggle>-->
                         </mat-form-field>
                     </div>
                 </div>

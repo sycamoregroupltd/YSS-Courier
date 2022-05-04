@@ -44,9 +44,6 @@
     .product-detail-container {
         padding: 10px;
     }
-    .main-content-container {
-        padding-top: 175px;
-    }
     .user-account-container {
         padding: 50px;
         margin-left: 252px;
@@ -110,9 +107,6 @@
         padding-right: 0.5rem;
         padding-left: 0.5rem;
     }
-    .main-content-container {
-        padding-top: 77px;
-    }
     .slider-text {
         width: 715px;
         margin: 0 auto;
@@ -171,24 +165,23 @@
         margin-bottom: 20px;
         font-weight: 400;
     }
-    #footer {
+    footer {
         background-color: #263847;
         color: #fff;
-        min-height: 200px;
-        padding-top: 13px;
+        padding: 13px 0;
     }
-    #footer.footer-content {
+    footer.footer-content {
         margin-top: 30px;
         margin-bottom: 30px;
         padding: 10px 30px;
         height: calc(100% - 60px);
     }
-    #footer .form-check {
+    footer .form-check {
         padding-left: 20px;
         color: #c3ebff;
         opacity: 1;
     }
-    #footer.footer-sub-menu {
+    footer.footer-sub-menu {
         padding: unset;
         padding-top: 50px;
         padding-bottom: 50px;
@@ -322,18 +315,19 @@
         max-width: 100%;
         margin: 0 auto;
         background-color: #fff;
-        height: 100%;
     }
 
     .billing-container {
         border-top: 1px solid #ccc;
         padding: 0 70px 0 70px;
     }
+
     .billing-info-content {
         padding-left: 0;
         padding-right: 115px;
         padding-top: 32px;
     }
+
     .payment-cards {
         max-width: 80%;
     }

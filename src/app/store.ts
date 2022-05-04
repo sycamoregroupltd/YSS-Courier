@@ -1,7 +1,7 @@
 import { pluck, distinctUntilChanged } from 'rxjs/operators';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { State } from './state';
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 
 const state: State = {
     settings: {},
@@ -157,7 +157,7 @@ export class Store {
     }
 
     select<T>(name: string): Observable<T> {
-        return this.store.pipe(pluck(name));
+        return this.store.pipe(pluck(name)) as Observable<T>;
     }
 
     selectForLocal(name: string) {

@@ -1,6 +1,3 @@
-.main-content-container {
-    padding-top: 0;
-}
 .slider-text {
     width: 80%;
     margin: 0 auto;
@@ -229,30 +226,28 @@
     font-weight: 300;
 }
 
-#footer {
+footer {
     background-color: #263847;
     color: #fff;
-    min-height: 200px;
-    padding-top: 0;
 }
 
-section#footer a {
+footer a {
     color: white !important;
     padding-top: 0;
 }
-#footer .footer-content {
+footer .footer-content {
     margin-top: 30px;
     margin-bottom: 30px;
     padding: 10px 30px;
     height: calc(100% - 60px);
 }
-#footer .footer-content .border-left {
+footer .footer-content .border-left {
     border-left: 1px solid #ccc;
 }
-#footer h2 {
+footer h2 {
     color: #fff !important;
 }
-#footer .footer-sub-menu {
+footer .footer-sub-menu {
     padding-top: 56px;
     padding-bottom: 56px;
     background-color: #324350;
@@ -261,22 +256,22 @@ section#footer a {
     font-size: 12px;
 }
 
-#footer.footer-content {
+footer.footer-content {
     margin-top: 30px;
     margin-bottom: 30px;
     padding: 10px 20px;
     height: calc(100% - 60px);
 }
-#footer.footer-content .border-left {
+footer.footer-content .border-left {
     border-left: 1px solid #ccc;
 }
-#footer h2 {
+footer h2 {
     color: #fff !important;
     padding-top: 0;
     padding-bottom: 10px;
     font-size: 18px;
 }
-#footer .footer-sub-menu {
+footer .footer-sub-menu {
     background-color: #324350;
     color: white !important;
     opacity: 0.5;
@@ -284,37 +279,37 @@ section#footer a {
     padding: 57px 30px;
 }
 
-#footer .footer-menu {
+footer .footer-menu {
     margin-bottom: 10px;
 }
-#footer .footer-menu a {
+footer .footer-menu a {
     opacity: 0.5;
     font-size: 14px;
     line-height: 25px;
 }
-#footer .rated {
+footer .rated {
     opacity: 0.6;
     font-size: 12px;
 }
-#footer .contact-tel {
+footer .contact-tel {
     font-family: "Spectral" !important;
     font-size: 18px;
     line-height: 30px;
 }
-#footer .contact-email {
+footer .contact-email {
     font-family: "Spectral" !important;
     font-size: 18px;
     line-height: 30px;
 }
-#footer .payment-method {
+footer .payment-method {
     max-width: 50px;
 }
-#footer .form-check {
+footer .form-check {
     padding-left: 20px;
     color: #fff;
     opacity: 0.6;
 }
-#footer .form-control {
+footer .form-control {
     background-color: #fff;
     border-radius: 0;
     border: none;
@@ -323,10 +318,10 @@ section#footer a {
     height: calc(2.2em + 0.5rem + 2px);
     border-radius: 10px;
 }
-#footer address {
+footer address {
     line-height: 23px;
 }
-#footer .border-left {
+footer .border-left {
     border-left: 1px solid #596771 !important;
 }
 /*product types*/

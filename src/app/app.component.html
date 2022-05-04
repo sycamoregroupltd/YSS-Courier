@@ -1,34 +1,38 @@
-<div *ngIf="user$ | async">
-    <app-header *ngIf="(device$ | async) && !(device$ | async).mobileVersion"></app-header>
-    <app-header-mobile *ngIf="(device$ | async) && (device$ | async).mobileVersion"></app-header-mobile>
+<div class="d-flex flex-row site-container bg-white">
+    <div *ngIf="user$ | async" id="left-menu">
+        <app-company-menu></app-company-menu>
+    </div>
+    <div class="flex-grow-1 d-flex flex-column">
+        <div *ngIf="user$ | async">
+            <app-header *ngIf="(device$ | async) && !(device$ | async).mobileVersion"></app-header>
+            <app-header-mobile *ngIf="(device$ | async) && (device$ | async).mobileVersion"></app-header-mobile>
+        </div>
+        <div class="flex-grow-1">
+            <router-outlet (activate)="onActivate($event)"></router-outlet>
+        </div>
+        <div *ngIf="user$ | async">
+            <app-footer *ngIf="(device$ | async) && !(device$ | async).mobileVersion"></app-footer>
+            <app-footer-mobile *ngIf="(device$ | async) && (device$ | async).isMobile"></app-footer-mobile>
+            <app-footer-ipad *ngIf="(device$ | async) && (device$ | async).isTabletV"></app-footer-ipad>
+        </div>
+    </div>
 </div>
-<div class="site-container bg-white">
 
-    <div class="main-content-container"
-        [ngStyle]="currentURL === '/' && {'padding-top' : '119px'}"
-    >
-        <router-outlet (activate)="onActivate($event)"></router-outlet>
-    </div>
+<ng-container *ngIf="user$ | async">
+    <app-notifications-list *ngIf="(overlays$ | async).notifications"></app-notifications-list>
+    <app-menu-mobile *ngIf="(mobileMenu$ | async)"></app-menu-mobile>
+    <app-login-modal *ngIf="(overlays$ | async).loginModal"></app-login-modal>
+    <app-register-modal *ngIf="(overlays$ | async).registerModal"></app-register-modal>
+    <app-request-create *ngIf="(overlays$ | async).requestCreate"></app-request-create>
+</ng-container>
 
-    <ng-container *ngIf="user$ | async">
-        <app-footer *ngIf="(device$ | async) && !(device$ | async).mobileVersion"></app-footer>
-        <app-footer-mobile *ngIf="(device$ | async) && (device$ | async).isMobile"></app-footer-mobile>
-        <app-footer-ipad *ngIf="(device$ | async) && (device$ | async).isTabletV"></app-footer-ipad>
-        <app-notifications-list *ngIf="(overlays$ | async).notifications"></app-notifications-list>
-        <app-menu-mobile *ngIf="(mobileMenu$ | async)"></app-menu-mobile>
-        <app-login-modal *ngIf="(overlays$ | async).loginModal"></app-login-modal>
-        <app-register-modal *ngIf="(overlays$ | async).registerModal"></app-register-modal>
-        <app-request-create *ngIf="(overlays$ | async).requestCreate"></app-request-create>
-    </ng-container>
+<app-alert
+        [data]="(alerts$ | async)"
+        *ngIf="(alerts$ | async).simple !== '' || (alerts$ | async).errors.length || (alerts$ | async).notifications.length"
+></app-alert>
 
-    <app-alert
-            [data]="(alerts$ | async)"
-            *ngIf="(alerts$ | async).simple !== '' || (alerts$ | async).errors.length || (alerts$ | async).notifications.length"></app-alert>
-
-    <div
-            class="modal-backdrop fade show modal-slide-show"
-            (click)="closeAll()"
-            *ngIf="(asideOpen$ | async)">
-        <app-processing *ngIf="(overlays$ | async).processing"></app-processing>
-    </div>
+<div class="modal-backdrop fade show modal-slide-show"
+     (click)="closeAll()"
+     *ngIf="(asideOpen$ | async)">
+    <app-processing *ngIf="(overlays$ | async).processing"></app-processing>
 </div>

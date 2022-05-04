@@ -24,12 +24,12 @@ import { TileSliderKeenComponent } from './tile-slider-keen/tile-slider-keen.com
         NotificationsListComponent,
         ImageSliderKeenComponent,
         BreadcrumbComponent,
-        TileSliderKeenComponent,
+        TileSliderKeenComponent
     ],
     imports: [
         CommonModule,
         EditorModule,
-        RouterModule,
+        RouterModule
     ],
     exports: [
         PaginationComponent,
@@ -42,11 +42,8 @@ import { TileSliderKeenComponent } from './tile-slider-keen/tile-slider-keen.com
         ImageSliderKeenComponent,
         EditorModule,
         BreadcrumbComponent,
-        TileSliderKeenComponent,
-    ],
-    // providers: [
-    //     Store,
-    // ],
+        TileSliderKeenComponent
+    ]
 })
 export class SharedModule {
 }

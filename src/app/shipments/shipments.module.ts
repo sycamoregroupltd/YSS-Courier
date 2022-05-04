@@ -6,7 +6,6 @@ import { MaterialModule } from '../material.module';
 import { SharedModule } from '../shared/shared.module';
 import { ShipmentsListComponent } from './shipments-list/shipments-list.component';
 import { ShipmentVehicleComponent } from './shipment-vehicle/shipment-vehicle.component';
-import { SatDatepickerModule } from 'saturn-datepicker';
 
 @NgModule({
     declarations: [
@@ -19,15 +18,11 @@ import { SatDatepickerModule } from 'saturn-datepicker';
         SharedModule,
         FormsModule,
         ReactiveFormsModule,
-        MaterialModule,
-        SatDatepickerModule,
+        MaterialModule
     ],
     exports: [
         ShipmentsListComponent,
-    ],
-    // providers: [
-    //     Store,
-    // ],
+    ]
 })
 export class ShipmentsModule {
 }
