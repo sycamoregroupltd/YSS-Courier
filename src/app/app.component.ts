@@ -32,7 +32,7 @@ declare let ga: Function;
     styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-    title = 'public';
+    title = 'Courier';
     overlays$ = this.store.select<any>('overlays');
     asideOpen$ = this.store.select<boolean>('asideOpen');
     isMobile = true;

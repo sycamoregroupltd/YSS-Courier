@@ -42,6 +42,9 @@ import { HeaderMobileComponent } from './layout/header-mobile/header-mobile.comp
 import { FooterMobileComponent } from './layout/footer-mobile/footer-mobile.component';
 import { FooterIpadComponent } from './layout/footer-ipad/footer-ipad.component';
 import { ConsolePipe } from './pipes/console.pipe';
+import { AngularSvgIconModule } from 'angular-svg-icon';
+import { DirectivesModule } from './directives/directives.module';
+
 
 const firebaseConfig = {
     apiKey: 'AIzaSyAXkVOoH1Z5Nqz0UeG2lMHzY97Kn4JH2xI',
@@ -93,6 +96,8 @@ const firebaseConfig = {
         ShipmentsModule,
         ChatModule,
         MailModule,
+        DirectivesModule,
+        AngularSvgIconModule.forRoot(),
         AngularFireModule.initializeApp(firebaseConfig),
         AngularFirestoreModule, // firestore
         AngularFireAuthModule, // auth

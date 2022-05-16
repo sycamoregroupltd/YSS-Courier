@@ -94,16 +94,19 @@ export class ShipmentsBoardComponent implements OnInit {
     }
 
     open(card) {
+        console.log("Selected Card Details: ",card)
         card.open = !card.open;
         this.closeAllPopups(card.id);
     }
 
     closeAllPopups(toIgnore) {
         const shipmentsBoard = this.store.selectForLocal('shipmentsBoard');
+        console.log("All Card's Details:", shipmentsBoard);
         shipmentsBoard.groups.forEach(g => {
             g.cols.forEach(c => {
                 c.cards.forEach(ol => {
                     if (ol.id !== toIgnore) {
+                        console.log("condition True:", g.name)
                         ol.open = false;
                     }
                 });

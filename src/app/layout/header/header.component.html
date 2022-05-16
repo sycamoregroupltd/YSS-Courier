@@ -1,4 +1,5 @@
-<div class="d-flex justify-content-between align-items-center">
+
+<div class="d-flex justify-content-between align-items-center pr-5 pl-5">
     <div>
         <a class="navbar-brand mx-auto" [routerLink]="['/']">
             <img src="/assets/images/ys-logo-text.png" style="height: 45px" />
@@ -14,10 +15,51 @@
     </div>
 
     <div class="flex-grow-1" *ngIf="(user$ | async)">
-        <a class="header-sub-item" [routerLink]="['account']">
+        
+        <div class="account-dropdown d-flex justify-content-end align-items-center">
+            <a class="header-sub-item-icon" (click)="toggleNotifications()">
+                <i class="far fa-bell fa-fw" style="font-size: 20px"></i>
+                
+                <div class="badge-count" *ngIf="(notifications$ | async).unread > 0">{{(notifications$ | async).unread}}</div>
+            </a>
+            <a class="header-sub-item-icon" [routerLink]="['/account', 'mail']" *ngIf="(user$ | async)">
+                <i class="far fa-comments fa-fw"></i>
+                <div class="badge-count" *ngIf="(chatStore$ | async).unread">{{(chatStore$ | async).unread}}</div>
+            </a>
+            <a class="header-sub-item-icon" (click)="toggleChat()"  *ngIf="!(user$ | async)">
+                <i class="far fa-comments fa-fw"></i>
+                <div class="badge-count" *ngIf="(chatStore$ | async).unread">{{(chatStore$ | async).unread}}</div>
+            </a>
+            <a appDropdown href="javascript:void(0)" class="header-sub-item-icon dropdown">
+                <svg-icon src="assets/images/icon-user.svg"></svg-icon>
+                <div class="dropdown-menu dropdown-menu-end dropdown-menu-user shadow-sm px-4 py-3">
+                    <a [routerLink]="['/account']" class="dropdown-item fw-bold small px-0 mb-2 text-primary custom-color"
+                       
+                       
+                    >
+                    Back to homepage
+                    </a>
+                    <a  class="dropdown-item fw-bold small px-0 mb-2 text-primary custom-color"
+                        [routerLink]="['/account']"
+                        
+                    >
+                    My Account
+                    </a>
+                    <div class="dropdown-divider mt-0 mb-2"></div>
+                   
+                    
+                </div>
+            </a>
+            <a (click)="logoutConfirmation()" class="signOut d-flex justify-content-center align-items-center">
+                    <i class="fas fa-sign-out-alt"></i>
+                     Sign out
+            </a>
+        </div>
+        
+        <!-- <a class="header-sub-item" [routerLink]="['account']">
             <i class="fa fa-user"></i> Your account
-        </a>
-        <a class="header-sub-item" (click)="logoutConfirmation()">
+        </a> -->
+        <!-- <a class="header-sub-item" (click)="logoutConfirmation()">
             Sign out
         </a>
         <a class="header-sub-item-icon" (click)="toggleNotifications()">
@@ -31,7 +73,7 @@
         <a class="header-sub-item-icon" (click)="toggleChat()"  *ngIf="!(user$ | async)">
             <i class="far fa-comments fa-fw"></i>
             <div class="badge-count" *ngIf="(chatStore$ | async).unread">{{(chatStore$ | async).unread}}</div>
-        </a>
+        </a> -->
     </div>
 </div>
 
