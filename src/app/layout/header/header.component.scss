@@ -125,6 +125,12 @@
   text-align: center;
 }
 
+.header-sub-item-icon.dropdown{
+  .user-name{
+    font-weight:700;
+  }
+}
+
 .header-item {
   flex-grow: 1;
   align-self: center;
@@ -153,7 +159,7 @@
 ::ng-deep .header-sub-item-icon svg {
   max-width: 23px;
   stroke: #263847;
-  fill: none;
+  // fill: none;
 }
 
 .nav-link {
@@ -226,4 +232,16 @@
   font-size: 20px;
   margin-right: 5px;
   margin-top: 2px;
+}
+
+.dropdown-item {
+  border-bottom: 2px solid #fff0;
+}
+
+.dropdown-menu{
+  .dropdown-item:hover, .dropdown-item:active, .dropdown-item:visited, .dropdown-item:focus, .dropdown-item.active{
+    text-decoration: none;
+    border-bottom: 2px solid #c2ebff;
+    background-color: #fff;
+  }
 }

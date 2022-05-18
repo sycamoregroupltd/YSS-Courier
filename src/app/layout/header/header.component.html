@@ -31,28 +31,25 @@
                 <div class="badge-count" *ngIf="(chatStore$ | async).unread">{{(chatStore$ | async).unread}}</div>
             </a>
             <a appDropdown href="javascript:void(0)" class="header-sub-item-icon dropdown">
-                <svg-icon src="assets/images/icon-user.svg"></svg-icon>
+                <svg-icon src="assets/images/icon-user.svg" class="me-2"></svg-icon>
+                <span class="me-2 user-name">{{(user$ | async).contact?.firstname}} {{(user$ | async).contact?.surname}}</span>
+                <svg-icon src="assets/images/icon-chevron-down.svg"></svg-icon>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-user shadow-sm px-4 py-3">
-                    <a [routerLink]="['/account']" class="dropdown-item fw-bold small px-0 mb-2 text-primary custom-color"
-                       
-                       
-                    >
-                    Back to homepage
-                    </a>
-                    <a  class="dropdown-item fw-bold small px-0 mb-2 text-primary custom-color"
-                        [routerLink]="['/account']"
-                        
-                    >
-                    My Account
+                    <a [routerLink]="['/account']" class="dropdown-item fw-bold small px-0 mb-2 text-primary custom-color">
+                        Back to homepage
                     </a>
                     <div class="dropdown-divider mt-0 mb-2"></div>
+                    <a  class="dropdown-item fw-bold small px-0 mb-2 text-primary custom-color"
+                        [routerLink]="['/account']">
+                        My Account
+                    </a>
+                    <div class="dropdown-divider mt-0 mb-2"></div>
+                    <a (click)="logoutConfirmation()" class="dropdown-item fw-bold small px-0 mb-2 text-primary custom-color">
+                            <!-- <i class="fas fa-sign-out-alt"></i> -->
+                             Sign out
+                    </a>
                    
-                    
                 </div>
-            </a>
-            <a (click)="logoutConfirmation()" class="signOut d-flex justify-content-center align-items-center">
-                    <i class="fas fa-sign-out-alt"></i>
-                     Sign out
             </a>
         </div>
         

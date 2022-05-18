@@ -27,7 +27,6 @@ export class DropdownDirective {
     }
 
     toggleDropdown() {
-        console.log("toggle dropdown")
         const dropdownMenu = this.elementRef.nativeElement.querySelectorAll('.dropdown-menu');
         if (this.isOpen) {
             this.renderer.removeClass(dropdownMenu[0], 'show');

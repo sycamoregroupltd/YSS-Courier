@@ -1,59 +1,65 @@
 <div class="container-fluid" style="min-height: 110vh;">
 
     <div class="d-flex justify-content-between mt-4 mb-4" *ngIf="(shipmentsBoard$ | async)">
-        <div class="board-col-group"
-             *ngFor="let g of (shipmentsBoard$ | async).groups"
-        >
+        <div class="board-col-group" *ngFor="let g of (shipmentsBoard$ | async).groups">
             <h5 class="title">{{g.name}}</h5>
             <div class=" d-flex justify-content-between align-items-stretch">
-                <div class="board-col"
-                     *ngFor="let c of g.cols"
-                >
-                    <h5 class="title">{{c.name}}</h5>
+                <div class="board-col" *ngFor="let c of g.cols">
+                    <div class="title-color">
+                        <div class="inner-title-color  d-flex justify-content-start align-items-center" >
+                            <div *ngIf="c.cards[0]">
+                                    <i class="fa fa-circle" [ngClass]="c.cards[0].bgCol"></i> 
+                            </div>
+                            <h5 class="title">{{c.name}}</h5>
+                        </div>
+                    </div>
                     <div class="card-holder">
-                        <div class="card"
-                             *ngFor="let card of c.cards"
-                        >
-                            <div class="row no-gutters mb-1">
-                                <div class="col-6">
-                                    <p class="mb-1 sm">ORD-{{card.orderIdPublic}}/{{card.lineId}}</p>
-                                </div>
-                                <div class="col-4">
-                                    <!--                                        <a awesomeTooltip="Outstanding update request">-->
-                                    <!--                                            <i *ngIf="card.osUpdateRequests.length" class="fa fa-exclamation-circle text-danger"></i>-->
-                                    <!--                                        </a>-->
-                                </div>
-                                <div class="col-2 text-right">
-                                    <a (click)="open(card)">
-                                        <i class="fa fa-ellipsis-h"></i>
-                                    </a>
+                        <div class="card px-0" *ngFor="let card of c.cards">
+                            <div class="card-content">
+                                <div class="row no-gutters mb-1 mx-0">
+                                    <div class="col-6 px-0">
+                                        <p class="mb-0 sm">ORD-{{card.orderIdPublic}}/{{card.lineId}}</p>
+                                    </div>
+                                    <div class="col-4">
+                                    </div>
+                                    <div class="col-2 text-right px-0">
+                                        <a (click)="open(card)">
+                                            <i class="fa fa-ellipsis-h"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                            <p class="mb-1 md">
-                                {{card.supplierName}}
-                            </p>
-                            <p class="mb-1 md">
-                                {{card.collectionPostcodeUsed}}
-                                <i class="fa fa-arrow-right"></i> {{card.deliveryPostcodeUsed}}
-                            </p>
-                            <div class="row">
-                                <div class="col-6">
-                                    <p class="mb-1 md">{{card.pallets}} pallets</p>
-                                </div>
-                                <div class="col-6 text-right">
-                                    <p class="mb-1 md">{{card.serviceName}}</p>
+                            <hr/>
+                            <div class="card-content">
+                                <p class="mb-1">
+                                    {{card.supplierName}}
+                                </p>
+                                <p class="mb-1 ">
+                                    {{card.collectionPostcodeUsed}}
+                                    <i class="fa fa-arrow-right"></i> {{card.deliveryPostcodeUsed}}
+                                </p>
+                                <div class="row mx-0">
+                                    <div class="col-6 px-0">
+                                        <p class="mb-1 md">{{card.pallets}} pallets</p>
+                                    </div>
+                                    <div class="col-6 text-right px-0">
+                                        <p class="mb-1 md">{{card.serviceName}}</p>
+                                    </div>
                                 </div>
                             </div>
 
-                            <hr style="margin: 5px"/>
-                            <div class="row no-gutters mb-1" *ngIf="card.status.id !== 7">
-                                <div class="col-10">
-                                    <p class="m-0 sm">
-                                        Due {{card.dueDate | date: 'EEE dd MMM'}} ({{card.dueDays}} days)
-                                    </p>
-                                </div>
-                                <div class="col-2 text-right">
-                                    <i class="fa fa-circle" [ngClass]="card.bgCol"></i>
+                            <hr/>
+
+                            <div class="card-content">
+                                <div class="row no-gutters mb-1 mx-0" *ngIf="card.status.id !== 7">
+                                    <div class="col-10 px-0">
+                                        <p class="m-0 sm">
+                                            Due {{card.dueDate | date: 'EEE dd MMM'}} ({{card.dueDays}} days)
+                                        </p>
+                                    </div>
+                                    <div class="col-2 text-right px-0">
+                                        <i class="fa fa-circle" [ngClass]="card.bgCol"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
