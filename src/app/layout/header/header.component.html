@@ -17,40 +17,58 @@
     <div class="flex-grow-1" *ngIf="(user$ | async)">
         
         <div class="account-dropdown d-flex justify-content-end align-items-center">
-            <a class="header-sub-item-icon" (click)="toggleNotifications()">
-                <i class="far fa-bell fa-fw" style="font-size: 20px"></i>
-                
-                <div class="badge-count" *ngIf="(notifications$ | async).unread > 0">{{(notifications$ | async).unread}}</div>
-            </a>
-            <a class="header-sub-item-icon" [routerLink]="['/account', 'mail']" *ngIf="(user$ | async)">
-                <i class="far fa-comments fa-fw"></i>
-                <div class="badge-count" *ngIf="(chatStore$ | async).unread">{{(chatStore$ | async).unread}}</div>
-            </a>
-            <a class="header-sub-item-icon" (click)="toggleChat()"  *ngIf="!(user$ | async)">
-                <i class="far fa-comments fa-fw"></i>
-                <div class="badge-count" *ngIf="(chatStore$ | async).unread">{{(chatStore$ | async).unread}}</div>
-            </a>
-            <a appDropdown href="javascript:void(0)" class="header-sub-item-icon dropdown">
-                <svg-icon src="assets/images/icon-user.svg" class="me-2"></svg-icon>
-                <span class="me-2 user-name">{{(user$ | async).contact?.firstname}} {{(user$ | async).contact?.surname}}</span>
-                <svg-icon src="assets/images/icon-chevron-down.svg"></svg-icon>
-                <div class="dropdown-menu dropdown-menu-end dropdown-menu-user shadow-sm px-4 py-3">
-                    <a [routerLink]="['/account']" class="dropdown-item fw-bold small px-0 mb-2 text-primary custom-color">
-                        Back to homepage
-                    </a>
-                    <div class="dropdown-divider mt-0 mb-2"></div>
-                    <a  class="dropdown-item fw-bold small px-0 mb-2 text-primary custom-color"
-                        [routerLink]="['/account']">
-                        My Account
-                    </a>
-                    <div class="dropdown-divider mt-0 mb-2"></div>
-                    <a (click)="logoutConfirmation()" class="dropdown-item fw-bold small px-0 mb-2 text-primary custom-color">
-                            <!-- <i class="fas fa-sign-out-alt"></i> -->
-                             Sign out
-                    </a>
-                   
-                </div>
-            </a>
+            <li class="nav-item position-relative me-4">
+                <a class="header-sub-item-icon" (click)="toggleNotifications()">
+                    
+                    <svg-icon
+                            src="assets/images/icon-bell.svg"
+                            [class]="'hover'"
+                            [svgClass]="'nav-item-icon'"></svg-icon>
+                    <div class="badge-count rounded" *ngIf="(notifications$ | async).unread > 0">{{(notifications$ | async).unread}}</div>
+                </a>
+            </li>
+            <li class="nav-item position-relative me-4">
+                <a class="header-sub-item-icon" [routerLink]="['/account', 'mail']" *ngIf="(user$ | async)">
+                    <div class="badge-count rounded" *ngIf="(chatStore$ | async).unread">{{(chatStore$ | async).unread}}</div>
+                    <svg-icon
+                            src="assets/images/icon-chat.svg"
+                            [class]="'hover'"
+                            [svgClass]="'nav-item-icon'"></svg-icon>
+                </a>
+            </li>
+            <li class="nav-item position-relative me-4" *ngIf="!(user$ | async)">
+                <a class="header-sub-item-icon" (click)="toggleChat()" >
+                    <div class="badge-count rounded" *ngIf="(chatStore$ | async).unread">{{(chatStore$ | async).unread}}</div>
+                    <svg-icon
+                            src="assets/images/icon-chat.svg"
+                            [class]="'hover'"
+                            [svgClass]="'nav-item-icon'"></svg-icon>
+                    
+                </a>
+            </li>
+            <li class="nav-item position-relative me-4">
+                <a appDropdown href="javascript:void(0)" class="header-sub-item-icon dropdown">
+                    <svg-icon src="assets/images/icon-user.svg" class="me-2"></svg-icon>
+                    <span class="me-2 user-name">{{(user$ | async).contact?.firstname}} {{(user$ | async).contact?.surname}}</span>
+                    <svg-icon src="assets/images/icon-chevron-down.svg"></svg-icon>
+                    <div class="dropdown-menu dropdown-menu-end dropdown-menu-user shadow-sm px-4 py-3">
+                        <a [routerLink]="['/account']" class="dropdown-item fw-bold small px-0 mb-2 text-primary custom-color">
+                            Back to homepage
+                        </a>
+                        <div class="dropdown-divider mt-0 mb-2"></div>
+                        <a  class="dropdown-item fw-bold small px-0 mb-2 text-primary custom-color"
+                            [routerLink]="['/account']">
+                            My Account
+                        </a>
+                        <div class="dropdown-divider mt-0 mb-2"></div>
+                        <a (click)="logoutConfirmation()" class="dropdown-item fw-bold small px-0 mb-2 text-primary custom-color">
+                                <!-- <i class="fas fa-sign-out-alt"></i> -->
+                                 Sign out
+                        </a>
+                       
+                    </div>
+                </a>
+            </li>
         </div>
         
         <!-- <a class="header-sub-item" [routerLink]="['account']">
@@ -61,15 +79,15 @@
         </a>
         <a class="header-sub-item-icon" (click)="toggleNotifications()">
             <i class="far fa-bell fa-fw" style="font-size: 17px"></i>
-            <div class="badge-count" *ngIf="(notifications$ | async).unread > 0">{{(notifications$ | async).unread}}</div>
+            <div class="badge-count rounded" *ngIf="(notifications$ | async).unread > 0">{{(notifications$ | async).unread}}</div>
         </a>
         <a class="header-sub-item-icon" [routerLink]="['/account', 'mail']" *ngIf="(user$ | async)">
             <i class="far fa-comments fa-fw"></i>
-            <div class="badge-count" *ngIf="(chatStore$ | async).unread">{{(chatStore$ | async).unread}}</div>
+            <div class="badge-count rounded" *ngIf="(chatStore$ | async).unread">{{(chatStore$ | async).unread}}</div>
         </a>
         <a class="header-sub-item-icon" (click)="toggleChat()"  *ngIf="!(user$ | async)">
             <i class="far fa-comments fa-fw"></i>
-            <div class="badge-count" *ngIf="(chatStore$ | async).unread">{{(chatStore$ | async).unread}}</div>
+            <div class="badge-count rounded" *ngIf="(chatStore$ | async).unread">{{(chatStore$ | async).unread}}</div>
         </a> -->
     </div>
 </div>
