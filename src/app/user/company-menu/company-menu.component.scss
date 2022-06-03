@@ -1,0 +1,54 @@
+.menu-holder {
+    .menu-container {
+        .list-group {
+            .list-group-item-title {
+                padding: 12px 20px;
+                font-family: inherit !important;
+                &:focus,
+                &:hover {
+                    outline: none;
+                    box-shadow: none;
+                    background-color: transparent !important;
+                    color: #DCDFE2;
+                }
+                svg {
+                    stroke: #fff;
+                    fill: #fff;
+                    width: 18px;
+                }
+            }
+            .submenu-main {
+                button {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                font-family: inherit !important;
+                padding-left: 60px;
+                &:focus,
+                &:hover {
+                    background-color: #faff5e !important;
+                    color: #000 !important;
+                    outline: none;
+                    box-shadow: none;
+                }
+                }
+            }
+        }
+    }
+
+    hr {
+        margin: 1rem 0;
+    }
+
+    .account-info {
+        font-family: inherit;
+    
+        h3 {
+            font-family: inherit !important;
+            margin-bottom: 7px;
+        }
+    }
+
+    .active-submenu svg {
+        transform: rotate(180deg);
+    }
+}

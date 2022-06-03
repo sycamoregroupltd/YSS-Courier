@@ -61,7 +61,7 @@ import { AccountOrdersMobileComponent } from './account-orders-mobile/account-or
 import {
     RegistrationAdditionalDetailsComponent
 } from './registration-additional-details/registration-additional-details.component';
-
+import { AngularSvgIconModule } from "angular-svg-icon";
 @NgModule({
     declarations: [
         AccountComponent,
@@ -123,6 +123,7 @@ import {
         NgMultiSelectDropDownModule.forRoot(),
         DragulaModule.forRoot(),
         ProductModule,
+        AngularSvgIconModule
     ],
     exports: [
         AccountComponent,

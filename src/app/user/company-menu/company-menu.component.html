@@ -2,68 +2,70 @@
     <div class="menu-container">
         <div class="list-group">
             <ng-container *ngIf="user.accountType === 'courier'">
-                <button
-                    type="button"
-                    class="list-group-item list-group-item-action list-group-item-title">
-                    Actions
-                </button>
-                <button
-                    (click)="requestCreate()"
-                    type="button"
-                    [ngClass]="{'active': step === 'chat'}"
-                    class="list-group-item list-group-item-action">
-                    <!--                        <i class="fa fa-fw menu-icon text-pink" [ngClass]="item.icon" *ngIf="item.icon"></i>-->
-                    Submit a Request
-                </button>
+                <div class="menu-parent">
+                    <button type="button" class="list-group-item list-group-item-action list-group-item-title" (click)="toggleMenu('Actions')"  [ngClass]="{'active-submenu': submenu['Actions']}">
+                        <svg-icon src="assets/images/icon-chevron-down.svg"></svg-icon>
+                        Actions
+                    </button>
+                    <div class="submenu-main" *ngIf="submenu['Actions']">
+                        <button (click)="requestCreate()" type="button" [ngClass]="{'active': step === 'chat'}"
+                            class="list-group-item list-group-item-action">
+                            <!--                        <i class="fa fa-fw menu-icon text-pink" [ngClass]="item.icon" *ngIf="item.icon"></i>-->
+                            Submit a Request
+                        </button>
 
-                <button
-                    [routerLink]="['/account', 'mail']"
-                    type="button"
-                    [routerLinkActive]="['active']"
-                    [ngClass]="{'active': step === 'chat'}"
-                    class="list-group-item list-group-item-action">
-                    <!--                        <i class="fa fa-fw menu-icon text-pink" [ngClass]="item.icon" *ngIf="item.icon"></i>-->
-                    Chat
-                </button>
+                        <button [routerLink]="['/account', 'mail']" type="button" [routerLinkActive]="['active']"
+                            [ngClass]="{'active': step === 'chat'}" class="list-group-item list-group-item-action">
+                            <!--                        <i class="fa fa-fw menu-icon text-pink" [ngClass]="item.icon" *ngIf="item.icon"></i>-->
+                            Chat
+                        </button>
+                    </div>
+                </div>
+
                 <hr />
-
-                <button
-                    type="button"
-                    class="list-group-item list-group-item-action list-group-item-title">
-                    Navigation
-                </button>
-
-                <button
-                    [routerLink]="['/account']"
-                    type="button"
-                    [ngClass]="{'active': step === 'overview'}"
-                    class="list-group-item list-group-item-action">
-                    Overview
-                </button>
-                <button
-                    [routerLink]="['/account/shipments-board']"
-                    type="button"
-                    [ngClass]="{'active': step === 'shipmentsBoard'}"
-                    class="list-group-item list-group-item-action">
-                    Shipments Board
-                </button>
+                <div class="menu-parent">
+                    <button type="button" class="list-group-item list-group-item-action list-group-item-title" (click)="toggleMenu('Navigation')" [ngClass]="{'active-submenu': submenu['Navigation']}">
+                        <svg-icon src="assets/images/icon-chevron-down.svg"></svg-icon>
+                        Navigation
+                    </button>
+                    <div class="submenu-main"  *ngIf="submenu['Navigation']">
+                        <button [routerLink]="['/account']" type="button" [ngClass]="{'active': step === 'overview'}"
+                            class="list-group-item list-group-item-action">
+                            Overview
+                        </button>
+                        <button [routerLink]="['/account/shipments-board']" type="button"
+                            [ngClass]="{'active': step === 'shipmentsBoard'}"
+                            class="list-group-item list-group-item-action">
+                            Shipments Board
+                        </button>
+                    </div>
+                </div>
 
             </ng-container>
 
             <hr />
             <div class="account-info">
-                <h3>Account Name</h3>
-                <p>{{user.company.name}}</p>
-
-                <h3>Average Rating</h3>
-                <div class="mb-2">
-                    <app-rating-icons></app-rating-icons>
+                <div class="info-main mb-4">
+                    <h3>Account Name</h3>
+                    <p>{{user.company.name}}</p>
                 </div>
 
-                <h3>Company Number</h3>
-                <p>{{user.company.companyNumber}}</p>
-                <h3>VAT Number</h3>
-                <p>{{user.company.vatNumber}}</p>
+                <div class="info-main mb-4">
+                    <h3>Average Rating</h3>
+                    <div>
+                        <app-rating-icons></app-rating-icons>
+                    </div>
+                </div>
+
+                <div class="info-main mb-4">
+                    <h3>Company Number</h3>
+                    <p>{{user.company.companyNumber}}</p>
+                </div>
+                
+                <div class="info-main mb-4">
+                    <h3>VAT Number</h3>
+                    <p>{{user.company.vatNumber}}</p>
+                </div>
             </div>
 
         </div>

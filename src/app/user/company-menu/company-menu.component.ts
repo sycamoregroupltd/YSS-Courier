@@ -10,11 +10,13 @@ import { UserService } from '../../services/user.service';
 })
 export class CompanyMenuComponent implements OnInit {
     user;
-
     step = 'dashboard';
     overlays$ = this.store.select<any>('overlays');
     overlayData;
-
+    submenu = {
+        "Actions": true,
+        "Navigation": false,
+    }
     constructor(
         private store: Store,
         private overlayService: OverlayService,
@@ -37,5 +39,9 @@ export class CompanyMenuComponent implements OnInit {
 
         this.store.set('overlayData', this.overlayData);
         this.overlayService.toggle('requestCreate');
+    }
+
+    toggleMenu(toggleMenu: string) {
+        this.submenu[toggleMenu] = !this.submenu[toggleMenu];
     }
 }
