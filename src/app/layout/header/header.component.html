@@ -52,14 +52,14 @@
                     <span class="me-2 user-name">{{(user$ | async).contact?.firstname}} {{(user$ | async).contact?.surname}}</span>
                     <svg-icon src="assets/images/icon-chevron-down.svg"></svg-icon>
                     <div class="dropdown-menu dropdown-menu-end dropdown-menu-user shadow-sm px-4 py-3">
-                        <a [routerLink]="['/account']" class="dropdown-item fw-bold small px-0 mb-2 text-primary custom-color">
+                        <a href="https://www.yorkstonesupplies.co.uk" class="dropdown-item fw-bold small px-0 mb-2 text-primary custom-color">
                             Back to homepage
                         </a>
-                        <div class="dropdown-divider mt-0 mb-2"></div>
+                     <!---  <div class="dropdown-divider mt-0 mb-2"></div>
                         <a  class="dropdown-item fw-bold small px-0 mb-2 text-primary custom-color"
                             [routerLink]="['/account']">
                             My Account
-                        </a>
+                        </a>-->
                         <div class="dropdown-divider mt-0 mb-2"></div>
                         <a (click)="logoutConfirmation()" class="dropdown-item fw-bold small px-0 mb-2 text-primary custom-color">
                                 <!-- <i class="fas fa-sign-out-alt"></i> -->

@@ -1,0 +1,49 @@
+@import "../../../assets/css/base";
+@import "~src/assets/css/mixins";
+
+
+html, body {
+    height: 100% !important;
+}
+
+
+.fs-small {
+    font-size: $font-size-base *0.8;
+}
+
+.h-50 {
+    height: 50%;
+}
+
+.bg-login {
+    background-image: url("https://ys-assets.b-cdn.net/cms/images/a9d510dc6d97fc3ebc10b16f19b3105d53.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.logo--icon {
+    width: 50px;
+    height: auto;
+
+    rect {
+        fill: $white;
+    }
+
+    path {
+        fill: $primary;
+    }
+}
+
+.form-control {
+ border: 1px solid #ced4da !important;
+}
+
+h1 {
+    font-family: 'Roboto', sans-serif !important;
+}
+
+.btn {
+    line-height: 1;
+    padding: 12px 45px;
+}

@@ -1,6 +1,75 @@
-.login-holder {
-  width: 450px;
-  margin: 0 auto;
-  border: 1px solid #f1f1f1;
-  padding: 30px;
+@import "../../../assets/css/base";
+
+
+html, body {
+    height: 100% !important;
+} 
+
+.card--max-width {
+    max-width: 500px;
 }
+
+.form--min-height {
+    height: 100%;
+    min-height: 600px;
+
+    @include media-breakpoint-up(lg) {
+        // height: 60vh;
+        height: 100%;
+    }
+
+    @include media-breakpoint-up(xl) {
+        height: 80vh;
+    }
+}
+
+.h-33 {
+    height: 33.33%;
+}
+
+.h-66 {
+    height: 66.66%;
+}
+
+.card--min-height {
+    height: 500px;
+
+    @include media-breakpoint-up(md) {
+        height: 600px;
+    }
+
+    @include media-breakpoint-up(lg) {
+        height: 100%;
+    }
+}
+
+
+.custom-login-form {
+    background-image: url("https://ys-assets.b-cdn.net/cms/images/a9d510dc6d97fc3ebc10b16f19b3105d53.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    .card {
+        border-radius: 5px;
+    }
+}
+
+@media only screen and (min-width: 768px){
+    .custom-card-width {
+        max-width: 450px;
+    }
+}
+
+// .logo--icon {
+//     width: 50px;
+//     height: auto;
+
+//     rect {
+//         fill: $white;
+//     }
+
+//     path {
+//         fill: $primary;
+//     }
+// }
