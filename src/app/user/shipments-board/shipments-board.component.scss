@@ -42,13 +42,14 @@
     margin:0px !important;
 }
 .card-content {
-    padding: 5px !important;   
+    padding: 5px 7px 0 7px !important;   
 }
 .colDanger {
     color: rgba(240, 52, 52, 0.5)
 }
 p.sm {
     font-size: 12px;
+    font-weight: 600;
 }
 p.md {
     font-size: 14px;
@@ -62,4 +63,26 @@ p.lg {
     background-color: #3d4d59;
     margin: 0 8px;
     padding: 0 10px;
+}
+
+.card-content > p:nth-of-type(1) {
+    font-weight: 700 !important;
+}
+
+.duo {
+    font-weight: 700;
+}
+
+.card-content .row .text-right a {
+    color: #aba7a7;
+    float: right;
+}
+
+.card-content .text-right i {
+    float: right;
+    margin-top: 5px;
+}
+
+.row .col-6.text-right:nth-of-type(2) .md {
+    float: right;
 }

@@ -92,4 +92,10 @@
     </div>
 </div>
 
-<app-confirmation *ngIf="confirmationData.open" [data]="confirmationData" (complete)="confirmationComplete($event)"></app-confirmation>
+<app-confirmation
+    *ngIf="confirmationData.open"
+    [data]="confirmationData"
+    (complete)="confirmationComplete($event)"
+></app-confirmation>
+
+

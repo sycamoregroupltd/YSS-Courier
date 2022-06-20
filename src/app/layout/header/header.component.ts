@@ -69,6 +69,8 @@ export class HeaderComponent implements OnInit {
     }
 
     logoutConfirmation() {
+
+        this.overlayService.closeAll();
         this.confirmationData.title = 'Are you sure you want to logout?';
         this.confirmationData.data = {};
         this.confirmationData.detail = '';
