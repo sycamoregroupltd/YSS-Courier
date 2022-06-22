@@ -48,22 +48,7 @@ export class PaymentsService {
                 ));
     }
 
-    attachPaymentMethodToCustomer(paymentMethodId, user) {
-
-        const dataToSend = {
-            paymentMethodId,
-            userId: user.id,
-            stripeId: user.stripeId
-        };
-
-        return this.http.post(this.env.apiPath + 'payments/method/attach', dataToSend, this.apiService.getHttpOptions())
-            .pipe(
-                map((data: any) => {
-                        return data;
-                    },
-                    catchError(this.apiService.handleError)
-                ));
-    }
+   
 
     cards(userId) {
         return this.http.get(this.env.apiPath + 'payments/cards/' + userId, this.apiService.getHttpOptions())
