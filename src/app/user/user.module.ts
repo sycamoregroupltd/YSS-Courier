@@ -62,6 +62,7 @@ import {
     RegistrationAdditionalDetailsComponent
 } from './registration-additional-details/registration-additional-details.component';
 import { AngularSvgIconModule } from "angular-svg-icon";
+import { OrderBoardPopupComponent } from './order-board-popup/order-board-popup.component';
 @NgModule({
     declarations: [
         AccountComponent,
@@ -108,6 +109,7 @@ import { AngularSvgIconModule } from "angular-svg-icon";
         RegisterModalComponent,
         AccountOrdersMobileComponent,
         RegistrationAdditionalDetailsComponent,
+        OrderBoardPopupComponent,
     ],
     imports: [
         CommonModule,

@@ -12,6 +12,7 @@ import { EditorModule } from '@tinymce/tinymce-angular';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { RouterModule } from '@angular/router';
 import { TileSliderKeenComponent } from './tile-slider-keen/tile-slider-keen.component';
+import { AngularSvgIconModule } from 'angular-svg-icon';
 
 @NgModule({
     declarations: [
@@ -29,7 +30,8 @@ import { TileSliderKeenComponent } from './tile-slider-keen/tile-slider-keen.com
     imports: [
         CommonModule,
         EditorModule,
-        RouterModule
+        RouterModule,
+        AngularSvgIconModule
     ],
     exports: [
         PaginationComponent,

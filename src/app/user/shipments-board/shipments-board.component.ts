@@ -4,6 +4,7 @@ import { ShipmentService } from '../../services/shipment.service';
 import { UserService } from '../../services/user.service';
 import { OrdersService } from '../../services/orders.service';
 import { debounce } from 'lodash';
+import { OrderBoardPopupComponent } from '../order-board-popup/order-board-popup.component';
 
 @Component({
     selector: 'app-shipments-board',
@@ -57,6 +58,7 @@ export class ShipmentsBoardComponent implements OnInit {
         private ordersService: OrdersService,
         private userService: UserService,
         private shipmentService: ShipmentService,
+        
     ) {
         this.filterSearch = debounce(this.filterSearch, 350);
     }

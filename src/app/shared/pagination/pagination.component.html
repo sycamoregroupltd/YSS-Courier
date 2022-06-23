@@ -1,28 +1,47 @@
-<div class="pagination">
-    <p class="pagination__count">
-        {{(params.page * params.limit) + 1}} –
-        <span *ngIf="((params.page * params.limit) + params.limit) <= params.totalRecords">{{(params.page * params.limit) + params.limit}}</span>
-        <span *ngIf="((params.page * params.limit) + params.limit) > params.totalRecords">{{params.totalRecords}}</span>
-        of
-        {{params.totalRecords}} {{term}}
-    </p>
-
-    <nav class="pagination__nav" *ngIf="params.pageArray.length > 1">
-        <button type="button" [disabled]="(params.page + 1) < 2"
-                class="pagination__nav-item"
-                (click)="first()">First</button>
-
-        <ng-container *ngFor="let p of params.pageArray">
-            <button type="button"
-                    class="pagination__nav-item"
-                    *ngIf="showPageNumber(p)"
-                    [ngClass]="{'pagination__nav-item--active' : p === params.page}"
-                    (click)="setPage(p)"
-            >{{p + 1}}</button>
-
-        </ng-container>
-        <button type="button" [disabled]="(params.page + 1) >= params.pageArray.length"
-                class="pagination__nav-item"
-                (click)="next()">Next</button>
-    </nav>
+<div class="d-inline-block">
+    <div class="d-flex flex-column flex-lg-row align-items-center">
+        <div class="d-flex justify-content-between align-items-center mb-4 mb-lg-0">
+            <button (click)="first()" class="btn btn-nav p-0">
+                <svg-icon src="assets/images/icon-double-left.svg"></svg-icon>
+            </button>
+            <button (click)="previous()" class="btn btn-nav p-0">
+                <svg-icon src="assets/images/icon-chevron-left.svg"></svg-icon>
+            </button>
+            <div class="justify-content-between d-flex" [ngClass]="{'page-numbers__container' : params.pages > 9}">
+                <ng-container *ngFor="let p of params.pageArray">
+                    <button type="button"
+                            class="pagination__nav-item"
+                            *ngIf="showPageNumber(p)"
+                            [ngClass]="{'pagination__nav-item--active' : p === params.page}"
+                            (click)="setPage(p)"
+                    >{{p + 1}}</button>
+                </ng-container>
+            </div>
+            <button (click)="next()" class="btn btn-nav p-0">
+                <svg-icon src="assets/images/icon-chevron-right.svg"></svg-icon>
+            </button>
+            <button (click)="last()" class="btn btn-nav p-0">
+                <svg-icon src="assets/images/icon-double-right.svg"></svg-icon>
+            </button>
+        </div>
+        <div class="divider d-none d-lg-block mx-4"></div>
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="text-muted">Show</div>
+            <a appDropdown href="javascript:void(0)" class="dropdown text-muted px-2 mx-3">
+                <span class="me-3">{{params.limit}}</span>
+                <svg-icon src="assets/images/icon-chevron-down.svg" [svgClass]="'chevron-down'"></svg-icon>
+                <div class="dropdown-menu dropdown-menu-user border-0 shadow-sm px-4 py-3">
+                    <div
+                        *ngFor="let limit of params.limits; let last = last"
+                        (click)="changeLimit(limit)"
+                        class="dropdown-item fw-bold small px-0 hover"
+                        [ngClass]="{'mg-2' : !last}">
+                        {{limit}}
+                    </div>
+                </div>
+            </a>
+            <div class="text-muted">rows</div>
+        </div>
+    </div>
 </div>
+

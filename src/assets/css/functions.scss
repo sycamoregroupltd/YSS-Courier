@@ -1,3 +1,10 @@
 @import "../../../node_modules/bootstrap/scss/functions";
 
 
+@mixin smallSizeFont(
+  $font-weight: $font-weight-normal,
+) {
+  font-size: $font-size-sm;
+  font-weight: $font-weight;
+  color: $primary;
+}
