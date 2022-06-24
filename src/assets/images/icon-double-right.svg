@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Small-32-/-Double-Chevron-/-Right" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M12,22 L1,11.3333333 L2.375,10 L12,19.333 L21.625,10 L23,11.3333333 L12,22 L12,22 Z" id="Combined-Shape" fill="#263847" transform="translate(12.000000, 16.000000) rotate(270.000000) translate(-12.000000, -16.000000) "></path>
+        <path d="M20,22 L9,11.3333333 L10.375,10 L20,19.333 L29.625,10 L31,11.3333333 L20,22 L20,22 Z" id="Combined-Shape-Copy" fill="#263847" transform="translate(20.000000, 16.000000) rotate(270.000000) translate(-20.000000, -16.000000) "></path>
+    </g>
+</svg>

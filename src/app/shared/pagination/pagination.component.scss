@@ -1,0 +1,77 @@
+@import "src/assets/css/mixins";
+
+.page-numbers__container {
+    min-width: 220px;
+}
+
+.pagination__nav-item {
+   // font-size: $font-size-sm;
+   // font-weight: $font-weight-bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+   // color: $primary;
+    outline: none !important;
+    box-shadow: none !important;
+    border-style: solid;
+  //  border-color: $primary;
+    border-width: 0;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+}
+
+.pagination__nav-item--active {
+    //border-color: $primary;
+    border-width: 0;
+}
+
+.pagination button:disabled {
+    cursor: not-allowed;
+   // border-color: $text-muted;
+}
+
+.btn-nav {
+    ::ng-deep svg {
+        height: 17px;
+        width: auto;
+    }
+}
+
+.btn:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.divider {
+    background-color: #dee2e6;
+    width: 1px;
+    height: 30px;
+}
+
+::ng-deep .chevron-down {
+   // fill: $text-muted;
+}
+
+.dropdown::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.btn {
+    min-width: 50px;
+}
+
+.pagination-main {
+    padding: 20px 0;
+}
+
+.pagination-main a svg-icon svg {
+    width: 17px !important;
+}

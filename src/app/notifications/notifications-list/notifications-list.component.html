@@ -13,7 +13,7 @@
                     <div class="card-body" [ngClass]="{'read' : notification.read}">
                         <div class=" d-flex justify-content-between">
                             <h5 class="card-title">{{notification.subject}}</h5>
-                            <a class="card-link" (click)="delete(notification)">X</a>
+                            <a class="card-link" (click)="delete(notification)">&#x2716;</a>
                         </div>
                         <p class="card-text" [innerHTML]="notification.content"></p>
                         <div class=" d-flex justify-content-between">
@@ -25,7 +25,7 @@
                                 <small>Mark as read</small>
                             </a>
                         </div>
-
+                        
                     </div>
                 </div>
 
@@ -36,12 +36,12 @@
 </ng-container>
 <ng-container *ngIf="!aside">
     <div class="table-responsive">
-        <table class="table table-condensed table-bordered">
+        <table class="table table-condensed">
             <thead>
                 <tr>
                     <th style="width: 180px">Received</th>
                     <th>Details</th>
-                    <th style="width: 120px; text-align: right">Actions</th>
+                    <th style="width: 120px; text-align: center">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -51,7 +51,7 @@
                         [ngClass]="{'read' : notification.read}">
                         <td>{{notification.createdAt.toDate() | date: 'dd MMM yyyy @ HH:mm'}}</td>
                         <td><span [innerHTML]="notification.content"></span> </td>
-                        <td style="text-align: right">
+                        <td style="text-align: center">
 
                             <a
                                 class="card-link"
@@ -59,7 +59,7 @@
                                 *ngIf="!notification.read">
                                 <small>Mark as read</small>
                             </a>
-                            <a *ngIf="notification.read" class="card-link ml-3" (click)="delete(notification)">X</a>
+                            <a *ngIf="notification.read" class="card-link ml-3" (click)="delete(notification)">&#x2716;</a>
                         </td>
                     </tr>
                 </ng-container>

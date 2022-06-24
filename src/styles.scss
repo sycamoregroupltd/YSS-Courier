@@ -80,6 +80,124 @@ html,
 body {
     height: 100%;
 }
+
 body {
     margin: 0;
+}
+
+/*main user dashboard css*/
+
+.user-table-main {
+    padding: 50px 30px;
+
+    .data-container {
+        padding: 30px 0;
+
+        .preview-box {
+            padding: 30px;
+            margin-bottom: 0;
+
+            .preview-box-title {
+                font-size: 20px;
+                font-weight: 600;
+            }
+
+            .preview-box-content {
+                padding-top: 40px;
+
+                .table {
+                    thead {
+                        th {
+                            color: #263847;
+                            font-size: 18px;
+                            font-weight: 500;
+                            vertical-align: top;
+                        }
+                    }
+
+                    tbody {
+                        td {
+                            border-bottom: 0;
+                            color: #324350 !important;
+                        }
+                    }
+
+                    tr {
+                        border-bottom: 1px solid #dee2e6;
+                    }
+
+                    .read {
+                        opacity: 1;
+                    }
+                }
+
+                .vehicle-tile {
+                    .vehicle-tile-content {
+                        h3 {
+                            text-align: left !important;
+                            font-size: 20px;
+                            font-weight: 600;
+                            color: #263847 !important;
+                            margin-bottom: 15px;
+                        }
+
+                        .lorries-detail {
+                            border-top: 1px solid #F0F1F2;
+                            padding: 5px 0;
+                                p{
+                                    margin-bottom: 0 !important;
+                                }
+                                .sub-title {
+                                    flex: 1;
+                                }
+                                .sub-data {
+                                    flex: 2;
+                                }
+                        }
+                    }
+                }
+            }
+        }
+
+        &:first-of-type {
+            padding-top: 0;
+        }
+    }
+
+    .table-responsive .table> :not(:first-child) {
+        border-top: 0px solid currentColor !important;
+    }
+
+    .table> :not(caption)>*>* {
+        padding: 17px;
+    }
+
+    .owner-heading {
+        font-size: 18px;
+        font-weight: 500;
+        color: #263847;
+    }
+
+
+    .transparent-btn {
+        border: 1px solid #DCDFE2;
+        background-color: transparent;
+            &:hover {
+                background-color: #C2EBFF;
+                border: 1px solid #C2EBFF;
+            }
+    }
+
+    .light-blue-btn {
+        background-color: #C2EBFF;
+        border: 1px solid #C2EBFF;
+    }
+
+    .btn {
+        font-size: 12px;
+        padding: 8px 20px;
+        border-radius: 20px;
+        color: #263847;
+    }
+
 }

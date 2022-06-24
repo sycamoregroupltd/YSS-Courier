@@ -1,9 +1,10 @@
+
 <div class="data-container bg-slate-5">
     <div class="preview-box bg-white">
-        <div class="preview-box-title bg-grey p-4 pb-0">
+        <div class="preview-box-title bg-grey">
             Latest Notifications
         </div>
-        <div class="preview-box-content p-4">
+        <div class="preview-box-content">
             <app-notifications-list [aside]="false" [showRead]="true"></app-notifications-list>
         </div>
     </div>
@@ -11,25 +12,30 @@
 
 <div class="data-container bg-slate-5">
     <div class="preview-box bg-white">
-        <div class=" preview-box-title bg-grey p-4 pb-0">
+        <div class=" preview-box-title bg-grey">
             Job Board
         </div>
-        <div class="preview-box-content p-4">
+        <div class="preview-box-content">
             <app-shipments-list class="mt-4" [params]="shipmentParams"></app-shipments-list>
         </div>
     </div>
 </div>
 
 <div class="data-container bg-slate-5">
-    <app-courier-vehicles-slider class="mt-4" [company]="user.company"></app-courier-vehicles-slider>
+
+    <div class="preview-box bg-white">
+        <div class="preview-box-content">
+            <app-courier-vehicles-slider class="mt-4" [company]="user.company"></app-courier-vehicles-slider>
+        </div>
+    </div>
 </div>
 
 <div class="data-container bg-slate-5">
     <div class="preview-box bg-white">
-        <div class=" preview-box-title bg-grey p-4 pb-0">
+        <div class=" preview-box-title bg-grey">
             Suppliers
         </div>
-        <div class="preview-box-content p-4">
+        <div class="preview-box-content">
             <app-courier-supplier-collection [company]="user.company"></app-courier-supplier-collection>
         </div>
     </div>
@@ -37,21 +43,21 @@
 
 <div class="data-container bg-slate-5">
     <div class="preview-box bg-white">
-        <div class=" preview-box-title bg-grey p-4 pb-0">
+        <div class=" preview-box-title bg-grey">
             Delivery Zones
         </div>
-        <div class="preview-box-content p-4">
+        <div class="preview-box-content">
             <app-courier-delivery-zones [company]="user.company"></app-courier-delivery-zones>
         </div>
     </div>
 </div>
 
 <div class="data-container bg-slate-5">
-    <div class="preview-box bg-slate-5">
-        <div class="preview-box-title bg-grey p-4 pb-0">
+    <div class="preview-box bg-white">
+        <div class="preview-box-title bg-grey">
             Account Details
         </div>
-        <div class="preview-box-content p-4">
+        <div class="preview-box-content">
             <div class="row">
                 <div class="col-4">
                     <p class="sub-title">Company name</p>
@@ -70,7 +76,7 @@
             <hr />
             <div class="row">
                 <div class="col-8">
-                    <h3>{{user.contact.firstname}} {{user.contact.surname}}</h3>
+                    <h3 class="owner-heading">{{user.contact.firstname}} {{user.contact.surname}}</h3>
                     <p>{{user.contact.jobTitle}}</p>
                 </div>
                 <div class="col-4">
@@ -81,7 +87,7 @@
             </div>
             <hr />
             <div class="text-center">
-                <h3>Users linked to account: {{user.company.userCount}}</h3>
+                <h3 class="owner-heading">Users linked to account: {{user.company.userCount}}</h3>
             </div>
             <hr />
             <button (click)="addUser()" class="btn btn-round btn-sm btn-secondary-reverse">
@@ -94,10 +100,10 @@
 
 <div class="data-container bg-slate-5">
     <div class="preview-box bg-white">
-        <div class=" preview-box-title bg-grey p-4 pb-0">
+        <div class=" preview-box-title bg-grey">
             Your Users
         </div>
-        <div class="preview-box-content p-4">
+        <div class="preview-box-content">
             <app-user-search [showCompany]="false" [company]="user.company"></app-user-search>
         </div>
     </div>
