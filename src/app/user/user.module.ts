@@ -61,7 +61,7 @@ import { AccountOrdersMobileComponent } from './account-orders-mobile/account-or
 import {
     RegistrationAdditionalDetailsComponent
 } from './registration-additional-details/registration-additional-details.component';
-import { AngularSvgIconModule } from "angular-svg-icon";
+import { AngularSvgIconModule } from 'angular-svg-icon';
 import { OrderBoardPopupComponent } from './order-board-popup/order-board-popup.component';
 @NgModule({
     declarations: [
