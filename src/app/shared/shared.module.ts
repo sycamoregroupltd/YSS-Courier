@@ -13,6 +13,8 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { RouterModule } from '@angular/router';
 import { TileSliderKeenComponent } from './tile-slider-keen/tile-slider-keen.component';
 import { AngularSvgIconModule } from 'angular-svg-icon';
+import { DropdownDirective } from '../directives/dropdown/dropdown.directive';
+import { DirectivesModule } from '../directives/directives.module';
 
 @NgModule({
     declarations: [
@@ -31,7 +33,8 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
         CommonModule,
         EditorModule,
         RouterModule,
-        AngularSvgIconModule
+        AngularSvgIconModule,
+        DirectivesModule
     ],
     exports: [
         PaginationComponent,

@@ -44,6 +44,7 @@ import { FooterIpadComponent } from './layout/footer-ipad/footer-ipad.component'
 import { ConsolePipe } from './pipes/console.pipe';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { DirectivesModule } from './directives/directives.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 const firebaseConfig = {
@@ -102,6 +103,7 @@ const firebaseConfig = {
         AngularFirestoreModule, // firestore
         AngularFireAuthModule, // auth
         AngularFireStorageModule, // storage
+        NgbModule,
         ToastrModule.forRoot({
             preventDuplicates: true,
             progressBar: true,

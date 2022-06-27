@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Store } from '../../store';
 import { OverlayService } from '../../services/overlay.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'app-courier-overview',
@@ -62,10 +63,12 @@ export class CourierOverviewComponent implements OnInit {
         sort: 'contacts.firstname',
         sorts: [],
     };
+    public isCollapsed = false;
 
     constructor(
         private store: Store,
         private overlayService: OverlayService,
+      
     ) {
     }
 
@@ -110,3 +113,4 @@ export class CourierOverviewComponent implements OnInit {
         this.navigationChange.emit(v);
     }
 }
+

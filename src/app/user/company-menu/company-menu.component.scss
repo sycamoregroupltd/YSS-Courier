@@ -3,7 +3,12 @@
         .list-group {
             .list-group-item-title {
                 padding: 12px 20px;
-                font-family: inherit !important;
+                font-family: "Spectral" !important;
+                color: #939CA3;
+                opacity: 1;
+                font-size: 12px;
+                font-weight: 500;
+
                 &:focus,
                 &:hover {
                     outline: none;
@@ -11,25 +16,30 @@
                     background-color: transparent !important;
                     color: #DCDFE2;
                 }
+
                 svg {
-                    stroke: #fff;
-                    fill: #fff;
-                    width: 18px;
+                    stroke: #DFE1E3;
+                    fill: #DFE1E3;
+                    width: 16px;
                 }
             }
+
             .submenu-main {
                 button {
-                padding-top: 12px;
-                padding-bottom: 12px;
-                font-family: inherit !important;
-                padding-left: 60px;
-                &:focus,
-                &:hover {
-                    background-color: #faff5e !important;
-                    color: #000 !important;
-                    outline: none;
-                    box-shadow: none;
-                }
+                    padding-top: 12px;
+                    padding-bottom: 12px;
+                    font-family: inherit !important;
+                    padding-left: 60px;
+                    font-size: 14px;
+                    color: #DCDFE2;
+
+                    &:focus,
+                    &:hover {
+                        background-color: #faff5e !important;
+                        color: #263847 !important;
+                        outline: none;
+                        box-shadow: none;
+                    }
                 }
             }
         }
@@ -41,10 +51,32 @@
 
     .account-info {
         font-family: inherit;
-    
+
         h3 {
             font-family: inherit !important;
             margin-bottom: 7px;
+            font-size: 12px;
+        }
+
+        .info-main {
+
+            p,
+            h3 {
+                color: #fff;
+                opacity: 0.5;
+            }
+
+            p {
+                font-size: 16px;
+            }
+        }
+
+        .info-main:first-of-type p {
+            font-family: "Spectral";
+            font-size: 20px; 
+            font-weight: 600;
+            color: #fff;
+            opacity: 1;
         }
     }
 

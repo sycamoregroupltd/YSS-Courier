@@ -6,7 +6,7 @@
         <h1 *ngIf="!newItem">Edit Zone</h1>
     </div>
 
-    <div class="p-4">
+    <div class="p-4 add-new-zone">
         <form
             [formGroup]="form"
             autocomplete="off"
@@ -298,7 +298,7 @@
                     <div class="col-6">
                         <button
                             type="button"
-                            class="btn btn-round btn-primary-reverse"
+                            class="btn btn-primary btn-round"
                             (click)="confirmCancel()">
                             Cancel
                         </button>
@@ -307,7 +307,7 @@
                         <button
                             [disabled]="!form.valid"
                             type="submit"
-                            class="btn btn-round btn-primary">
+                            class="btn btn-primary btn-round">
                             <span *ngIf="newItem">Create Zone</span>
                             <span *ngIf="!newItem">Update Zone</span>
                         </button>

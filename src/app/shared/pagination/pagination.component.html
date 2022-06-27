@@ -30,11 +30,11 @@
             <a appDropdown href="javascript:void(0)" class="dropdown text-muted px-2 mx-3">
                 <span class="me-3">{{params.limit}}</span>
                 <svg-icon src="assets/images/icon-chevron-down.svg" [svgClass]="'chevron-down'"></svg-icon>
-                <div class="dropdown-menu dropdown-menu-user border-0 shadow-sm px-4 py-3">
+                <div class="dropdown-menu dropdown-menu-user border-0 shadow-sm px-3 py-3">
                     <div
                         *ngFor="let limit of params.limits; let last = last"
                         (click)="changeLimit(limit)"
-                        class="dropdown-item fw-bold small px-0 hover"
+                        class="dropdown-item small"
                         [ngClass]="{'mg-2' : !last}">
                         {{limit}}
                     </div>

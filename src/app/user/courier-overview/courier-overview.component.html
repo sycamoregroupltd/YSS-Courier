@@ -2,20 +2,31 @@
 <div class="data-container bg-slate-5">
     <div class="preview-box bg-white">
         <div class="preview-box-title bg-grey">
-            Latest Notifications
+            <button type="button" class="btn heading-dropdown" (click)="isCollapsed = !isCollapsed"
+          [attr.aria-expanded]="!isCollapsed" aria-controls="notifications">
+          <i *ngIf="!isCollapsed" class="fa-solid fa-chevron-down"></i>
+            <i *ngIf="isCollapsed" class="fa-solid fa-chevron-up"></i> Latest Notifications
+  </button>
+            
         </div>
-        <div class="preview-box-content">
+        <div class="preview-box-content" id="notifications" [ngbCollapse]="isCollapsed">
             <app-notifications-list [aside]="false" [showRead]="true"></app-notifications-list>
         </div>
     </div>
 </div>
 
-<div class="data-container bg-slate-5">
+<div class="data-container bg-slate-5 job-board-table">
     <div class="preview-box bg-white">
         <div class=" preview-box-title bg-grey">
+            <button type="button" class="btn heading-dropdown" (click)="isCollapsed = !isCollapsed"
+            [attr.aria-expanded]="!isCollapsed" aria-controls="jobBoard">
+            <i *ngIf="!isCollapsed" class="fa-solid fa-chevron-down"></i>
+            <i *ngIf="isCollapsed" class="fa-solid fa-chevron-up"></i>
             Job Board
+    </button>
+            
         </div>
-        <div class="preview-box-content">
+        <div class="preview-box-content"  id="jobBoard" [ngbCollapse]="isCollapsed">
             <app-shipments-list class="mt-4" [params]="shipmentParams"></app-shipments-list>
         </div>
     </div>
@@ -24,6 +35,9 @@
 <div class="data-container bg-slate-5">
 
     <div class="preview-box bg-white">
+        <div class=" preview-box-title bg-grey">
+            Lorries
+        </div>
         <div class="preview-box-content">
             <app-courier-vehicles-slider class="mt-4" [company]="user.company"></app-courier-vehicles-slider>
         </div>
@@ -80,7 +94,7 @@
                     <p>{{user.contact.jobTitle}}</p>
                 </div>
                 <div class="col-4">
-                    <button (click)="editUser(user)" class="btn btn-round btn-sm btn-secondary-reverse">
+                    <button (click)="editUser(user)" class="btn btn-primary btn-round">
                         Edit Profile
                     </button>
                 </div>
@@ -90,7 +104,7 @@
                 <h3 class="owner-heading">Users linked to account: {{user.company.userCount}}</h3>
             </div>
             <hr />
-            <button (click)="addUser()" class="btn btn-round btn-sm btn-secondary-reverse">
+            <button (click)="addUser()" class="btn btn-primary btn-round mt-5">
                 Add new user
             </button>
 

@@ -75,3 +75,12 @@
 .pagination-main a svg-icon svg {
     width: 17px !important;
 }
+
+.dropdown-menu-user {
+    .dropdown-item {
+        border-bottom: 1px solid #eee;
+            &:last-child{
+                border:none;
+            }
+    }
+}

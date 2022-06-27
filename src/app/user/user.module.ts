@@ -63,6 +63,7 @@ import {
 } from './registration-additional-details/registration-additional-details.component';
 import { AngularSvgIconModule } from "angular-svg-icon";
 import { OrderBoardPopupComponent } from './order-board-popup/order-board-popup.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
     declarations: [
         AccountComponent,
@@ -125,7 +126,8 @@ import { OrderBoardPopupComponent } from './order-board-popup/order-board-popup.
         NgMultiSelectDropDownModule.forRoot(),
         DragulaModule.forRoot(),
         ProductModule,
-        AngularSvgIconModule
+        AngularSvgIconModule,
+        NgbModule
     ],
     exports: [
         AccountComponent,
