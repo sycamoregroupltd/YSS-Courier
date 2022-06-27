@@ -18,19 +18,17 @@ body.stop-scrolling {
 
 .sweet-alert {
     background-color: white;
-    font-family: CamptonLight;
     width: 478px;
     padding: 17px;
-    border-radius: 5px;
-    text-align: center;
     position: fixed;
     left: 50%;
     top: 50%;
     margin-left: -256px;
     margin-top: -200px;
+    transition: margin-top 0.1s ease-in-out;
     overflow: hidden;
     display: none;
-    z-index: 99999; }
+    z-index: 99999;}
 @media all and (max-width: 540px) {
     .sweet-alert {
         width: auto;
@@ -38,29 +36,6 @@ body.stop-scrolling {
         margin-right: 0;
         left: 15px;
         right: 15px; } }
-.sweet-alert h2 {
-    font-family: CamptonBold;
-    color: #575757;
-    font-size: 18px;
-    text-align: center;
-    font-weight: 600;
-    text-transform: none;
-    position: relative;
-    margin: 0 0;
-    padding: 0;
-    line-height: 40px;
-    display: block; }
-.sweet-alert p {
-    color: #797979;
-    font-size: 16px;
-    text-align: center;
-    font-weight: 300;
-    position: relative;
-    text-align: inherit;
-    float: none;
-    margin: 0;
-    padding: 0;
-    line-height: normal; }
 .sweet-alert fieldset {
     border: none;
     position: relative; }
@@ -124,72 +99,7 @@ body.stop-scrolling {
     opacity: 1;
     -webkit-transform: scale(1);
     transform: scale(1); }
-.sweet-alert input {
-    width: 100%;
-    box-sizing: border-box;
-    border-radius: 3px;
-    border: 1px solid #d7d7d7;
-    height: 43px;
-    margin-top: 10px;
-    margin-bottom: 17px;
-    font-size: 18px;
-    box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.06);
-    padding: 0 12px;
-    display: none;
-    -webkit-transition: all 0.3s;
-    transition: all 0.3s; }
-.sweet-alert input:focus {
-    outline: none;
-    box-shadow: 0px 0px 3px #c4e6f5;
-    border: 1px solid #b4dbed; }
-.sweet-alert input:focus::-moz-placeholder {
-    transition: opacity 0.3s 0.03s ease;
-    opacity: 0.5; }
-.sweet-alert input:focus:-ms-input-placeholder {
-    transition: opacity 0.3s 0.03s ease;
-    opacity: 0.5; }
-.sweet-alert input:focus::-webkit-input-placeholder {
-    transition: opacity 0.3s 0.03s ease;
-    opacity: 0.5; }
-.sweet-alert input::-moz-placeholder {
-    color: #bdbdbd; }
-.sweet-alert input:-ms-input-placeholder {
-    color: #bdbdbd; }
-.sweet-alert input::-webkit-input-placeholder {
-    color: #bdbdbd; }
-.sweet-alert.show-input input {
-    display: block; }
-.sweet-alert button {
-    background-color: #AEDEF4;
-    color: white;
-    border: none;
-    box-shadow: none;
-    font-size: 17px;
-    font-weight: 500;
-    -webkit-border-radius: 4px;
-    border-radius: 5px;
-    padding: 10px 32px;
-    margin: 26px 5px 0 5px;
-    cursor: pointer; }
-.sweet-alert button:focus {
-    outline: none;
-    box-shadow: 0 0 2px rgba(128, 179, 235, 0.5), inset 0 0 0 1px rgba(0, 0, 0, 0.05); }
-.sweet-alert button:hover {
-    background-color: #a1d9f2; }
-.sweet-alert button:active {
-    background-color: #81ccee; }
-.sweet-alert button.cancel {
-    background-color: #D0D0D0; }
-.sweet-alert button.cancel:hover {
-    background-color: #c8c8c8; }
-.sweet-alert button.cancel:active {
-    background-color: #b6b6b6; }
-.sweet-alert button.cancel:focus {
-    box-shadow: rgba(197, 205, 211, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.0470588) 0px 0px 0px 1px inset !important; }
-.sweet-alert button::-moz-focus-inner {
-    border: 0; }
-.sweet-alert[data-has-cancel-button=false] button {
-    box-shadow: none !important; }
+
 .sweet-alert[data-has-confirm-button=false][data-has-cancel-button=false] {
     padding-bottom: 40px; }
 .sweet-alert .sa-icon {
@@ -381,7 +291,7 @@ body.stop-scrolling {
     0% {
         transform: scale(1);
         -webkit-transform: scale(1); }
-    100% {
+    99% {
         transform: scale(0.5);
         -webkit-transform: scale(0.5); } }
 
@@ -472,6 +382,10 @@ body.stop-scrolling {
 .hideSweetAlert[data-animation=slide-from-bottom] {
     -webkit-animation: slideToBottom 0.3s;
     animation: slideToBottom 0.3s; }
+
+.showSweetAlert, .hideSweetAlert {
+    display: block;
+}
 
 @-webkit-keyframes animateSuccessTip {
     0% {

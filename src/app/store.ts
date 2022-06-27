@@ -126,8 +126,9 @@ const state: State = {
     alerts: {
         errors: [],
         notifications: [],
-        simple: '',
-        confirmAction: undefined,
+        simple: null,
+        confirmAction: null,
+        customAlert: null
     },
     overlays: {
         userEdit: false,

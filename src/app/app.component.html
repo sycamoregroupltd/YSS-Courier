@@ -27,8 +27,14 @@
 </ng-container>
 
 <app-alert
-        [data]="(alerts$ | async)"
-        *ngIf="(alerts$ | async).simple !== '' || (alerts$ | async).errors.length || (alerts$ | async).notifications.length"
+        [data]="alerts$ | async"
+        [showModal]="
+        (alerts$ | async).errors.length ||
+        (alerts$ | async).notifications.length ||
+        (alerts$ | async).simple ||
+        (alerts$ | async).confirmAction ||
+        (alerts$ | async).customAlert
+    "
 ></app-alert>
 
 <div class="modal-backdrop fade show modal-slide-show"
