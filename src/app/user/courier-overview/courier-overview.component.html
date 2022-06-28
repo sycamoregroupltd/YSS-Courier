@@ -1,15 +1,15 @@
-
 <div class="data-container bg-slate-5">
     <div class="preview-box bg-white">
         <div class="preview-box-title bg-grey">
-            <button type="button" class="btn heading-dropdown" (click)="isCollapsed = !isCollapsed"
-          [attr.aria-expanded]="!isCollapsed" aria-controls="notifications">
-          <i *ngIf="!isCollapsed" class="fa-solid fa-chevron-down"></i>
-            <i *ngIf="isCollapsed" class="fa-solid fa-chevron-up"></i> Latest Notifications
-  </button>
-            
+            <button type="button" class="btn heading-dropdown"
+                (click)="isCollapsed['notifications'] = !isCollapsed['notifications']"
+                [attr.aria-expanded]="!isCollapsed" aria-controls="notifications">
+                <i *ngIf="!isCollapsed['notifications']" class="fa-solid fa-chevron-down"></i>
+                <i *ngIf="isCollapsed['notifications']" class="fa-solid fa-chevron-up"></i> Latest Notifications
+            </button>
+
         </div>
-        <div class="preview-box-content" id="notifications" [ngbCollapse]="isCollapsed">
+        <div class="preview-box-content" id="notifications" [ngbCollapse]="isCollapsed['notifications']">
             <app-notifications-list [aside]="false" [showRead]="true"></app-notifications-list>
         </div>
     </div>
@@ -18,15 +18,16 @@
 <div class="data-container bg-slate-5 job-board-table">
     <div class="preview-box bg-white">
         <div class=" preview-box-title bg-grey">
-            <button type="button" class="btn heading-dropdown" (click)="isCollapsed = !isCollapsed"
-            [attr.aria-expanded]="!isCollapsed" aria-controls="jobBoard">
-            <i *ngIf="!isCollapsed" class="fa-solid fa-chevron-down"></i>
-            <i *ngIf="isCollapsed" class="fa-solid fa-chevron-up"></i>
-            Job Board
-    </button>
-            
+            <button type="button" class="btn heading-dropdown"
+                (click)="isCollapsed['jobBoard'] = !isCollapsed['jobBoard']"
+                [attr.aria-expanded]="!isCollapsed['jobBoard']" aria-controls="jobBoard">
+                <i *ngIf="!isCollapsed['jobBoard']" class="fa-solid fa-chevron-down"></i>
+                <i *ngIf="isCollapsed['jobBoard']" class="fa-solid fa-chevron-up"></i>
+                Job Board
+            </button>
+
         </div>
-        <div class="preview-box-content"  id="jobBoard" [ngbCollapse]="isCollapsed">
+        <div class="preview-box-content" id="jobBoard" [ngbCollapse]="isCollapsed['jobBoard']">
             <app-shipments-list class="mt-4" [params]="shipmentParams"></app-shipments-list>
         </div>
     </div>
@@ -36,9 +37,15 @@
 
     <div class="preview-box bg-white">
         <div class=" preview-box-title bg-grey">
-            Lorries
+            <button type="button" class="btn heading-dropdown"
+                (click)="isCollapsed['lorries'] = !isCollapsed['lorries']" [attr.aria-expanded]="!isCollapsed"
+                aria-controls="lorries">
+                <i *ngIf="!isCollapsed['lorries']" class="fa-solid fa-chevron-down"></i>
+                <i *ngIf="isCollapsed['lorries']" class="fa-solid fa-chevron-up"></i> Lorries
+            </button>
+
         </div>
-        <div class="preview-box-content">
+        <div class="preview-box-content" id="lorries" [ngbCollapse]="isCollapsed['lorries']">
             <app-courier-vehicles-slider class="mt-4" [company]="user.company"></app-courier-vehicles-slider>
         </div>
     </div>
@@ -47,20 +54,33 @@
 <div class="data-container bg-slate-5">
     <div class="preview-box bg-white">
         <div class=" preview-box-title bg-grey">
-            Suppliers
+            <button type="button" class="btn heading-dropdown"
+                (click)="isCollapsed['suppliers'] = !isCollapsed['suppliers']" [attr.aria-expanded]="!isCollapsed"
+                aria-controls="suppliers">
+                <i *ngIf="!isCollapsed['suppliers']" class="fa-solid fa-chevron-down"></i>
+                <i *ngIf="isCollapsed['suppliers']" class="fa-solid fa-chevron-up"></i> Suppliers
+            </button>
+
         </div>
-        <div class="preview-box-content">
+        <div class="preview-box-content" id="suppliers" [ngbCollapse]="isCollapsed['suppliers']">
             <app-courier-supplier-collection [company]="user.company"></app-courier-supplier-collection>
         </div>
+
     </div>
-</div>
+</div> 
 
 <div class="data-container bg-slate-5">
     <div class="preview-box bg-white">
         <div class=" preview-box-title bg-grey">
-            Delivery Zones
+            <button type="button" class="btn heading-dropdown"
+                (click)="isCollapsed['deliveryZones'] = !isCollapsed['deliveryZones']"
+                [attr.aria-expanded]="!isCollapsed" aria-controls="deliveryZones">
+                <i *ngIf="!isCollapsed['deliveryZones']" class="fa-solid fa-chevron-down"></i>
+                <i *ngIf="isCollapsed['deliveryZones']" class="fa-solid fa-chevron-up"></i> Delivery Zones
+            </button>
+
         </div>
-        <div class="preview-box-content">
+        <div class="preview-box-content" id="deliveryZones" [ngbCollapse]="isCollapsed['deliveryZones']">
             <app-courier-delivery-zones [company]="user.company"></app-courier-delivery-zones>
         </div>
     </div>
@@ -69,9 +89,15 @@
 <div class="data-container bg-slate-5">
     <div class="preview-box bg-white">
         <div class="preview-box-title bg-grey">
-            Account Details
+            <button type="button" class="btn heading-dropdown"
+                (click)="isCollapsed['accountDetails'] = !isCollapsed['accountDetails']"
+                [attr.aria-expanded]="!isCollapsed" aria-controls="accountDetails">
+                <i *ngIf="!isCollapsed['accountDetails']" class="fa-solid fa-chevron-down"></i>
+                <i *ngIf="isCollapsed['accountDetails']" class="fa-solid fa-chevron-up"></i> Account Details
+            </button>
+
         </div>
-        <div class="preview-box-content">
+        <div class="preview-box-content" id="accountDetails" [ngbCollapse]="isCollapsed['accountDetails']">
             <div class="row">
                 <div class="col-4">
                     <p class="sub-title">Company name</p>
@@ -115,9 +141,14 @@
 <div class="data-container bg-slate-5">
     <div class="preview-box bg-white">
         <div class=" preview-box-title bg-grey">
-            Your Users
+            <button type="button" class="btn heading-dropdown" (click)="isCollapsed['users'] = !isCollapsed['users']"
+                [attr.aria-expanded]="!isCollapsed" aria-controls="users">
+                <i *ngIf="!isCollapsed['users']" class="fa-solid fa-chevron-down"></i>
+                <i *ngIf="isCollapsed['users']" class="fa-solid fa-chevron-up"></i> Your Users
+            </button>
+
         </div>
-        <div class="preview-box-content">
+        <div class="preview-box-content" id="users" [ngbCollapse]="isCollapsed['users']">
             <app-user-search [showCompany]="false" [company]="user.company"></app-user-search>
         </div>
     </div>
@@ -125,4 +156,3 @@
 </div>
 
 <app-account-user-edit *ngIf="(overlays$ | async).userEdit"></app-account-user-edit>
-

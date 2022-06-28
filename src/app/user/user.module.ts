@@ -64,6 +64,7 @@ import {
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { OrderBoardPopupComponent } from './order-board-popup/order-board-popup.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {PopoverModule} from 'ngx-bootstrap/popover';
 @NgModule({
     declarations: [
         AccountComponent,
@@ -127,7 +128,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
         DragulaModule.forRoot(),
         ProductModule,
         AngularSvgIconModule,
-        NgbModule
+        NgbModule,
+        PopoverModule
     ],
     exports: [
         AccountComponent,

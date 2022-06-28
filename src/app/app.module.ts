@@ -45,6 +45,7 @@ import { ConsolePipe } from './pipes/console.pipe';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { DirectivesModule } from './directives/directives.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {PopoverModule} from 'ngx-bootstrap/popover';
 
 
 const firebaseConfig = {
@@ -104,6 +105,7 @@ const firebaseConfig = {
         AngularFireAuthModule, // auth
         AngularFireStorageModule, // storage
         NgbModule,
+        PopoverModule.forRoot(),
         ToastrModule.forRoot({
             preventDuplicates: true,
             progressBar: true,

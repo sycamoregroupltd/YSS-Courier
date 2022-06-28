@@ -15,6 +15,7 @@ import { TileSliderKeenComponent } from './tile-slider-keen/tile-slider-keen.com
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { DropdownDirective } from '../directives/dropdown/dropdown.directive';
 import { DirectivesModule } from '../directives/directives.module';
+import {PopoverModule} from 'ngx-bootstrap/popover';
 
 @NgModule({
     declarations: [
@@ -34,7 +35,8 @@ import { DirectivesModule } from '../directives/directives.module';
         EditorModule,
         RouterModule,
         AngularSvgIconModule,
-        DirectivesModule
+        DirectivesModule,
+        PopoverModule
     ],
     exports: [
         PaginationComponent,

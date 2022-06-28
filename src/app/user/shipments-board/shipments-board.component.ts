@@ -5,6 +5,9 @@ import { UserService } from '../../services/user.service';
 import { OrdersService } from '../../services/orders.service';
 import { debounce } from 'lodash';
 import { OrderBoardPopupComponent } from '../order-board-popup/order-board-popup.component';
+import {PopoverModule} from 'ngx-bootstrap/popover';
+import { AvailbleBSPositions } from 'ngx-bootstrap/positioning';
+
 
 @Component({
     selector: 'app-shipments-board',
@@ -15,6 +18,7 @@ export class ShipmentsBoardComponent implements OnInit {
 
     user$ = this.store.select<any>('user');
     shipmentsBoard$ = this.store.select<any>('shipmentsBoard');
+    popoverPos: AvailbleBSPositions = "right top";
 
     updateRequested = false;
     shipment;

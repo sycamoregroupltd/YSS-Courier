@@ -17,6 +17,7 @@
     <div class="flex-grow-1" *ngIf="(user$ | async)">
         
         <div class="account-dropdown d-flex justify-content-end align-items-center header-right">
+            <ul class="d-flex justify-content-end align-items-center mb-0">
             <li class="nav-item position-relative me-4">
                 <a class="header-sub-item-icon" (click)="toggleNotifications()">
                     
@@ -46,13 +47,13 @@
                     
                 </a>
             </li>
-            <li class="nav-item position-relative me-0">
+            <li class="nav-item position-relative me-4">
                 <a appDropdown href="javascript:void(0)" class="header-sub-item-icon dropdown mr-0">
                     <svg-icon src="assets/images/icon-user.svg" class="me-2"></svg-icon>
-                    <span class="me-2 user-name">{{(user$ | async).contact?.firstname}} {{(user$ | async).contact?.surname}}</span>
-                    <svg-icon src="assets/images/icon-chevron-down.svg"></svg-icon>
+                    <span class="me-2">{{(user$ | async).contact?.firstname}} {{(user$ | async).contact?.surname}}</span>
+                    <!-- <svg-icon src="assets/images/icon-chevron-down.svg"></svg-icon> -->
                     <div class="dropdown-menu dropdown-menu-end dropdown-menu-user shadow-sm px-4 py-3">
-                        <a href="https://www.yorkstonesupplies.co.uk" class="dropdown-item fw-bold small px-0 mb-2 text-primary custom-color">
+                        <a href="https://www.yorkstonesupplies.co.uk" class="dropdown-item">
                             Back to homepage
                         </a>
                      <!---  <div class="dropdown-divider mt-0 mb-2"></div>
@@ -61,7 +62,7 @@
                             My Account
                         </a>-->
                         <div class="dropdown-divider mt-0 mb-2"></div>
-                        <a (click)="logoutConfirmation()" class="dropdown-item fw-bold small px-0 mb-2 text-primary custom-color">
+                        <a (click)="logoutConfirmation()" class="dropdown-item">
                                 <!-- <i class="fas fa-sign-out-alt"></i> -->
                                  Sign out
                         </a>
@@ -69,6 +70,16 @@
                     </div>
                 </a>
             </li>
+            <li class="nav-item position-relative me-0">
+                <a (click)="logoutConfirmation()" class="sign-out">
+                    <!-- <i class="fas fa-sign-out-alt"></i> -->
+                    <!-- <img src="assets/images/sign-out.png" class="me-2 signout-icon"> --> 
+                    <svg-icon src="assets/images/signout.svg" class="me-2 signout-icon"></svg-icon>
+                    <span>Sign out</span>
+                </a>
+            </li>
+        </ul>
+
         </div>
         
         <!-- <a class="header-sub-item" [routerLink]="['account']">

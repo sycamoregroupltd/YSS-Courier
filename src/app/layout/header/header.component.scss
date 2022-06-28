@@ -150,7 +150,7 @@
 }
 
 .header-sub-item-icon {
-  margin-right: 30px;
+  margin-right: 5px;
   stroke: #263847;
   font-size: 19px;
   position: relative;
@@ -172,21 +172,24 @@
 
 .badge-count {
   display: inline-block;
-  width: auto;
+  width: 22px;
   height: 22px;
   position: absolute;
-  top: -8px;
-  left: 15px;
+  top: -4px;
+  left: 14px;
   background-color: #D83514;
   color: #fff;
-  border-radius: 50%;
-  padding: .5em;
+  padding: 2px;
   font-size: 10px;
-  font-weight: 700;
+  font-weight: normal;
   line-height: 12px;
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
+  border-radius: 100% !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .flex-1 {
@@ -247,3 +250,16 @@
 
   
 }
+
+.sign-out {
+  display: flex;
+ justify-content: center;
+ align-items: center;
+.signout-icon {
+width: 26px;
+.cls-1 {
+ stroke: #263847 !important;
+}
+}
+}
+

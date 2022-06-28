@@ -40,6 +40,7 @@
     "moment": "^2.25.3",
     "ng-multiselect-dropdown": "^0.2.10",
     "ng2-dragula": "^2.1.1",
+    "ngx-bootstrap": "^8.0.0",
     "ngx-device-detector": "^2.0.0",
     "ngx-dropzone-wrapper": "^7.2.1",
     "ngx-socket-io": "^3.0.1",

@@ -63,7 +63,7 @@ export class CourierOverviewComponent implements OnInit {
         sort: 'contacts.firstname',
         sorts: [],
     };
-    public isCollapsed = false;
+    public isCollapsed: boolean [] = [];
 
     constructor(
         private store: Store,
@@ -112,5 +112,6 @@ export class CourierOverviewComponent implements OnInit {
     setStep(v) {
         this.navigationChange.emit(v);
     }
+
 }
 
