@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { catchError, map } from 'rxjs/operators';
 import { ApiService } from './api.service';
 import { Store } from '../store';
-import { HttpClient } from '@angular/common/http';
+import { ApiAuthHttpClient } from '../http/ApiAuthHttpClient';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -14,7 +14,7 @@ export class FaqService {
     constructor(
         private apiService: ApiService,
         private store: Store,
-        private http: HttpClient,
+        private http: ApiAuthHttpClient,
     ) {
     }
 

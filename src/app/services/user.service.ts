@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
-import { HttpClient } from '@angular/common/http';
 import { Store } from '../store';
 import { CookieService } from './cookie.service';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { ToolsService } from './tools.service';
+import { ApiAuthHttpClient } from '../http/ApiAuthHttpClient';
 
 @Injectable({
     providedIn: 'root',
@@ -15,7 +15,7 @@ export class UserService {
 
     constructor(
         private apiService: ApiService,
-        private http: HttpClient,
+        private http: ApiAuthHttpClient,
         private store: Store,
         private cookieService: CookieService,
         private toolsService: ToolsService

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
-import { HttpClient } from '@angular/common/http';
+import { ApiAuthHttpClient } from '../http/ApiAuthHttpClient';
 import { Store } from '../store';
 import { catchError, map } from 'rxjs/operators';
 import { environment as env } from '../../environments/environment';
@@ -12,7 +12,7 @@ export class ProductService {
 
     constructor(
         private apiService: ApiService,
-        private http: HttpClient,
+        private http: ApiAuthHttpClient,
         private store: Store,
     ) {
     }

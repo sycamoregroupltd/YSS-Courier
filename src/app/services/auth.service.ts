@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
-import { HttpClient } from '@angular/common/http';
 import { Store } from '../store';
+import { ApiAuthHttpClient } from '../http/ApiAuthHttpClient';
 import { CookieService } from './cookie.service';
 import { catchError, map } from 'rxjs/operators';
 import { UserService } from './user.service';
@@ -19,7 +19,7 @@ export class AuthService {
 
     constructor(
         private apiService: ApiService,
-        private http: HttpClient,
+        private http: ApiAuthHttpClient,
         private store: Store,
         private cookieService: CookieService,
         private userService: UserService,

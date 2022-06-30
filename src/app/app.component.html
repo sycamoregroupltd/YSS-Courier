@@ -42,3 +42,5 @@
      *ngIf="(asideOpen$ | async)">
     <app-processing *ngIf="(overlays$ | async).processing"></app-processing>
 </div>
+
+<app-floating-spinner [showSpinner]="(overlays$ | async).busyIndicator"></app-floating-spinner>

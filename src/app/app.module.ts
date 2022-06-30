@@ -45,7 +45,9 @@ import { ConsolePipe } from './pipes/console.pipe';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { DirectivesModule } from './directives/directives.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {PopoverModule} from 'ngx-bootstrap/popover';
+import { PopoverModule } from 'ngx-bootstrap/popover';
+import { FloatingSpinnerComponent } from './layout/floating-spinner/floating-spinner.component';
+import { HttpModule } from './http/http.module';
 
 
 const firebaseConfig = {
@@ -79,7 +81,8 @@ const firebaseConfig = {
         RequestCreateComponent,
         HeaderMobileComponent,
         FooterMobileComponent,
-        FooterIpadComponent
+        FooterIpadComponent,
+        FloatingSpinnerComponent
     ],
     imports: [
         BrowserModule,
@@ -111,6 +114,7 @@ const firebaseConfig = {
             progressBar: true,
             closeButton: true,
         }),
+        HttpModule
     ],
     providers: [Store],
     exports: [
@@ -118,10 +122,12 @@ const firebaseConfig = {
     ],
     bootstrap: [AppComponent],
 })
-export class AppModule {
+export class AppModule
+{
     static injector: Injector;
 
-    constructor(injector: Injector) {
+    constructor(injector: Injector)
+    {
         AppModule.injector = injector;
     }
 }
