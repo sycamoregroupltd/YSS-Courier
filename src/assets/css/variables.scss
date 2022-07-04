@@ -108,3 +108,5 @@ $modal-content-border-radius: 0;
 
 // Fontawesome
 $fa-font-path:  "/assets/fonts";
+$font-size-base: 1rem; // 16px
+$font-size-xs: $font-size-base * 0.8125; // ± 13px

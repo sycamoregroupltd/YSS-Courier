@@ -35,6 +35,7 @@ const config: SocketIoConfig = { url: environment.socketPath, options: {} };
         UserModule,
         DirectivesModule,
         SocketIoModule.forRoot(config),
+        
     ]
 })
 export class MailModule {

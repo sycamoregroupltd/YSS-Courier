@@ -45,7 +45,9 @@ import { ConsolePipe } from './pipes/console.pipe';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { DirectivesModule } from './directives/directives.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {PopoverModule} from 'ngx-bootstrap/popover';
+import { PopoverModule } from 'ngx-bootstrap/popover';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { OrderBoardSwapSupplierComponent } from './orders/order-board-swap-supplier/order-board-swap-supplier.component';
 
 
 const firebaseConfig = {
@@ -79,7 +81,8 @@ const firebaseConfig = {
         RequestCreateComponent,
         HeaderMobileComponent,
         FooterMobileComponent,
-        FooterIpadComponent
+        FooterIpadComponent,
+        
     ],
     imports: [
         BrowserModule,
@@ -97,6 +100,7 @@ const firebaseConfig = {
         GoogleMapsModule,
         ShipmentsModule,
         ChatModule,
+        NgSelectModule,
         MailModule,
         DirectivesModule,
         AngularSvgIconModule.forRoot(),
@@ -105,7 +109,8 @@ const firebaseConfig = {
         AngularFireAuthModule, // auth
         AngularFireStorageModule, // storage
         NgbModule,
-        PopoverModule.forRoot(),
+        PopoverModule,
+        
         ToastrModule.forRoot({
             preventDuplicates: true,
             progressBar: true,
@@ -114,7 +119,7 @@ const firebaseConfig = {
     ],
     providers: [Store],
     exports: [
-        ConsolePipe
+        ConsolePipe,
     ],
     bootstrap: [AppComponent],
 })

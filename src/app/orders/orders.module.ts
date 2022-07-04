@@ -10,12 +10,23 @@ import { OrderStatusUpdateComponent } from './order-status-update/order-status-u
 // @todo: replace with another date picker
 /*import { SatDatepickerModule } from 'saturn-datepicker-ext';*/
 import { DirectivesModule } from '../directives/directives.module';
+import { OrderAssignComponent } from './order-assign/order-assign.component';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { OrderBoardSwapSupplierComponent } from './order-board-swap-supplier/order-board-swap-supplier.component';
+
+
+
 
 @NgModule({
     declarations: [
         OrderSearchComponent,
         OrderDetailSearchComponent,
         OrderStatusUpdateComponent,
+        OrderAssignComponent,
+        
+        
+    
     ],
     imports: [
         CommonModule,
@@ -27,11 +38,16 @@ import { DirectivesModule } from '../directives/directives.module';
         MaterialModule,
         /*SatDatepickerModule,*/
         DirectivesModule,
+        NgSelectModule
+       
     ],
     exports: [
         OrderSearchComponent,
         OrderDetailSearchComponent,
         OrderStatusUpdateComponent,
+        OrderAssignComponent,
+        
+      
     ]
 })
 export class OrdersModule {

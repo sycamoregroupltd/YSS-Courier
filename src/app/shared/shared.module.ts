@@ -36,7 +36,8 @@ import {PopoverModule} from 'ngx-bootstrap/popover';
         RouterModule,
         AngularSvgIconModule,
         DirectivesModule,
-        PopoverModule
+        PopoverModule,
+        
     ],
     exports: [
         PaginationComponent,

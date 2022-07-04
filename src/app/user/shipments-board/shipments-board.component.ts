@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { Store } from '../../store';
 import { ShipmentService } from '../../services/shipment.service';
 import { UserService } from '../../services/user.service';
@@ -7,6 +7,10 @@ import { debounce } from 'lodash';
 import { OrderBoardPopupComponent } from '../order-board-popup/order-board-popup.component';
 import {PopoverModule} from 'ngx-bootstrap/popover';
 import { AvailbleBSPositions } from 'ngx-bootstrap/positioning';
+import { OrderAssignComponent } from 'src/app/orders/order-assign/order-assign.component';
+import { OrderBoardSwapSupplierComponent } from 'src/app/orders/order-board-swap-supplier/order-board-swap-supplier.component';
+
+
 
 
 @Component({
@@ -19,11 +23,35 @@ export class ShipmentsBoardComponent implements OnInit {
     user$ = this.store.select<any>('user');
     shipmentsBoard$ = this.store.select<any>('shipmentsBoard');
     popoverPos: AvailbleBSPositions = "right top";
+    public backConfirmModal = { show: false, card: undefined };
+    @Input() card;
+    @Input() col;
+    @Input() idx;
 
     updateRequested = false;
     shipment;
+    orderDetail;
+    orderId;
+    addingTracking = false;
+    showOrderCancel = false;
+    orderToCancel = null;
+    swapSupplier = false;
+    moveToConfirmation = false;
+    assigningOrder = false;
+    viewOrderModal = false;
+    
+
+
+    orderConfirmationData = {
+        open: false,
+        buttonText: 'Confirm',
+        title: '',
+        detail: '',
+        data: undefined,
+    };
 
     params = {
+        
         courierId: '',
         orderId: '',
         createdAt: undefined,
@@ -62,6 +90,10 @@ export class ShipmentsBoardComponent implements OnInit {
         private ordersService: OrdersService,
         private userService: UserService,
         private shipmentService: ShipmentService,
+
+      
+        
+       
         
     ) {
         this.filterSearch = debounce(this.filterSearch, 350);
@@ -77,9 +109,9 @@ export class ShipmentsBoardComponent implements OnInit {
     }
 
     getAdmins() {
-        // this.userService.getAdmins().subscribe(data => {
-        //     this.admins = data.data;
-        // })
+         this.userService.getAdmins().subscribe(data => {
+             this.admins = data.data;
+         })
     }
 
     getShipments() {
@@ -132,4 +164,58 @@ export class ShipmentsBoardComponent implements OnInit {
             this.shipmentService.shipmentsBoard(this.params).subscribe();
         }
     }
+    public showBackModal(card: any): void {
+        this.backConfirmModal.card = card;
+        this.backConfirmModal.show = true;
+    }
+    confirmOrderLine(e) {
+        this.orderConfirmationData.title = `Has the supplier agreed to the terms of this order?`;
+        this.orderConfirmationData.data = e.orderDetail;
+        this.orderConfirmationData.detail = '';
+        this.orderConfirmationData.open = true;
+    }
+    triggerAddingTracking(e) {
+        this.orderDetail = e;
+        this.addingTracking = true;
+    }
+
+    confirmCancellation(order: object) {
+        this.closeAllPopups('');
+        this.showOrderCancel = true;
+        this.orderToCancel = order;
+    }
+    swapSupplierRequested(e) {
+        this.orderDetail = e.orderDetail;
+        this.orderId = e.orderDetail.orderId;
+        this.swapSupplier = true;
+    }
+
+    triggerOrderAssign(e) {
+        this.orderDetail = e.card;
+        this.moveToConfirmation = e.moveToConfirmation;
+        this.assigningOrder = true;
+    }
+    orderModalRequested(e) {
+        this.orderDetail = e.orderDetail;
+        this.orderId = e.orderDetail.orderId;
+        this.viewOrderModal = true;
+    }
+
+    orderAssignComplete(e) {
+        this.assigningOrder = false;
+        if (e.action) {
+            this.filterSearch();
+        }
+    }
+
+    supplierSwapComplete(e) {
+        if (e.updated) {
+            this.filterSearch();
+        }
+        this.swapSupplier = false;
+    }
+
+    
+   
+    
 }

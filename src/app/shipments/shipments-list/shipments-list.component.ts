@@ -9,6 +9,7 @@ import { NotificationService } from '../../services/notification.service';
 // @todo: replace with another date picker
 // import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from 'saturn-datepicker-ext';
 import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';
+import { OrderBoardSwapSupplierComponent } from 'src/app/orders/order-board-swap-supplier/order-board-swap-supplier.component';
 
 @Component({
     selector: 'app-shipments-list',
@@ -43,6 +44,7 @@ export class ShipmentsListComponent implements OnInit, OnChanges {
         private overlayService: OverlayService,
         private alertService: AlertService,
         private notificationService: NotificationService,
+        
     ) {
         this.filterSearch = debounce(this.filterSearch, 350);
     }

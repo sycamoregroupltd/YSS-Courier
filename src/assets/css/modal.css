@@ -1,5 +1,10 @@
+
 .modal {
-    z-index: 12!important;
+    z-index: 3000 !important;
+    display: block !important;
+}
+/*.modal {
+    z-index: 12;
     margin: 50px auto;
     background-color: white;
     padding: 5px;
@@ -117,4 +122,6 @@
         overflow: hidden;
     }
 
-}
+}*/
+
+

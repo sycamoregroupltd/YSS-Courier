@@ -1,0 +1,28 @@
+<div class="modal show" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Assign order</h5>
+                <button (click)="cancel()" type="button" class="btn-close"></button>
+            </div>
+            <div class="modal-body">
+                <label>Select staff member</label>
+                <ng-select
+                [(ngModel)]="userSelected"
+                placeholder="Select user"
+                class="dark">
+                <ng-option [value]="user.id"  *ngFor="let user of users">{{user.name}}</ng-option>
+            </ng-select>
+            </div>
+            <div class="modal-footer">
+                <button (click)="cancel()" class="btn btn-sm btn-outline-primary" >
+                    Cancel
+                </button>
+                <button type="button" (click)="onSubmit()" [disabled]="!userSelected" class="btn btn-sm btn-primary">
+                    Save changes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-backdrop fade show modal-slide-show"></div>

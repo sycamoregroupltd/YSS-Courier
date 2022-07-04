@@ -1,6 +1,6 @@
 <div class="container-fluid bg-light-grey" style="min-height: 110vh;">
 
-    <div class="d-flex justify-content-between mt-0 mb-4 pt-5 pb-5" *ngIf="(shipmentsBoard$ | async)">
+    <div class="d-flex justify-content-between mt-0 mb-4 pt-5 pb-5 custom-board" *ngIf="(shipmentsBoard$ | async)">
         <div class="board-col-group" *ngFor="let g of (shipmentsBoard$ | async).groups">
             <h5 class="title">{{g.name}}</h5>
             <div class=" d-flex justify-content-between align-items-stretch">
@@ -23,13 +23,13 @@
                                     <div class="col-4">
                                     </div>
                                     <div class="col-2 text-right px-0">
-                                        <a (click)="open(card)"  [popover]="popTemplate"
-                                      
+                                        <a type="button" class="btn btn-blank p-0"
+                                        [popover]="popTemplate"
                                         [placement]="popoverPos"
                                         [adaptivePosition]="false"
                                         [outsideClick]="true">
                                             <i class="fa fa-ellipsis-h test"></i>
-                                        </a>
+                                    </a>
                                     </div>
                                 </div>
                             </div>
@@ -67,7 +67,17 @@
                                 </div>
                             </div>
                             <ng-template #popTemplate>
-                                <app-order-board-popup 
+                                <app-order-board-popup  [card]="card"
+                                [col]="c"
+                                [params]="params"
+                                (orderModalRequested)="orderModalRequested($event)"
+                                (assignOrderLine)="triggerOrderAssign($event)"
+                                (swapSupplierRequested)="swapSupplierRequested($event)"
+                                (cancelOrderLine)="confirmCancellation($event)"
+                                (addTracking)="triggerAddingTracking($event)"
+                                (confirmOrderLine)="confirmOrderLine($event)"
+                                (updateRequested)="requestUpdate($event)"
+                                (back)="showBackModal($event)"
                                    ></app-order-board-popup>
                             </ng-template>
                         </div>
@@ -77,3 +87,16 @@
         </div>
     </div>
 </div>
+
+<app-order-assign
+    *ngIf="assigningOrder"
+    [orderDetail]="orderDetail"
+    [moveToConfirmation]="moveToConfirmation"
+    [users]="admins"
+    (close)="orderAssignComplete($event)"></app-order-assign>
+
+    <app-order-board-swap-supplier
+    *ngIf="swapSupplier"
+    [orderDetail]="orderDetail"
+    (closeModal)="supplierSwapComplete($event)"></app-order-board-swap-supplier>
+

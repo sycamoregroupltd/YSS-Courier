@@ -1,1 +1,199 @@
-<p>order-board-popup works!</p>
+<div class="custom-popup-main" *ngIf="card">
+
+    <!-- standard order options -->
+
+    <ng-container *ngIf="!card.isSample">
+        <ul class="list-group">
+            <li class="list-group-item" *ngIf="!card.allocatedTo">
+                <a (click)="assignOrder(true)" *ngIf="!showAssignOrderConfirmation">
+                    <i class="fa fa-box-circle-check"></i> Assign order
+                </a>
+            </li>
+
+            <!--- if supplier and awaiting confirmation --->
+            <li class="list-group-item hasIcon hasIconLeft" *ngIf="col.groupId === 2 && card.status.id === 2">
+                <i class="fa fa-box-circle-check"></i>
+                <a (click)="confirmOrder()" *ngIf="!showConfirmOrderConfirmation">
+                    <i class="fa fa-check-circle text-success" aria-hidden="true"></i>
+                    Confirm order
+                </a>
+            </li>
+
+            <!--- if supplier and confirmed --->
+            <li class="list-group-item" *ngIf="col.groupId === 2 && card.status.id === 3">
+                <i class="fa fa-box-circle-check"></i>
+                <a *ngIf="!showConfirmOrderProduction">
+                    <i class="fa fa-box-circle-check"></i> Move to production
+                </a>
+            </li>
+            <!--- ready for collection --->
+            <li class="list-group-item" *ngIf="col.groupId === 2 && card.status.id === 4">
+                <a  *ngIf="!showReadyForCollection">
+                    <i class="fa fa-box-circle-check"></i> Ready for collection
+                </a>
+            </li>
+
+            <!--- into transit --->
+            <li class="list-group-item" *ngIf="(col.groupId === 3 && card.status.id === 5)">
+                <a  *ngIf="!showConfirmInTransit">
+                    <i class="fa fa-box-circle-check"></i> Mark as collected
+                </a>
+            </li>
+
+            <!--- Set to completed --->
+            <li class="list-group-item" *ngIf="(col.groupId === 3 && card.status.id === 6)">
+                <a *ngIf="!showConfirmCompleted">
+                    <i class="fa fa-box-circle-check"></i> Mark as delivered
+                </a>
+            </li>
+
+            <li class="list-group-item">
+                <a (click)="edit()">
+                    <i class="fa fa-edit"></i> View/Edit order
+                </a>
+            </li>
+            <li class="list-group-item hasIcon hasIconRight" *ngIf="card.allocatedTo">
+                <a (click)="assignOrder(false)">
+                    Assigned to: {{card.allocatedTo.name}}
+                    <i class="fa fa-chevron-right"></i>
+                </a>
+            </li>
+
+            <li class="list-group-item customCustomerList">
+                <span class="">Customer: {{card.contactsName}} </span>
+            </li>
+            <li (click)="swapSupplier()" class="list-group-item customSupplierList hasIcon hasIconRight">
+                <span class="">Supplier:</span> {{card.supplier.name}}
+                <i class="fa fa-chevron-right"></i>
+            </li>
+            <li class="list-group-item">
+                <button class="btn btn-sm btn-slim w-100" type="button" >
+                 Add PO Number
+                </button>
+            </li>
+            <li class="list-group-item">
+                <button class="btn btn-sm btn-slim w-100" type="button" >
+                 Add INV Number
+                </button>
+            </li>
+            <li class="list-group-item" *ngIf="col.groupId < 3">
+                <button class="btn btn-sm btn-slim w-100" type="button" (click)="confirmCancel()">
+                <i class="fa fa-ban color-red"></i> Cancel Order
+                </button>
+                <button class="btn btn-sm btn-slim btn-white w-100 mt-3" type="button"
+                        [ngClass]="{ 'disabled': card.osUpdateRequests.length }"
+                        (click)="requestUpdate()"
+                        (mouseenter)="updateRequestTooltip$.next(true)"
+                        (mouseleave)="updateRequestTooltip$.next(false)"
+                        *ngIf="col.groupId !== 1">
+                    <i class="fa fa-question-circle"></i>
+                    <span *ngIf="!card.osUpdateRequests.length"> Request update</span>
+                    <span *ngIf="card.osUpdateRequests.length"> Update requested</span>
+                </button>
+                <ng-container *ngIf="(updateRequestTooltip$$ | async) && card.osUpdateRequests.length">
+                    <div class="custom-tooltip small shadow-lg"
+                         [@fadeIn]
+                         (mouseenter)="updateRequestTooltip$.next(true)"
+                         (mouseleave)="updateRequestTooltip$.next(false)">
+                       <span>
+
+                           <span class="fw-bold">Requested:</span> {{card.osUpdateRequests[card.osUpdateRequests.length - 1].createdAt | date: 'dd/MM/yyyy @ hh:mm'}}<br>
+                           <span class="fw-bold">Created by:</span> {{card.osUpdateRequests[card.osUpdateRequests.length - 1].createdBy.name }}<br>
+                           <span class="fw-bold">Reason:</span> {{card.osUpdateRequests[card.osUpdateRequests.length - 1].reason.name }}<br>
+                           <span class="fw-bold">Q:</span> {{card.osUpdateRequests[card.osUpdateRequests.length - 1].adminComment}}
+                                <hr />
+                            <span *ngIf="!card.osUpdateRequests[card.osUpdateRequests.length - 1].repsonded">
+                                <span class="fw-bold">A:</span> Awaiting supplier response
+                            </span>
+                            <span *ngIf="card.osUpdateRequests[card.osUpdateRequests.length - 1].repsonded">
+                                <span class="fw-bold">A:</span> {{card.osUpdateRequests[card.osUpdateRequests.length - 1].repsonseComment}}
+                            </span>
+                       </span>
+                    </div>
+                </ng-container>
+
+            </li>
+            <li *ngIf="!(col.groupId === 1 && card.status.id === 1)" class="list-group-item" (click)="this.backHandler()">
+                <button class="btn btn-sm btn-slim w-100" type="button">
+                    <i class="fa fa-chevron-circle-left"></i> Back
+                </button>
+            </li>
+        </ul>
+
+    </ng-container>
+
+
+    <!-- sample order options -->
+
+    <ng-container *ngIf="card.isSample">
+        <ul class="list-group">
+            <li class="list-group-item" *ngIf="card.status.id === 10">
+                <a  *ngIf="!showAssignOrderConfirmation">
+                    <i class="fa fa-box-circle-check"></i> Mark as confirmed
+                </a>
+            </li>
+
+            <!--- Move to posted --->
+
+            <li class="list-group-item" *ngIf="card.status.id === 11">
+                <a *ngIf="!showConfirmOrderProduction">
+                    <i class="fa fa-box-circle-check"></i> Mark as posted
+                </a>
+            </li>
+            <!--- ready for collection --->
+            <li class="list-group-item" *ngIf="card.status.id === 12">
+                <a  *ngIf="!showReadyForCollection">
+                    <i class="fa fa-box-circle-check"></i> Mark as delivered
+                </a>
+            </li>
+            <li class="list-group-item" *ngIf="(col.groupId === 3 && card.status.id === 6)">
+                <a  *ngIf="!showConfirmCompleted">
+                    <i class="fa fa-box-circle-check"></i> Mark as delivered
+                </a>
+            </li>
+
+            <li class="list-group-item">
+                <a (click)="edit()">
+                    <i class="fa fa-edit"></i> View/Edit order
+                </a>
+            </li>
+            <li class="list-group-item">
+                {{card.contactFirstname}} {{card.contactSurname}}
+                <p class="mb-0" *ngIf="card.deliveryAddress.add1">{{card.deliveryAddress.add1}}</p>
+                <p class="mb-0" *ngIf="card.deliveryAddress.add2">{{card.deliveryAddress.add2}}</p>
+                <p class="mb-0" *ngIf="card.deliveryAddress.add3">{{card.deliveryAddress.add3}}</p>
+                <p class="mb-0" *ngIf="card.deliveryAddress.town">{{card.deliveryAddress.town}}</p>
+                <p class="mb-0" *ngIf="card.deliveryAddress.county">
+                    {{card.deliveryAddress.county}}
+                    <span *ngIf="card.deliveryAddress.postcode">, {{card.deliveryAddress.postcode}}</span>
+                </p>
+
+            </li>
+            <li class="list-group-item">
+                <button
+                    class="btn btn-sm btn-slim btn-white w-100" type="button" (click)="addtracking()">
+                    <i class="fa fa-truck"></i>
+                    <span *ngIf="card.trackingId"> Edit Tracking ID</span>
+                    <span *ngIf="!card.trackingId"> Add Tracking ID</span>
+                </button>
+            </li>
+
+            <li class="list-group-item" *ngIf="col.groupId < 3 || col.groupId === 5 || col.groupId === 6">
+                <button
+                    *ngIf="col.groupId < 3 || col.groupId === 5 || col.groupId === 6"
+                    class="btn btn-sm btn-slim btn-white w-100" type="button" (click)="confirmCancel()">
+                    <i class="fa fa-ban"></i> Cancel Order
+                </button>
+
+                <ng-container *ngIf="!card.osUpdateRequests.length && col.groupId !== 1">
+                    <button
+                        *ngIf="col.groupId < 3"
+                        class="btn btn-sm btn-slim btn-white w-100 mt-3" type="button" (click)="requestUpdate()">
+                        <i class="fa fa-question-circle"></i> Request update
+                    </button>
+
+                </ng-container>
+            </li>
+        </ul>
+    </ng-container>
+</div>

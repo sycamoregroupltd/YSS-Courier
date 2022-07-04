@@ -64,7 +64,9 @@ import {
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { OrderBoardPopupComponent } from './order-board-popup/order-board-popup.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {PopoverModule} from 'ngx-bootstrap/popover';
+import { PopoverModule } from 'ngx-bootstrap/popover';
+import { OrderOverviewModalComponent } from '../orders/order-overview-modal/order-overview-modal.component';
+import { OrderBoardSwapSupplierComponent } from '../orders/order-board-swap-supplier/order-board-swap-supplier.component';
 @NgModule({
     declarations: [
         AccountComponent,
@@ -112,6 +114,10 @@ import {PopoverModule} from 'ngx-bootstrap/popover';
         AccountOrdersMobileComponent,
         RegistrationAdditionalDetailsComponent,
         OrderBoardPopupComponent,
+        OrderBoardSwapSupplierComponent
+        
+        
+        
     ],
     imports: [
         CommonModule,
@@ -141,6 +147,8 @@ import {PopoverModule} from 'ngx-bootstrap/popover';
         CompanyMenuComponent,
         CustomerMenuComponent,
         RegisterModalComponent,
+        OrderBoardSwapSupplierComponent
+       
     ]
 })
 export class UserModule {

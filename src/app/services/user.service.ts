@@ -454,4 +454,17 @@ export class UserService {
                 }, catchError(this.apiService.handleError))
             );
     }
+
+    getAdmins() {
+        return this.http
+            .get(
+                this.env.apiPath + "users/admins",
+                this.apiService.getHttpOptions()
+            )
+            .pipe(
+                map((data: any) => {
+                    return data;
+                }, catchError(this.apiService.handleError))
+            );
+    }
 }

@@ -1,3 +1,5 @@
+
+@import "~src/assets/css/mixins";
 .board-col-group {
     margin: 2px;
     flex-basis: auto;
@@ -98,3 +100,101 @@ p.lg {
 .bg-light-grey {
     background-color: #f0f1f2;
 }
+
+/** Board Popup Css**/
+::ng-deep .custom-board {
+    .popover,
+    .list-group-item {
+        font-size: $font-size-xs;
+        border: 0 solid rgba(0, 0, 0, 0.125) !important;
+
+        button.btn {
+            text-align: left;
+            border: none;
+            box-shadow: none;
+            padding: 0 !important;
+            position: relative;
+
+            &:focus {
+                border: none;
+                box-shadow: none;
+            }
+        }
+
+        .hasIconRight i {
+            position: absolute;
+            left: auto;
+            right: 10px;
+            top: 12px;
+        }
+
+        i {
+            color: #5d6b7d;
+        }
+
+        a {
+            font-size: $font-size-xs;
+
+            &:hover {
+                color: inherit;
+            }
+        }
+
+        img.confirm-order-icon {
+            width: 19px;
+            margin-right: 1px;
+            position: relative;
+            right: 2px;
+        }
+    }
+
+    .popover {
+        box-shadow: 0 0 17px rgb(0 0 0 / 60%) !important;
+        width: 100% !important;
+
+        .list-group-item {
+            border-bottom: 1px solid #dfdede !important;
+        }
+
+        .popover-body {
+            padding: 0 !important;
+        }
+
+        .popover-arrow {
+            transform: none;
+            left: 12px !important;
+            width: 0;
+            height: 0;
+
+            &:after,
+            &:before {
+                border-width: 0;
+            }
+        }
+
+        &.bs-popover-bottom .popover-arrow {
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid #fefefe;
+        }
+
+        &.bs-popover-top .popover-arrow {
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid #fefefe;
+        }
+    }
+
+    .color-red {
+        color: $danger !important;
+    }
+
+    .lightgrey {
+        color: $gray;
+    }
+
+    .list-group {
+        border-radius: 0;
+    }
+}
+

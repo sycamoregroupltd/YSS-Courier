@@ -97,4 +97,33 @@ export class OrdersService {
             );
     }
 
+    assignUser(data) {
+        const dataToSend = {
+            data
+        }
+        return this.http.post(this.env.apiPath + 'orders/orderdetail/assign', dataToSend, this.apiService.getHttpOptions())
+            .pipe(
+                map((data: any) => {
+                    return data;
+                },
+                    catchError(this.apiService.handleError)
+                )
+            );
+    }
+
+    updateSupplier(orderDetail) {
+        const dataToSend = {
+            orderDetail,
+        };
+        return this.http.put(this.env.apiPath + 'orders/update/supplier', dataToSend, this.apiService.getHttpOptions())
+            .pipe(
+                map((data: any) => {
+                    return data;
+                },
+                    catchError(this.apiService.handleError)
+                )
+            );
+    }
+
+
 }

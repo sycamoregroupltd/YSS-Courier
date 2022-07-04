@@ -1,0 +1,337 @@
+@import "~src/assets/css/mixins";
+
+:host {
+    .fullscreen-holder {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 1070;
+        background: $white;
+
+        .fullscreen-header {
+            height: 50px;
+        }
+    }
+
+    .icon--info {
+        width: 17px;
+        height: auto;
+        fill: #fff;
+        stroke: #fff;
+    }
+
+    .board {
+        max-height: calc(100vh - 120px);
+        height: 100vh;
+        overflow-x: auto;
+        overflow-y: hidden;
+
+        &.board--fullscreen {
+            width: 100%;
+            height: 100%;
+            max-height: calc(100% - 50px);
+
+            .card-holder {
+                max-height: calc(100vh - 188px) !important;
+            }
+        }
+
+        &::-webkit-scrollbar {
+            height: 9px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: $white;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: $primary;
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+            background: $secondary;
+        }
+    }
+
+    .board-col-group {
+        flex-basis: auto;
+        flex-grow: 1;
+    }
+
+    .board-col-group .title {
+        font-size: 16px;
+        text-align: center;
+        background-color: #ccc;
+        color: #3d4d59 !important;
+        width: 100%;
+        padding: 15px;
+    }
+
+    .board-col {
+        flex: 1 1 0;
+        width: 0;
+        min-width: 275px;
+
+        .title {
+            font-size: 12px;
+            text-align: center;
+            background-color: #3d4d59;
+            color: white !important;
+            width: 100%;
+            padding: 10px 10px;
+        }
+    }
+
+    .card-holder {
+        height: 100%;
+        max-height: calc(100vh - 257px);
+        overflow-y: auto;
+
+        .card:not(:last-child) {
+            margin-bottom: 0.5rem;
+        }
+
+        &::-webkit-scrollbar {
+            width: 9px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: $white;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: $primary;
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+            background: $secondary;
+        }
+    }
+
+    .col-header {
+        height: 50px;
+    }
+
+    .card-body,
+    .card-header,
+    .card-footer {
+        padding: 0.35rem 0.5rem;
+    }
+
+    .card--order {
+        &:hover {
+            cursor: pointer;
+            background-color: $light;
+        }
+    }
+
+    .card .sub-header {
+        font-size: 11px;
+        margin-bottom: 0;
+        margin-top: 4px;
+        opacity: 0.6;
+    }
+
+    .card .bespoke-row {
+        background-color: #f2f2f2;
+        width: 100%;
+        padding: 4px 5px;
+        margin: 7px 0;
+    }
+
+    .card .customer-name {
+        background-color: #737e87;
+        color: #fff;
+        width: 100%;
+        padding: 2px 5px;
+    }
+
+    .card-header-footer-text {
+        font-size: 0.875rem;
+    }
+
+    .card-header-icon-gap {
+        gap: 0.3rem;
+    }
+
+    .colDanger {
+        color: rgba(240, 52, 52, 0.5)
+    }
+
+    .bg-public-order {
+        background-color: aliceblue;
+    }
+
+    p.sm {
+        font-size: 11px;
+    }
+
+    p.md {
+        font-size: 13px;
+    }
+
+    p.lg {
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .small--xs {
+        font-size: $font-size-sm * 0.8;
+    }
+
+    .tooltip-trigger {
+        position: relative;
+        overflow: visible;
+    }
+
+    .custom-tooltip {
+        position: absolute;
+        background: $white;
+        border-radius: $border-radius;
+        padding: 1rem;
+        top: 100%;
+        left: 0;
+        // right: 0;
+        color: $primary;
+        z-index: 3;
+        width: 250px;
+        font-size: 80%;
+    }
+
+    .rounded-xl {
+        border-radius: 1.3rem;
+    }
+
+    .custom-toggle {
+        .active {
+            border-color: $primary !important;
+            font-weight: 700;
+        }
+    }
+
+    .w-40 {
+        width: 40%;
+    }
+
+    .w-60 {
+        width: 60%;
+    }
+
+    .icon-color {
+        color: gray;
+    }
+
+    app-order-board-popup {
+        min-height: 257px;
+    }
+
+    .days-offset {
+        font-weight: bold;
+        color: $success;
+
+        &.reddish {
+            color: $danger
+        }
+    }
+
+    /* board page popover css */
+    ::ng-deep .custom-board {
+        .popover,
+        .list-group-item {
+            font-size: $font-size-xs;
+            border: 0 solid rgba(0, 0, 0, 0.125) !important;
+
+            button.btn {
+                text-align: left;
+                border: none;
+                box-shadow: none;
+                padding: 0 !important;
+                position: relative;
+
+                &:focus {
+                    border: none;
+                    box-shadow: none;
+                }
+            }
+
+            .hasIconRight i {
+                position: absolute;
+                left: auto;
+                right: 10px;
+                top: 12px;
+            }
+
+            i {
+                color: #5d6b7d;
+            }
+
+            a {
+                font-size: $font-size-xs;
+
+                &:hover {
+                    color: inherit;
+                }
+            }
+
+            img.confirm-order-icon {
+                width: 19px;
+                margin-right: 1px;
+                position: relative;
+                right: 2px;
+            }
+        }
+
+        .popover {
+            box-shadow: 0 0 17px rgb(0 0 0 / 60%) !important;
+            width: 100% !important;
+
+            .list-group-item {
+                border-bottom: 1px solid #dfdede !important;
+            }
+
+            .popover-body {
+                padding: 0 !important;
+            }
+
+            .popover-arrow {
+                transform: none;
+                left: 12px !important;
+                width: 0;
+                height: 0;
+
+                &:after,
+                &:before {
+                    border-width: 0;
+                }
+            }
+
+            &.bs-popover-bottom .popover-arrow {
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+                border-bottom: 10px solid #fefefe;
+            }
+
+            &.bs-popover-top .popover-arrow {
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+                border-top: 10px solid #fefefe;
+            }
+        }
+
+        .color-red {
+            color: $danger !important;
+        }
+
+        .lightgrey {
+            color: $gray;
+        }
+
+        .list-group {
+            border-radius: 0;
+        }
+    }
+}
