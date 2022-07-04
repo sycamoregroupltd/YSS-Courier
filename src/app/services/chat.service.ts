@@ -3,7 +3,7 @@ import { catchError, map } from 'rxjs/operators';
 import { Store } from '../store';
 import { Socket } from 'ngx-socket-io';
 import { ApiService } from './api.service';
-import { HttpClient } from '@angular/common/http';
+import { ApiAuthHttpClient } from '../http/ApiAuthHttpClient';
 import { environment } from '../../environments/environment';
 import { OverlayService } from './overlay.service';
 import { ToastrService } from 'ngx-toastr';
@@ -18,7 +18,7 @@ export class ChatService {
         private store: Store,
         private socket: Socket,
         private apiService: ApiService,
-        private http: HttpClient,
+        private http: ApiAuthHttpClient,
         private overlayService: OverlayService,
         private toastr: ToastrService,
     ) {

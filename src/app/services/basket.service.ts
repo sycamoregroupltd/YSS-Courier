@@ -3,7 +3,7 @@ import { Store } from '../store';
 import { CookieService } from './cookie.service';
 import { ApiService } from './api.service';
 import { catchError, map } from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
+import { ApiAuthHttpClient } from '../http/ApiAuthHttpClient';
 import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
 
@@ -16,7 +16,7 @@ export class BasketService {
     constructor(
         private router: Router,
         private apiService: ApiService,
-        private http: HttpClient,
+        private http: ApiAuthHttpClient,
         private store: Store,
         private cookieService: CookieService,
     ) {

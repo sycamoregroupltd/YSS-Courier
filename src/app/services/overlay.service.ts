@@ -16,6 +16,19 @@ export class OverlayService {
         return this.store.selectForLocal('overlays');
     }
 
+    open(v) {
+        const o = this.store.selectForLocal('overlays');
+        o[v] = true;
+        this.store.set('overlays', o);
+    }
+
+    close(v) {
+        const o = this.store.selectForLocal('overlays');
+        o[v] = false;
+        this.store.set('overlays', o);
+        this.store.set('asideOpen', false);
+    }
+
     toggleModal(overlayToToggle) {
         const overlays = this.get();
 

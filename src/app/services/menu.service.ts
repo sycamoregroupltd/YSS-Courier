@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
-import { HttpClient } from '@angular/common/http';
+import { ApiAuthHttpClient } from '../http/ApiAuthHttpClient';
 import { Store } from '../store';
 import { environment } from '../../environments/environment';
 
@@ -11,7 +11,7 @@ export class MenuService {
     env = environment;
 
     constructor(
-        private http: HttpClient,
+        private http: ApiAuthHttpClient,
         private apiService: ApiService,
         private store: Store,
     ) {

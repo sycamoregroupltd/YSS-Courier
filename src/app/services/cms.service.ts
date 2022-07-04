@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Store } from '../store';
 import { ApiService } from './api.service';
-import { HttpClient } from '@angular/common/http';
+import { ApiAuthHttpClient } from '../http/ApiAuthHttpClient';
 import { map } from 'rxjs/operators';
 import { environment as env } from '../../environments/environment';
 
@@ -11,7 +11,7 @@ import { environment as env } from '../../environments/environment';
 export class CmsService {
 
     constructor(
-        private http: HttpClient,
+        private http: ApiAuthHttpClient,
         private apiService: ApiService,
         private store: Store,
     ) {

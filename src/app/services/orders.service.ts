@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { catchError, map } from 'rxjs/operators';
 import { ApiService } from './api.service';
-import { HttpClient } from '@angular/common/http';
+import { ApiAuthHttpClient } from '../http/ApiAuthHttpClient';
 import { environment } from '../../environments/environment';
 import { Store } from '../store';
 
@@ -13,7 +13,7 @@ export class OrdersService {
 
     constructor(
         private apiService: ApiService,
-        private http: HttpClient,
+        private http: ApiAuthHttpClient,
         private store: Store,
     ) {
     }
