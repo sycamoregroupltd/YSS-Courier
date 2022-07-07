@@ -1,0 +1,30 @@
+<div class="modal show">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Are you sure you want to move this order?</h5>
+                <button (click)="this.cancel()" type="button" class="btn-close"></button>
+            </div>
+            <div class="modal-body">
+                <label>Select status</label>
+                <ng-select
+                    [(ngModel)]="selectedStatus"
+                    [clearable]="false"
+                    [searchable]="false"
+                    placeholder="Select status"
+                    class="dark">
+                    <ng-option *ngFor="let status of orderLineStatuses" [value]="status">{{status.adminText}}</ng-option>
+                </ng-select>
+            </div>
+            <div class="modal-footer">
+                <button (click)="this.cancel()" class="btn btn-sm btn-outline-primary" >
+                    Cancel
+                </button>
+                <button type="button" (click)="this.submit()" [disabled]="!selectedStatus" class="btn btn-sm btn-primary">
+                    Save changes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-backdrop fade show modal-slide-show"></div>

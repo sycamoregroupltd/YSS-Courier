@@ -14,6 +14,10 @@ import { OrderAssignComponent } from './order-assign/order-assign.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { OrderBoardSwapSupplierComponent } from './order-board-swap-supplier/order-board-swap-supplier.component';
+import { AddPoNumberComponent } from './add-po-number/add-po-number.component';
+import { AddInvNumberComponent } from './add-inv-number/add-inv-number.component';
+import { MoveBackModalComponent } from './move-back-modal/move-back-modal.component';
+import { OrderOverviewComponent } from './order-overview/order-overview.component';
 
 
 
@@ -24,9 +28,8 @@ import { OrderBoardSwapSupplierComponent } from './order-board-swap-supplier/ord
         OrderDetailSearchComponent,
         OrderStatusUpdateComponent,
         OrderAssignComponent,
+  
         
-        
-    
     ],
     imports: [
         CommonModule,

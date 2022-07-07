@@ -67,6 +67,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PopoverModule } from 'ngx-bootstrap/popover';
 import { OrderOverviewModalComponent } from '../orders/order-overview-modal/order-overview-modal.component';
 import { OrderBoardSwapSupplierComponent } from '../orders/order-board-swap-supplier/order-board-swap-supplier.component';
+import { AddPoNumberComponent } from '../orders/add-po-number/add-po-number.component';
+import { AddInvNumberComponent } from '../orders/add-inv-number/add-inv-number.component';
+import { MoveBackModalComponent } from '../orders/move-back-modal/move-back-modal.component';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { OrderOverviewComponent } from '../orders/order-overview/order-overview.component';
 @NgModule({
     declarations: [
         AccountComponent,
@@ -114,7 +119,13 @@ import { OrderBoardSwapSupplierComponent } from '../orders/order-board-swap-supp
         AccountOrdersMobileComponent,
         RegistrationAdditionalDetailsComponent,
         OrderBoardPopupComponent,
-        OrderBoardSwapSupplierComponent
+        OrderBoardSwapSupplierComponent,
+        AddPoNumberComponent,
+        AddInvNumberComponent,
+        MoveBackModalComponent,
+        OrderOverviewModalComponent,
+        OrderOverviewComponent
+        
         
         
         
@@ -135,7 +146,8 @@ import { OrderBoardSwapSupplierComponent } from '../orders/order-board-swap-supp
         ProductModule,
         AngularSvgIconModule,
         NgbModule,
-        PopoverModule
+        PopoverModule,
+        NgSelectModule
     ],
     exports: [
         AccountComponent,
@@ -147,7 +159,12 @@ import { OrderBoardSwapSupplierComponent } from '../orders/order-board-swap-supp
         CompanyMenuComponent,
         CustomerMenuComponent,
         RegisterModalComponent,
-        OrderBoardSwapSupplierComponent
+        OrderBoardSwapSupplierComponent,
+        AddPoNumberComponent,
+        AddInvNumberComponent,
+        MoveBackModalComponent,
+        OrderOverviewModalComponent,
+        OrderOverviewComponent
        
     ]
 })

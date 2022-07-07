@@ -1,0 +1,24 @@
+<ng-template #poNumberTemplate>
+    <div class="ff-spectral fs-3 mb-4">Add Po Number</div>
+    <form novalidate class="mb-4" [formGroup]="poNumberForm">
+        <div class="ff-spectral fw-bold mb-1">Enter Po Number</div>
+        <input
+            type="text"
+            class="form-control"
+            placeholder="Enter a PO number"
+            formControlName="poNumber"
+            [ngClass]="{
+                'is-invalid':
+                    poNumberForm.controls.poNumber.invalid &&
+                    poNumberForm.controls.poNumber.touched
+            }"
+        />
+        <div class="invalid-feedback">
+            {{
+                poNumberForm.controls.poNumber.hasError("required")
+                    ? "Po Number is required"
+                    : "Must be less than or equal to 10 characters"
+            }}
+        </div>
+    </form>
+</ng-template>

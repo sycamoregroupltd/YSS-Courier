@@ -66,4 +66,10 @@ export class ToolsService {
     getMonthNames() {
         return ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     }
+
+    datediff(first, second) {
+        // Take the difference between the dates and divide by milliseconds per day.
+        // Round to nearest whole number to deal with DST.
+        return Math.round((second - first) / (1000 * 60 * 60 * 24));
+    }
 }

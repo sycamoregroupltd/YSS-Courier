@@ -1,0 +1,24 @@
+<ng-template #invNumberTemplate>
+    <div class="ff-spectral fs-3 mb-4">Add INV Number</div>
+    <form novalidate class="mb-4" [formGroup]="invNumberForm">
+        <div class="ff-spectral fw-bold mb-1">Enter INV Number</div>
+        <input
+            type="text"
+            class="form-control"
+            placeholder="Enter a INV number"
+            formControlName="invNumber"
+            [ngClass]="{
+                'is-invalid':
+                    invNumberForm.controls.invNumber.invalid &&
+                    invNumberForm.controls.invNumber.touched
+            }"
+        />
+        <div class="invalid-feedback">
+            {{
+                invNumberForm.controls.invNumber.hasError("required")
+                    ? "Po Number is required"
+                    : "Must be less than or equal to 10 characters"
+            }}
+        </div>
+    </form>
+</ng-template>

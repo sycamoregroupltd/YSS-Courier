@@ -1,6 +1,9 @@
 import { Component,EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { BehaviorSubject, debounce, Observable, timer } from 'rxjs';
 import { Store } from "../../store";
+import { PoNumberAlertData } from "../../orders/add-po-number/add-po-number.component";
+import { InvNumberAlertData } from 'src/app/orders/add-inv-number/add-inv-number.component';
+
 
 @Component({
   selector: 'app-order-board-popup',
@@ -21,6 +24,9 @@ export class OrderBoardPopupComponent implements OnInit {
     @Output() assignOrderLine = new EventEmitter();
     @Output() confirmOrderLine = new EventEmitter();
     @Output() back = new EventEmitter<any>();
+    @Output() showPoNumberModal = new EventEmitter<PoNumberAlertData>();
+    @Output() showInvNumberModal = new EventEmitter<InvNumberAlertData>();
+   
 
     showAssignOrderConfirmation = false;
     showConfirmOrderConfirmation = false;
@@ -104,6 +110,28 @@ export class OrderBoardPopupComponent implements OnInit {
 
     public backHandler(): void {
         this.back.emit(this.card);
+    }
+    public showPoNumber(){
+        console.log('12');
+        this.showPoNumberModal.emit({
+        showPoNumberModal: true,
+        cancelText: '',
+        confirmText: '',
+        data: '',
+        confirmClass: null,
+        template: null
+        });
+    }
+
+    public showInvNumber(){
+        this.showInvNumberModal.emit({
+        showInvNumberModal: true,
+        cancelText: '',
+        confirmText: '',
+        data: '',
+        confirmClass: null,
+        template: null
+        });
     }
 
 }

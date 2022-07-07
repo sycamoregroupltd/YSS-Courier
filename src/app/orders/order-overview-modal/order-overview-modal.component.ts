@@ -1,6 +1,7 @@
 import { OrdersService } from '../../services/orders.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {AlertService} from '../../services/alert.service';
+import { OrderOverviewComponent } from '../order-overview/order-overview.component';
 
 @Component({
     selector: 'app-order-overview-modal',
@@ -16,6 +17,7 @@ export class OrderOverviewModalComponent implements OnInit {
     constructor(
         private ordersService: OrdersService,
         private alertService: AlertService,
+       
     ) { }
 
     ngOnInit(): void {

@@ -1,1 +1,21 @@
-<p>order-overview-modal works!</p>
+<div class="modal show" id="order-details">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Order overview <span *ngIf="order">{{order.publicId}}</span></h5>
+                <button (click)="cancel()" type="button" class="btn-close"></button>
+            </div>
+            <div class="modal-body bg-light">
+                <app-order-overview ></app-order-overview>
+            </div>
+            <div class="modal-footer">
+                <div class="d-flex justify-content-between w-100">
+                    <button (click)="cancel()" type="button" class="btn btn-sm btn-secondary">Cancel</button>
+                    <button (click)="update()" type="button" class="btn btn-sm btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-backdrop show"></div>

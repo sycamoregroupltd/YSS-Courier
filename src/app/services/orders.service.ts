@@ -4,6 +4,7 @@ import { ApiService } from './api.service';
 import { ApiAuthHttpClient } from '../http/ApiAuthHttpClient';
 import { environment } from '../../environments/environment';
 import { Store } from '../store';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Injectable({
     providedIn: 'root'
@@ -124,6 +125,56 @@ export class OrdersService {
                 )
             );
     }
+
+    public setPoNumber(card) {
+        return this.http
+            .put(
+                this.env.apiPath + "orders/line/po",
+               card,
+                this.apiService.getHttpOptions()
+            )
+            .pipe(
+                map((data: HttpErrorResponse) => {
+                    return data;
+                }, catchError(this.apiService.handleError))
+            );
+    }
+
+    public setInvNumber(card) {
+        return this.http
+            .put(
+                this.env.apiPath + "orders/line/inv",
+               card,
+                this.apiService.getHttpOptions()
+            )
+            .pipe(
+                map((data: HttpErrorResponse) => {
+                    return data;
+                }, catchError(this.apiService.handleError))
+            );
+    }
+    
+
+    
+    updateOrderLineStatus(orderLine) {
+        const dataToSend = {
+            orderLine,
+            user: this.store.selectForLocal('user'),
+        };
+        return this.http.put(this.env.apiPath + 'orders/line/status', dataToSend, this.apiService.getHttpOptions())
+            .pipe(
+                map((data: any) => {
+                    return data;
+                },
+                    catchError(this.apiService.handleError)
+                )
+            );
+    }
+
+    
+
+    
+    
 
 
 }
