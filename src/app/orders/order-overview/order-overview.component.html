@@ -1,1 +1,266 @@
-<p>order-overview works!</p>
+<ng-container *ngIf="order">
+    <h1 *ngIf="!isModal" class="ff-spectral border-gray border-bottom text-center pb-4 mb-5">
+        Product Orders
+    </h1>
+
+    <div *ngIf="order.payment.method.id === 'BACS' && order.sampleOnly === 0 && (+order.payment.gross - +order.payment.amountPaid) > 0" class="alert alert-danger mb-4">
+        <h5 class="text-center mb-0">This order is to be paid by BACS - No payment has been reconciled</h5>
+    </div>
+
+    <div class="card h-100 border-0 bg-white shadow-sm">
+        <div class="card-body p-xl-5">
+            <div class="row g-4">
+                <div class="col-6 col-lg-3">
+                    <div class="ff-spectral small text-muted mb-1">
+                        Product Order Number
+                    </div>
+                    <div class="ff-spectral fs-2 fw-bold">
+                        ORD {{order.publicId}}
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="ff-spectral small text-muted mb-1">
+                        Due Date
+                    </div>
+                    <div class="ff-spectral fs-2 fw-bold">
+                        {{order.orderLines[0].dueDate |date:'E, dd MMM yyyy'}}
+                    </div>
+                    <div class="text-blue-link">
+                        Edit
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="ff-spectral small text-muted mb-1">
+                        Current Status
+                    </div>
+                    <div class="ff-spectral fs-2 fw-bold">
+                        -
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="my-0">
+        <div class="card-body p-xl-5">
+            <div class="row g-4">
+                <div class="col-12 col-lg-6">
+                    <div class="ff-spectral small text-muted mb-1">
+                        Customer
+                    </div>
+                    <div class="ff-spectral fs-2 fw-bold">
+                        {{order.customer.contact.firstname}} {{order.customer.contact.surname}}
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <div class="w-100 d-flex justify-content-lg-end">
+                        <button class="btn btn-secondary me-3">
+                            Edit Order
+                        </button>
+                        <button class="btn btn-blank">
+                            <i class="fas fa-ellipsis-h text-muted"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-3">
+                    <div class="ff-spectral small text-muted mb-3">
+                        Customer Details
+                    </div>
+                    <div class="text-primary">
+                        <div *ngIf="order.customer.contact.email" class="fw-500 mb-2">
+                                {{order.customer.contact.email}}
+                        </div>
+                        <div *ngIf="order.customer.contact.mobile" class="fw-500 mb-2">
+                            {{order.customer.contact.mobile}}
+                        </div>
+                        <div *ngIf="order.customer.contact.landline" class="fw-500 mb-2">
+                            {{order.customer.contact.landline}}
+                        </div>
+                        <div class="text-blue-link">
+                            <a class="text-blue-link" [routerLink]="['/accounts/overview/customer/', order.customer.id]">
+                                View all details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-3">
+                    <div class="ff-spectral small text-muted mb-3">
+                        Invoice Address
+                    </div>
+                    <div *ngIf="order.invoiceAddress" class="text-primary">
+                        <div class="fw-500 mb-2">
+                            {{order.invoiceAddress.add1}}
+                        </div>
+                        <div *ngIf="order.invoiceAddress.add2" class="fw-500 mb-2">
+                            {{order.invoiceAddress.add2}}
+                        </div>
+                        <div *ngIf="order.invoiceAddress.add3" class="fw-500 mb-2">
+                            {{order.invoiceAddress.add3}}
+                        </div>
+                        <div *ngIf="order.invoiceAddress.town" class="fw-500 mb-2">
+                            {{order.invoiceAddress.town}}
+                        </div>
+                        <div *ngIf="order.invoiceAddress.county" class="fw-500 mb-2">
+                            {{order.invoiceAddress.county}}
+                        </div>
+                        <div *ngIf="order.invoiceAddress.postcode" class="fw-500 mb-2">
+                            {{order.invoiceAddress.postcode}}
+                        </div>
+                        <div (click)="triggerAddressAmend(addressTypeType.Invoice)" class="hover text-blue-link mt-2">
+                            Edit current address
+                        </div>
+
+                    </div>
+                    <div (click)="triggerAddressAdd(addressTypeType.Invoice)" class="hover text-blue-link">
+                        Add new address <span *ngIf="order.invoiceAddress">or swap</span>
+                    </div>
+
+
+                </div>
+                <div class="col-12 col-lg-3">
+                    <div class="ff-spectral small text-muted mb-3">
+                        Delivery Address
+                    </div>
+                    <div *ngIf="order.deliveryAddress" class="text-primary">
+                        <div class="fw-500 mb-2">
+                            {{order.deliveryAddress.add1}}
+                        </div>
+                        <div *ngIf="order.deliveryAddress.add2" class="fw-500 mb-2">
+                            {{order.deliveryAddress.add2}}
+                        </div>
+                        <div *ngIf="order.deliveryAddress.add3" class="fw-500 mb-2">
+                            {{order.deliveryAddress.add3}}
+                        </div>
+                        <div *ngIf="order.deliveryAddress.town" class="fw-500 mb-2">
+                            {{order.deliveryAddress.town}}
+                        </div>
+                        <div *ngIf="order.deliveryAddress.county" class="fw-500 mb-2">
+                            {{order.deliveryAddress.county}}
+                        </div>
+                        <div *ngIf="order.deliveryAddress.postcode" class="fw-500 mb-2">
+                            {{order.deliveryAddress.postcode}}
+                        </div>
+                        <div (click)="triggerAddressAmend(addressTypeType.Delivery)" class="hover text-blue-link mt-2">
+                            Edit current address
+                        </div>
+
+                    </div>
+                    <div (click)="triggerAddressAdd(addressTypeType.Delivery)" class="hover text-blue-link">
+                        Add new address <span *ngIf="order.deliveryAddress">or swap</span>
+                    </div>
+
+                </div>
+                <div class="col-12 col-lg-3">
+                    <div class="ff-spectral small text-muted mb-3">
+                        Invoice Details
+                    </div>
+                    <!-- <div (click)="triggerAddressAdd(addressTypeType.Invoice)" class="text-blue-link">
+                        View invoice
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <div class="card-body p-xl-5">
+            <div class="ff-spectral text-secondary fs-3 fw-bold bg-info op-8 p-3">
+                Products Ordered
+            </div>
+            <app-order-overview-line [order]="order"></app-order-overview-line>
+            
+        </div>
+        <div class="card-body p-xl-5">
+            <div class="ff-spectral text-secondary fs-3 fw-bold bg-info op-8 p-3">
+                Order Totals
+            </div>
+            <div class="table-responsive">
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <th>
+                            <h6>Net Value</h6>
+                            <p class="mb-0">(Includes discount of {{ +order.payment.productDiscount + +order.payment.rewardDiscount  | currency: 'GBP'}} )</p>
+                        </th>
+                        <td align="right"><h6>{{+order.payment.net | currency: 'GBP'}}</h6></td>
+                    </tr>
+                    <tr>
+                        <th><h6>Delivery Value</h6></th>
+                        <td align="right"><h6>{{order.payment.delivery | currency: 'GBP'}}</h6></td>
+                    </tr>
+
+                    <tr>
+                        <th><h6>VAT Value</h6></th>
+                        <td align="right"><h6>{{(order.payment.vat - order.payment.deliveryVat) | currency: 'GBP'}}</h6></td>
+                    </tr>
+                    <tr>
+                        <th><h6>VAT on Delivery</h6></th>
+                        <td align="right"><h6>{{order.payment.deliveryVat | currency: 'GBP'}}</h6></td>
+                    </tr>
+
+                    <tr *ngIf="order.payment.voucher">
+                        <th><h6>Voucher Discount ({{order.payment.voucher.code}})</h6></th>
+                        <td align="right"><h6>- {{order.payment.voucherDiscount | currency: 'GBP'}}</h6></td>
+                    </tr>
+                    <tr>
+                        <th><h6>Gross Value</h6></th>
+                        <td align="right"><h6>{{order.payment.gross | currency: 'GBP'}}</h6></td>
+                    </tr>
+                    <tr>
+                        <th><h6>Total Paid</h6></th>
+                        <td align="right"><h6>{{order.payment.amountPaid | currency: 'GBP'}}</h6></td>
+                    </tr>
+                    <tr>
+                        <th><h6 class="text-danger">Total Outstanding</h6></th>
+                        <td align="right">
+                            <h6 class="text-danger">{{(order.payment.gross - order.payment.amountPaid) | currency: 'GBP'}}</h6></td>
+                    </tr>
+
+                    <tr *ngIf="order.payment.gross > 0">
+                        <th><h6>Payment Method</h6></th>
+                        <td align="right">
+                            <h6>{{order.payment.method.name}}</h6>
+                            <a *ngIf="order.payment.method.id === 'CC'" class="text-danger" target="_blank" [href]="'https://dashboard.stripe.com/payments/' + order.payment.intentId">View Payment</a>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card-body p-xl-5">
+            <div class="ff-spectral text-secondary fs-3 fw-bold bg-info op-8 p-3">
+                Notifications
+            </div>
+        </div>
+        <div class="card-body p-xl-5">
+            <div class="ff-spectral text-secondary fs-3 fw-bold bg-info op-8 p-3">
+                Notes
+            </div>
+            <ng-container *ngIf="!edittingInstructions">
+                <p class="mb-4" *ngIf="order.deliveryInstructions">{{order.deliveryInstructions}}</p>
+                <p class="mb-4" *ngIf="!order.deliveryInstructions">No special instructions</p>
+            </ng-container>
+
+            <ng-container *ngIf="edittingInstructions">
+                <textarea class="form-control bordered h-100" [(ngModel)]="instructions">{{instructions}}</textarea>
+            </ng-container>
+
+            <ng-container *ngIf="edittingInstructions">
+                <button class="btn btn-secondary btn-sm me-2 mt-2" (click)="editInstructions()">Cancel</button>
+                <button class="btn btn-primary btn-sm mt-2" (click)="updateDeliveryInstructions()">Save</button>
+            </ng-container>
+            <button *ngIf="!edittingInstructions" class="btn btn-primary btn-sm" (click)="editInstructions()">Edit</button>
+
+        </div>
+        <div class="card-body p-xl-5">
+            <div class="ff-spectral text-secondary fs-3 fw-bold bg-info op-8 p-3">
+                Chat History
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="!isModal" class="d-flex justify-content-center">
+        <button (click)="update()" class="btn btn-round btn-primary mt-4">
+            Save Changes
+        </button>
+    </div>
+
+</ng-container>
+
+

@@ -116,6 +116,7 @@ export class ShipmentsBoardComponent implements OnInit {
     }
 
     ngOnInit(): void {
+
         this.getShipments();
         this.getAdmins();
     }

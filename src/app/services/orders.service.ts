@@ -171,9 +171,45 @@ export class OrdersService {
             );
     }
 
-    
+    findOne(id) {
+        return this.http.get(this.env.apiPath + 'orders/' + id, this.apiService.getHttpOptions())
+            .pipe(
+                map((data: any) => {
+                    return data;
+                },
+                    catchError(this.apiService.handleError)
+                )
+            );
+    }
+    updateAddress(orderId, address, type) {
+        const dataToSend = {
+            orderId,
+            address,
+            type,
+        };
+        return this.http.put(this.env.apiPath + 'orders/address', dataToSend, this.apiService.getHttpOptions())
+            .pipe(
+                map((data: any) => {
+                    return data;
+                },
+                    catchError(this.apiService.handleError)
+                )
+            );
+    }
+
 
     
+    updateDeliveryInstructions(data) {
+        return this.http.put(this.env.apiPath + 'orders/update/deliveryinstructions', data, this.apiService.getHttpOptions())
+            .pipe(
+                map((data: any) => {
+                    return data;
+                },
+                    catchError(this.apiService.handleError)
+                )
+            );
+
+    }
     
 
 

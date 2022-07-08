@@ -1,0 +1,194 @@
+<div class="table-responsive">
+    <table class="table table-borderless align-middle">
+        <thead class="thead-white">
+        <tr>
+            <th class="ff-spectral text-primary fs-5 fw-600 text-nowrap">Product</th>
+            <th class="ff-spectral text-primary fs-5 fw-600 text-nowrap">Assigned To</th>
+            <th class="ff-spectral text-primary fs-5 fw-600 text-nowrap">Supplier</th>
+            <th class="ff-spectral text-primary fs-5 fw-600 text-nowrap">Status</th>
+            <th class="ff-spectral text-primary fs-5 fw-600 text-nowrap">Math</th>
+            <th class="ff-spectral text-primary fs-5 fw-600 text-nowrap">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr class="toplined" *ngFor="let pd of order.orderLines; let i = index">
+                <td>
+                    <p class="mb-0" *ngIf="pd.isBespoke">
+                        {{pd.basketItem.product.name}} - {{pd.basketItem.product.finish.name}}
+                        <!-- {{pd.basketItem.product.type.name}} -->
+                    </p>
+                    <p class="mb-0" *ngIf="!pd.isBespoke">
+                        {{pd.product.productCode}} - {{pd.product.name}}
+                    </p>
+
+                    <p class="mb-0">
+                        Sku: <span *ngIf="!pd.isSample">{{pd.skuId}}</span>
+                        <span *ngIf="pd.isSample">n/a</span>
+                    </p>
+
+                    <span *ngIf="pd.isSample" class="badge bg-secondary rounded-pill me-2">Free Sample</span>
+                    <span *ngIf="pd.isSample && pd.trackingId" class="badge bg-light text-dark rounded-pill me-2">Tracking Id: {{pd.trackingId}}</span>
+                    <span *ngIf="pd.isSample" class="badge bg-secondary rounded-pill">Potential Qty: {{pd.potentialQty}}</span>
+
+                    <div *ngIf="!pd.isBespoke">
+                        <p class="mb-0 mt-3 small" *ngIf="pd.options.width || pd.options.length">
+                            (W) {{pd.options.width.optionName}}
+                            (L) {{pd.options.length.optionName}}
+                            (H) {{pd.options.height.optionName}}
+                        </p>
+                        <p class="mb-0 small" *ngIf="pd.options.edge">Edge: {{pd.options.edge.optionName}}</p>
+                        <p class="mb-0 small" *ngIf="pd.options.masonry">Edge: {{pd.options.masonry.optionName}}</p>
+                        <p class="mb-0 small" *ngIf="pd.options.finishAdd">Top: {{pd.options.finishAdd.optionName}}</p>
+                        <p class="mb-0 small" *ngIf="pd.options.masonry2">Underside: {{pd.options.masonry2.optionName}}</p>
+                    </div>
+
+                    <div *ngIf="pd.isBespoke">
+                        <p class="mb-0 mt-3 small" *ngIf="pd.basketItem.product.width || pd.basketItem.product.length || pd.basketItem.product.height">
+                            <span *ngIf="!pd.basketItem.product.widthRandom">(W) {{pd.basketItem.product.width}}mm </span>
+                            <span *ngIf="pd.basketItem.product.widthRandom">(W) R </span>
+                            <span *ngIf="!pd.basketItem.product.lengthRandom">(L) {{pd.basketItem.product.length}}mm </span>
+                            <span *ngIf="pd.basketItem.product.lengthRandom">(L) R </span>
+                            <span>(H) {{pd.basketItem.product.height}}mm </span>
+                        </p>
+                        <p class="mb-0 small" *ngIf="pd.basketItem.product.edge">Edge: {{pd.options.edge.optionName}}</p>
+                        <p class="mb-0 small" *ngIf="pd.basketItem.product.masonry">Edge: {{pd.options.masonry.optionName}}</p>
+                        <p class="mb-0 small" *ngIf="pd.basketItem.product.finishAdd">Top: {{pd.basketItem.product.finishAdd.name}}</p>
+
+                        <ng-container *ngIf="pd.basketItem.product.finishBottom">
+                            <!-- if we have a front object then it's the complex finish -->
+                            <ng-container *ngIf="pd.basketItem.product.finishBottom.front">
+                                <p class="mb-0 small">Underside front: {{pd.basketItem.product.finishBottom.front.name}}</p>
+                                <p class="mb-0 small">Underside back: {{pd.basketItem.product.finishBottom.back.name}}</p>
+                                <p class="mb-0 small">Underside left: {{pd.basketItem.product.finishBottom.left.name}}</p>
+                                <p class="mb-0 small">Underside right: {{pd.basketItem.product.finishBottom.right.name}}</p>
+                            </ng-container>
+                            <!-- otherwise it's the simple finish -->
+                            <ng-container *ngIf="!pd.basketItem.product.finishBottom.front">
+                                <p class="mb-0 small" *ngIf="pd.basketItem.product.finishBottom && pd.basketItem.product.finishBottom.name">
+                                    Underside: {{pd.basketItem.product.finishBottom.name}}
+                                </p>
+                            </ng-container>
+                        </ng-container>
+
+                        <ng-container *ngIf="pd.basketItem.product.finishEdge">
+                            <!-- if we have a front object then it's the complex finish -->
+                            <ng-container *ngIf="pd.basketItem.product.finishEdge.front">
+                                <p class="mb-0 small">Edge front: {{pd.basketItem.product.finishEdge.front.name}}</p>
+                                <p class="mb-0 small">Edge back: {{pd.basketItem.product.finishEdge.back.name}}</p>
+                                <p class="mb-0 small">Edge left: {{pd.basketItem.product.finishEdge.left.name}}</p>
+                                <p class="mb-0 small">Edge right: {{pd.basketItem.product.finishEdge.right.name}}</p>
+                            </ng-container>
+                            <!-- otherwise it's the simple finish -->
+                            <ng-container *ngIf="!pd.basketItem.product.finishEdge.front">
+                                <p class="mb-0 small" *ngIf="pd.basketItem.product.finishEdge && pd.basketItem.product.finishEdge.name">
+                                    Edge: {{pd.basketItem.product.finishEdge.name}}
+                                </p>
+                            </ng-container>
+                        </ng-container>
+
+                        <p class="mb-0 small" *ngIf="pd.basketItem.product.cornersLR">Corners LR: {{pd.basketItem.product.cornersLR}}</p>
+                        <p class="mb-0 small" *ngIf="pd.basketItem.product.cornersLR">Corners RR: {{pd.basketItem.product.cornersRR}}</p>
+                        <p class="mb-0 small" *ngIf="pd.basketItem.product.ends">End pieces: {{pd.basketItem.product.ends}}</p>
+
+                        <p class="mb-0 small" *ngIf="pd.basketItem.product.masonry2">Underside: {{pd.options.masonry2.optionName}}</p>
+
+                        <ng-container *ngIf="pd.basketItem.product.riserRequired">
+                            <p class="mb-0 small">Riser: {{pd.basketItem.product.riser.height}}mm x {{pd.basketItem.product.riser.thickness}}mm</p>
+                        </ng-container>
+                    </div>
+
+                </td>
+                <td>
+                    {{ pd.allocatedTo?.name }}
+                    <ng-select placeholder="Select assignee" class="dark" bindValue="id"
+                               bindLabel="name"
+                               *ngIf="pd.edit"
+                               [items]="admins"
+                               [clearable]="false"
+                               [searchable]="false"
+                               [ngModel]="orderLineToEdit.allocatedTo ? orderLineToEdit.allocatedTo.id : ''"
+                               (change)="orderLineToEdit.allocatedTo = $event"
+                    >
+                    </ng-select>
+                </td>
+                <td>{{pd.supplier.name}}</td>
+                <td>
+                    <span>{{pd.status.name}}</span>
+                    <!-- <select
+                        *ngIf="pd.edit" class="form-control"
+                        [(ngModel)]="orderLineToEdit.status">
+                        <option [ngValue]="s" *ngFor="let s of statuses">{{s.name}}</option>
+                    </select> -->
+                </td>
+
+                <!-- I think this will crash view if it's true
+                <td *ngIf="pd.isBespoke">
+                     <span *ngIf="pd.options.width.optionSkuId === 'R' || pd.options.length.optionSkuId === 'R'">n/a</span>
+                    <span *ngIf="pd.options.width.optionSkuId !== 'R' && pd.options.length.optionSkuId !== 'R'">{{pd.piecesRequired}}</span>
+                </td>-->
+
+                <td *ngIf="pd.isBespoke">{{pd.basketItem.unitPrice | currency: 'GBP'}}</td>
+
+                <td>
+                    <div class="row-block mb-1">
+                        <h6 class="m-0 p-0">Quantity</h6>
+                        <div *ngIf="!pd.edit">
+                            {{pd.quantity}}
+                            <span class="sm">
+                                <span *ngIf="!pd.isSample">{{pd.sellUnit.name}}{{ pd.quamtity !== 1 ? 's' : '' }}</span>
+                                <span *ngIf="pd.isSample">n/a</span>
+                            </span>
+                        </div>
+                        <input type="number" class="form-control form-control-slim" *ngIf="pd.edit" [(ngModel)]="orderLineToEdit.quantity">
+                    </div>
+
+                    <div class="row-block mb-1"
+                         *ngIf="pd.options.width && pd.options.width.optionSkuId !== 'R' && pd.options.length && pd.options.length.optionSkuId !== 'R' && !pd.isSample"
+                    >
+                        <h6 class="m-0 p-0">Pieces</h6>
+                        <div>
+                            <span>
+                                <!-- Saving some space, maybe that will work-->
+                                <!--<span *ngIf="pd.options.width && pd.options.width.optionSkuId === 'R' || pd.options.length && pd.options.length.optionSkuId === 'R'">n/a</span>-->
+                                <span *ngIf="pd.options.width && pd.options.width.optionSkuId !== 'R' && pd.options.length && pd.options.length.optionSkuId !== 'R'">{{pd.piecesRequired}}</span>
+                                <span *ngIf="pd.options.size">{{pd.options.size.optionName}}</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="row-block mb-1">
+                        <h6 class="m-0 p-0">Unit Price</h6>
+                        <div *ngIf="!pd.edit">{{pd.unitPrice | currency: 'GBP'}}</div>
+                        <input class="form-control form-control-slim" type="number" *ngIf="pd.edit" [(ngModel)]="orderLineToEdit.unitPrice">
+                    </div>
+
+                    <div class="row-block mb-1">
+                        <h6 class="m-0 p-0">Total</h6>
+                        <div class="important">{{pd.totalPrice | currency: 'GBP'}}</div>
+                    </div>
+                </td>
+                <td class="text-center">
+                    <div class="d-flex align-items-center">
+                        <ng-container *ngIf="!pd.edit">
+                            <a (click)="editOrderLine(i)">
+                                <svg-icon src="assets/images/icon-edit.svg"
+                                          [svgClass]="'icon--action'"></svg-icon>
+                            </a>
+                        </ng-container>
+                        <ng-container *ngIf="pd.edit">
+                            <a (click)="saveOrderLine(i)" class="me-3">
+                                <svg-icon src="assets/images/icon-circle-confirmed.svg"
+                                          [svgClass]="'icon--action'"></svg-icon>
+                            </a>
+                            <a (click)="cancelEditOrderLine(i)">
+                                <svg-icon src="assets/images/icon-circle-close.svg"
+                                          [svgClass]="'icon--action'"></svg-icon>
+                            </a>
+                        </ng-container>
+                    </div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>

@@ -281,11 +281,40 @@ button:focus,
         padding: 5px;
         font-size: 14px;
     }
-    .user-table-main .job-board-table .table > :not(caption) > * > * {
+
+    .user-table-main .job-board-table .table> :not(caption)>*>* {
         padding: 5px;
     }
+
     .user-table-main .job-board-table .preview-box .preview-box-content .table tbody td {
         font-size: 12px !important;
         line-height: 1.3;
+    }
+}
+
+
+/* modal dialog css for order details*/
+
+app-order-overview-modal {
+    #order-details {
+        .modal-title, .alert h5 {
+            font-size: 1rem;
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, Liberation Sans, sans-serif, 
+            Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji !important;
+            font-weight: 500;
+        }
+        small {
+            font-size: 14px !important;
+        }
+    }
+}
+
+@media only screen and (min-width: 1500px) {
+    app-order-overview-modal {
+        #order-details {
+            .modal-dialog.modal-xl {
+                max-width: 1440px !important;
+            }
+        }
     }
 }

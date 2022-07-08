@@ -1,0 +1,52 @@
+.ff-spectral {
+    font-family: "Spectral", serif !important;
+    line-height: 1.4;
+}
+
+.text-blue-link {
+    color: #00ABFF !important;
+    line-height: 24px;
+}
+
+.fw-500 {
+    font-weight: 600 !important;
+} 
+
+.text-primary {
+    color: rgb(38, 56, 71) !important;
+}
+
+.op-8 {
+    opacity: 0.8;
+}
+
+.bg-info {
+    background-color: rgba(194, 235, 255, var(--bs-bg-opacity)) !important;
+}
+
+.text-secondary {
+    --bs-text-opacity: 1;
+    color: rgba(61, 77, 89, var(--bs-text-opacity)) !important;
+} 
+
+.table h6, 
+.table p {
+    font-family: var(--bs-body-font-family) !important;
+    color: #263947 !important;
+}
+
+.table > :not(caption) > * > * {
+    padding: 1rem 0.5rem !important;
+} 
+
+.table tr .text-danger {
+    color: #d83514 !important;
+}
+
+.form-control-slim {
+    height: calc(1.5em + 0.3rem + 1px);
+    padding: 0.15rem 0.25rem;
+    font-size: 0.75rem;
+    border-radius: 0.2rem;
+}
+

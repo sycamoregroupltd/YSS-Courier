@@ -102,6 +102,8 @@
     [orderId]="orderId"
     [orderDetail]="orderDetail"
     (orderModalComplete)="orderModalComplete($event)"></app-order-overview-modal>
+
+    
    
 
     <app-move-back-modal *ngIf="this.backConfirmModal.show" [currentStatus]="this.backConfirmModal.card.status" (complete)="this.backConfirmCompleted($event)"></app-move-back-modal>

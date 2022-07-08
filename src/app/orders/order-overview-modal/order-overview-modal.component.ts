@@ -17,15 +17,16 @@ export class OrderOverviewModalComponent implements OnInit {
     constructor(
         private ordersService: OrdersService,
         private alertService: AlertService,
-       
     ) { }
 
     ngOnInit(): void {
-       
+        this.findOne();
     }
 
     findOne() {
-     
+        this.ordersService.findOne(this.orderId).subscribe(data => {
+            this.order = data.data;
+        });
     }
 
     update() {

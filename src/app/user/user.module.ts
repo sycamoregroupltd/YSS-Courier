@@ -72,6 +72,7 @@ import { AddInvNumberComponent } from '../orders/add-inv-number/add-inv-number.c
 import { MoveBackModalComponent } from '../orders/move-back-modal/move-back-modal.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { OrderOverviewComponent } from '../orders/order-overview/order-overview.component';
+import { OrderOverviewLineComponent } from '../orders/order-overview-line/order-overview-line.component';
 @NgModule({
     declarations: [
         AccountComponent,
@@ -124,7 +125,8 @@ import { OrderOverviewComponent } from '../orders/order-overview/order-overview.
         AddInvNumberComponent,
         MoveBackModalComponent,
         OrderOverviewModalComponent,
-        OrderOverviewComponent
+        OrderOverviewComponent,
+        OrderOverviewLineComponent
         
         
         
@@ -164,7 +166,8 @@ import { OrderOverviewComponent } from '../orders/order-overview/order-overview.
         AddInvNumberComponent,
         MoveBackModalComponent,
         OrderOverviewModalComponent,
-        OrderOverviewComponent
+        OrderOverviewComponent,
+        OrderOverviewLineComponent
        
     ]
 })

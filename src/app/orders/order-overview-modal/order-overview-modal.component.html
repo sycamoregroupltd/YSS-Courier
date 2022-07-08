@@ -6,7 +6,11 @@
                 <button (click)="cancel()" type="button" class="btn-close"></button>
             </div>
             <div class="modal-body bg-light">
-                <app-order-overview ></app-order-overview>
+                <app-order-overview *ngIf="order"
+                [isModal]="true"
+                [orderId]="orderId"
+                [order]="order"
+                [orderDetail]="orderDetail" ></app-order-overview>
             </div>
             <div class="modal-footer">
                 <div class="d-flex justify-content-between w-100">
