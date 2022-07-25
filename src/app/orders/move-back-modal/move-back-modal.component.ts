@@ -8,7 +8,7 @@ import { OrderLineStatus } from 'src/app/models/order-line-status';
 @Component({
   selector: 'app-move-back-modal',
   templateUrl: './move-back-modal.component.html',
-  styleUrls: ['./move-back-modal.component.css']
+  styleUrls: ['./move-back-modal.component.scss']
 })
 export class MoveBackModalComponent implements OnInit {
 

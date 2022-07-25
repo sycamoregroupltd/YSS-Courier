@@ -30,7 +30,7 @@ import { OrderCancelComponent } from './order-cancel/order-cancel.component';
         OrderDetailSearchComponent,
         OrderStatusUpdateComponent,
         OrderAssignComponent,
-        OrderCancelComponent,
+        
   
         
     ],

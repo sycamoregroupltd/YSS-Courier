@@ -16,6 +16,7 @@ import { ToolsService } from 'src/app/services/tools.service';
 import { MoveBackModalOutput } from '../../orders/move-back-modal/move-back-modal-output';
 import { forkJoin } from 'rxjs';
 import { ToastrService } from "ngx-toastr";
+import { OrderCancelComponent } from 'src/app/orders/order-cancel/order-cancel.component';
 
 @Component({
     selector: 'app-shipments-board',
@@ -108,6 +109,7 @@ export class ShipmentsBoardComponent implements OnInit {
         private renderer: Renderer2,
         private toolsService: ToolsService,
         private toastrService: ToastrService,
+       
      
       
         

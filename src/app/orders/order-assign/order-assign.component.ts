@@ -10,7 +10,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 @Component({
   selector: 'app-order-assign',
   templateUrl: './order-assign.component.html',
-  styleUrls: ['./order-assign.component.css']
+  styleUrls: ['./order-assign.component.scss']
 })
 export class OrderAssignComponent implements OnInit {
 

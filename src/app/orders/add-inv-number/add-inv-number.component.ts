@@ -20,7 +20,7 @@ export interface InvNumberAlertData extends CustomAlertData {
 @Component({
   selector: 'app-add-inv-number',
   templateUrl: './add-inv-number.component.html',
-  styleUrls: ['./add-inv-number.component.css']
+  styleUrls: ['./add-inv-number.component.scss']
 })
 export class AddInvNumberComponent implements AfterViewInit {
 

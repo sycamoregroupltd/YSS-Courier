@@ -21,7 +21,7 @@ export interface PoNumberAlertData extends CustomAlertData {
 @Component({
   selector: "app-add-po-number",
   templateUrl: "./add-po-number.component.html",
-  styleUrls: ["./add-po-number.component.css"],
+  styleUrls: ["./add-po-number.component.scss"],
 })
 export class AddPoNumberComponent implements AfterViewInit {
   @Output() confirm = new EventEmitter<PoNumberAlertData>();

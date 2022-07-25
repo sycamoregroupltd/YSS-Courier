@@ -73,6 +73,7 @@ import { MoveBackModalComponent } from '../orders/move-back-modal/move-back-moda
 import { NgSelectModule } from '@ng-select/ng-select';
 import { OrderOverviewComponent } from '../orders/order-overview/order-overview.component';
 import { OrderOverviewLineComponent } from '../orders/order-overview-line/order-overview-line.component';
+import { OrderCancelComponent } from '../orders/order-cancel/order-cancel.component';
 @NgModule({
     declarations: [
         AccountComponent,
@@ -126,7 +127,8 @@ import { OrderOverviewLineComponent } from '../orders/order-overview-line/order-
         MoveBackModalComponent,
         OrderOverviewModalComponent,
         OrderOverviewComponent,
-        OrderOverviewLineComponent
+        OrderOverviewLineComponent,
+     
         
         
         
@@ -167,7 +169,8 @@ import { OrderOverviewLineComponent } from '../orders/order-overview-line/order-
         MoveBackModalComponent,
         OrderOverviewModalComponent,
         OrderOverviewComponent,
-        OrderOverviewLineComponent
+        OrderOverviewLineComponent,
+      
        
     ]
 })
